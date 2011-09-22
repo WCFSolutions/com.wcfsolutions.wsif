@@ -56,7 +56,7 @@
 									<img src="{@RELATIVE_WCF_DIR}icon/deleteDisabledS.png" alt="" title="{lang}wsif.acp.entry.prefix.deleteDisabled{/lang}" />
 								{/if}
 							</div>
-						
+							
 							<h3 class="itemListTitle">
 								{if $this->user->getPermission('admin.filebase.canEditEntryPrefix')}
 									<select name="entryPrefixListPositions[{$prefix->prefixID}]">
@@ -78,7 +78,7 @@
 				</ol>
 			</div>
 		</div>
-
+		
 		{if $this->user->getPermission('admin.filebase.canEditEntryPrefix')}
 			<div class="formSubmit">
 				<input type="submit" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" />

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/rateableobject.xsd">	
+	<import>
+		<rateableobject name="com.wcfsolutions.wsif.entry">
+			<tablename>entry</tablename>
+			<objectidentifier>entryID</objectidentifier>
+		</rateableobject>
+	</import>
+</data>

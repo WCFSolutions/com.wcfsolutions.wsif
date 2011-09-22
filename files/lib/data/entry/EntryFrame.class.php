@@ -20,7 +20,7 @@ require_once(WCF_DIR.'lib/page/util/menu/PageMenu.class.php');
 class EntryFrame {
 	// system
 	public $enableRating = ENTRY_ENABLE_RATING;
-
+	
 	/**
 	 * entry container
 	 * 
@@ -30,41 +30,41 @@ class EntryFrame {
 	
 	/**
 	 * entry id
-	 *
+	 * 
 	 * @var integer
 	 */
 	public $entryID = 0;
 	
 	/**
 	 * entry object
-	 *
+	 * 
 	 * @var ViewableEntry
 	 */
 	public $entry = null;
 	
 	/**
 	 * category object
-	 *
+	 * 
 	 * @var Category
 	 */
 	public $category = null;
-
+	
 	/**
 	 * number of marked entries
-	 *
+	 * 
 	 * @var	integer
 	 */
 	public $markedEntries = 0;
 	
 	/**
 	 * Creates a new EntryFrame.
-	 *
+	 * 
 	 * @param	object		$container
 	 * @param	integer		$entryID
 	 */
 	public function __construct($container = null, $entryID = null) {
 		$this->container = $container;
-
+		
 		// get entry id
 		if ($entryID !== null) {
 			$this->entryID = $entryID;

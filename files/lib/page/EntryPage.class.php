@@ -37,11 +37,11 @@ class EntryPage extends AbstractPage {
 	
 	/**
 	 * list of entry visitors
-	 *
+	 * 
 	 * @var array<WSIFUser>
 	 */
 	public $entryVisitors = array();
-
+	
 	/**
 	 * @see Page::readParameters()
 	 */	
@@ -50,10 +50,7 @@ class EntryPage extends AbstractPage {
 		
 		// get entry frame
 		$this->frame = new EntryFrame($this);
-
-		// handle rating
-		$this->handleRating();
-
+		
 		// update views
 		if (!WCF::getSession()->spiderID) {
 			$this->updateViews();
@@ -91,7 +88,7 @@ class EntryPage extends AbstractPage {
 		// set active menu item
 		require_once(WSIF_DIR.'lib/page/util/menu/EntryMenu.class.php');
 		EntryMenu::getInstance()->setActiveMenuItem('wsif.entry.menu.link.entry');
-
+		
 		// show page
 		parent::show();
 	}
@@ -108,70 +105,6 @@ class EntryPage extends AbstractPage {
 			'entryVisitors' => $this->entryVisitors,
 			'allowSpidersToIndexThisPage' => true
 		));
-	}
-	
-	/**
-	 * Handles a rating request.
-	 */
-	public function handleRating() {
-		if (!isset($_POST['rating'])) return;
-		
-		// get rating
-		$rating = intval($_POST['rating']);
-			
-		// rating is disabled
-		if (!$this->frame->enableRating) {
-			throw new IllegalLinkException();
-		}
-			
-		// user cannot rate this entry again
-		if ($this->frame->getEntry()->userRating !== null && !$this->frame->getEntry()->userRating) {
-			throw new PermissionDeniedException();
-		}
-			
-		// user cannot rate this entry
-		if (!$this->frame->getEntry()->isRatable($this->frame->getCategory())) {
-			throw new PermissionDeniedException();
-		}
-			
-		// rating is not valid
-		if ($rating < 1 || $rating > 5) {
-			throw new IllegalLinkException();
-		}
-			
-		// change rating
-		if ($this->frame->getEntry()->userRating) {
-			$sql = "UPDATE 	wsif".WSIF_N."_entry_rating
-				SET 	rating = ".$rating."
-				WHERE 	entryID = ".$this->frame->getEntryID()."
-					AND ".(WCF::getUser()->userID ? "userID = ".WCF::getUser()->userID : "ipAddress = '".escapeString(WCF::getSession()->ipAddress)."'");
-			WCF::getDB()->sendQuery($sql);
-				
-			$sql = "UPDATE 	wsif".WSIF_N."_entry
-				SET 	rating = rating + ".$rating." - ".$this->frame->getEntry()->userRating."
-				WHERE 	entryID = ".$this->frame->getEntryID();
-			WCF::getDB()->sendQuery($sql);
-		}
-		// insert new rating
-		else {
-			$sql = "INSERT INTO	wsif".WSIF_N."_entry_rating
-						(entryID, rating, userID, ipAddress)
-				VALUES		(".$this->frame->getEntryID().",
-						".$rating.",
-						".WCF::getUser()->userID.",
-						'".escapeString(WCF::getSession()->ipAddress)."')";
-			WCF::getDB()->sendQuery($sql);	
-				
-			$sql = "UPDATE 	wsif".WSIF_N."_entry
-				SET 	ratings = ratings + 1,
-					rating = rating + ".$rating."
-				WHERE 	entryID = ".$this->frame->getEntryID();
-			WCF::getDB()->sendQuery($sql);	
-		}
-		
-		// forward to entry page
-		HeaderUtil::redirect('index.php?page=Entry&entryID='.$this->frame->getEntryID().SID_ARG_2ND_NOT_ENCODED);
-		exit;
 	}
 	
 	/**

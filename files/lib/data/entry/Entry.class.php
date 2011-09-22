@@ -7,8 +7,8 @@ require_once(WSIF_DIR.'lib/data/entry/prefix/EntryPrefix.class.php');
 require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
 
 /**
- * Represents an entry in the filebase.
- *
+ * Represents an entry.
+ * 
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/index.html>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -22,10 +22,7 @@ class Entry extends DatabaseObject {
 
 	/**
 	 * Creates a new Entry object.
-	 *
-	 * If id is set, the function reads the entry data from database.
-	 * Otherwise it uses the given resultset.
-	 *
+	 * 
 	 * @param	integer		$entryID
 	 * @param 	array<mixed>	$row
 	 */
@@ -97,18 +94,6 @@ class Entry extends DatabaseObject {
 	 */
 	public function getPrefix() {
 		return $this->prefix;
-	}
-	
-	/**
-	 * Returns the result of the rating of this entry.
-	 * 
-	 * @return	mixed
-	 */
-	public function getRating() {
-		if ($this->ratings > 0 && $this->ratings >= ENTRY_MIN_RATINGS) {
-			return $this->rating / $this->ratings;
-		}
-		return false;
 	}
 	
 	/**

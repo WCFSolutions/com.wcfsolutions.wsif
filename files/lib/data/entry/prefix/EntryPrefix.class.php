@@ -16,7 +16,7 @@ class EntryPrefix extends DatabaseObject {
 	protected static $prefixes = null;
 
 	/**
-	 * Creates a new ItemPrefix object.
+	 * Creates a new EntryPrefix object.
 	 *
 	 * @param	integer		$prefixID
 	 * @param 	array<mixed>	$row

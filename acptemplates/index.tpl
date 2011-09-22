@@ -128,12 +128,6 @@
 			<h3 class="subHeadline">{lang}wsif.acp.index.news{/lang}</h3>
 			
 			{foreach from=$news item=newsItem}
-				{*<div>
-					<p class="smallFont">{if $newsItem.author}{$newsItem.author} | {/if}{@$newsItem.pubDate|time}</p>
-					<h4><a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={$newsItem.link|rawurlencode}" class="externalURL">{@$newsItem.title}</a></h4>
-					
-					{@$newsItem.description}
-				</div>*}
 				<div class="message content">
 					<div class="messageInner container-{cycle name='results' values='1,2'}">
 						<p class="light smallFont">{if $newsItem.author}{$newsItem.author} - {/if}{@$newsItem.pubDate|time}</p>

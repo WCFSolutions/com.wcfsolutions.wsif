@@ -155,7 +155,7 @@
 					{/if}
 				</div>
 			</fieldset>
-
+			
 			<fieldset>
 				<legend>{lang}wsif.acp.category.general{/lang}</legend>
 					
@@ -193,7 +193,7 @@
 						{/if}
 					</div>
 				</div>
-			
+				
 				<div id="descriptionDiv" class="formElement">
 					<div class="formFieldLabel">
 						<label for="description">{lang}wsif.acp.category.description{/lang}</label>
@@ -248,7 +248,7 @@
 						inlineHelp.register('parentID');
 					//]]></script>
 				{/if}
-			
+				
 				<div class="formElement{if $errorField == 'position'} formError{/if}" id="positionDiv">
 					<div class="formFieldLabel">
 						<label for="position">{lang}wsif.acp.category.position{/lang}</label>
@@ -290,7 +290,7 @@
 					
 				{if $additionalSettings|isset}{@$additionalSettings}{/if}
 			</fieldset>
-				
+			
 			<fieldset id="filter">
 				<legend>{lang}wsif.acp.category.filter{/lang}</legend>
 				
@@ -318,7 +318,7 @@
 						{/if}
 					</div>
 				</div>
-					
+				
 				<div class="formElement{if $errorField == 'sortField'} formError{/if}">
 					<div class="formFieldLabel">
 						<label for="sortField">{lang}wsif.acp.category.sortField{/lang}</label>
@@ -358,7 +358,7 @@
 						{/if}
 					</div>
 				</div>
-					
+				
 				<div class="formElement">
 					<div class="formFieldLabel">
 						<label for="entriesPerPage">{lang}wsif.acp.category.entriesPerPage{/lang}</label>
@@ -373,7 +373,7 @@
 				
 			<fieldset id="style">
 				<legend>{lang}wsif.acp.category.style{/lang}</legend>
-
+				
 				{if $availableStyles|count > 1}
 					<div class="formElement">
 						<div class="formFieldLabel">
@@ -447,7 +447,7 @@
 				
 				{if $additionalPermissionFields|isset}{@$additionalPermissionFields}{/if}
 			</fieldset>
-				
+			
 			<fieldset id="moderators">
 				<legend>{lang}wsif.acp.category.moderators{/lang}</legend>
 					

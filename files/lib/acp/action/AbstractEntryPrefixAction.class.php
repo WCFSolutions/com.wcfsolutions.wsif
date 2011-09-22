@@ -1,12 +1,12 @@
 <?php
 // wsif imports
-require_once(WSIF_DIR.'lib/data/category/CategoryEditor.class.php');
+require_once(WSIF_DIR.'lib/data/entry/prefix/EntryPrefixEditor.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/action/AbstractAction.class.php');
 
 /**
- * Provides default implementations for category actions.
+ * Provides default implementations for entry prefix actions.
  * 
  * @author	Sebastian Oettl
  * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/index.html>
@@ -15,20 +15,20 @@ require_once(WCF_DIR.'lib/action/AbstractAction.class.php');
  * @subpackage	acp.action
  * @category	Infinite Filebase
  */
-abstract class AbstractCategoryAction extends AbstractAction {
+abstract class AbstractEntryPrefixAction extends AbstractAction {
 	/**
-	 * category id
+	 * entry prefix id
 	 * 
 	 * @var	integer
 	 */
-	public $categoryID = 0;
+	public $prefixID = 0;
 	
 	/**
-	 * category editor object
+	 * entry prefix editor object
 	 * 
-	 * @var	CategoryEditor
+	 * @var	EntryPrefixEditor
 	 */
-	public $category = null;
+	public $prefix = null;
 	
 	/**
 	 * @see Action::readParameters()
@@ -36,9 +36,12 @@ abstract class AbstractCategoryAction extends AbstractAction {
 	public function readParameters() {
 		parent::readParameters();
 		
-		// get category
-		if (isset($_REQUEST['categoryID'])) $this->categoryID = intval($_REQUEST['categoryID']);
-		$this->category = new CategoryEditor($this->categoryID);
+		// get prefix
+		if (isset($_REQUEST['prefixID'])) $this->prefixID = intval($_REQUEST['prefixID']);
+		$this->prefix = new EntryPrefixEditor($this->prefixID);
+		if (!$this->prefix->prefixID) {
+			throw new IllegalLinkException();
+		}
 	}
 }
 ?>

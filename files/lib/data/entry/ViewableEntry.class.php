@@ -43,18 +43,11 @@ class ViewableEntry extends Entry {
 	
 	/**
 	 * Returns the entry rating result for template output.
-	 *
+	 * 
 	 * @return	string
 	 */
 	public function getRatingOutput() {
-		$rating = $this->getRating();
-		if ($rating !== false) $roundedRating = round($rating, 0);
-		else $roundedRating = 0;
-		$description = '';
-		if ($this->ratings > 0) {
-			$description = WCF::getLanguage()->getDynamicVariable('wsif.entry.vote.description', array('votes' => StringUtil::formatNumeric($this->ratings), 'vote' => StringUtil::formatNumeric($rating)));
-		}
-		return '<img src="'.StyleManager::getStyle()->getIconPath('rating'.$roundedRating.'.png').'" alt="" title="'.$description.'" />';
+		return Rating::getDynamicRatingOutput($this->rating, $this->ratings);
 	}
 	
 	/**

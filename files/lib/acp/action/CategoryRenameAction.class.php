@@ -15,7 +15,7 @@ require_once(WSIF_DIR.'lib/acp/action/AbstractCategoryAction.class.php');
 class CategoryRenameAction extends AbstractCategoryAction {
 	/**
 	 * new title
-	 *
+	 * 
 	 * @var string
 	 */
 	public $title = '';

@@ -18,7 +18,7 @@ require_once(WCF_DIR.'lib/action/AbstractAction.class.php');
 class CategorySortAction extends AbstractAction {
 	/**
 	 * new positions
-	 *
+	 * 
 	 * @var array
 	 */
 	public $positions = array();
@@ -40,7 +40,7 @@ class CategorySortAction extends AbstractAction {
 		
 		// check permission
 		WCF::getUser()->checkPermission('admin.filebase.canEditCategory');
-
+		
 		// delete old positions
 		$sql = "TRUNCATE wsif".WSIF_N."_category_structure";
 		WCF::getDB()->sendQuery($sql);

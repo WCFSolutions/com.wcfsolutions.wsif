@@ -1,9 +1,6 @@
 <?php
 // wsif imports
-require_once(WSIF_DIR.'lib/data/entry/prefix/EntryPrefixEditor.class.php');
-
-// wcf imports
-require_once(WCF_DIR.'lib/action/AbstractAction.class.php');
+require_once(WSIF_DIR.'lib/acp/action/AbstractEntryPrefixAction.class.php');
 
 /**
  * Deletes an entry prefix.
@@ -15,35 +12,7 @@ require_once(WCF_DIR.'lib/action/AbstractAction.class.php');
  * @subpackage	acp.action
  * @category	Infinite Filebase
  */
-class EntryPrefixDeleteAction extends AbstractAction {
-	/**
-	 * prefix id
-	 *
-	 * @var	integer
-	 */
-	public $prefixID = 0;
-	
-	/**
-	 * prefix editor object
-	 *
-	 * @var	EntryPrefixEditor
-	 */
-	public $prefix;
-	
-	/**
-	 * @see Action::readParameters()
-	 */
-	public function readParameters() {
-		parent::readParameters();
-		
-		// get prefix
-		if (isset($_REQUEST['prefixID'])) $this->prefixID = intval($_REQUEST['prefixID']);
-		$this->prefix = new EntryPrefixEditor($this->prefixID);
-		if (!$this->prefix->prefixID) {
-			throw new IllegalLinkException();
-		}
-	}
-	
+class EntryPrefixDeleteAction extends AbstractEntryPrefixAction {
 	/**
 	 * @see Action::execute()
 	 */

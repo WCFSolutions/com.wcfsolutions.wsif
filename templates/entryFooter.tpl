@@ -6,45 +6,35 @@
 
 <div class="pageOptions">
 	{if $enableRating && $entry->isRatable($category)}
-		{if $entry->userRating === null || $entry->userRating > 0}
-			<script type="text/javascript" src="{@RELATIVE_WSIF_DIR}js/EntryRating.class.js"></script>
-			<form method="post" action="index.php?page=Entry">
+		<span>{lang}wsif.entry.rate{/lang}</span>
+		{include file='objectRating'}
+		<div id="com.wcfsolutions.wsif.entry-rating{@$entry->entryID}"></div>
+		<noscript>
+			<form method="post" action="index.php?action=ObjectRating{@SID_ARG_2ND}">
 				<div>
-					<input type="hidden" name="entryID" value="{@$entry->entryID}" />
-					{@SID_INPUT_TAG}
-					<input type="hidden" id="entryRating" name="rating" value="0" />
-						
-					<span class="hidden" id="entryRatingSpan"></span>
-						
-					<span>{lang}wsif.entry.rate{/lang}</span>
-						
-					<noscript>
-						<div>
-							<select id="entryRatingSelect" name="rating">
-								<option value="1"{if $entry->userRating == 1} selected="selected"{/if}>1</option>
-								<option value="2"{if $entry->userRating == 2} selected="selected"{/if}>2</option>
-								<option value="3"{if $entry->userRating == 3} selected="selected"{/if}>3</option>
-								<option value="4"{if $entry->userRating == 4} selected="selected"{/if}>4</option>
-								<option value="5"{if $entry->userRating == 5} selected="selected"{/if}>5</option>
-							</select>
-							<input type="image" class="inputImage" src="{icon}submitS.png{/icon}" alt="{lang}wcf.global.button.submit{/lang}" />
-						</div>
-					</noscript>
+					<select id="entryRatingSelect" name="rating">
+						{section name=i start=1 loop=6}
+							<option value="{@$i}"{if $i == $rating->getUserRating()} selected="selected"{/if}>{@$i}</option>
+						{/section}
+					</select>
+					<input type="hidden" name="objectName" value="com.wcfsolutions.wsif.entry" />
+					<input type="hidden" name="objectID" value="{@$entryID}" />
+					<input type="hidden" name="packageID" value="{@PACKAGE_ID}" />
+					<input type="hidden" name="url" value="index.php?page=Entry&amp;entryID={@$entry->entryID}" />
+					<input type="image" class="inputImage" src="{icon}submitS.png{/icon}" alt="{lang}wcf.global.button.submit{/lang}" />
 				</div>
 			</form>
-				
-			<script type="text/javascript">
-				//<![CDATA[
-				document.observe("dom:loaded", function() {
-					new EntryRating('entryRating', {
-						currentRating:		{@$entry->userRating|intval},
-						iconRating:		'{icon}ratingS.png{/icon}',
-						iconNoRating:		'{icon}noRatingS.png{/icon}'
-					});
-				});
-				//]]>
-			</script>
-		{/if}
+		</noscript>
+		<script type="text/javascript">
+			//<![CDATA[
+			objectRatingObj.initializeObject({
+				currentRating: {@$rating->getUserRating()},
+				objectID: {@$entryID},
+				objectName: 'com.wcfsolutions.wsif.entry',
+				packageID: {@PACKAGE_ID}
+			});
+			//]]>
+		</script>
 	{/if}
 </div>
 

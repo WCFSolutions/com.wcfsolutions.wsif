@@ -75,7 +75,7 @@
 					</div>
 				</div>
 			</fieldset>
-
+			
 			<fieldset>
 				<legend>{lang}wsif.acp.entry.prefix.general{/lang}</legend>
 				
@@ -159,7 +159,7 @@
 			{if $additionalFields|isset}{@$additionalFields}{/if}
 		</div>
 	</div>
-
+	
 	<div class="formSubmit">
 		<input type="submit" name="send" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" />
 		<input type="reset" accesskey="r" value="{lang}wcf.global.button.reset{/lang}" />

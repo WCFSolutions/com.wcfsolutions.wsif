@@ -34,7 +34,7 @@
 			<span id="entryPrefix{@$entry->entryID}" class="prefix"><strong>{if $entry->prefixID}{@$entry->getPrefix()->getStyledPrefix()}{/if}</strong></span>
 			<span class="title"><a href="index.php?page=Entry&amp;entryID={@$entryID}{@SID_ARG_2ND}">{$entry->subject}</a></span>
 		</h2>
-		{if $enableRating}{@$entry->getRatingOutput()}{/if}
+		{if $enableRating}<p id="com.wcfsolutions.wsif-ratingOutput{@$entry->entryID}">{@$entry->getRatingOutput()}</p>{/if}
 	</div>
 </div>
 

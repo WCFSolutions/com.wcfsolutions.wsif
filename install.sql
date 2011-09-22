@@ -19,7 +19,8 @@ CREATE TABLE wsif1_1_category (
 	entryFiles INT(10) NOT NULL DEFAULT 0,
 	entryDownloads INT(10) NOT NULL DEFAULT 0,
 	enableRating TINYINT(1) NOT NULL DEFAULT -1,
-	entriesPerPage SMALLINT(5) NOT NULL DEFAULT 0
+	entriesPerPage SMALLINT(5) NOT NULL DEFAULT 0,
+	showOrder INT(10) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS wsif1_1_category_last_entry;
@@ -258,16 +259,6 @@ CREATE TABLE wsif1_1_entry_prefix_to_category (
 	categoryID INT(10) NOT NULL,
 	prefixID INT(10) NOT NULL,
 	PRIMARY KEY (categoryID, prefixID)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-DROP TABLE IF EXISTS wsif1_1_entry_rating;
-CREATE TABLE wsif1_1_entry_rating (
-	entryID INT(10) NOT NULL DEFAULT 0,
-	rating INT(10) NOT NULL DEFAULT 0,
-	userID INT(10) NOT NULL DEFAULT 0,
-	ipAddress VARCHAR(15) NOT NULL DEFAULT '',
-	KEY (entryID, userID),
-	KEY (entryID, ipAddress)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS wsif1_1_entry_visitor;
