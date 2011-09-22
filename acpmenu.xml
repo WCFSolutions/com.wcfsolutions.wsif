@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/acp-menu.xsd">
+	<import>
+		<acpmenuitem name="wsif.acp.menu.link.content.category">
+			<parent>wcf.acp.menu.link.content</parent>
+			<showorder>1</showorder>
+		</acpmenuitem>	
+		<acpmenuitem name="wsif.acp.menu.link.content.category.view">
+			<parent>wsif.acp.menu.link.content.category</parent>
+			<showorder>1</showorder>
+			<link>index.php?page=CategoryList</link>
+			<icon>icon/categoryM.png</icon>
+			<permissions>admin.filebase.canEditCategory,admin.filebase.canDeleteCategory,admin.filebase.canEditCategoryPermissions,admin.filebase.canEditCategoryModerators</permissions> 
+		</acpmenuitem>
+		<acpmenuitem name="wsif.acp.menu.link.content.category.add">
+			<parent>wsif.acp.menu.link.content.category</parent>
+			<showorder>2</showorder>
+			<link>index.php?form=CategoryAdd</link>
+			<permissions>admin.filebase.canAddCategory</permissions> 
+		</acpmenuitem>
+		<acpmenuitem name="wsif.acp.menu.link.content.entry">
+			<parent>wcf.acp.menu.link.content</parent>
+			<showorder>2</showorder>
+		</acpmenuitem>
+		<acpmenuitem name="wsif.acp.menu.link.content.entry.prefix">
+			<parent>wsif.acp.menu.link.content.entry</parent>
+			<showorder>1</showorder>
+		</acpmenuitem>
+		<acpmenuitem name="wsif.acp.menu.link.content.entry.prefix.view">
+			<parent>wsif.acp.menu.link.content.entry.prefix</parent>
+			<showorder>1</showorder>
+			<link>index.php?page=EntryPrefixList</link>
+			<icon>icon/entryPrefixM.png</icon>
+			<permissions>admin.filebase.canEditEntryPrefix,admin.filebase.canDeleteEntryPrefix</permissions> 
+		</acpmenuitem>
+		<acpmenuitem name="wsif.acp.menu.link.content.entry.prefix.add">
+			<parent>wsif.acp.menu.link.content.entry.prefix</parent>
+			<showorder>2</showorder>
+			<link>index.php?form=EntryPrefixAdd</link>
+			<permissions>admin.filebase.canAddEntryPrefix</permissions> 
+		</acpmenuitem>
+	</import>
+</data>

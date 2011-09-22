@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/options.xsd">
+	<import>
+		<categories>
+			<category name="offline.general">
+				<parent>general.offline</parent>
+			</category>
+			
+			<category name="filebase"></category>
+			
+			<category name="filebase.index">
+				<parent>filebase</parent>
+			</category>
+			<category name="filebase.index.general">
+				<parent>filebase.index</parent>
+			</category>
+			<category name="filebase.index.categories">
+				<parent>filebase.index</parent>
+			</category>
+
+			<category name="filebase.category">
+				<parent>filebase</parent>
+			</category>
+			<category name="filebase.category.general">
+				<parent>filebase.category</parent>
+			</category>
+			<category name="filebase.category.entries">
+				<parent>filebase.category</parent>
+			</category>
+			
+			<category name="filebase.entry">
+				<parent>filebase</parent>
+			</category>
+			<category name="filebase.entry.general">
+				<parent>filebase.entry</parent>
+			</category>
+			<category name="filebase.entry.add">
+				<parent>filebase.entry</parent>
+			</category>
+			<category name="filebase.entry.images">
+				<parent>filebase.entry</parent>
+			</category>
+			<category name="filebase.entry.files">
+				<parent>filebase.entry</parent>
+			</category>
+		</categories>
+		
+		<options>
+			<option name="module_comment">
+				<categoryname>module.content</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			
+			<!-- offline -->
+			<option name="offline">
+				<categoryname>offline.general</categoryname>
+				<optiontype>boolean</optiontype>
+			 	<enableoptions><![CDATA[offline_message,offline_message_allow_html]]></enableoptions>
+			</option>
+			<option name="offline_message">
+				<categoryname>offline.general</categoryname>
+				<optiontype>textarea</optiontype>
+			</option>
+			<option name="offline_message_allow_html">
+				<categoryname>offline.general</categoryname>
+				<optiontype>boolean</optiontype>
+			</option>
+			<!-- /offline -->
+			
+			<!-- general.page -->
+			<option name="page_title">
+				<categoryname>general.page</categoryname>
+				<optiontype>text</optiontype>
+				<showorder>1</showorder>
+				<defaultvalue>WCF Solutions Infinite Filebase</defaultvalue>
+			</option>
+			<option name="page_description">
+				<categoryname>general.page</categoryname>
+				<optiontype>text</optiontype>
+				<showorder>2</showorder>
+			</option>
+			<option name="page_url">
+				<categoryname>general.page</categoryname>
+				<optiontype>text</optiontype>
+				<showorder>3</showorder>
+			</option>
+			<option name="page_urls">
+				<categoryname>general.page</categoryname>
+				<optiontype>textarea</optiontype>
+				<showorder>4</showorder>
+			</option>
+			<option name="show_version_number">
+				<categoryname>general.page</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<option name="show_style_chooser">
+				<categoryname>general.page</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<!-- /general.page -->
+			
+			<!-- general.cookie -->
+			<option name="cookie_path">
+				<categoryname>general.http.cookie</categoryname>
+				<optiontype>text</optiontype>
+				<defaultvalue></defaultvalue>
+			</option>
+			<!-- /general.cookie-->
+			
+			<!-- index.general -->
+			<option name="index_enable_stats">
+				<categoryname>filebase.index.general</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<option name="index_enable_tags">
+				<categoryname>filebase.index.general</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<options>module_tagging</options>
+			</option>
+			<!-- /index.general -->
+			
+			<!-- index.categories -->
+			<option name="category_list_enable_last_entry">
+				<categoryname>filebase.index.categories</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<option name="category_list_enable_stats">
+				<categoryname>filebase.index.categories</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<option name="category_list_enable_sub_categories">
+				<categoryname>filebase.index.categories</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<!-- /index.categories -->
+			
+			<!-- category.general -->
+			<option name="category_enable_stats">
+				<categoryname>filebase.category.general</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<option name="category_enable_tags">
+				<categoryname>filebase.category.general</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<options>module_tagging</options>
+			</option>
+			<!-- /category.general -->
+			
+			<!-- category.entries -->
+			<option name="category_entries_per_page">
+				<categoryname>filebase.category.entries</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>20</defaultvalue>
+			</option>
+
+			<option name="category_entries_default_days_prune">
+				<categoryname>filebase.category.entries</categoryname>
+				<optiontype>select</optiontype>
+				<defaultvalue>1000</defaultvalue>
+				<selectoptions><![CDATA[1:wsif.category.entries.filterByDate.1
+3:wsif.category.entries.filterByDate.3
+7:wsif.category.entries.filterByDate.7
+14:wsif.category.entries.filterByDate.14
+30:wsif.category.entries.filterByDate.30
+60:wsif.category.entries.filterByDate.60
+100:wsif.category.entries.filterByDate.100
+365:wsif.category.entries.filterByDate.365
+1000:wsif.category.entries.filterByDate.1000]]></selectoptions>
+			</option>
+			<option name="category_entries_default_sort_field">
+				<categoryname>filebase.category.entries</categoryname>
+				<optiontype>select</optiontype>
+				<defaultvalue>time</defaultvalue>
+				<selectoptions><![CDATA[subject:wsif.entry.subject
+username:wsif.entry.username
+time:wsif.entry.time
+views:wsif.entry.views
+downloads:wsif.entry.downloads
+ratingResult:wsif.entry.rating]]></selectoptions>
+			</option>
+			<option name="category_entries_default_sort_order">
+				<categoryname>filebase.category.entries</categoryname>
+				<optiontype>select</optiontype>
+				<defaultvalue>DESC</defaultvalue>
+				<selectoptions><![CDATA[ASC:wcf.global.sortOrder.ascending
+DESC:wcf.global.sortOrder.descending]]></selectoptions>
+			</option>
+			<option name="category_entries_enable_language_filter_for_guests">
+				<categoryname>filebase.category.entries</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<!-- /category.entries -->
+			
+			<!-- entry.general -->
+			<option name="entry_enable_tags">
+				<categoryname>filebase.entry.general</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+				<options>module_tagging</options>
+			</option>
+			<option name="entry_enable_recycle_bin">
+				<categoryname>filebase.entry.general</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+				<enableoptions><![CDATA[entry_empty_recycle_bin_cycle]]></enableoptions>
+			</option>
+			<option name="entry_empty_recycle_bin_cycle">
+				<categoryname>filebase.entry.general</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>30</defaultvalue>
+			</option>
+			<option name="entry_enable_rating">
+				<categoryname>filebase.entry.general</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+				<enableoptions><![CDATA[entry_min_ratings]]></enableoptions>
+			</option>
+			<option name="entry_min_ratings">
+				<categoryname>filebase.entry.general</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>		
+			<!-- /entry.general -->
+			
+			<!-- entry.add -->
+			<option name="activity_points_per_entry">
+				<categoryname>filebase.entry.add</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>10</defaultvalue>
+			</option>
+			<!-- /entry.add -->
+			
+			<!-- entry.images -->
+			<option name="entry_images_per_page">
+				<categoryname>filebase.entry.images</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>10</defaultvalue>
+			</option>
+			<!-- /entry.images -->
+			
+			<!-- entry.files -->
+			<option name="entry_files_per_page">
+				<categoryname>filebase.entry.files</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>10</defaultvalue>
+			</option>
+			<!-- /entry.images -->
+			
+			<!-- general -->
+			<option name="install_date">
+				<categoryname>general</categoryname>
+				<optiontype>integer</optiontype>
+				<hidden>1</hidden>
+			</option>
+			<!-- /general -->
+			
+			<!-- general.date -->
+			<option name="show_clock">
+				<categoryname>general.date</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<!-- /general.date -->
+		
+			<!-- security.antispam -->
+			<option name="entry_add_use_captcha">
+				<categoryname>security.antispam</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<!-- /security.antispam -->
+
+			<!-- user.membersList -->
+			<option name="members_list_columns">
+				<categoryname>user.membersList</categoryname>
+				<optiontype>memberslistcolumns</optiontype>
+				<defaultvalue><![CDATA[username,avatar,email,homepage,registrationDate,entries]]></defaultvalue>
+			</option>
+			<option name="members_list_default_sort_field">
+				<categoryname>user.membersList</categoryname>
+				<optiontype>memberslistsortfield</optiontype>
+				<defaultvalue><![CDATA[entries]]></defaultvalue>
+			</option>
+			<option name="members_list_default_sort_order">
+				<categoryname>user.membersList</categoryname>
+				<optiontype>select</optiontype>
+				<defaultvalue><![CDATA[DESC]]></defaultvalue>
+				<selectoptions><![CDATA[ASC:wcf.global.sortOrder.ascending
+DESC:wcf.global.sortOrder.descending]]></selectoptions>
+			</option>
+			<!-- /user.membersList -->
+			
+			<!-- user.profile.general -->
+			<option name="profile_show_last_entries">
+				<categoryname>user.profile.general</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<!-- /user.profile.general -->
+		</options>
+	</import>
+</data>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/event-listener.xsd">
+	<import>
+		<eventlistener>
+			<eventClassName>UserProfileFrame</eventClassName>
+			<eventName>init</eventName>
+			<listenerClassFile>lib/system/event/listener/UserPageEntriesListener.class.php</listenerClassFile>
+		</eventlistener>
+		<eventlistener>
+			<eventClassName>UserPage</eventClassName>
+			<eventName>assignVariables</eventName>
+			<listenerClassFile>lib/system/event/listener/UserPageEntriesListener.class.php</listenerClassFile>
+		</eventlistener>
+		<eventlistener>
+			<eventClassName>MembersListPage</eventClassName>
+			<eventName>readParameters</eventName>
+			<inherit>1</inherit>
+			<listenerClassFile>lib/system/event/listener/MembersListPageEntriesListener.class.php</listenerClassFile>
+		</eventlistener>
+		<eventlistener>
+			<eventClassName>MembersListPage</eventClassName>
+			<eventName>readData</eventName>
+			<inherit>1</inherit>
+			<listenerClassFile>lib/system/event/listener/MembersListPageEntriesListener.class.php</listenerClassFile>
+		</eventlistener>
+		<eventlistener>
+			<eventClassName>MembersListPage</eventClassName>
+			<eventName>assignVariables</eventName>
+			<inherit>1</inherit>
+			<listenerClassFile>lib/system/event/listener/MembersListPageEntriesListener.class.php</listenerClassFile>
+		</eventlistener>
+		<eventlistener>
+			<eventClassName>AttachmentPage</eventClassName>
+			<eventName>show</eventName>
+			<listenerClassFile>lib/system/event/listener/AttachmentPageEntryCommentPermissionListener.class.php</listenerClassFile>
+		</eventlistener>
+
+		<!-- admin -->
+		<eventlistener>
+			<eventclassname>OptionTypeMemberslistcolumns</eventclassname>
+			<eventname>construct</eventname>
+			<environment>admin</environment>
+			<listenerclassfile>lib/system/event/listener/MembersListPageEntriesListener.class.php</listenerclassfile>
+		</eventlistener>
+		<!-- /admin -->
+	</import>
+</data>

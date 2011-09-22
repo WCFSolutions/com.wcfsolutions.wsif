@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.wcfsolutions.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wcfsolutions.com/XSD/moderationcp-menu.xsd">
+	<import>
+		<moderationmenuitem name="wcf.moderation.menu.link.entries">
+			<icon>indexM.png</icon>
+			<link>index.php?page=ModerationMarkedEntries</link>
+			<showorder>2</showorder>
+		</moderationmenuitem>
+		<moderationmenuitem name="wcf.moderation.menu.link.markedEntries">
+			<parent>wcf.moderation.menu.link.entries</parent>
+			<link>index.php?page=ModerationMarkedEntries</link>
+			<showorder>1</showorder>
+		</moderationmenuitem>
+		<moderationmenuitem name="wcf.moderation.menu.link.hiddenEntries">
+			<parent>wcf.moderation.menu.link.entries</parent>
+			<link>index.php?page=ModerationHiddenEntries</link>
+			<showorder>2</showorder>
+		</moderationmenuitem>
+		<moderationmenuitem name="wcf.moderation.menu.link.deletedEntries">
+			<parent>wcf.moderation.menu.link.entries</parent>
+			<link>index.php?page=ModerationDeletedEntries</link>
+			<showorder>3</showorder>
+		</moderationmenuitem>
+	</import>
+</data>

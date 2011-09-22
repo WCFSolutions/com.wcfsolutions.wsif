@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/page-menu.xsd">
+	<import>
+		<pagemenuitem name="wsif.header.menu.filebase">
+			<iconmedium>indexM.png</iconmedium>
+			<iconsmall>indexS.png</iconsmall>
+			<link>index.php?page=Index</link>
+			<showorder>1</showorder>
+			<position>header</position>
+		</pagemenuitem>
+	</import>
+</data>

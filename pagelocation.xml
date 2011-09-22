@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/page-location.xsd">	
+	<import>
+		<pagelocation name="wsif.usersOnline.location.index">
+			<pattern><![CDATA[(?:index\.php\?page=Index.*|index\.php(?!(?:\?|&)(?:page|action|form)=).*|/)$]]></pattern>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.category">
+			<pattern><![CDATA[index\.php\?page=Category&.*categoryID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/CategoryLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry.add">
+			<pattern><![CDATA[index\.php\?form=EntryAdd&.*categoryID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/CategoryLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry">
+			<pattern><![CDATA[index\.php\?page=Entry&.*entryID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/EntryLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry.edit">
+			<pattern><![CDATA[index\.php\?form=EntryEdit&.*entryID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/EntryLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry.comments">
+			<pattern><![CDATA[index\.php\?page=EntryComments&.*entryID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/EntryLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry.comment.add">
+			<pattern><![CDATA[index\.php\?form=EntryCommentAdd&.*entryID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/EntryLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry.comment">
+			<pattern><![CDATA[index\.php\?page=EntryComments&.*commentID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/EntryCommentLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry.comment.edit">
+			<pattern><![CDATA[index\.php\?form=EntryCommentEdit&.*commentID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/EntryCommentLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry.images">
+			<pattern><![CDATA[index\.php\?page=EntryImages&.*entryID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/EntryLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry.image.add">
+			<pattern><![CDATA[index\.php\?form=EntryImageAdd&.*entryID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/EntryLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry.image">
+			<pattern><![CDATA[index\.php\?page=EntryImage&.*imageID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/EntryImageLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry.image.edit">
+			<pattern><![CDATA[index\.php\?form=EntryImageEdit&.*imageID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/EntryImageLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry.files">
+			<pattern><![CDATA[index\.php\?page=EntryFiles&.*entryID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/EntryLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry.file.add">
+			<pattern><![CDATA[index\.php\?form=EntryFileAdd&.*entryID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/EntryLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry.file">
+			<pattern><![CDATA[index\.php\?page=EntryFile&.*fileID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/EntryFileLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry.file.edit">
+			<pattern><![CDATA[index\.php\?form=EntryFileEdit&.*fileID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/EntryFileLocation.class.php</classpath>
+		</pagelocation>
+		<pagelocation name="wsif.usersOnline.location.entry.file.download">
+			<pattern><![CDATA[index\.php\?page=EntryFileDownload&.*fileID=(\d+)]]></pattern>
+			<classpath>lib/data/page/location/EntryFileLocation.class.php</classpath>
+		</pagelocation>
+	</import>
+</data>

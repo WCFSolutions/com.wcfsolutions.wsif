@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/feedsource.xsd">
+	<import>
+		<feedsource name="wcfsolutions-filebase-news">
+			<url><![CDATA[http://www.wcfsolutions.com/index.php?page=NewsFeed&format=rss2&categoryID=3]]></url>
+			<cycle>86400</cycle>
+		</feedsource>
+	</import>
+</data>

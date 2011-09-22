@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.wcfsolutions.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.wcfsolutions.com/XSD/moderation-type.xsd">
+	<import>
+		<type>
+			<name>deletedEntries</name>
+			<classfile>lib/data/moderation/type/DeletedEntriesModerationType.class.php</classfile>
+		</type>
+		<type>
+			<name>hiddenEntries</name>
+			<classfile>lib/data/moderation/type/HiddenEntriesModerationType.class.php</classfile>
+		</type>
+		<type>
+			<name>markedEntries</name>
+			<classfile>lib/data/moderation/type/MarkedEntriesModerationType.class.php</classfile>
+		</type>
+	</import>
+</data>

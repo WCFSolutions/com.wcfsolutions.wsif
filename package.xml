@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package name="com.wcfsolutions.wsif" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/package.xsd">
+	<packageinformation>
+		<packagename>WCF Solutions Infinite Filebase</packagename>
+		<packagedescription>Infinite Filebase is a modern download database with many features.</packagedescription>
+		<packagedescription language="de">Infinite Filebase ist eine moderne Download-Datenbank mit vielen Funktionen.</packagedescription>
+		<standalone>1</standalone>
+		<version>2.0.3</version>
+		<date>2011-09-10</date>
+	</packageinformation>
+	
+	<authorinformation>
+		<author>WCF Solutions</author>
+		<authorurl>http://www.wcfsolutions.com</authorurl>
+	</authorinformation>
+	
+	<requiredpackages>
+		<!-- basics -->
+		<requiredpackage minversion="1.1.2">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="1.1.2">com.woltlab.wcf.data.cronjobs</requiredpackage>
+		<requiredpackage minversion="1.0.3">com.woltlab.wcf.data.feed.reader</requiredpackage>
+		<requiredpackage minversion="1.1.0">com.woltlab.wcf.data.image</requiredpackage>
+		<requiredpackage minversion="1.1.0">com.woltlab.wcf.data.image.captcha</requiredpackage>
+		<requiredpackage minversion="1.0.1">com.woltlab.wcf.imageViewer</requiredpackage>
+		
+		<!-- page system -->
+		<requiredpackage minversion="1.1.1">com.woltlab.wcf.data.page.headerMenu</requiredpackage>
+		<requiredpackage minversion="1.1.0">com.woltlab.wcf.system.style</requiredpackage>
+		<requiredpackage minversion="1.1.0">com.woltlab.wcf.data.page</requiredpackage>
+		<requiredpackage minversion="1.1.1">com.woltlab.wcf.data.help</requiredpackage>
+		
+		<!-- message -->
+		<requiredpackage minversion="1.1.0">com.woltlab.wcf.data.message</requiredpackage>
+		<requiredpackage minversion="1.1.2">com.woltlab.wcf.data.message.attachment</requiredpackage>
+		<requiredpackage minversion="1.1.1">com.woltlab.wcf.data.message.bbcode</requiredpackage>
+		<requiredpackage minversion="1.1.2">com.woltlab.wcf.form.message.wysiwyg</requiredpackage>
+		<requiredpackage minversion="1.0.1">com.woltlab.wcf.tagging</requiredpackage>
+		
+		<!-- user profile -->
+		<requiredpackage minversion="1.1.2">com.woltlab.wcf.form.user</requiredpackage>
+		<requiredpackage minversion="1.1.2">com.woltlab.wcf.page.user.profile</requiredpackage>
+		
+		<!-- messages -->
+		<requiredpackage minversion="1.1.1">com.woltlab.wcf.data.message.poll</requiredpackage>
+		<requiredpackage minversion="1.1.0">com.woltlab.wcf.data.message.censorship</requiredpackage>
+		<requiredpackage minversion="1.1.2">com.woltlab.wcf.form.message</requiredpackage>
+		<requiredpackage minversion="1.1.1">com.woltlab.wcf.data.message.search</requiredpackage>
+		<requiredpackage minversion="1.0.1">com.woltlab.wcf.message.sidebar</requiredpackage>
+		<requiredpackage minversion="1.0.0">com.woltlab.wcf.data.message.search.tagging</requiredpackage>
+		
+		<!-- wcfsolutions packages -->
+		<requiredpackage minversion="2.0.2" file="requirements/com.wcfsolutions.wsif.core.tar">com.wcfsolutions.wsif.core</requiredpackage>
+		<requiredpackage minversion="2.0.1" file="requirements/com.wcfsolutions.wcf.acp.system.counterUpdate.tar">com.wcfsolutions.wcf.acp.system.counterUpdate</requiredpackage>
+		<requiredpackage minversion="2.0.3" file="requirements/com.wcfsolutions.wcf.data.moderation.tar">com.wcfsolutions.wcf.data.moderation</requiredpackage>
+	</requiredpackages>
+	
+	<optionalpackages>
+		<optionalpackage file="optionals/com.wcfsolutions.wsif.import.tar">com.wcfsolutions.wsif.import</optionalpackage>
+		<optionalpackage file="optionals/com.wcfsolutions.wsif.box.tar">com.wcfsolutions.wsif.box</optionalpackage>
+		<optionalpackage file="optionals/com.wcfsolutions.wsif.extensionKit.tar">com.wcfsolutions.wsif.extensionKit</optionalpackage>
+		<optionalpackage file="optionals/com.wcfsolutions.wsif.entry.file.license.tar">com.wcfsolutions.wsif.entry.file.license</optionalpackage>
+		<optionalpackage file="optionals/com.wcfsolutions.wsif.entry.customFields.tar">com.wcfsolutions.wsif.entry.customFields</optionalpackage>
+		<optionalpackage file="optionals/com.wcfsolutions.wsif.delayedEntries.tar">com.wcfsolutions.wsif.delayedEntries</optionalpackage>
+	</optionalpackages>
+	
+	<excludedpackages>
+		<excludedpackage version="1.2.0 Alpha 1">com.woltlab.wcf</excludedpackage>
+	</excludedpackages>
+	
+	<instructions type="install">
+		<!-- pips -->
+		<packageinstallationplugins>pip.tar</packageinstallationplugins>
+
+		<!-- files -->
+		<files>files.tar</files>
+		<templates>templates.tar</templates>
+		<acptemplates>acptemplates.tar</acptemplates>
+		<sql>install.sql</sql>
+		<script>acp/install.php</script>
+		<style default="true">wcfsolutions-silver-sunrise-style.tar</style>
+	
+		<!-- config -->
+		<pagemenu>pagemenu.xml</pagemenu>
+		<attachmentcontainertype>act.xml</attachmentcontainertype>
+		<pagelocation>pagelocation.xml</pagelocation>
+		<eventlistener>eventlistener.xml</eventlistener>
+		<useroptions>useroptions.xml</useroptions>
+		<groupoptions>groupoptions.xml</groupoptions>
+		<options>options.xml</options>
+		<cronjobs>cronjobs.xml</cronjobs>
+		<acpmenu>acpmenu.xml</acpmenu>
+		<taggable>taggable.xml</taggable>
+		<entrymenu>entrymenu.xml</entrymenu>
+		<moderationcpmenu>moderationcpmenu.xml</moderationcpmenu>
+		<moderationtype>moderationtype.xml</moderationtype>
+		<counterupdatetype>counterupdatetype.xml</counterupdatetype>
+		<searchablemessagetypes>smt.xml</searchablemessagetypes>
+		<feedsource>feedsource.xml</feedsource>
+		
+		<!-- languages -->
+		<languages languagecode="de">de.xml</languages>
+		<languages languagecode="de-informal">de-informal.xml</languages>
+	</instructions>
+	
+	<instructions type="update" fromversion="2.0.2">
+		<!-- files -->
+		<files>files.tar</files>
+		<templates>templates.tar</templates>
+		
+		<!-- languages -->
+		<languages languagecode="de">de.xml</languages>
+		<languages languagecode="de-informal">de-informal.xml</languages>
+	</instructions>
+</package>

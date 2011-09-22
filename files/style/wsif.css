@@ -1,0 +1,282 @@
+
+/* ### -- -- -- -- -- Special Infinite Filebase Styles -- -- -- -- -- ### */
+
+/* 
+
+File: wsif.css 
+Copyright 2009-2011 by WCF Solutions <http://www.wcfsolutions.com/index.php>
+
+*/
+
+/* ### -- -- -- -- -- Category List -- -- -- -- -- ### */
+
+#categoryList, #categoryList ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#categoryList {
+	margin-bottom: 20px;
+}
+
+#categoryList .categoryListInner {
+	min-height: 16px;
+}
+
+#categoryList .categoryListInner .smallButtons {
+	clear: both;
+}
+
+#categoryList .categoryListInner:after {
+	display: block;
+	clear: both;
+	height: 0;
+	content: "";
+}
+
+#categoryList .container-1, #categoryList .container-2  {
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+#categpryList .containerContent:after {
+	display: block;
+	clear: both;
+	content: "";
+	height: 0;
+}
+
+#categoryList .container-1, #categoryList .container-2 {
+	padding: 4px;
+}
+
+#categoryList .categoryListSubCategories {
+	margin: 3px 0 0 0;
+	padding: 0;
+	min-height: 0;
+	font-size: .85em;
+}
+
+#categoryList .categoryListSubCategories:after {
+	display: block;
+	clear: both;
+	height: 0;
+	content: "";
+}
+
+#categoryList .categoryListSubCategories li {
+	float: left;
+	margin-right: 2px;
+}
+
+#categoryList .categoryListSubCategories li a {
+	white-space: nowrap;
+}
+
+#categoryList .categoryListSubCategories li h4:after {
+	content: ",";
+}
+
+#categoryList .categoryListSubCategories li.last h4:after {
+	content: "";
+}
+
+.categoryListDescription {
+	margin-bottom: 3px;
+	font-size: .85em;
+}
+
+.categoryListCols-3 {
+	float: left;
+	width: 60%;
+}
+
+.categoryListCols-2 {
+	float: left;
+	width: 80%;
+}
+
+.categoryListLastItem {
+	float: left;
+	width: 20%;
+	overflow: hidden;
+	font-size: .85em;
+}
+
+.categoryListStats {
+	width: 20%;
+	float: right;
+	font-size: .85em;
+}
+
+.categoryListStats dl, .categoryListStats dd, .categoryListStats dt{
+	margin: 0;
+	padding: 0;
+}
+
+.categoryListStats dt {
+	width: 40%;
+	float: right;
+}
+
+.categoryListStats dd {
+	width: 58%;
+	float: left;
+	text-align: right;
+}
+
+/* ### -- -- -- -- -- Miscellaneous -- -- -- -- -- ### */
+
+.default {
+	font-weight: bold;
+}
+
+.entrySort:after {
+	content: "";
+	height: 0;
+	display: block;
+	clear: both;
+}
+
+.prefix strong {
+	font-weight: normal;
+}
+
+.tableList .columnTitle {
+	width: 70%;
+}
+
+.tableList .columnViews, .tableList .columnDownloads {
+	text-align: center;
+}
+
+.entryAddFileUploadSubmit, .entryAddFileExternalSubmit, .entryAddImageUploadSubmit {
+	float: right;
+}
+
+/* ### -- -- -- -- -- Entry List -- -- -- -- -- ### */
+
+.shortMessage, .entryBy {
+	font-size: .85em;
+}
+
+.entryList .contentHeader, .entryList .contentFooter {
+	margin-top: 7px;
+}
+
+.entryList .message {
+	margin-bottom: 7px;
+}
+
+.entryList .messageInner {
+	padding: 10px 20px !important;
+}
+
+.entryList .entryImage {
+	text-align: center;
+	float: left;
+	width: 160px;
+}
+
+.entryList .entryImage img {
+	width: auto;
+}
+
+.entryDetails {
+	margin-left: 186px;	
+}
+.entryDetails:after{
+	clear: left;
+}
+.entryList .entryDetails .containerContent h3 {
+	padding: 0;
+	margin: 0;
+}
+
+/* ### -- -- -- -- -- Entry Image List -- -- -- -- -- ### */
+
+.entryImageList {
+	margin: 0;	
+	padding: 0;	
+}
+
+.entryImageList li.floatedElement {
+	border-style: solid;
+	border-width: 1px;
+	margin: 0 7px 7px 0;
+	padding: 10px;
+	overflow: hidden;
+	text-align: center;
+	height: 183px;
+	width: 158px;
+}
+
+.entryImageList li.floatedElement a span {
+	text-decoration: underline;	
+}
+
+.entryImageList li.floatedElement a:hover span {
+	text-decoration: none;	
+}
+
+.entryImageList .thumbnail {
+	display: block;
+	margin: 0 auto 3px auto;
+	position: relative;
+	height: 150px;
+	width: 150px;
+}
+
+.entryImageList .thumbnail img {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+}
+
+.entryImageList .caption {
+	white-space: nowrap;
+	display: block;
+	width: 158px;
+	overflow: hidden;
+}
+
+.entryImageList li.floatedElement p {
+	margin: 0 7px;
+}
+
+.entryImageList li.floatedElement:hover{
+	border-color: #999;
+}
+
+.entryImageList li.floatedElement{
+	border-color: #bbb;
+}
+
+/* ### -- -- -- -- -- Entry Image Detail -- -- -- -- -- ### */
+
+.entryImage img {
+	width: 90%;
+}
+
+.entryImageCaption {
+	padding-bottom: 5px;
+	padding-top: 10px;
+}
+
+#entryImageEmbed, #entryImageLink {
+	width: 97%;
+}
+
+/* ### -- -- -- -- -- Entry File Detail -- -- -- -- -- ### */
+
+.entryFileCaption {
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+
+#entryFileEmbed, #entryFileLink {
+	width: 97%;
+}
+
+/* ### -- -- -- -- -- EOF -- -- -- -- -- ### */
