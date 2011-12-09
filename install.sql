@@ -27,7 +27,7 @@ CREATE TABLE wsif1_1_category_last_entry (
 	categoryID INT(10) NOT NULL DEFAULT 0,
 	languageID INT(10) NOT NULL DEFAULT 0,
 	entryID INT(10) NOT NULL DEFAULT 0,
-	PRIMARY KEY (categoryID, languageID, entryID)
+	PRIMARY KEY (categoryID, languageID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS wsif1_1_category_moderator;
