@@ -184,6 +184,7 @@
 							
 							{if $errorField == 'imageUpload'}
 								<div class="innerError">
+									{if $errorType == 'uploadFailed'}{lang}wsif.entry.add.image.upload.error.uploadFailed{/lang}{/if}
 									{if $errorType == 'copyFailed'}{lang}wsif.entry.add.image.upload.error.copyFailed{/lang}{/if}
 									{if $errorType == 'illegalExtension'}{lang}wsif.entry.add.image.upload.error.illegalExtension{/lang}{/if}
 									{if $errorType == 'tooLarge'}{lang}wsif.entry.add.image.upload.error.tooLarge{/lang}{/if}
@@ -279,6 +280,7 @@
 							{if $errorField == 'fileUpload'}
 								<div class="innerError">
 									{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
+									{if $errorType == 'uploadFailed'}{lang}wsif.entry.file.add.upload.error.uploadFailed{/lang}{/if}
 									{if $errorType == 'copyFailed'}{lang}wsif.entry.file.add.upload.error.copyFailed{/lang}{/if}
 									{if $errorType == 'illegalExtension'}{lang}wsif.entry.add.file.upload.error.illegalExtension{/lang}{/if}
 									{if $errorType == 'tooLarge'}{lang}wsif.entry.add.file.upload.error.tooLarge{/lang}{/if}

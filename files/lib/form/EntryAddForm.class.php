@@ -338,7 +338,13 @@ class EntryAddForm extends MessageForm {
 	/**
 	 * Validates the uploaded image.
 	 */
-	protected function validateImageUpload() {		
+	protected function validateImageUpload() {
+		// check upload
+		if ($this->imageUpload['error'] != 0) {
+			throw new UserInputException('imageUpload', 'uploadFailed');
+		}
+		
+		// create image
 		$this->image = EntryImageEditor::create('imageUpload', 0, WCF::getUser()->userID, $this->username, $this->imageUpload['tmp_name'], $this->imageUpload['name'], '', '');
 		$this->imageID = $this->image->imageID;
 	}
@@ -346,7 +352,13 @@ class EntryAddForm extends MessageForm {
 	/**
 	 * Validates the uploaded file.
 	 */
-	protected function validateFileUpload() {		
+	protected function validateFileUpload() {
+		// check upload
+		if ($this->fileUpload['error'] != 0) {
+			throw new UserInputException('fileUpload', 'uploadFailed');
+		}
+		
+		// create file
 		$this->file = EntryFileEditor::create('fileUpload', 0, WCF::getUser()->userID, $this->username, $this->fileUpload['tmp_name'], $this->fileUpload['name'], $this->fileUpload['type'], '', '', $this->fileType);
 		$this->fileID = $this->file->fileID;
 	}

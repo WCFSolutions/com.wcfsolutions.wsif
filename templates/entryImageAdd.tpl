@@ -82,6 +82,7 @@
 								{if $errorType|is_array}
 									{foreach from=$errorType item=error}
 										<p>
+											{if $error.errorType == 'uploadFailed'}{lang}wsif.entry.image.upload.error.uploadFailed{/lang}{/if}
 											{if $error.errorType == 'copyFailed'}{lang}wsif.entry.image.upload.error.copyFailed{/lang}{/if}
 											{if $error.errorType == 'illegalExtension'}{lang}wsif.entry.image.upload.error.illegalExtension{/lang}{/if}
 											{if $error.errorType == 'tooLarge'}{lang}wsif.entry.image.upload.error.tooLarge{/lang}{/if}
