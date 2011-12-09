@@ -104,6 +104,12 @@
 	
 	<instructions type="update" fromversion="2.0.3">
 		<!-- files -->
+		<files>files.tar</files>
+		<templates>templates.tar</templates>
 		<sql>update.sql</sql>
+		
+		<!-- languages -->
+		<languages languagecode="de">de.xml</languages>
+		<languages languagecode="de-informal">de-informal.xml</languages>
 	</instructions>
 </package>
