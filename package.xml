@@ -5,8 +5,8 @@
 		<packagedescription>Infinite Filebase is a modern download database with many features.</packagedescription>
 		<packagedescription language="de">Infinite Filebase ist eine moderne Download-Datenbank mit vielen Funktionen.</packagedescription>
 		<standalone>1</standalone>
-		<version>2.0.3</version>
-		<date>2011-09-10</date>
+		<version>2.0.4</version>
+		<date>2011-12-09</date>
 	</packageinformation>
 	
 	<authorinformation>
@@ -16,7 +16,7 @@
 	
 	<requiredpackages>
 		<!-- basics -->
-		<requiredpackage minversion="1.1.2">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="1.1.4 Beta 1">com.woltlab.wcf</requiredpackage>
 		<requiredpackage minversion="1.1.2">com.woltlab.wcf.data.cronjobs</requiredpackage>
 		<requiredpackage minversion="1.0.3">com.woltlab.wcf.data.feed.reader</requiredpackage>
 		<requiredpackage minversion="1.1.0">com.woltlab.wcf.data.image</requiredpackage>
@@ -102,13 +102,8 @@
 		<languages languagecode="de-informal">de-informal.xml</languages>
 	</instructions>
 	
-	<instructions type="update" fromversion="2.0.2">
+	<instructions type="update" fromversion="2.0.3">
 		<!-- files -->
-		<files>files.tar</files>
-		<templates>templates.tar</templates>
-		
-		<!-- languages -->
-		<languages languagecode="de">de.xml</languages>
-		<languages languagecode="de-informal">de-informal.xml</languages>
+		<sql>update.sql</sql>
 	</instructions>
 </package>
