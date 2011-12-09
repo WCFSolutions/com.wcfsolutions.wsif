@@ -642,6 +642,7 @@ Erlaubte Dateiendungen: {$allowedImageExtensions}]]></item>
 	</category>
 	<category name="wsif.index">
 		<item name="wsif.index.feed"><![CDATA[Einträge abonnieren]]></item>
+		<item name="wsif.index.goToEntry"><![CDATA[Zu letztem Eintrag springen]]></item>
 		<item name="wsif.index.stats"><![CDATA[Statistik]]></item>
 		<item name="wsif.index.stats.detail"><![CDATA[{#$stats.members} Mitglied{if $stats.members != 1}er{/if} - {#$stats.entries} {if $stats.entries == 1}Eintrag{else}Einträge{/if} - {#$stats.entryImages} Bild{if $stats.entryImages != 1}er{/if} - {#$stats.entryFiles} Datei{if $stats.entryFiles != 1}en{/if} - {#$stats.entryDownloads} Download{if $stats.entryDownloads != 1}s{/if} (durchschnittlich {#$stats.entryDownloadsPerDay} Download{if $stats.entryDownloadsPerDay != 1}s{/if}/Tag)<br />
 Unser neuestes Mitglied heißt: <a href="index.php?page=User&amp;userID={@$stats.newestMember->userID}{@SID_ARG_2ND}">{$stats.newestMember->username}</a>.]]></item>
