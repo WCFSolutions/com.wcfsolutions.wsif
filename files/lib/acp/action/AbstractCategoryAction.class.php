@@ -15,7 +15,7 @@ require_once(WCF_DIR.'lib/action/AbstractAction.class.php');
  * @subpackage	acp.action
  * @category	Infinite Filebase
  */
-class AbstractCategoryAction extends AbstractAction {
+abstract class AbstractCategoryAction extends AbstractAction {
 	/**
 	 * category id
 	 *
