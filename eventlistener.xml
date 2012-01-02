@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/event-listener.xsd">
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/eventlistener.xsd">
 	<import>
 		<eventlistener>
-			<eventClassName>UserProfileFrame</eventClassName>
-			<eventName>init</eventName>
-			<listenerClassFile>lib/system/event/listener/UserPageEntriesListener.class.php</listenerClassFile>
+			<eventclassname>UserProfileFrame</eventclassname>
+			<eventname>init</eventname>
+			<listenerclassfile>lib/system/event/listener/UserPageEntriesListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
-			<eventClassName>UserPage</eventClassName>
-			<eventName>assignVariables</eventName>
-			<listenerClassFile>lib/system/event/listener/UserPageEntriesListener.class.php</listenerClassFile>
+			<eventclassname>UserPage</eventclassname>
+			<eventname>assignVariables</eventname>
+			<listenerclassfile>lib/system/event/listener/UserPageEntriesListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
-			<eventClassName>MembersListPage</eventClassName>
-			<eventName>readParameters</eventName>
+			<eventclassname>MembersListPage</eventclassname>
+			<eventname>readParameters</eventname>
 			<inherit>1</inherit>
-			<listenerClassFile>lib/system/event/listener/MembersListPageEntriesListener.class.php</listenerClassFile>
+			<listenerclassfile>lib/system/event/listener/MembersListPageEntriesListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
-			<eventClassName>MembersListPage</eventClassName>
-			<eventName>readData</eventName>
+			<eventclassname>MembersListPage</eventclassname>
+			<eventname>readData</eventname>
 			<inherit>1</inherit>
-			<listenerClassFile>lib/system/event/listener/MembersListPageEntriesListener.class.php</listenerClassFile>
+			<listenerclassfile>lib/system/event/listener/MembersListPageEntriesListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
-			<eventClassName>MembersListPage</eventClassName>
-			<eventName>assignVariables</eventName>
+			<eventclassname>MembersListPage</eventclassname>
+			<eventname>assignVariables</eventname>
 			<inherit>1</inherit>
-			<listenerClassFile>lib/system/event/listener/MembersListPageEntriesListener.class.php</listenerClassFile>
+			<listenerclassfile>lib/system/event/listener/MembersListPageEntriesListener.class.php</listenerclassfile>
 		</eventlistener>
 		<eventlistener>
-			<eventClassName>AttachmentPage</eventClassName>
-			<eventName>show</eventName>
-			<listenerClassFile>lib/system/event/listener/AttachmentPageEntryCommentPermissionListener.class.php</listenerClassFile>
+			<eventclassname>AttachmentPage</eventclassname>
+			<eventname>show</eventname>
+			<listenerclassfile>lib/system/event/listener/AttachmentPageEntryCommentPermissionListener.class.php</listenerclassfile>
 		</eventlistener>
 
 		<!-- admin -->

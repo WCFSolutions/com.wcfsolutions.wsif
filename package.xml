@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package name="com.wcfsolutions.wsif" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/package.xsd">
+<package name="com.wcfsolutions.wsif" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/package.xsd">
 	<packageinformation>
 		<packagename>WCF Solutions Infinite Filebase</packagename>
 		<packagedescription>Infinite Filebase is a modern download database with many features.</packagedescription>
