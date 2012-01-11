@@ -33,12 +33,12 @@ class CleanupCronjob implements Cronjob {
 		
 		// delete old entry visitors
 		$sql = "DELETE FROM	wsif".WSIF_N."_entry_visitor
-			WHERE		time < ".(TIME_NOW - 86400 * 14);
+			WHERE		time < ".(TIME_NOW - 86400 * ENTRY_VISITOR_DAYS_PRUNE);
 		WCF::getDB()->registerShutdownUpdate($sql);
 		
 		// delete old entry file downloaders
 		$sql = "DELETE FROM	wsif".WSIF_N."_entry_file_downloader
-			WHERE		time < ".(TIME_NOW - 86400 * 14);
+			WHERE		time < ".(TIME_NOW - 86400 * ENTRY_FILE_DOWNLOADER_DAYS_PRUNE);
 		WCF::getDB()->registerShutdownUpdate($sql);
 		
 		// delete orphaned attachments
