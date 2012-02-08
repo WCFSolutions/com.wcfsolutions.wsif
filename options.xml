@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/options.xsd">
 	<import>
 		<categories>
@@ -41,6 +41,9 @@
 				<parent>filebase.entry</parent>
 			</category>
 			<category name="filebase.entry.files">
+				<parent>filebase.entry</parent>
+			</category>
+			<category name="filebase.entry.prune">
 				<parent>filebase.entry</parent>
 			</category>
 		</categories>
@@ -255,7 +258,20 @@ DESC:wcf.global.sortOrder.descending]]></selectoptions>
 				<optiontype>integer</optiontype>
 				<defaultvalue>10</defaultvalue>
 			</option>
-			<!-- /entry.images -->
+			<!-- /entry.files -->
+			
+			<!-- entry.prune -->
+			<option name="entry_visitor_days_prune">
+				<categoryname>filebase.entry.prune</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>14</defaultvalue>
+			</option>
+			<option name="entry_file_downloader_days_prune">
+				<categoryname>filebase.entry.prune</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>14</defaultvalue>
+			</option>
+			<!-- /entry.prune -->
 			
 			<!-- general -->
 			<option name="install_date">

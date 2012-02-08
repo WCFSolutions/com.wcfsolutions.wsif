@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/language.xsd" languagecode="de">
 	<category name="wcf.acp.counterUpdate">
 		<item name="wcf.acp.counterUpdate.type.category"><![CDATA[Kategorien aktualisieren]]></item>
@@ -159,6 +159,8 @@
 		<item name="wcf.acp.option.category.filebase.entry.general.description"><![CDATA[]]></item>
 		<item name="wcf.acp.option.category.filebase.entry.images"><![CDATA[Bildauflistung]]></item>
 		<item name="wcf.acp.option.category.filebase.entry.images.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.filebase.entry.prune"><![CDATA[Aufräumen von Listen]]></item>
+		<item name="wcf.acp.option.category.filebase.entry.prune.description"><![CDATA[]]></item>
 		<item name="wcf.acp.option.category.filebase.index"><![CDATA[Startseite]]></item>
 		<item name="wcf.acp.option.category.filebase.index.categories"><![CDATA[Kategorieauflistung]]></item>
 		<item name="wcf.acp.option.category.filebase.index.categories. description"><![CDATA[]]></item>
@@ -202,6 +204,10 @@
 		<item name="wcf.acp.option.entry_files_per_page.description"><![CDATA[Wieviele Dateien sollen pro Seite aufgelistet werden?]]></item>
 		<item name="wcf.acp.option.entry_images_per_page"><![CDATA[Bilder pro Seite]]></item>
 		<item name="wcf.acp.option.entry_images_per_page.description"><![CDATA[Wieviele Bilder sollen pro Seite aufgelistet werden?]]></item>
+		<item name="wcf.acp.option.entry_visitor_days_prune"><![CDATA[Besucherliste aufräumen]]></item>
+		<item name="wcf.acp.option.entry_visitor_days_prune.description"><![CDATA[Anzahl der Tage, nach denen ein Eintrag aus der Liste der Besucher gelöscht wird]]></item>
+		<item name="wcf.acp.option.entry_file_downloader_days_prune"><![CDATA[Downloaderliste aufräumen]]></item>
+		<item name="wcf.acp.option.entry_file_downloader_days_prune.description"><![CDATA[Anzahl der Tage, nach denen ein Eintrag aus der Liste der Downloader gelöscht wird]]></item>
 		<item name="wcf.acp.option.entry_min_ratings"><![CDATA[Anzahl notwendiger Bewertungen]]></item>
 		<item name="wcf.acp.option.entry_min_ratings.description"><![CDATA[Welche Anzahl muss erreicht werden, damit die Bewertung des Eintrags angezeigt wird?]]></item>
 		<item name="wcf.acp.option.index_enable_stats"><![CDATA[Allgemeine Statistik anzeigen]]></item>
