@@ -146,7 +146,7 @@ class CategoryEditor extends Category {
 		// unshift categories
 		$sql = "SELECT 	parentID, position
 			FROM	wsif".WSIF_N."_category_structure
-			WHERE	parentID = ".$this->parentID;
+			WHERE	categoryID = ".$this->categoryID;
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$sql = "UPDATE	wsif".WSIF_N."_category_structure
