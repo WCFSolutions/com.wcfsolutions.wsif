@@ -11,7 +11,7 @@ require_once(WCF_DIR.'lib/action/AbstractSecureAction.class.php');
  * Represents an abstract entry file action.
  *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/index.html>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.wsif
  * @subpackage	action

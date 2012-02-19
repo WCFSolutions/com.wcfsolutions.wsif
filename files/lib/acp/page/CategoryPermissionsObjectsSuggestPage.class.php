@@ -6,7 +6,7 @@ require_once(WCF_DIR.'lib/acp/page/UserSuggestPage.class.php');
  * Outputs an XML document with a list of permissions objects (user or user groups).
  *
  * @author	Sebastian Oettl
- * @copyright	2009-2011 WCF Solutions <http://www.wcfsolutions.com/index.html>
+ * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package	com.wcfsolutions.wsif
  * @subpackage	acp.page
