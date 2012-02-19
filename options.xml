@@ -5,9 +5,9 @@
 			<category name="offline.general">
 				<parent>general.offline</parent>
 			</category>
-			
+
 			<category name="filebase"></category>
-			
+
 			<category name="filebase.index">
 				<parent>filebase</parent>
 			</category>
@@ -27,7 +27,7 @@
 			<category name="filebase.category.entries">
 				<parent>filebase.category</parent>
 			</category>
-			
+
 			<category name="filebase.entry">
 				<parent>filebase</parent>
 			</category>
@@ -44,14 +44,14 @@
 				<parent>filebase.entry</parent>
 			</category>
 		</categories>
-		
+
 		<options>
 			<option name="module_comment">
 				<categoryname>module.content</categoryname>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
 			</option>
-			
+
 			<!-- offline -->
 			<option name="offline">
 				<categoryname>offline.general</categoryname>
@@ -67,7 +67,7 @@
 				<optiontype>boolean</optiontype>
 			</option>
 			<!-- /offline -->
-			
+
 			<!-- general.page -->
 			<option name="page_title">
 				<categoryname>general.page</categoryname>
@@ -101,7 +101,7 @@
 				<defaultvalue>1</defaultvalue>
 			</option>
 			<!-- /general.page -->
-			
+
 			<!-- general.cookie -->
 			<option name="cookie_path">
 				<categoryname>general.http.cookie</categoryname>
@@ -109,7 +109,7 @@
 				<defaultvalue></defaultvalue>
 			</option>
 			<!-- /general.cookie-->
-			
+
 			<!-- index.general -->
 			<option name="index_enable_stats">
 				<categoryname>filebase.index.general</categoryname>
@@ -123,7 +123,7 @@
 				<options>module_tagging</options>
 			</option>
 			<!-- /index.general -->
-			
+
 			<!-- index.categories -->
 			<option name="category_list_enable_last_entry">
 				<categoryname>filebase.index.categories</categoryname>
@@ -141,7 +141,7 @@
 				<defaultvalue>1</defaultvalue>
 			</option>
 			<!-- /index.categories -->
-			
+
 			<!-- category.general -->
 			<option name="category_enable_stats">
 				<categoryname>filebase.category.general</categoryname>
@@ -155,7 +155,7 @@
 				<options>module_tagging</options>
 			</option>
 			<!-- /category.general -->
-			
+
 			<!-- category.entries -->
 			<option name="category_entries_per_page">
 				<categoryname>filebase.category.entries</categoryname>
@@ -201,7 +201,7 @@ DESC:wcf.global.sortOrder.descending]]></selectoptions>
 				<defaultvalue>1</defaultvalue>
 			</option>
 			<!-- /category.entries -->
-			
+
 			<!-- entry.general -->
 			<option name="entry_enable_tags">
 				<categoryname>filebase.entry.general</categoryname>
@@ -230,9 +230,24 @@ DESC:wcf.global.sortOrder.descending]]></selectoptions>
 				<categoryname>filebase.entry.general</categoryname>
 				<optiontype>integer</optiontype>
 				<defaultvalue>1</defaultvalue>
-			</option>		
+			</option>
+			<option name="entry_show_last_comments">
+				<categoryname>filebase.entry.general</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<option name="entry_show_last_images">
+				<categoryname>filebase.entry.general</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<option name="entry_show_last_files">
+				<categoryname>filebase.entry.general</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
 			<!-- /entry.general -->
-			
+
 			<!-- entry.add -->
 			<option name="activity_points_per_entry">
 				<categoryname>filebase.entry.add</categoryname>
@@ -240,7 +255,7 @@ DESC:wcf.global.sortOrder.descending]]></selectoptions>
 				<defaultvalue>10</defaultvalue>
 			</option>
 			<!-- /entry.add -->
-			
+
 			<!-- entry.images -->
 			<option name="entry_images_per_page">
 				<categoryname>filebase.entry.images</categoryname>
@@ -248,7 +263,7 @@ DESC:wcf.global.sortOrder.descending]]></selectoptions>
 				<defaultvalue>10</defaultvalue>
 			</option>
 			<!-- /entry.images -->
-			
+
 			<!-- entry.files -->
 			<option name="entry_files_per_page">
 				<categoryname>filebase.entry.files</categoryname>
@@ -256,7 +271,7 @@ DESC:wcf.global.sortOrder.descending]]></selectoptions>
 				<defaultvalue>10</defaultvalue>
 			</option>
 			<!-- /entry.images -->
-			
+
 			<!-- general -->
 			<option name="install_date">
 				<categoryname>general</categoryname>
@@ -264,7 +279,7 @@ DESC:wcf.global.sortOrder.descending]]></selectoptions>
 				<hidden>1</hidden>
 			</option>
 			<!-- /general -->
-			
+
 			<!-- general.date -->
 			<option name="show_clock">
 				<categoryname>general.date</categoryname>
@@ -272,7 +287,7 @@ DESC:wcf.global.sortOrder.descending]]></selectoptions>
 				<defaultvalue>1</defaultvalue>
 			</option>
 			<!-- /general.date -->
-		
+
 			<!-- security.antispam -->
 			<option name="entry_add_use_captcha">
 				<categoryname>security.antispam</categoryname>
@@ -300,7 +315,7 @@ DESC:wcf.global.sortOrder.descending]]></selectoptions>
 DESC:wcf.global.sortOrder.descending]]></selectoptions>
 			</option>
 			<!-- /user.membersList -->
-			
+
 			<!-- user.profile.general -->
 			<option name="profile_show_last_entries">
 				<categoryname>user.profile.general</categoryname>

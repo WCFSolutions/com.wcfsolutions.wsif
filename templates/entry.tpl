@@ -8,17 +8,17 @@
 
 <div id="main">
 	{include file="entryHeader" activeTabMenuItem='entry'}
-	
+
 	<div class="border">
 		<div class="layout-2">
-			<div class="columnContainer">	
+			<div class="columnContainer">
 				<div class="container-1 column first">
 					<div class="columnInner">
 						<div class="contentBox">
 							<h3 class="subHeadline">{lang}wsif.entry{/lang}</h3>
-						
+
 							<div class="entryMessage">{@$entry->getFormattedMessage()}</div>
-							
+
 							<div class="buttonBar">
 								<div class="smallButtons">
 									<ul>
@@ -29,21 +29,111 @@
 									</ul>
 								</div>
 							</div>
-							
+
 							{if $additionalContent1|isset}{@$additionalContent1}{/if}
+
+							{if $entryComments|count > 0}
+								<div class="contentBox">
+									<h3 class="subHeadline"><a href="index.php?page=EntryComments&amp;entryID={@$entryID}{@SID_ARG_2ND}">{lang}wsif.entry.comments{/lang}</a> <span>({#$entry->comments})</span></h3>
+
+									<ul class="dataList">
+										{foreach from=$entryComments item=comment}
+											<li class="{cycle values='container-1,container-2'}">
+												<div class="containerIcon">
+													<img src="{icon}entryCommentM.png{/icon}" alt="" />
+												</div>
+												<div class="containerContent">
+													<h4><a href="index.php?page=EntryComments&amp;commentID={@$comment->commentID}{@SID_ARG_2ND}#comment{@$comment->commentID}">{@$comment->subject}</a></h4>
+													<p class="firstPost smallFont light">{lang}wsif.entry.comment.by{/lang} {if $comment->userID}<a href="index.php?page=User&amp;userID={@$comment->userID}{@SID_ARG_2ND}">{$comment->username}</a>{else}{$comment->username}{/if} ({@$comment->time|time})</p>
+												</div>
+											</li>
+										{/foreach}
+									</ul>
+									<div class="buttonBar">
+										<div class="smallButtons">
+											<ul>
+												<li class="extraButton"><a href="#top" title="{lang}wcf.global.scrollUp{/lang}"><img src="{icon}upS.png{/icon}" alt="{lang}wcf.global.scrollUp{/lang}" /> <span class="hidden">{lang}wcf.global.scrollUp{/lang}</span></a></li>
+												<li><a href="index.php?page=EntryComments&amp;entryID={@$entryID}{@SID_ARG_2ND}" title="{lang}wsif.entry.allComments{/lang}"><img src="{icon}entryCommentS.png{/icon}" alt="" /> <span>{lang}wsif.entry.allComments{/lang}</span></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							{/if}
+
+							{if $additionalContent2|isset}{@$additionalContent2}{/if}
+
+							{if $entryImages|count > 0}
+								<div class="contentBox">
+									<h3 class="subHeadline"><a href="index.php?page=EntryImages&amp;entryID={@$entryID}{@SID_ARG_2ND}">{lang}wsif.entry.images{/lang}</a> <span>({#$entry->images})</span></h3>
+
+									<ul class="dataList thumbnailView squared floatContainer container-1">
+										{foreach name='images' from=$entryImages item=image}
+											<li class="floatedElement smallFont{if $tpl.foreach.images.iteration == 5} last{/if}">
+												<a href="index.php?page=EntryImage&amp;imageID={@$image->imageID}{@SID_ARG_2ND}" title="{$image->title}">
+													<span class="thumbnail" style="width: 75px;">
+														<img src="index.php?page=EntryImageShow&amp;imageID={@$image->imageID}{if $image->hasThumbnail}&amp;thumbnail=1{/if}{@SID_ARG_2ND}" alt="{$image->title}" style="width: 75px;" />
+													</span>
+													<span class="avatarCaption">{$image->title}</span>
+												</a>
+												<p class="light smallFont">{@$entry->time|time}</p>
+											</li>
+										{/foreach}
+									</ul>
+									<div class="buttonBar">
+										<div class="smallButtons">
+											<ul>
+												<li class="extraButton"><a href="#top" title="{lang}wcf.global.scrollUp{/lang}"><img src="{icon}upS.png{/icon}" alt="{lang}wcf.global.scrollUp{/lang}" /> <span class="hidden">{lang}wcf.global.scrollUp{/lang}</span></a></li>
+												<li><a href="index.php?page=EntryImages&amp;entryID={@$entryID}{@SID_ARG_2ND}" title="{lang}wsif.entry.allImages{/lang}"><img src="{icon}entryImageS.png{/icon}" alt="" /> <span>{lang}wsif.entry.allImages{/lang}</span></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							{/if}
+
+							{if $additionalContent3|isset}{@$additionalContent3}{/if}
+
+							{if $entryFiles|count > 0}
+								<div class="contentBox">
+									<h3 class="subHeadline"><a href="index.php?page=EntryFiles&amp;entryID={@$entryID}{@SID_ARG_2ND}">{lang}wsif.entry.files{/lang}</a> <span>({#$entry->files})</span></h3>
+
+									<ul class="dataList">
+										{foreach from=$entryFiles item=file}
+											<li class="{cycle values='container-1,container-2'}">
+												<div class="containerIcon">
+													<img src="{icon}entryFileM.png{/icon}" alt="" />
+												</div>
+												<div class="containerContent">
+													<h4><a href="index.php?page=EntryFile&amp;fileID={@$file->fileID}{@SID_ARG_2ND}">{@$file->title}</a></h4>
+													<p class="firstPost smallFont light">{lang}wsif.entry.file.by{/lang} {if $file->userID}<a href="index.php?page=User&amp;userID={@$file->userID}{@SID_ARG_2ND}">{$file->username}</a>{else}{$file->username}{/if} ({@$file->time|time})</p>
+												</div>
+											</li>
+										{/foreach}
+									</ul>
+									<div class="buttonBar">
+										<div class="smallButtons">
+											<ul>
+												<li class="extraButton"><a href="#top" title="{lang}wcf.global.scrollUp{/lang}"><img src="{icon}upS.png{/icon}" alt="{lang}wcf.global.scrollUp{/lang}" /> <span class="hidden">{lang}wcf.global.scrollUp{/lang}</span></a></li>
+												<li><a href="index.php?page=EntryFiles&amp;entryID={@$entryID}{@SID_ARG_2ND}" title="{lang}wsif.entry.allFiles{/lang}"><img src="{icon}entryFileS.png{/icon}" alt="" /> <span>{lang}wsif.entry.allFiles{/lang}</span></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							{/if}
+
+							{if $additionalContent4|isset}{@$additionalContent4}{/if}
 						</div>
 					</div>
 				</div>
-					
+
 				<div class="container-3 column second">
 					<div class="columnInner">
-					
+
 						<div class="contentBox">
 							<div class="border">
 								<div class="containerHead">
 									<h3>{lang}wsif.entry.general{/lang}</h3>
 								</div>
-								
+
 								<ul class="dataList">
 									<li class="{cycle values='container-1,container-2'}">
 										<div class="containerIcon">
@@ -84,7 +174,7 @@
 								</ul>
 							</div>
 						</div>
-						
+
 						{if $tags|count > 0}
 							<div class="contentBox">
 								<div class="border">
@@ -99,14 +189,14 @@
 								</div>
 							</div>
 						{/if}
-					
+
 						{if $entryVisitors|count > 0}
 							<div class="contentBox">
 								<div class="border">
 									<div class="containerHead">
 										<h3>{lang}wsif.entry.visitors{/lang}</h3>
 									</div>
-									
+
 									<ul class="dataList">
 										{foreach from=$entryVisitors item=entryVisitor}
 											<li class="{cycle values='container-1,container-2'}">
@@ -130,13 +220,13 @@
 								</div>
 							</div>
 						{/if}
-						
+
 						<div class="contentBox">
 							<div class="border">
 								<div class="containerHead">
 									<h3>{lang}wsif.entry.share{/lang}</h3>
 								</div>
-								
+
 								<ul class="dataList">
 									<li class="{cycle values='container-1,container-2'}">
 										<div class="containerIcon">
@@ -150,7 +240,7 @@
 								</ul>
 							</div>
 						</div>
-						
+
 						{if $additionalContent3|isset}{@$additionalContent3}{/if}
 					</div>
 				</div>

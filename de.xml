@@ -204,6 +204,12 @@
 		<item name="wcf.acp.option.entry_images_per_page.description"><![CDATA[Wieviele Bilder sollen pro Seite aufgelistet werden?]]></item>
 		<item name="wcf.acp.option.entry_min_ratings"><![CDATA[Anzahl notwendiger Bewertungen]]></item>
 		<item name="wcf.acp.option.entry_min_ratings.description"><![CDATA[Welche Anzahl muss erreicht werden, damit die Bewertung des Eintrags angezeigt wird?]]></item>
+		<item name="wcf.acp.option.entry_show_last_comments"><![CDATA[Letzte fünf Kommentare anzeigen]]></item>
+		<item name="wcf.acp.option.entry_show_last_comments.description"><![CDATA[Aktiviert die Anzeige der letzten fünf Kommentare des Eintrags]]></item>
+		<item name="wcf.acp.option.entry_show_last_files"><![CDATA[Letzte fünf Dateien anzeigen]]></item>
+		<item name="wcf.acp.option.entry_show_last_files.description"><![CDATA[Aktiviert die Anzeige der letzten fünf Dateien des Eintrags]]></item>
+		<item name="wcf.acp.option.entry_show_last_images"><![CDATA[Letzte fünf Bilder anzeigen]]></item>
+		<item name="wcf.acp.option.entry_show_last_images.description"><![CDATA[Aktiviert die Anzeige der letzten fünf Bilder des Eintrags]]></item>
 		<item name="wcf.acp.option.index_enable_stats"><![CDATA[Allgemeine Statistik anzeigen]]></item>
 		<item name="wcf.acp.option.index_enable_stats.description"><![CDATA[Soll eine allgemeine Statistik angezeigt werden?]]></item>
 		<item name="wcf.acp.option.index_enable_tags"><![CDATA[Tag-Wolke anzeigen]]></item>
@@ -483,8 +489,12 @@
 		<item name="wsif.entry.add.image.upload.error.tooLarge"><![CDATA[Das Bild überschreitet die erlaubte Maximalgröße.]]></item>
 		<item name="wsif.entry.add.image.upload.error.uploadFailed"><![CDATA[Das Hochladen des Bilds ist fehlgeschlagen.]]></item>
 		<item name="wsif.entry.add.moderation.redirect"><![CDATA[Ihr Eintrag wurde erfolgreich gespeichert. Er wird von einem Moderator überprüft und, falls keine Beanstandung vorliegt, für alle anderen Benutzer freigegeben.]]></item>
+		<item name="wsif.entry.allComments"><![CDATA[Alle Kommentare anzeigen]]></item>
+		<item name="wsif.entry.allFiles"><![CDATA[Alle Dateien anzeigen]]></item>
+		<item name="wsif.entry.allImages"><![CDATA[Alle Bilder anzeigen]]></item>
 		<item name="wsif.entry.by"><![CDATA[Von]]></item>
 		<item name="wsif.entry.comment.add"><![CDATA[Kommentar hinzufügen]]></item>
+		<item name="wsif.entry.comment.by"><![CDATA[Von]]></item>
 		<item name="wsif.entry.comment.delete"><![CDATA[Kommentar löschen]]></item>
 		<item name="wsif.entry.comment.delete.sure"><![CDATA[Wollen Sie diesen Kommentar wirklich löschen?]]></item>
 		<item name="wsif.entry.comment.edit"><![CDATA[Kommentar bearbeiten]]></item>
