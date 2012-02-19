@@ -8,7 +8,7 @@
 {include file='header' sandbox=false}
 
 <div id="main">
-	{include file="entryHeader"}
+	{include file="entryHeader" activeTabMenuItem='entryImages'}
 	
 	<div class="border">
 		<div class="layout-1">

@@ -11,5 +11,8 @@ SET	showOrder = (
 
 DROP TABLE IF EXISTS wsif1_1_category_structure;
 
+-- entry menu items
+DROP TABLE IF EXISTS wsif1_1_entry_menu_item;
+
 -- entry ratings
 DROP TABLE IF EXISTS wsif1_1_entry_rating;

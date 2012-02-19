@@ -16,10 +16,10 @@
 		{/if}
 	{/capture}
 	
-	{include file="entryHeader"}
+	{include file="entryHeader" activeTabMenuItem='entryImages'}
 	
 	<form method="post" enctype="multipart/form-data" action="index.php?form=EntryImage{@$action|ucfirst}{if $action == 'add'}&amp;entryID={@$entryID}{elseif $action == 'edit'}&amp;imageID={@$imageID}{/if}">
-		<div class="border {if $this|method_exists:'getEntryMenu' && $this->getEntryMenu()->getMenuItems('')|count > 1}tabMenuContent{else}content{/if}">
+		<div class="border tabMenuContent">
 			<div class="container-1">
 				<h3 class="subHeadline">{lang}wsif.entry.image.{@$action}{/lang}</h3>
 				

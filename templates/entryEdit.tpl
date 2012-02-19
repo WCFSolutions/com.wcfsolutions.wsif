@@ -21,10 +21,10 @@
 		{/if}
 	{/capture}
 	
-	{include file="entryHeader"}
+	{include file="entryHeader" activeTabMenuItem='entry'}
 	
 	<form method="post" enctype="multipart/form-data" action="index.php?form=EntryEdit&amp;entryID={@$entryID}">
-		<div class="border {if $this|method_exists:'getEntryMenu' && $this->getEntryMenu()->getMenuItems('')|count > 1}tabMenuContent{else}content{/if}">
+		<div class="border tabMenuContent">
 			<div class="container-1">
 				<h3 class="subHeadline">{lang}wsif.entry.edit{/lang}</h3>
 				

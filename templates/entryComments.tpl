@@ -10,7 +10,7 @@
 {include file='header' sandbox=false}
 
 <div id="main">
-	{include file="entryHeader"}
+	{include file="entryHeader" activeTabMenuItem='entryComments'}
 	
 	<div class="border">
 		<div class="layout-1">

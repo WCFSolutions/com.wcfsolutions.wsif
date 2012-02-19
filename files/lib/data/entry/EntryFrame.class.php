@@ -1,7 +1,6 @@
 <?php
 // wsif imports
 require_once(WSIF_DIR.'lib/data/entry/ViewableEntry.class.php');
-require_once(WSIF_DIR.'lib/page/util/menu/EntryMenu.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/system/event/EventHandler.class.php');
@@ -100,9 +99,6 @@ class EntryFrame {
 		if (isset($sessionVars['markedEntries'])) {
 			$this->markedEntries = count($sessionVars['markedEntries']);
 		}
-		
-		// set active entry menu entry
-		EntryMenu::getInstance()->entryID = $this->entryID;
 	}
 	
 	/**
@@ -138,17 +134,6 @@ class EntryFrame {
 	public function assignVariables() {
 		// call assignVariables event
 		EventHandler::fireAction($this, 'assignVariables');
-		
-		// remove image tab
-		if (!$this->entry->images && (!WCF::getUser()->userID || WCF::getUser()->userID != $this->entry->userID) && !$this->entry->isEditable($this->category)) {
-			foreach (EntryMenu::getInstance()->menuItems as $parentMenuItem => $items) {
-				foreach ($items as $key => $item) {
-					if ($item['menuItem'] == 'wsif.entry.menu.link.entryImages') {
-						unset(EntryMenu::getInstance()->menuItems[$parentMenuItem][$key]);
-					}
-				}
-			}
-		}
 		
 		// assign variables
 		WCF::getTPL()->assign(array(

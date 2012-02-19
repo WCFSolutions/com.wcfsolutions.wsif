@@ -206,10 +206,6 @@ class EntryCommentAddForm extends MessageForm {
 		if (MODULE_COMMENT != 1) {
 			throw new IllegalLinkException();
 		}
-
-		// set active menu item
-		require_once(WSIF_DIR.'lib/page/util/menu/EntryMenu.class.php');
-		EntryMenu::getInstance()->setActiveMenuItem('wsif.entry.menu.link.entryComments');
 		
 		// check upload permission
 		if (MODULE_ATTACHMENT != 1 || !$this->frame->getCategory()->getPermission('canUploadEntryCommentAttachment')) {

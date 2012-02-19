@@ -24,10 +24,10 @@
 		{/if}
 	{/capture}
 	
-	{include file="entryHeader"}
+	{include file="entryHeader" activeTabMenuItem='entryComments'}
 	
 	<form method="post" enctype="multipart/form-data" action="index.php?form=EntryComment{@$action|ucfirst}{if $action == 'add'}&amp;entryID={@$entryID}{elseif $action == 'edit'}&amp;commentID={@$commentID}{/if}">
-		<div class="border {if $this|method_exists:'getEntryMenu' && $this->getEntryMenu()->getMenuItems('')|count > 1}tabMenuContent{else}content{/if}">
+		<div class="border tabMenuContent">
 			<div class="container-1">
 				<h3 class="subHeadline">{lang}wsif.entry.comment.{@$action}{/lang}</h3>
 				

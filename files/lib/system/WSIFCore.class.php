@@ -1,7 +1,4 @@
 <?php
-// wsif imports
-require_once(WSIF_DIR.'lib/page/util/menu/EntryMenuContainer.class.php');
-
 // wcf imports
 require_once(WCF_DIR.'lib/page/util/menu/ModerationCPMenuContainer.class.php');
 require_once(WCF_DIR.'lib/page/util/menu/PageMenuContainer.class.php');
@@ -19,8 +16,7 @@ require_once(WCF_DIR.'lib/system/style/StyleManager.class.php');
  * @subpackage	system
  * @category	Infinite Filebase
  */
-class WSIFCore extends WCF implements EntryMenuContainer, ModerationCPMenuContainer, PageMenuContainer, UserCPMenuContainer, UserProfileMenuContainer {
-	protected static $entryMenuObj = null;
+class WSIFCore extends WCF implements ModerationCPMenuContainer, PageMenuContainer, UserCPMenuContainer, UserProfileMenuContainer {
 	protected static $moderationCPMenuObj = null;
 	protected static $pageMenuObj = null;
 	protected static $userCPMenuObj = null;
@@ -106,14 +102,6 @@ class WSIFCore extends WCF implements EntryMenuContainer, ModerationCPMenuContai
 	}
 	
 	/**
-	 * Initialises the entry menu.
-	 */
-	protected static function initEntryMenu() {
-		require_once(WSIF_DIR.'lib/page/util/menu/EntryMenu.class.php');
-		self::$entryMenuObj = EntryMenu::getInstance();
-	}
-	
-	/**
 	 * Initialises the moderation cp menu.
 	 */
 	protected static function initModerationCPMenu() {
@@ -161,16 +149,6 @@ class WSIFCore extends WCF implements EntryMenuContainer, ModerationCPMenuContai
 			self::getSession()->setStyleID(intval($_GET['styleID']));
 		}	
 		StyleManager::changeStyle(self::getSession()->getStyleID());
-	}
-	
-	/**
-	 * @see EntryMenuContainer::getEntryMenu()
-	 */
-	public static final function getEntryMenu() {
-		if (self::$entryMenuObj === null) {
-			self::initEntryMenu();
-		}	
-		return self::$entryMenuObj;
 	}
 	
 	/**

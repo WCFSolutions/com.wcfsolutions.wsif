@@ -601,8 +601,6 @@ Erlaubte Dateiendungen: {$allowedImageExtensions}]]></item>
 		<item name="wsif.entry.menu.link.entryComments"><![CDATA[Kommentare]]></item>
 		<item name="wsif.entry.menu.link.entryFiles"><![CDATA[Dateien]]></item>
 		<item name="wsif.entry.menu.link.entryImages"><![CDATA[Bilder]]></item>
-		<item name="wsif.entry.menu.link.itemFiles"><![CDATA[Dateien]]></item>
-		<item name="wsif.entry.menu.link.itemImages"><![CDATA[Bilder]]></item>
 		<item name="wsif.entry.permalink"><![CDATA[Permalink zum {#$messageNumber}. Eintrag]]></item>
 		<item name="wsif.entry.prefix"><![CDATA[Präfix]]></item>
 		<item name="wsif.entry.rate"><![CDATA[Eintrag bewerten]]></item>

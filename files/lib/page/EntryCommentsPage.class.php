@@ -133,10 +133,6 @@ class EntryCommentsPage extends MultipleLinkPage {
 			throw new IllegalLinkException();
 		}
 		
-		// set active menu item
-		require_once(WSIF_DIR.'lib/page/util/menu/EntryMenu.class.php');
-		EntryMenu::getInstance()->setActiveMenuItem('wsif.entry.menu.link.entryComments');
-		
 		parent::show();
 	}
 	

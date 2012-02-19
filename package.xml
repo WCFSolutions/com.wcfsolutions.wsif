@@ -90,7 +90,6 @@
 		<cronjobs>cronjobs.xml</cronjobs>
 		<acpmenu>acpmenu.xml</acpmenu>
 		<taggable>taggable.xml</taggable>
-		<entrymenu>entrymenu.xml</entrymenu>
 		<moderationcpmenu>moderationcpmenu.xml</moderationcpmenu>
 		<moderationtype>moderationtype.xml</moderationtype>
 		<counterupdatetype>counterupdatetype.xml</counterupdatetype>

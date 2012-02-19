@@ -82,18 +82,6 @@ class EntryPage extends AbstractPage {
 	}
 	
 	/**
-	 * @see Page::show()
-	 */
-	public function show() {
-		// set active menu item
-		require_once(WSIF_DIR.'lib/page/util/menu/EntryMenu.class.php');
-		EntryMenu::getInstance()->setActiveMenuItem('wsif.entry.menu.link.entry');
-		
-		// show page
-		parent::show();
-	}
-	
-	/**
 	* @see Page::assignVariables();
 	 */
 	public function assignVariables() {

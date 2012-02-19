@@ -83,16 +83,5 @@ class EntryFilesPage extends MultipleLinkPage {
 			'allowSpidersToIndexThisPage' => true
 		));
 	}
-	
-	/**
-	 * @see Page::show()
-	 */
-	public function show() {
-		// set active menu item
-		require_once(WSIF_DIR.'lib/page/util/menu/EntryMenu.class.php');
-		EntryMenu::getInstance()->setActiveMenuItem('wsif.entry.menu.link.entryFiles');
-		
-		parent::show();
-	}
 }
 ?>

@@ -231,20 +231,6 @@ CREATE TABLE wsif1_1_entry_image (
 	KEY (entryID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS wsif1_1_entry_menu_item;
-CREATE TABLE wsif1_1_entry_menu_item (
-	menuItemID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	packageID INT(10) NOT NULL DEFAULT 0,
-	menuItem VARCHAR(255) NOT NULL DEFAULT '',
-	parentMenuItem VARCHAR(255) NOT NULL DEFAULT '',
-	menuItemLink VARCHAR(255) NOT NULL DEFAULT '',
-	menuItemIcon VARCHAR(255) NOT NULL DEFAULT '',
-	showOrder INT(10) NOT NULL DEFAULT 0,
-	permissions TEXT,
-	options TEXT,
-	UNIQUE KEY (menuItem, packageID)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
-
 DROP TABLE IF EXISTS wsif1_1_entry_prefix;
 CREATE TABLE wsif1_1_entry_prefix (
 	prefixID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
