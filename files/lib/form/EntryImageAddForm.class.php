@@ -120,6 +120,11 @@ class EntryImageAddForm extends AbstractForm {
 							throw new UserInputException('upload', 'tooManyImages');
 						}
 						
+						// check upload
+						if ($this->upload['error'][$x] != 0) {
+							throw new UserInputException('upload', 'uploadFailed');
+						}
+						
 						// save image
 						$this->images[] = EntryImageEditor::create('upload', $this->frame->getEntryID(), WCF::getUser()->userID, WCF::getUser()->username, $this->upload['tmp_name'][$x], $this->upload['name'][$x], $this->title, $this->description);
 						

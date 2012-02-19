@@ -6,7 +6,7 @@
 		<packagedescription language="de">Infinite Filebase ist eine moderne Download-Datenbank mit vielen Funktionen.</packagedescription>
 		<standalone>1</standalone>
 		<version>2.1.0 Alpha 1</version>
-		<date>2011-09-22</date>
+		<date>2012-02-19</date>
 	</packageinformation>
 	
 	<authorinformation>
@@ -16,7 +16,7 @@
 	
 	<requiredpackages>
 		<!-- basics -->
-		<requiredpackage minversion="1.1.2">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="1.1.4 Beta 1">com.woltlab.wcf</requiredpackage>
 		<requiredpackage minversion="1.1.2">com.woltlab.wcf.data.cronjobs</requiredpackage>
 		<requiredpackage minversion="1.0.3">com.woltlab.wcf.data.feed.reader</requiredpackage>
 		<requiredpackage minversion="1.1.0">com.woltlab.wcf.data.image</requiredpackage>

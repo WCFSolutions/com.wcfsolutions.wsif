@@ -134,6 +134,11 @@ class EntryFileAddForm extends AbstractForm {
 							throw new UserInputException('upload', 'tooManyFiles');
 						}
 						
+						// check upload
+						if ($this->upload['error'][$x] != 0) {
+							throw new UserInputException('upload', 'uploadFailed');
+						}
+						
 						// save file
 						$this->files[] = EntryFileEditor::create('upload', $this->frame->getEntryID(), WCF::getUser()->userID, WCF::getUser()->username, $this->upload['tmp_name'][$x], $this->upload['name'][$x], $this->upload['type'][$x], $this->title, $this->description, $this->fileType);
 						
