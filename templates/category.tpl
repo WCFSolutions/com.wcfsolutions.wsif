@@ -2,9 +2,7 @@
 <head>
 	<title>{@$category->getTitle()} {if $pageNo > 1}- {lang}wcf.page.pageNo{/lang} {/if}- {lang}{PAGE_TITLE}{/lang}</title>
 	{include file='headInclude' sandbox=false}
-	
-	{include file='imageViewer'}
-	
+
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/MultiPagesLinks.class.js"></script>
 	<link rel="alternate" type="application/rss+xml" href="index.php?page=EntriesFeed&amp;format=rss2&amp;categoryID={@$categoryID}" title="{lang}wsif.category.feed{/lang} (RSS2)" />
 	<link rel="alternate" type="application/atom+xml" href="index.php?page=EntriesFeed&amp;format=atom&amp;categoryID={@$categoryID}" title="{lang}wsif.category.feed{/lang} (Atom)" />
@@ -20,14 +18,14 @@
 {include file='header' sandbox=false}
 
 <div id="main">
-	
+
 	<ul class="breadCrumbs">
 		<li><a href="index.php?page=Index{@SID_ARG_2ND}"><img src="{icon}indexS.png{/icon}" alt="" /> <span>{lang}{PAGE_TITLE}{/lang}</span></a> &raquo;</li>
 		{foreach from=$category->getParentCategories() item=parentCategory}
 			<li><a href="index.php?page=Category&amp;categoryID={@$parentCategory->categoryID}{@SID_ARG_2ND}"><img src="{icon}{@$parentCategory->getIconName()}S.png{/icon}" alt="" /> <span>{@$parentCategory->getTitle()}</span></a> &raquo;</li>
 		{/foreach}
 	</ul>
-	
+
 	<div class="mainHeadline">
 		<img src="{icon}{@$category->getIconName()}L.png{/icon}" alt="" />
 		<div class="headlineContainer">
@@ -35,18 +33,18 @@
 			<p>{@$category->getFormattedDescription()}</p>
 		</div>
 	</div>
-	
+
 	{if $userMessages|isset}{@$userMessages}{/if}
-	
+
 	{include file="categoryList"}
-	
+
 	{if $category->isCategory()}
 		<div class="border content">
 			<div class="container-1">
-						
+
 				{if $permissions.canHandleEntry}
 					<script type="text/javascript">
-						//<![CDATA[	
+						//<![CDATA[
 						var language = new Object();
 						//]]>
 					</script>
@@ -56,7 +54,7 @@
 				{if $entries|count > 0}
 					<div class="contentBox">
 						<h3 class="subHeadline">{if $tagID}{lang}wsif.category.entries.tagged{/lang}{else}{lang}wsif.category.entries{/lang}{/if} <span>({#$items})</span></h3>
-	
+
 						<div class="contentHeader">
 							{assign var=multiplePagesLink value="index.php?page=Category&categoryID=$categoryID&pageNo=%d"}
 							{if $sortField != $defaultSortField}{assign var=multiplePagesLink value=$multiplePagesLink|concat:'&sortField=':$sortField}{/if}
@@ -92,11 +90,7 @@
 										<div class="messageInner {cycle name='className'}">
 											<div class="entryImage">
 												{if $entry->defaultImageID}
-													{if $entry->getImage()->hasThumbnail}
-														<a href="index.php?page=EntryImageShow&amp;imageID={@$entry->getImage()->imageID}{@SID_ARG_2ND}" class="enlargable" title="{$entry->getImage()->title}"><img src="index.php?page=EntryImageShow&amp;imageID={@$entry->getImage()->imageID}{if $entry->getImage()->hasThumbnail}&amp;thumbnail=1{/if}{@SID_ARG_2ND}" alt="{$entry->getImage()->title}" /></a>
-													{else}
-														<img src="index.php?page=EntryImageShow&amp;imageID={@$entry->getImage()->imageID}{@SID_ARG_2ND}" alt="{$entry->getImage()->title}" title="{$entry->getImage()->title}" />
-													{/if}
+													<a href="index.php?page=Entry&amp;entryID={@$entry->entryID}{@SID_ARG_2ND}" class="enlargable" title="{$entry->getImage()->title}"><img src="index.php?page=EntryImageShow&amp;imageID={@$entry->getImage()->imageID}{if $entry->getImage()->hasThumbnail}&amp;thumbnail=1{/if}{@SID_ARG_2ND}" alt="{$entry->getImage()->title}" /></a>
 												{else}
 													<img src="images/noThumbnail.png" alt="" />
 												{/if}
@@ -125,7 +119,7 @@
 																//]]>
 															</script>
 														{/if}
-														<img id="entryEdit{@$entry->entryID}" src="{icon}{@$entry->getIconName()}M.png{/icon}" alt="" />	
+														<img id="entryEdit{@$entry->entryID}" src="{icon}{@$entry->getIconName()}M.png{/icon}" alt="" />
 													</div>
 													<div class="containerContent">
 														<h3 id="entryTitle{@$entry->entryID}" class="subject">
@@ -135,13 +129,13 @@
 														<p class="light smallFont">{lang}wsif.entry.by{/lang} {if $entry->userID}<a href="index.php?page=User&amp;userID={@$entry->userID}{@SID_ARG_2ND}">{$entry->username}</a>{else}{$entry->username}{/if} ({@$entry->time|time})</p>
 													</div>
 												</div>
-												
+
 												<div class="messageBody">
 													<div id="entryMessagePreview{@$entry->entryID}">
 														{$entry->teaser}
 													</div>
 												</div>
-												
+
 												{if $tags.$entryID|isset}
 													<div class="editNote smallFont light">
 														<p>{lang}wsif.entry.tags{/lang}: {implode from=$tags[$entryID] item=entryTag}<a href="index.php?page=Category&amp;categoryID={@$categoryID}&amp;tagID={@$entryTag->getID()}{@SID_ARG_2ND}">{$entryTag->getName()}</a>{/implode}</p>
@@ -150,10 +144,11 @@
 
 												<div class="editNote smallFont light">
 													<p>{lang}wsif.entry.downloads{/lang}: {#$entry->downloads}</p>
+													<p>{lang}wsif.entry.comments{/lang}: {#$entry->comments}</p>
 													<p>{lang}wsif.entry.views{/lang}: {#$entry->views}</p>
 													{if $additionalInformationFields.$entryID|isset}{@$additionalInformationFields.$entryID}{/if}
 												</div>
-												
+
 												{if $entry->isDeleted}
 													<p class="deleteNote smallFont light">{lang}wsif.entry.deleteNote{/lang}</p>
 												{/if}
@@ -182,7 +177,7 @@
 							{@$pagesOutput}
 
 							<div id="entryEditMarked" class="optionButtons"></div>
-					
+
 							{if $tagID || $languageID || $prefixID != -1 || $daysPrune != 1000 || $category->canAddEntry() || $additionalLargeButtons|isset}
 								<div class="largeButtons">
 									<ul>
@@ -197,9 +192,9 @@
 				{else}
 					<h3 class="subHeadline">{lang}wsif.category.entries{/lang}</h3>
 					<p>{lang}wsif.category.noEntries{/lang}</p>
-					
+
 					<div id="entryEditMarked" class="optionButtons"></div>
-					
+
 					{if $tagID || $languageID || $prefixID != -1 || $daysPrune != 1000 || $category->canAddEntry() || $additionalLargeButtons|isset}
 						<div class="largeButtons">
 							<ul>
@@ -210,11 +205,11 @@
 						</div>
 					{/if}
 				{/if}
-			
+
 			</div>
 		</div>
 	{/if}
-	
+
 	{if $category->isCategory() || $availableTags|count || $additionalBoxes|isset}
 		{cycle values='container-1,container-2' print=false advance=false}
 		<div class="border infoBox">
@@ -228,7 +223,7 @@
 								<input type="hidden" name="page" value="Category" />
 								<input type="hidden" name="categoryID" value="{@$categoryID}" />
 								<input type="hidden" name="tagID" value="{@$tagID}" />
-								
+
 								<div class="floatedElement">
 									<label for="sortField">{lang}wsif.category.sortBy{/lang}</label>
 									<select name="sortField" id="sortField">
@@ -244,7 +239,7 @@
 										<option value="DESC"{if $sortOrder == 'DESC'} selected="selected"{/if}>{lang}wcf.global.sortOrder.descending{/lang}</option>
 									</select>
 								</div>
-								
+
 								<div class="floatedElement">
 									<label for="filterDate">{lang}wsif.category.entries.filterByDate{/lang}</label>
 									<select name="daysPrune" id="filterDate">
@@ -259,7 +254,7 @@
 										<option value="1000"{if $daysPrune == 1000} selected="selected"{/if}>{lang}wsif.category.entries.filterByDate.1000{/lang}</option>
 									</select>
 								</div>
-								
+
 								{if $category->getPrefixes()|count > 0}
 									<div class="floatedElement">
 										<label for="filterPrefix">{lang}wsif.category.entries.filterByPrefixID{/lang}</label>
@@ -272,7 +267,7 @@
 										</select>
 									</div>
 								{/if}
-								
+
 								{if $contentLanguages|count > 1}
 									<div class="floatedElement">
 										<label for="filterByLanguage">{lang}wsif.category.filterByLanguage{/lang}</label>
@@ -282,28 +277,28 @@
 										</select>
 									</div>
 								{/if}
-								
+
 								<div class="floatedElement">
 									<input type="image" class="inputImage" src="{icon}submitS.png{/icon}" alt="{lang}wcf.global.button.submit{/lang}" />
 								</div>
-	
+
 								{@SID_INPUT_TAG}
 							</div>
 						</form>
 					</div>
 				</div>
-		
+
 				{if CATEGORY_ENABLE_STATS}
 					<div class="{cycle}">
 						<div class="containerIcon"><img src="{icon}statisticsM.png{/icon}" alt="" /></div>
 						<div class="containerContent">
-							<h3>{lang}wsif.category.stats{/lang}</h3> 
+							<h3>{lang}wsif.category.stats{/lang}</h3>
 							<p class="smallFont">{lang}wsif.category.stats.detail{/lang}</p>
 						</div>
 					</div>
 				{/if}
 			{/if}
-			
+
 			{if $availableTags|count}
 				<div class="{cycle}">
 					<div class="containerIcon"><img src="{icon}tagM.png{/icon}" alt="" /></div>
@@ -317,11 +312,11 @@
 					</div>
 				</div>
 			{/if}
-			
+
 			{if $additionalBoxes|isset}{@$additionalBoxes}{/if}
 		</div>
 	{/if}
-	
+
 	{include file='categoryQuickJump'}
 </div>
 
