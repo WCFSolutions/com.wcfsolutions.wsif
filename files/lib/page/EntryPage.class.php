@@ -8,6 +8,7 @@ require_once(WSIF_DIR.'lib/data/entry/image/EntryImage.class.php');
 require_once(WSIF_DIR.'lib/data/user/WSIFUser.class.php');
 
 // wcf imports
+require_once(WCF_DIR.'lib/data/socialBookmark/SocialBookmarks.class.php');
 require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
 
 /**
@@ -154,6 +155,7 @@ class EntryPage extends AbstractPage {
 			'entryFiles' => $this->entryFiles,
 			'tags' => $this->tags,
 			'entryVisitors' => $this->entryVisitors,
+			'socialBookmarks' => SocialBookmarks::getInstance()->getSocialBookmarks(PAGE_URL.'/index.php?page=Entry&entryID='.$this->frame->getEntryID(), $this->frame->getEntry()->subject),
 			'allowSpidersToIndexThisPage' => true
 		));
 	}

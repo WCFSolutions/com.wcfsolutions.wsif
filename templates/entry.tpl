@@ -19,6 +19,12 @@
 
 							<div class="entryMessage">{@$entry->getFormattedMessage()}</div>
 
+							{if !$socialBookmarks|empty}
+								<div class="buttonBar">
+									{@$socialBookmarks}
+								</div>
+							{/if}
+
 							<div class="buttonBar">
 								<div class="smallButtons">
 									<ul>
