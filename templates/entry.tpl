@@ -243,6 +243,15 @@
 											<p><input type="text" class="inputText" id="entryLink" readonly="readonly" onclick="this.select()" value="{PAGE_URL}/index.php?page=Entry&amp;entryID={@$entry->entryID}" /></p>
 										</div>
 									</li>
+									<li class="{cycle values='container-1,container-2'}">
+										<div class="containerIcon">
+											<img src="{icon}wysiwyg/insertImageM.png{/icon}" alt="" onclick="document.getElementById('entryEmbed').select()" />
+										</div>
+										<div class="containerContent">
+											<h4 class="smallFont" onclick="document.getElementById('entryEmbed').select()">{lang}wsif.entry.image.embed{/lang}</h4>
+											<p><input type="text" class="inputText" id="entryEmbed" readonly="readonly" onclick="this.select()" value="[url={PAGE_URL}/index.php?page=Entry&amp;entryID={@$entryID}]{$entry->subject}[/url]" /></p>
+										</div>
+									</li>
 								</ul>
 							</div>
 						</div>

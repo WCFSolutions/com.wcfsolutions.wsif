@@ -8,17 +8,17 @@
 
 <div id="main">
 	{include file="entryHeader" activeTabMenuItem='entryFiles'}
-	
+
 	<div class="border">
 		<div class="layout-2">
-			<div class="columnContainer">	
+			<div class="columnContainer">
 				<div class="container-1 column first">
 					<div class="columnInner">
 						<div class="contentBox">
 							<h3 class="subHeadline">{$file->title}</h3>
-						
+
 							{if $file->description}<p class="entryFileDescription">{@$file->getFormattedDescription()}</p>{/if}
-						
+
 							<div class="buttonBar">
 								<div class="smallButtons">
 									<ul>
@@ -31,21 +31,21 @@
 									</ul>
 								</div>
 							</div>
-						
+
 							{if $additionalContent1|isset}{@$additionalContent1}{/if}
 						</div>
 					</div>
 				</div>
-					
+
 				<div class="container-3 column second">
 					<div class="columnInner">
-					
+
 						<div class="contentBox">
 							<div class="border">
 								<div class="containerHead">
 									<h3>{lang}wsif.entry.file.general{/lang}</h3>
 								</div>
-								
+
 								<ul class="dataList">
 									<li class="{cycle values='container-1,container-2'}">
 										<div class="containerIcon">
@@ -108,14 +108,14 @@
 								</ul>
 							</div>
 						</div>
-						
+
 						{if $fileDownloaders|count > 0}
 							<div class="contentBox">
 								<div class="border">
 									<div class="containerHead">
 										<h3>{lang}wsif.entry.file.downloaders{/lang}</h3>
 									</div>
-									
+
 									<ul class="dataList">
 										{foreach from=$fileDownloaders item=fileDownloader}
 											<li class="{cycle values='container-1,container-2'}">
@@ -139,13 +139,13 @@
 								</div>
 							</div>
 						{/if}
-						
+
 						<div class="contentBox">
 							<div class="border">
 								<div class="containerHead">
 									<h3>{lang}wsif.entry.file.share{/lang}</h3>
 								</div>
-								
+
 								<ul class="dataList">
 									<li class="{cycle values='container-1,container-2'}">
 										<div class="containerIcon">
@@ -156,10 +156,19 @@
 											<p><input type="text" class="inputText" id="entryFileLink" readonly="readonly" onclick="this.select()" value="{PAGE_URL}/index.php?page=EntryFile&amp;fileID={@$file->fileID}" /></p>
 										</div>
 									</li>
+									<li class="{cycle values='container-1,container-2'}">
+										<div class="containerIcon">
+											<img src="{icon}wysiwyg/insertImageM.png{/icon}" alt="" onclick="document.getElementById('entryFileEmbed').select()" />
+										</div>
+										<div class="containerContent">
+											<h4 class="smallFont" onclick="document.getElementById('entryFileEmbed').select()">{lang}wsif.entry.image.embed{/lang}</h4>
+											<p><input type="text" class="inputText" id="entryFileEmbed" readonly="readonly" onclick="this.select()" value="[url={PAGE_URL}/index.php?page=EntryFile&amp;fileID={@$fileID}]{$file->title}[/url]" /></p>
+										</div>
+									</li>
 								</ul>
 							</div>
 						</div>
-						
+
 						{if $additionalContent3|isset}{@$additionalContent3}{/if}
 					</div>
 				</div>
