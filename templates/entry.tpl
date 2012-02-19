@@ -73,7 +73,7 @@
 													<span class="thumbnail" style="width: 75px;">
 														<img src="index.php?page=EntryImageShow&amp;imageID={@$image->imageID}{if $image->hasThumbnail}&amp;thumbnail=1{/if}{@SID_ARG_2ND}" alt="{$image->title}" style="width: 75px;" />
 													</span>
-													<span class="avatarCaption">{$image->title}</span>
+													<span class="avatarCaption{if $image->isDefault} default{/if}">{$image->title}</span>
 												</a>
 												<p class="light smallFont">{@$entry->time|time}</p>
 											</li>
@@ -103,7 +103,7 @@
 													<img src="{icon}entryFileM.png{/icon}" alt="" />
 												</div>
 												<div class="containerContent">
-													<h4><a href="index.php?page=EntryFile&amp;fileID={@$file->fileID}{@SID_ARG_2ND}">{@$file->title}</a></h4>
+													<h4{if $file->isDefault} class="default"{/if}><a href="index.php?page=EntryFile&amp;fileID={@$file->fileID}{@SID_ARG_2ND}">{@$file->title}</a></h4>
 													<p class="firstPost smallFont light">{lang}wsif.entry.file.by{/lang} {if $file->userID}<a href="index.php?page=User&amp;userID={@$file->userID}{@SID_ARG_2ND}">{$file->username}</a>{else}{$file->username}{/if} ({@$file->time|time})</p>
 												</div>
 											</li>

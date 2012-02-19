@@ -262,7 +262,7 @@ Copyright 2009-2012 by WCF Solutions <http://www.wcfsolutions.com/>
 	margin: 0 7px 7px 0;
 	padding: 10px;
 	overflow: hidden;
-	max-width: 90%;
+	width: 90%;
 }
 
 /* @todo move color definitions */

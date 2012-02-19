@@ -104,7 +104,7 @@ class EntryPage extends AbstractPage {
 			$sql = "SELECT		imageID, userID, username, title, uploadTime
 				FROM		wsif".WSIF_N."_entry_image
 				WHERE		entryID = ".$this->frame->getEntryID()."
-				ORDER BY	isDefault, uploadTime DESC";
+				ORDER BY	isDefault DESC, uploadTime DESC";
 			$result = WCF::getDB()->sendQuery($sql, 5);
 			while ($row = WCF::getDB()->fetchArray($result)) {
 				$this->entryImages[] = new EntryImage(null, $row);
@@ -116,7 +116,7 @@ class EntryPage extends AbstractPage {
 			$sql = "SELECT		fileID, userID, username, title, uploadTime
 				FROM		wsif".WSIF_N."_entry_file
 				WHERE		entryID = ".$this->frame->getEntryID()."
-				ORDER BY	isDefault, uploadTime DESC";
+				ORDER BY	isDefault DESC, uploadTime DESC";
 			$result = WCF::getDB()->sendQuery($sql, 5);
 			while ($row = WCF::getDB()->fetchArray($result)) {
 				$this->entryFiles[] = new EntryFile(null, $row);
