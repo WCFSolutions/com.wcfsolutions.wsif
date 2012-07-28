@@ -146,6 +146,75 @@
 					{if $additionalInformationFields|isset}{@$additionalInformationFields}{/if}
 				</fieldset>
 
+				{if $category->getModeratorPermission('canEnableNewsEntry')}
+					<fieldset>
+						<legend>{lang}wsif.entry.publishing{/lang}</legend>
+
+						{if $action == 'add'}
+							<div class="formElement">
+								<div class="formField">
+									<label><input type="checkbox" name="disableEntry" id="disableEntry" value="1" {if $disableEntry == 1}checked="checked" {/if}/> {lang}wsif.entry.disableEntry{/lang}</label>
+								</div>
+								<div class="formFieldDesc">
+									<p>{lang}wsif.entry.disableEntry.description{/lang}</p>
+								</div>
+							</div>
+						{/if}
+
+						<div class="formGroup{if $errorField == 'publishingTime'} formError{/if}" id="publishingTimeDiv">
+							<div class="formGroupLabel">
+								<label>{lang}wsif.entry.publishingTime{/lang}</label>
+							</div>
+							<div class="formGroupField">
+								<fieldset>
+									<legend><label>{lang}wsif.entry.publishingTime{/lang}</label></legend>
+
+									<div class="formField">
+										<div class="floatedElement">
+											<label for="publishingTimeDay">{lang}wcf.global.date.day{/lang}</label>
+											{htmlOptions options=$dayOptions selected=$publishingTimeDay id=publishingTimeDay name=publishingTimeDay}
+										</div>
+
+										<div class="floatedElement">
+											<label for="publishingTimeMonth">{lang}wcf.global.date.month{/lang}</label>
+											{htmlOptions options=$monthOptions selected=$publishingTimeMonth id=publishingTimeMonth name=publishingTimeMonth}
+										</div>
+
+										<div class="floatedElement">
+											<label for="publishingTimeYear">{lang}wcf.global.date.year{/lang}</label>
+											<input id="publishingTimeYear" class="inputText fourDigitInput" type="text" name="publishingTimeYear" value="{@$publishingTimeYear}" maxlength="4" />
+										</div>
+
+										<div class="floatedElement">
+											<label for="publishingTimeHour">{lang}wcf.global.date.hour{/lang}</label>
+											{htmlOptions options=$hourOptions selected=$publishingTimeHour id=publishingTimeHour name=publishingTimeHour}
+										</div>
+
+										<div class="floatedElement">
+											<a id="publishingTimeButton"><img src="{@RELATIVE_WCF_DIR}icon/datePickerOptionsM.png" alt="" /></a>
+											<div id="publishingTimeCalendar" class="inlineCalendar"></div>
+											<script type="text/javascript">
+												//<![CDATA[
+												calendar.init('publishingTime');
+												//]]>
+											</script>
+										</div>
+
+										{if $errorField == 'publishingTime'}
+											<p class="floatedElement innerError">
+												{if $errorType == 'invalid'}{lang}wsif.entry.publishingTime.error.invalid{/lang}{/if}
+											</p>
+										{/if}
+									</div>
+									<div class="formFieldDesc">
+										<p>{lang}wsif.entry.publishingTime.description{/lang}</p>
+									</div>
+								</fieldset>
+							</div>
+						</div>
+					</fieldset>
+				{/if}
+
 				<fieldset>
 					<legend>{lang}wsif.entry.image{/lang}</legend>
 

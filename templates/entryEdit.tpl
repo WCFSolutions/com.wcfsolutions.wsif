@@ -2,9 +2,9 @@
 <head>
 	<title>{$entry->subject} - {lang}{PAGE_TITLE}{/lang}</title>
 	{include file='headInclude' sandbox=false}
-	
+
 	{include file='imageViewer'}
-	
+
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/TabbedPane.class.js"></script>
 	{if $canUseBBCodes}{include file="wysiwyg"}{/if}
 </head>
@@ -20,14 +20,14 @@
 			<p class="success">{lang}wsif.entry.{@$action}.success{/lang}</p>
 		{/if}
 	{/capture}
-	
+
 	{include file="entryHeader" activeTabMenuItem='entry'}
-	
+
 	<form method="post" enctype="multipart/form-data" action="index.php?form=EntryEdit&amp;entryID={@$entryID}">
 		<div class="border tabMenuContent">
 			<div class="container-1">
 				<h3 class="subHeadline">{lang}wsif.entry.edit{/lang}</h3>
-				
+
 				{if $preview|isset}
 					<div class="message content">
 						<div class="messageInner container-1">
@@ -40,7 +40,7 @@
 						</div>
 					</div>
 				{/if}
-				
+
 				{if $entry->isDeletable($category)}
 					<fieldset>
 						<legend><label for="sure"{if $errorField == 'sure'} class="formError"{/if}><input id="sure" type="checkbox" name="sure" value="1" tabindex="{counter name='tabindex'}" onclick="openList('deletePost')" /> {lang}wsif.entry.delete{/lang}</label></legend>
@@ -49,7 +49,7 @@
 								{if $errorField == 'sure'}
 									<p class="innerError">{lang}wsif.entry.delete.error{/lang}</p>
 								{/if}
-							</div>				
+							</div>
 							{if !$entry->isDeleted && ENTRY_ENABLE_RECYCLE_BIN}
 								<div class="formElement">
 									<div class="formFieldLabel">
@@ -74,11 +74,11 @@
 						</div>
 					</fieldset>
 				{/if}
-				
+
 				{if $entry->isEditable($category)}
 					<fieldset>
 						<legend>{lang}wsif.entry.information{/lang}</legend>
-						
+
 						{if $availableLanguages|count > 1}
 							<div class="formElement">
 								<div class="formFieldLabel">
@@ -94,7 +94,7 @@
 								</div>
 							</div>
 						{/if}
-						
+
 						{if $category->getPrefixes() && $category->getPermission('canSetEntryPrefix')}
 							<div class="formElement{if $errorField == 'prefixID'} formError{/if}">
 								<div class="formFieldLabel">
@@ -115,7 +115,7 @@
 								</div>
 							</div>
 						{/if}
-						
+
 						<div class="formElement{if $errorField == 'subject'} formError{/if}">
 							<div class="formFieldLabel">
 								<label for="subject">{lang}wsif.entry.subject{/lang}</label>
@@ -129,7 +129,7 @@
 								{/if}
 							</div>
 						</div>
-						
+
 						<div class="formElement{if $errorField == 'teaser'} formError{/if}">
 							<div class="formFieldLabel">
 								<label for="teaser">{lang}wsif.entry.teaser{/lang}</label>
@@ -144,21 +144,21 @@
 								{/if}
 							</div>
 						</div>
-						
+
 						{if MODULE_TAGGING && ENTRY_ENABLE_TAGS && $category->getPermission('canSetEntryTags')}{include file='tagAddBit'}{/if}
-						
+
 						{if $additionalInformationFields|isset}{@$additionalInformationFields}{/if}
 					</fieldset>
-				
+
 					<fieldset>
 						<legend>{lang}wsif.entry.text{/lang}</legend>
-						
-						<div class="editorFrame formElement{if $errorField == 'text'} formError{/if}" id="textDiv">	
+
+						<div class="editorFrame formElement{if $errorField == 'text'} formError{/if}" id="textDiv">
 							<div class="formFieldLabel">
 								<label for="text">{lang}wsif.entry.text{/lang}</label>
 							</div>
-							
-							<div class="formField">				
+
+							<div class="formField">
 								<textarea name="text" id="text" rows="15" cols="40" tabindex="{counter name='tabindex'}">{$text}</textarea>
 								{if $errorField == 'text'}
 									<p class="innerError">
@@ -167,17 +167,86 @@
 										{if $errorType == 'censoredWordsFound'}{lang}wcf.message.error.censoredWordsFound{/lang}{/if}
 									</p>
 								{/if}
-							</div>					
+							</div>
 						</div>
-						
-						{include file='messageFormTabs'}	
+
+						{include file='messageFormTabs'}
 					</fieldset>
+
+					{if !$entry->everEnabled && $category->getModeratorPermission('canEnableNewsEntry')}
+						<fieldset>
+							<legend>{lang}wsif.entry.publishing{/lang}</legend>
+
+							{if $action == 'add'}
+								<div class="formElement">
+									<div class="formField">
+										<label><input type="checkbox" name="disableEntry" id="disableEntry" value="1" {if $disableEntry == 1}checked="checked" {/if}/> {lang}wsif.entry.disableEntry{/lang}</label>
+									</div>
+									<div class="formFieldDesc">
+										<p>{lang}wsif.entry.disableEntry.description{/lang}</p>
+									</div>
+								</div>
+							{/if}
+
+							<div class="formGroup{if $errorField == 'publishingTime'} formError{/if}" id="publishingTimeDiv">
+								<div class="formGroupLabel">
+									<label>{lang}wsif.entry.publishingTime{/lang}</label>
+								</div>
+								<div class="formGroupField">
+									<fieldset>
+										<legend><label>{lang}wsif.entry.publishingTime{/lang}</label></legend>
+
+										<div class="formField">
+											<div class="floatedElement">
+												<label for="publishingTimeDay">{lang}wcf.global.date.day{/lang}</label>
+												{htmlOptions options=$dayOptions selected=$publishingTimeDay id=publishingTimeDay name=publishingTimeDay}
+											</div>
+
+											<div class="floatedElement">
+												<label for="publishingTimeMonth">{lang}wcf.global.date.month{/lang}</label>
+												{htmlOptions options=$monthOptions selected=$publishingTimeMonth id=publishingTimeMonth name=publishingTimeMonth}
+											</div>
+
+											<div class="floatedElement">
+												<label for="publishingTimeYear">{lang}wcf.global.date.year{/lang}</label>
+												<input id="publishingTimeYear" class="inputText fourDigitInput" type="text" name="publishingTimeYear" value="{@$publishingTimeYear}" maxlength="4" />
+											</div>
+
+											<div class="floatedElement">
+												<label for="publishingTimeHour">{lang}wcf.global.date.hour{/lang}</label>
+												{htmlOptions options=$hourOptions selected=$publishingTimeHour id=publishingTimeHour name=publishingTimeHour}
+											</div>
+
+											<div class="floatedElement">
+												<a id="publishingTimeButton"><img src="{@RELATIVE_WCF_DIR}icon/datePickerOptionsM.png" alt="" /></a>
+												<div id="publishingTimeCalendar" class="inlineCalendar"></div>
+												<script type="text/javascript">
+													//<![CDATA[
+													calendar.init('publishingTime');
+													//]]>
+												</script>
+											</div>
+
+											{if $errorField == 'publishingTime'}
+												<p class="floatedElement innerError">
+													{if $errorType == 'invalid'}{lang}wsif.entry.publishingTime.error.invalid{/lang}{/if}
+												</p>
+											{/if}
+										</div>
+										<div class="formFieldDesc">
+											<p>{lang}wsif.entry.publishingTime.description{/lang}</p>
+										</div>
+									</fieldset>
+								</div>
+							</div>
+						</fieldset>
+					{/if}
 				{/if}
-				
+
 				{if $additionalFields|isset}{@$additionalFields}{/if}
 			</div>
 		</div>
-		
+
 		<div class="formSubmit">
 			<input type="submit" name="send" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" tabindex="{counter name='tabindex'}" />
 			<input type="submit" name="preview" accesskey="p" value="{lang}wcf.global.button.preview{/lang}" tabindex="{counter name='tabindex'}" />

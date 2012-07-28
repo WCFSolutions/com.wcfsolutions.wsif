@@ -21,15 +21,17 @@ class EntryEditor extends Entry {
 	 * @param	string		$subject
 	 * @param	string		$message
 	 * @param	string		$teaser
+	 * @param	integer		$publishingTime
 	 * @param	array		$options
 	 */
-	public function update($languageID, $prefixID, $subject, $message, $teaser, $options) {
+	public function update($languageID, $prefixID, $subject, $message, $teaser, $publishingTime, $options) {
 		$sql = "UPDATE 	wsif".WSIF_N."_entry
 			SET	languageID = ".$languageID.",
 				prefixID = ".$prefixID.",
 				subject = '".escapeString($subject)."',
 				message = '".escapeString($message)."',
 				teaser = '".escapeString($teaser)."',
+				publishingTime = ".$publishingTime.",
 				enableSmilies = ".(isset($options['enableSmilies']) ? $options['enableSmilies'] : 1).",
 				enableHtml = ".(isset($options['enableHtml']) ? $options['enableHtml'] : 0).",
 				enableBBCodes = ".(isset($options['enableBBCodes']) ? $options['enableBBCodes'] : 1)."
@@ -204,18 +206,19 @@ class EntryEditor extends Entry {
 	 * @param	string		$teaser
 	 * @param	integer		$userID
 	 * @param	string		$username
+	 * @param	integer		$publishingTime
 	 * @param	array		$options
 	 * @param	string		$ipAddress
 	 * @param	integer		$isDisabled
 	 * @return	EntryEditor
 	 */
-	public static function create($categoryID, $languageID, $prefixID, $subject, $message, $teaser, $userID, $username, $options, $ipAddress = null, $isDisabled = 0) {
+	public static function create($categoryID, $languageID, $prefixID, $subject, $message, $teaser, $userID, $username, $publishingTime, $options, $ipAddress = null, $isDisabled = 0) {
 		if ($ipAddress === null) $ipAddress = WCF::getSession()->ipAddress;
 
 		// insert entry
 		$sql = "INSERT INTO	wsif".WSIF_N."_entry
-					(categoryID, languageID, prefixID, userID, username, subject, message, teaser, time, everEnabled, isDisabled, ipAddress, enableSmilies, enableHtml, enableBBCodes)
-			VALUES		(".$categoryID.", ".$languageID.", ".$prefixID.", ".$userID.", '".escapeString($username)."', '".escapeString($subject)."', '".escapeString($message)."', '".escapeString($teaser)."', ".TIME_NOW.", ".($isDisabled ? 0 : 1).", ".$isDisabled.", '".escapeString($ipAddress)."',
+					(categoryID, languageID, prefixID, userID, username, subject, message, teaser, time, publishingTime, everEnabled, isDisabled, ipAddress, enableSmilies, enableHtml, enableBBCodes)
+			VALUES		(".$categoryID.", ".$languageID.", ".$prefixID.", ".$userID.", '".escapeString($username)."', '".escapeString($subject)."', '".escapeString($message)."', '".escapeString($teaser)."', ".TIME_NOW.", ".$publishingTime.", ".($isDisabled ? 0 : 1).", ".$isDisabled.", '".escapeString($ipAddress)."',
 					".(isset($options['enableSmilies']) ? $options['enableSmilies'] : 1).",
 					".(isset($options['enableHtml']) ? $options['enableHtml'] : 0).",
 					".(isset($options['enableBBCodes']) ? $options['enableBBCodes'] : 1).")";

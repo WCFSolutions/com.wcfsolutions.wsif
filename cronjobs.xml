@@ -25,5 +25,17 @@
 			<canbeedited>0</canbeedited>
 			<canbedisabled>1</canbedisabled>
 		</cronjob>
+		<cronjob>
+			<classpath>lib/system/cronjob/EnableDelayedEntriesCronjob.class.php</classpath>
+			<description>Enables delayed entries</description>
+			<startminute>0</startminute>
+			<starthour>*</starthour>
+			<startdom>*</startdom>
+			<startmonth>*</startmonth>
+			<startdow>*</startdow>
+			<execmultiple>0</execmultiple>
+			<canbeedited>0</canbeedited>
+			<canbedisabled>0</canbedisabled>
+		</cronjob>
 	</import>
 </data>

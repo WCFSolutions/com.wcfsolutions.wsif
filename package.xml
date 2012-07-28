@@ -116,6 +116,7 @@
 		<sql>update_205.sql</sql>
 
 		<!-- config -->
+		<cronjobs>cronjobs.xml</cronjobs>
 		<notificationobjecttype>notificationobjecttype.xml</notificationobjecttype>
 		<notificationevent>notificationevent.xml</notificationevent>
 

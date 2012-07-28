@@ -16,17 +16,17 @@ require_once(WSIF_DIR.'lib/form/EntryAddForm.class.php');
 class EntryEditForm extends EntryAddForm {
 	// system
 	public $templateName = 'entryEdit';
-	
+
 	/**
 	 * entry frame object
-	 * 
+	 *
 	 * @var EntryFrame
 	 */
 	public $frame = null;
-	
+
 	// parameters
 	public $deleteReason = '';
-	
+
 	/**
 	 * @see Page::readParameters()
 	 */
@@ -35,37 +35,40 @@ class EntryEditForm extends EntryAddForm {
 
 		// get entry frame
 		$this->frame = new EntryFrame($this);
-		
+
 		// get entry
 		$this->entry = $this->frame->getEntry()->getEditor();
-		
+
 		// get category
 		$this->category = $this->frame->getCategory()->getEditor();
-		
+
 		// check permission
 		if (!$this->entry->isEditable($this->category) && !$this->entry->isDeletable($this->category)) {
 			throw new PermissionDeniedException();
 		}
 	}
-	
+
 	/**
 	 * @see Form::readFormParameters()
 	 */
 	public function readFormParameters() {
 		parent::readFormParameters();
-		
+
 		if (isset($_POST['deleteReason'])) $this->deleteReason = StringUtil::trim($_POST['deleteReason']);
+		if ($this->entry->everEnabled) {
+			$this->publishingTimeDay = $this->publishingTimeMonth = $this->publishingTimeYear = $this->publishingTimeHour = '';
+		}
 	}
-	
+
 	/**
 	 * @see Form::submit()
 	 */
 	public function submit() {
 		// call submit event
 		EventHandler::fireAction($this, 'submit');
-		
+
 		$this->readFormParameters();
-		
+
 		try {
 			// preview
 			if ($this->preview) {
@@ -78,13 +81,13 @@ class EntryEditForm extends EntryAddForm {
 				// no errors
 				$this->save();
 			}
-			
+
 			// delete entry
 			if (isset($_POST['deleteEntry'])) {
 				if (!$this->entry->isDeletable($this->category)) {
 					throw new PermissionDeniedException();
 				}
-				
+
 				if (isset($_POST['sure'])) {
 					if (ENTRY_ENABLE_RECYCLE_BIN && !$this->entry->isDeleted) {
 						$this->entry->trash($this->deleteReason);
@@ -92,17 +95,17 @@ class EntryEditForm extends EntryAddForm {
 					else {
 						$this->entry->delete();
 					}
-					
+
 					// refresh last category entry
 					$this->category->refresh();
 					if ($this->entry->entryID == $this->category->getLastEntryID($this->entry->languageID)) {
 						$this->category->setLastEntries();
 					}
-					
+
 					// reset cache
 					WCF::getCache()->clearResource('categoryData', true);
 					WCF::getCache()->clearResource('stat');
-					
+
 					if ($this->entry->isDeleted) HeaderUtil::redirect('index.php?page=Category&categoryID='.$this->entry->categoryID.SID_ARG_2ND_NOT_ENCODED);
 					else HeaderUtil::redirect('index.php?page=Entry&entryID='.$this->entry->entryID.SID_ARG_2ND_NOT_ENCODED);
 					exit;
@@ -117,12 +120,12 @@ class EntryEditForm extends EntryAddForm {
 			$this->errorType = $e->getType();
 		}
 	}
-	
+
 	/**
 	 * Does nothing.
 	 */
 	protected function validateFile() {}
-	
+
 	/**
 	 * @see Form::save()
 	 */
@@ -131,21 +134,21 @@ class EntryEditForm extends EntryAddForm {
 			throw new PermissionDeniedException();
 		}
 		MessageForm::save();
-		
+
 		// update entry
-		$this->entry->update($this->languageID, $this->prefixID, $this->subject, $this->text, $this->teaser, $this->getOptions());
-		
+		$this->entry->update($this->languageID, $this->prefixID, $this->subject, $this->text, $this->teaser, $this->publishingTime, $this->getOptions());
+
 		// save tags
 		if (MODULE_TAGGING && ENTRY_ENABLE_TAGS && $this->frame->getCategory()->getPermission('canSetEntryTags')) {
 			$this->entry->updateTags(TaggingUtil::splitString($this->tags));
 		}
 		$this->saved();
-		
+
 		// forward to entry
 		HeaderUtil::redirect('index.php?page=Entry&entryID='.$this->entry->entryID.SID_ARG_2ND_NOT_ENCODED);
 		exit;
 	}
-	
+
 	/**
 	 * @see Page::readData()
 	 */
@@ -161,27 +164,35 @@ class EntryEditForm extends EntryAddForm {
 			$this->enableSmilies =  $this->frame->getEntry()->enableSmilies;
 			$this->enableHtml = $this->frame->getEntry()->enableHtml;
 			$this->enableBBCodes = $this->frame->getEntry()->enableBBCodes;
-			
+
+			// publishing time
+			if ($this->entry->publishingTime) {
+				$this->publishingTimeDay = intval(DateUtil::formatDate('%e', $this->entry->publishingTime, false, true));
+				$this->publishingTimeMonth = intval(DateUtil::formatDate('%m', $this->entry->publishingTime, false, true));
+				$this->publishingTimeYear = DateUtil::formatDate('%Y', $this->entry->publishingTime, false, true);
+				$this->publishingTimeHour = DateUtil::formatDate('%H', $this->entry->publishingTime, false, true);
+			}
+
 			// tags
 			if (MODULE_TAGGING && ENTRY_ENABLE_TAGS && $this->frame->getCategory()->getPermission('canSetEntryTags')) {
 				$this->tags = TaggingUtil::buildString($this->entry->getTags(array($this->languageID)));
 			}
 		}
 	}
-	
+
 	/**
 	 * @see Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
-		
+
 		$this->frame->assignVariables();
 		WCF::getTPL()->assign(array(
 			'action' => 'edit',
 			'deleteReason' => $this->deleteReason
 		));
 	}
-	
+
 	/**
 	 * @see EntryAddForm::getAvailableLanguages()
 	 */
@@ -192,7 +203,7 @@ class EntryEditForm extends EntryAddForm {
 			if (!in_array($language['languageID'], $visibleLanguages) && !$this->frame->getCategory()->getModeratorPermission('canEditEntry')) {
 				unset($availableLanguages[$key]);
 			}
-		}	
+		}
 		return $availableLanguages;
 	}
 }

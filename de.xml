@@ -547,6 +547,8 @@ Den neuen Kommentar erreichen Sie über den folgenden Link:
 		<item name="wsif.entry.delete.reason"><![CDATA[Begründung (optional)]]></item>
 		<item name="wsif.entry.deleteNote"><![CDATA[Gelöscht {if $entry->userID == $entry->deletedByID}vom Autor selbst{else}von &raquo;{$entry->deletedBy}&laquo;{/if} ({@$entry->deleteTime|time}){if $entry->deleteReason}: {$entry->deleteReason}{/if}
 {if ENTRY_EMPTY_RECYCLE_BIN_CYCLE > 0}<br />Zeit bis zur endgültigen Löschung: {@$entry->deleteTime+ENTRY_EMPTY_RECYCLE_BIN_CYCLE*86400|datediff}{/if}]]></item>
+		<item name="wsif.entry.disableEntry"><![CDATA[Eintrag deaktivieren]]></item>
+		<item name="wsif.entry.disableEntry.description"><![CDATA[Der Eintrag wird nach dem Speichern deaktiviert und muss zunächst von einem Moderator freigeschaltet oder zu einer bestimmten Zeit automatisch vom System veröffentlicht werden.]]></item>
 		<item name="wsif.entry.downloads"><![CDATA[Downloads]]></item>
 		<item name="wsif.entry.downloadsPerDay"><![CDATA[{#$entry->getDownloadsPerDay()} Downloads pro Tag]]></item>
 		<item name="wsif.entry.edit"><![CDATA[Eintrag bearbeiten]]></item>
@@ -683,6 +685,10 @@ Erlaubte Dateiendungen: {$allowedImageExtensions}]]></item>
 		<item name="wsif.entry.menu.link.entryImages"><![CDATA[Bilder]]></item>
 		<item name="wsif.entry.permalink"><![CDATA[Permalink zum {#$messageNumber}. Eintrag]]></item>
 		<item name="wsif.entry.prefix"><![CDATA[Präfix]]></item>
+		<item name="wsif.entry.publishing"><![CDATA[Veröffentlichung]]></item>
+		<item name="wsif.entry.publishingTime"><![CDATA[Veröffentlichungszeit]]></item>
+		<item name="wsif.entry.publishingTime.description"><![CDATA[Wählen Sie hier den Zeitpunkt, an dem der Eintrag automatisch veröffentlicht werden soll.]]></item>
+		<item name="wsif.entry.publishingTime.error.invalid"><![CDATA[Bitte geben Sie ein gültiges Datum ein.]]></item>
 		<item name="wsif.entry.rate"><![CDATA[Eintrag bewerten]]></item>
 		<item name="wsif.entry.rating"><![CDATA[Bewertung]]></item>
 		<item name="wsif.entry.share"><![CDATA[Verbreiten]]></item>
