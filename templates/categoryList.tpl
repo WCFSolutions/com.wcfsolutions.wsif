@@ -1,4 +1,4 @@
-{if $categories|count > 0}	
+{if $categories|count > 0}
 	{cycle name='categoryListCycle' values='1,2' advance=false print=false}
 	<ul id="categoryList">
 		{foreach from=$categories item=category}
@@ -10,18 +10,18 @@
 						<div class="containerIcon">
 							<img id="categoryIcon{@$categoryNo}" src="{icon}{@$category->getIconName()}M.png{/icon}" alt="" />
 						</div>
-						
+
 						<div class="containerContent">
 							<h3 class="categoryTitle">
 								<a id="categoryLink{@$categoryNo}" href="index.php?page=Category&amp;categoryID={@$categoryID}{@SID_ARG_2ND}">{@$category->getTitle()}</a>
 							</h3>
-								
+
 							{if $category->getFormattedDescription()}
 								<p class="categoryListDescription">
 									{@$category->getFormattedDescription()}
 								</p>
 							{/if}
-								
+
 							{if $subCategories.$categoryID|isset}
 								<div class="categoryListSubCategories">
 									<ul>
@@ -35,13 +35,13 @@
 									</ul>
 								</div>
 							{/if}
-								
+
 							{if $additionalCategoryBoxes.$categoryID|isset}{@$additionalCategoryBoxes.$categoryID}{/if}
 						</div>
 					</div>
-						
+
 					{if $lastEntries.$categoryID|isset}
-						<div class="categoryListLastItem">								
+						<div class="categoryListLastItem">
 							<div class="containerIconSmall">
 								<a href="index.php?page=Entry&amp;entryID={@$lastEntries.$categoryID->entryID}{@SID_ARG_2ND}"><img src="{icon}goToEntryS.png{/icon}" alt="" title="{lang}wsif.index.goToEntry{/lang}" /></a>
 							</div>
@@ -61,7 +61,7 @@
 							</div>
 						</div>
 					{/if}
-						
+
 					{if $categoryStats.$categoryID|isset}
 						<div class="categoryListStats">
 							{if $category->isExternalLink()}
@@ -73,6 +73,10 @@
 								<dl>
 									<dt>{lang}wsif.category.stats.entries{/lang}</dt>
 									<dd>{#$categoryStats.$categoryID.entries}</dd>
+								</dl>
+								<dl>
+									<dt>{lang}wsif.category.stats.entryComments{/lang}</dt>
+									<dd>{#$categoryStats.$categoryID.entryComments}</dd>
 								</dl>
 								<dl>
 									<dt>{lang}wsif.category.stats.entryImages{/lang}</dt>

@@ -4,7 +4,7 @@ require_once(WSIF_DIR.'lib/data/entry/Entry.class.php');
 
 /**
  * EntryEditor provides functions to create and edit the data of an entry.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -15,7 +15,7 @@ require_once(WSIF_DIR.'lib/data/entry/Entry.class.php');
 class EntryEditor extends Entry {
 	/**
 	 * Updates this entry.
-	 * 
+	 *
 	 * @param	integer		$languageID
 	 * @param	integer		$prefixID
 	 * @param	string		$subject
@@ -36,7 +36,19 @@ class EntryEditor extends Entry {
 			WHERE 	entryID = ".$this->entryID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
+	/**
+	 * Updates the amount of comments of this entry.
+	 *
+	 * @param	integer		$comments
+	 */
+	public function updateComments($comments) {
+		$sql = "UPDATE 	wsif".WSIF_N."_entry
+			SET	comments = IF(".$comments." > 0 OR comments > ABS(".$comments."), comments + ".$comments.", 0)
+			WHERE 	entryID = ".$this->entryID;
+		WCF::getDB()->sendQuery($sql);
+	}
+
 	/**
 	 * Updates the amount of images of this entry.
 	 *
@@ -48,7 +60,7 @@ class EntryEditor extends Entry {
 			WHERE 	entryID = ".$this->entryID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Updates the amount of files of this entry.
 	 *
@@ -60,17 +72,17 @@ class EntryEditor extends Entry {
 			WHERE 	entryID = ".$this->entryID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Updates the tags of this entry.
-	 * 
+	 *
 	 * @param	array		$tags
 	 */
 	public function updateTags($tagArray) {
 		// include files
 		require_once(WCF_DIR.'lib/data/tag/TagEngine.class.php');
 		require_once(WSIF_DIR.'lib/data/entry/TaggedEntry.class.php');
-		
+
 		// save tags
 		$tagged = new TaggedEntry(null, array(
 			'entryID' => $this->entryID,
@@ -79,45 +91,45 @@ class EntryEditor extends Entry {
 
 		// delete old tags
 		TagEngine::getInstance()->deleteObjectTags($tagged, array($this->languageID));
-		
+
 		// save new tags
 		if (count($tagArray) > 0) TagEngine::getInstance()->addTags($tagArray, $tagged, $this->languageID);
 	}
-	
+
 	/**
 	 * Sets the subject of this entry.
-	 * 
+	 *
 	 * @param	string		$subject
 	 */
 	public function setSubject($subject) {
 		if ($subject == $this->subject) return;
-		
+
 		$sql = "UPDATE 	wsif".WSIF_N."_entry
 			SET	subject = '".escapeString($subject)."'
 			WHERE 	entryID = ".$this->entryID;
 		WCF::getDB()->registerShutdownUpdate($sql);
 	}
-	
+
 	/**
 	 * Sets the prefix of this entry.
-	 * 
+	 *
 	 * @param	integer		$prefixID
 	 */
 	public function setPrefixID($prefixID) {
 		if ($prefixID == $this->prefixID) return;
-		
+
 		$sql = "UPDATE 	wsif".WSIF_N."_entry
 			SET	prefixID = ".$prefixID."
 			WHERE 	entryID = ".$this->entryID;
 		WCF::getDB()->registerShutdownUpdate($sql);
 	}
-	
+
 	/**
 	 * Marks this entry.
 	 */
 	public function mark() {
 		$markedEntries = self::getMarkedEntries();
-		if ($markedEntries === null || !is_array($markedEntries)) { 
+		if ($markedEntries === null || !is_array($markedEntries)) {
 			$markedEntries = array($this->entryID);
 			WCF::getSession()->register('markedEntries', $markedEntries);
 		}
@@ -128,7 +140,7 @@ class EntryEditor extends Entry {
 			}
 		}
 	}
-	
+
 	/**
 	 * Unmarks this entry.
 	 */
@@ -139,41 +151,41 @@ class EntryEditor extends Entry {
 			unset($markedEntries[$key]);
 			if (count($markedEntries) == 0) {
 				self::unmarkAll();
-			} 
+			}
 			else {
 				WCF::getSession()->register('markedEntries', $markedEntries);
 			}
 		}
 	}
-	
+
 	/**
 	 * Disables this entry.
 	 */
 	public function disable() {
 		self::disableAll($this->entryID);
 	}
-	
+
 	/**
 	 * Enables this entry.
 	 */
 	public function enable() {
 		self::enableAll($this->entryID);
 	}
-	
+
 	/**
 	 * Moves this entry into the recycle bin.
 	 */
 	public function trash($reason = '') {
 		self::trashAll($this->entryID, $reason);
 	}
-	
+
 	/**
 	 * Deletes this entry completely.
 	 */
 	public function delete($updateUserStats = true) {
 		self::deleteAllCompletely($this->entryID, $updateUserStats);
 	}
-	
+
 	/**
 	 * Restores this deleted thread.
 	 */
@@ -183,7 +195,7 @@ class EntryEditor extends Entry {
 
 	/**
 	 * Creates a new entry.
-	 * 
+	 *
 	 * @param	integer		$categoryID
 	 * @param	integer		$languageID
 	 * @param	integer		$prefixID
@@ -199,7 +211,7 @@ class EntryEditor extends Entry {
 	 */
 	public static function create($categoryID, $languageID, $prefixID, $subject, $message, $teaser, $userID, $username, $options, $ipAddress = null, $isDisabled = 0) {
 		if ($ipAddress === null) $ipAddress = WCF::getSession()->ipAddress;
-		
+
 		// insert entry
 		$sql = "INSERT INTO	wsif".WSIF_N."_entry
 					(categoryID, languageID, prefixID, userID, username, subject, message, teaser, time, everEnabled, isDisabled, ipAddress, enableSmilies, enableHtml, enableBBCodes)
@@ -208,23 +220,23 @@ class EntryEditor extends Entry {
 					".(isset($options['enableHtml']) ? $options['enableHtml'] : 0).",
 					".(isset($options['enableBBCodes']) ? $options['enableBBCodes'] : 1).")";
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// get entry id
 		$entryID = WCF::getDB()->getInsertID("wsif".WSIF_N."_entry", 'entryID');
-		
+
 		// get entry
 		$entry = new EntryEditor($entryID);
-		
+
 		// return entry
 		return $entry;
 	}
-	
+
 	/**
 	 * Creates the preview of an entry with the given data.
-	 * 
+	 *
 	 * @param	string		$subject
 	 * @param	string		$text
-	 * 
+	 *
 	 * @return	string
 	 */
 	public static function createPreview($subject, $message, $enableSmilies = 1, $enableHtml = 0, $enableBBCodes = 1) {
@@ -242,9 +254,9 @@ class EntryEditor extends Entry {
 		$entry = new ViewableEntry(null, $row);
 		return $entry->getFormattedMessage();
 	}
-	
+
 	/**
-	 * Returns the currently marked entries. 
+	 * Returns the currently marked entries.
 	 */
 	public static function getMarkedEntries() {
 		$sessionVars = WCF::getSession()->getVars();
@@ -253,14 +265,14 @@ class EntryEditor extends Entry {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Unmarks all marked entries.
 	 */
 	public static function unmarkAll() {
 		WCF::getSession()->unregister('markedEntries');
 	}
-	
+
 	/**
 	 * Disables the entries with the given entry ids.
 	 *
@@ -268,20 +280,20 @@ class EntryEditor extends Entry {
 	 */
 	public static function disableAll($entryIDs) {
 		if (empty($entryIDs)) return;
-		
+
 		$sql = "UPDATE 	wsif".WSIF_N."_entry
 			SET	isDeleted = 0,
 				isDisabled = 1
 			WHERE 	entryID IN (".$entryIDs.")";
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Enables the entries with the given entry ids.
 	 */
 	public static function enableAll($entryIDs) {
 		if (empty($entryIDs)) return;
-		
+
 		// get not yet enabled entries
 		$statEntryIDs = '';
 		$sql = "SELECT	entryID
@@ -294,34 +306,34 @@ class EntryEditor extends Entry {
 			if (!empty($statEntryIDs)) $statEntryIDs .= ',';
 			$statEntryIDs .= $row['entryID'];
 		}
-		
+
 		// update user entries and activity points
 		self::updateUserStats($statEntryIDs, 'enable');
-		
+
 		// enable entries
 		$sql = "UPDATE 	wsif".WSIF_N."_entry
 			SET	isDisabled = 0,
 				everEnabled = 1
 			WHERE 	entryID IN (".$entryIDs.")";
 		WCF::getDB()->registerShutdownUpdate($sql);
-	}	
-	
+	}
+
 	/**
 	 * Refreshes the stats of this entry.
 	 */
 	public function refresh() {
 		self::refreshAll($this->entryID);
 	}
-	
+
 	/**
 	 * Updates the user stats.
-	 * 
+	 *
 	 * @param	string		$entryIDs
 	 * @param 	string		$mode
 	 */
 	public static function updateUserStats($entryIDs, $mode) {
 		if (empty($entryIDs)) return;
-				
+
 		// update user entries and activity points
 		$userEntries = array();
 		$userActivityPoints = array();
@@ -351,7 +363,7 @@ class EntryEditor extends Entry {
 					break;
 			}
 		}
-		
+
 		// save user entries
 		if (count($userEntries)) {
 			require_once(WSIF_DIR.'lib/data/user/WSIFUser.class.php');
@@ -359,7 +371,7 @@ class EntryEditor extends Entry {
 				WSIFUser::updateUserEntries($userID, $entries);
 			}
 		}
-		
+
 		// save activity points
 		if (count($userActivityPoints)) {
 			require_once(WCF_DIR.'lib/data/user/rank/UserRank.class.php');
@@ -368,7 +380,7 @@ class EntryEditor extends Entry {
 			}
 		}
 	}
-	
+
 	/**
 	 * Moves all entries with the given entry ids into the category with the given category id.
 	 *
@@ -377,10 +389,10 @@ class EntryEditor extends Entry {
 	 */
 	public static function moveAll($entryIDs, $newCategoryID) {
 		if (empty($entryIDs)) return;
-		
+
 		// update user posts and activity points
 		self::updateUserStats($entryIDs, 'move', $newCategoryID);
-		
+
 		// move entries
 		$sql = "UPDATE 	wsif".WSIF_N."_entry
 			SET	categoryID = ".$newCategoryID."
@@ -388,13 +400,13 @@ class EntryEditor extends Entry {
 				AND categoryID <> ".$newCategoryID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Refreshes the stats of this entry.
 	 */
 	public static function refreshAll($entryIDs) {
 		if (empty($entryIDs)) return;
-		
+
 		$sql = "UPDATE 	wsif".WSIF_N."_entry entry
 			SET	images = (
 					SELECT	COUNT(*)
@@ -414,7 +426,7 @@ class EntryEditor extends Entry {
 			WHERE 	entryID IN (".$entryIDs.")";
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Deletes the entries with the given entry ids.
 	 *
@@ -423,7 +435,7 @@ class EntryEditor extends Entry {
 	 */
 	public static function deleteAll($entryIDs, $reason = '') {
 		if (empty($entryIDs)) return;
-		
+
 		$trashIDs = '';
 		$deleteIDs = '';
 		if (ENTRY_ENABLE_RECYCLE_BIN) {
@@ -445,11 +457,11 @@ class EntryEditor extends Entry {
 		else {
 			$deleteIDs = $entryIDs;
 		}
-		
+
 		self::trashAll($trashIDs, $reason);
 		self::deleteAllCompletely($deleteIDs);
 	}
-	
+
 	/**
 	 * Moves the entries with the given entry ids into the recycle bin.
 	 *
@@ -458,7 +470,7 @@ class EntryEditor extends Entry {
 	 */
 	public static function trashAll($entryIDs, $reason = '') {
 		if (empty($entryIDs)) return;
-		
+
 		// trash entry
 		$sql = "UPDATE 	wsif".WSIF_N."_entry
 			SET	isDeleted = 1,
@@ -470,7 +482,7 @@ class EntryEditor extends Entry {
 			WHERE 	entryID IN (".$entryIDs.")";
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Deletes the entries with the given entry ids completely.
 	 *
@@ -478,12 +490,12 @@ class EntryEditor extends Entry {
 	 */
 	public static function deleteAllCompletely($entryIDs, $updateUserStats = true, $deleteComments = true, $deleteImages = true, $deleteFiles = true) {
 		if (empty($entryIDs)) return;
-		
+
 		// update user stats
 		if ($updateUserStats) {
 			self::updateUserStats($entryIDs, 'delete');
 		}
-		
+
 		// get all comment ids
 		if ($deleteComments) {
 			$commentIDs = '';
@@ -501,7 +513,7 @@ class EntryEditor extends Entry {
 				EntryCommentEditor::deleteAll($commentIDs);
 			}
 		}
-		
+
 		// get all image ids
 		if ($deleteImages) {
 			$imageIDs = '';
@@ -519,7 +531,7 @@ class EntryEditor extends Entry {
 				EntryImageEditor::deleteAll($imageIDs);
 			}
 		}
-		
+
 		// get all file ids
 		if ($deleteFiles) {
 			$fileIDs = '';
@@ -537,34 +549,34 @@ class EntryEditor extends Entry {
 				EntryFileEditor::deleteAll($fileIDs);
 			}
 		}
-		
+
 		// delete entry
 		$sql = "DELETE FROM	wsif".WSIF_N."_entry
 			WHERE 		entryID IN (".$entryIDs.")";
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// delete entry rating
 		$sql = "DELETE FROM	wsif".WSIF_N."_entry_rating
 			WHERE 		entryID IN (".$entryIDs.")";
 		WCF::getDB()->registerShutdownUpdate($sql);
-		
+
 		// delete entry visitors
 		$sql = "DELETE FROM	wsif".WSIF_N."_entry_visitor
 			WHERE 		entryID IN (".$entryIDs.")";
 		WCF::getDB()->registerShutdownUpdate($sql);
-		
+
 		// delete tags
 		if (MODULE_TAGGING) {
 			require_once(WCF_DIR.'lib/data/tag/TagEngine.class.php');
 			$taggable = TagEngine::getInstance()->getTaggable('com.wcfsolutions.wsif.entry');
-			
+
 			$sql = "DELETE FROM	wcf".WCF_N."_tag_to_object
 				WHERE 		taggableID = ".$taggable->getTaggableID()."
 						AND objectID IN (".$entryIDs.")";
 			WCF::getDB()->registerShutdownUpdate($sql);
 		}
 	}
-	
+
 	/**
 	 * Restores the entries with the given entry ids.
 	 *
@@ -572,23 +584,23 @@ class EntryEditor extends Entry {
 	 */
 	public static function restoreAll($entryIDs) {
 		if (empty($entryIDs)) return;
-		
+
 		// restore entries
 		$sql = "UPDATE 	wsif".WSIF_N."_entry
 			SET	isDeleted = 0
 			WHERE 	entryID IN (".$entryIDs.")";
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Returns the categories of the entries with the given entry ids.
-	 * 
+	 *
 	 * @param	string		$entryIDs
 	 * @return	array
 	 */
 	public static function getCategoriesByEntryIDs($entryIDs) {
 		if (empty($entryIDs)) return array(array(), '', 'categories' => array(), 'categoryIDs' => '');
-		
+
 		$categories = array();
 		$categoryIDs = '';
 		$sql = "SELECT 	DISTINCT categoryID
@@ -600,7 +612,7 @@ class EntryEditor extends Entry {
 			$categoryIDs .= $row['categoryID'];
 			$categories[$row['categoryID']] = new CategoryEditor($row['categoryID']);
 		}
-		
+
 		return array($categories, $categoryIDs, 'categories' => $categories, 'categoryIDs' => $categoryIDs);
 	}
 }

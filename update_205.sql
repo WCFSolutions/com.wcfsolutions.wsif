@@ -1,4 +1,5 @@
 -- category structure
+ALTER TABLE wsif1_1_category ADD entryComments INT(10) NOT NULL DEFAULT 0 AFTER entries;
 ALTER TABLE wsif1_1_category ADD showOrder INT(10) NOT NULL DEFAULT 0;
 
 UPDATE	wsif1_1_category category
@@ -10,6 +11,9 @@ SET	showOrder = (
 	);
 
 DROP TABLE IF EXISTS wsif1_1_category_structure;
+
+-- entry
+ALTER TABLE wsif1_1_entry ADD comments MEDIUMINT(7) NOT NULL DEFAULT 0 AFTER defaultFileID;
 
 -- entry menu items
 DROP TABLE IF EXISTS wsif1_1_entry_menu_item;

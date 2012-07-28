@@ -4,7 +4,7 @@ require_once(WCF_DIR.'lib/system/cache/CacheBuilder.class.php');
 
 /**
  * Caches last entries and category stats.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -18,7 +18,7 @@ class CacheBuilderCategoryData implements CacheBuilder {
 	 */
 	public function getData($cacheResource) {
 		$data = array('lastEntries' => array(), 'stats' => array());
-		
+
 		// last category entries
 		$sql = "SELECT		entry.prefixID, entry.subject, entry.time, entry.userID, entry.username, last_entry.*
 			FROM 		wsif".WSIF_N."_category_last_entry last_entry
@@ -30,10 +30,10 @@ class CacheBuilderCategoryData implements CacheBuilder {
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$data['lastEntries'][$row['categoryID']][$row['languageID']] = $row;
 		}
-		
+
 		// stats
-		$sql = "SELECT	categoryID, clicks, entries, entryImages,
-				entryFiles, entryDownloads, time
+		$sql = "SELECT	categoryID, clicks, entries, entryComments,
+		 		entryImages, entryFiles, entryDownloads, time
 			FROM 	wsif".WSIF_N."_category";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
@@ -48,7 +48,7 @@ class CacheBuilderCategoryData implements CacheBuilder {
 			// category stats
 			$data['stats'][$row['categoryID']] = $row;
 		}
-		
+
 		return $data;
 	}
 }

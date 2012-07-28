@@ -394,6 +394,8 @@
 		<item name="wsif.acp.index.stat.database.size"><![CDATA[Datenbankgröße]]></item>
 		<item name="wsif.acp.index.stat.entries"><![CDATA[Einträge]]></item>
 		<item name="wsif.acp.index.stat.entriesPerDay"><![CDATA[({#$entriesPerDay} pro Tag)]]></item>
+		<item name="wsif.acp.index.stat.entryComments"><![CDATA[Kommentare]]></item>
+		<item name="wsif.acp.index.stat.entryCommentsPerDay"><![CDATA[({#$entryCommentsPerDay} pro Tag)]]></item>
 		<item name="wsif.acp.index.stat.entryFiles"><![CDATA[Dateien]]></item>
 		<item name="wsif.acp.index.stat.entryFilesPerDay"><![CDATA[({#$entryFilesPerDay} pro Tag)]]></item>
 		<item name="wsif.acp.index.stat.entryImages"><![CDATA[Bilder]]></item>
@@ -470,8 +472,9 @@
 		<item name="wsif.category.sorting"><![CDATA[Sortierung &amp; Filterung]]></item>
 		<item name="wsif.category.stats"><![CDATA[Statistik]]></item>
 		<item name="wsif.category.stats.clicks"><![CDATA[Zugriff{if $categoryStats.$categoryID.clicks != 1}e{/if}]]></item>
-		<item name="wsif.category.stats.detail"><![CDATA[{#$category->getEntries()} {if $category->getEntries() == 1}Eintrag{else}Einträge{/if} - {#$category->getEntryImages()} Bild{if $category->getEntryImages() != 1}er{/if} - {#$category->getEntryFiles()} Datei{if $category->getEntryFiles() != 1}en{/if} - {#$category->getEntryDownloads()} Download{if $category->getEntryDownloads() != 1}s{/if} (durchschnittlich {#$category->getEntryDownloadsPerDay()} Download{if $category->getEntryDownloadsPerDay() != 1}s{/if}/Tag)]]></item>
+		<item name="wsif.category.stats.detail"><![CDATA[{#$category->getEntries()} {if $category->getEntries() == 1}Eintrag{else}Einträge{/if} - {#$category->getEntryComments()} Kommentar{if $category->getEntryComments() != 1}e{/if} - {#$category->getEntryImages()} Bild{if $category->getEntryImages() != 1}er{/if} - {#$category->getEntryFiles()} Datei{if $category->getEntryFiles() != 1}en{/if} - {#$category->getEntryDownloads()} Download{if $category->getEntryDownloads() != 1}s{/if} (durchschnittlich {#$category->getEntryDownloadsPerDay()} Download{if $category->getEntryDownloadsPerDay() != 1}s{/if}/Tag)]]></item>
 		<item name="wsif.category.stats.entries"><![CDATA[{if $categoryStats.$categoryID.entries == 1}Eintrag{else}Einträge{/if}]]></item>
+		<item name="wsif.category.stats.entryComments"><![CDATA[Kommentar{if $categoryStats.$categoryID.entryComments != 1}e{/if}]]></item>
 		<item name="wsif.category.stats.entryDownloads"><![CDATA[Download{if $categoryStats.$categoryID.entryDownloads != 1}s{/if}]]></item>
 		<item name="wsif.category.stats.entryFiles"><![CDATA[Datei{if $categoryStats.$categoryID.entryFiles != 1}en{/if}]]></item>
 		<item name="wsif.category.stats.entryImages"><![CDATA[Bild{if $categoryStats.$categoryID.entryImages != 1}er{/if}]]></item>
@@ -726,7 +729,7 @@ Erlaubte Dateiendungen: {$allowedImageExtensions}]]></item>
 		<item name="wsif.index.feed"><![CDATA[Einträge abonnieren]]></item>
 		<item name="wsif.index.goToEntry"><![CDATA[Zum letzten Eintrag springen]]></item>
 		<item name="wsif.index.stats"><![CDATA[Statistik]]></item>
-		<item name="wsif.index.stats.detail"><![CDATA[{#$stats.members} Mitglied{if $stats.members != 1}er{/if} - {#$stats.entries} {if $stats.entries == 1}Eintrag{else}Einträge{/if} - {#$stats.entryImages} Bild{if $stats.entryImages != 1}er{/if} - {#$stats.entryFiles} Datei{if $stats.entryFiles != 1}en{/if} - {#$stats.entryDownloads} Download{if $stats.entryDownloads != 1}s{/if} (durchschnittlich {#$stats.entryDownloadsPerDay} Download{if $stats.entryDownloadsPerDay != 1}s{/if}/Tag)<br />
+		<item name="wsif.index.stats.detail"><![CDATA[{#$stats.members} Mitglied{if $stats.members != 1}er{/if} - {#$stats.entries} {if $stats.entries == 1}Eintrag{else}Einträge{/if} - {#$stats.entryComments} Kommentar{if $stats.entryComments != 1}e{/if} - {#$stats.entryImages} Bild{if $stats.entryImages != 1}er{/if} - {#$stats.entryFiles} Datei{if $stats.entryFiles != 1}en{/if} - {#$stats.entryDownloads} Download{if $stats.entryDownloads != 1}s{/if} (durchschnittlich {#$stats.entryDownloadsPerDay} Download{if $stats.entryDownloadsPerDay != 1}s{/if}/Tag)<br />
 Unser neuestes Mitglied heißt: <a href="index.php?page=User&amp;userID={@$stats.newestMember->userID}{@SID_ARG_2ND}">{$stats.newestMember->username}</a>.]]></item>
 		<item name="wsif.index.title"><![CDATA[Startseite]]></item>
 	</category>

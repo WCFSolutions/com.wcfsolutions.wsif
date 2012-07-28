@@ -167,6 +167,10 @@ class EntryCommentAddForm extends MessageForm {
 		// save comment
 		$this->comment = EntryCommentEditor::create($this->frame->getEntryID(), WCF::getUser()->userID, $this->username, $this->subject, $this->text, $this->getOptions(), $this->attachmentListEditor);
 
+		// update comment count
+		$this->frame->getEntry()->getEditor()->updateComments(1);
+		$this->frame->getCategory()->getEditor()->updateEntryComments(1);
+
 		// send noticications
 		$this->comment->sendNotifications($this->frame->getEntry());
 		$this->saved();

@@ -3,6 +3,9 @@
 require_once(WSIF_DIR.'lib/data/entry/comment/EntryComment.class.php');
 require_once(WSIF_DIR.'lib/data/entry/comment/EntryCommentNotificationObject.class.php');
 
+// wcf imports
+require_once(WCF_DIR.'lib/data/user/notification/NotificationHandler.class.php');
+
 /**
  * Provides functions to manage entry comments.
  *
