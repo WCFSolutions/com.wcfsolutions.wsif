@@ -4,6 +4,7 @@ require_once(WSIF_DIR.'lib/data/entry/Entry.class.php');
 require_once(WSIF_DIR.'lib/data/entry/image/EntryImage.class.php');
 
 // wcf imports
+require_once(WCF_DIR.'lib/data/rating/Rating.class.php');
 require_once(WCF_DIR.'lib/data/message/bbcode/MessageParser.class.php');
 require_once(WCF_DIR.'lib/data/message/bbcode/AttachmentBBCode.class.php');
 
@@ -27,32 +28,32 @@ class ViewableEntry extends Entry {
 		parent::handleData($data);
 		if ($this->defaultImageID) $this->image = new EntryImage(null, $data);
 	}
-	
+
 	/**
 	 * Returns the message of this entry.
 	 *
 	 * @return 	string		the message of this entry
 	 */
-	public function getFormattedMessage() {		
+	public function getFormattedMessage() {
 		// parse message
 		$parser = MessageParser::getInstance();
 		$parser->setOutputType('text/html');
 		AttachmentBBCode::setMessageID($this->entryID);
 		return $parser->parse($this->message, $this->enableSmilies, $this->enableHtml, $this->enableBBCodes);
 	}
-	
+
 	/**
 	 * Returns the entry rating result for template output.
-	 * 
+	 *
 	 * @return	string
 	 */
 	public function getRatingOutput() {
 		return Rating::getDynamicRatingOutput($this->rating, $this->ratings);
 	}
-	
+
 	/**
 	 * Returns the flag icon for the thread language.
-	 * 
+	 *
 	 * @return	string
 	 */
 	public function getLanguageIcon() {
@@ -71,8 +72,8 @@ class ViewableEntry extends Entry {
 	public function getIconName() {
 		return 'entry';
 	}
-	
-	/** 
+
+	/**
 	 * Returns the default image of this entry.
 	 *
 	 * @return	EntryImage

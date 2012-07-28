@@ -28,13 +28,10 @@ class Entry extends DatabaseObject {
 	 */
 	public function __construct($entryID, $row = null) {
 		if ($entryID !== null) {
-			$sql = "SELECT		entry.*,
-						entry_rating.rating AS userRating
+			$sql = "SELECT		entry.*
 						".(WCF::getUser()->userID ? ', IF(subscription.userID IS NOT NULL, 1, 0) AS subscribed' : '')."
 				FROM 		wsif".WSIF_N."_entry entry
-				LEFT JOIN 	wsif".WSIF_N."_entry_rating entry_rating
-				ON 		(entry_rating.entryID = entry.entryID
-						AND ".(WCF::getUser()->userID ? "entry_rating.userID = ".WCF::getUser()->userID : "entry_rating.ipAddress = '".escapeString(WCF::getSession()->ipAddress)."'").")
+				".(WCF::getUser()->userID ? "
 				LEFT JOIN 	wsif".WSIF_N."_entry_subscription subscription
 				ON 		(subscription.userID = ".WCF::getUser()->userID."
 						AND subscription.entryID = entry.entryID)" : '')."

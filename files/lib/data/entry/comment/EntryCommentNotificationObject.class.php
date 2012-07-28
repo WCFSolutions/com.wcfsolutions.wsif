@@ -1,6 +1,6 @@
 <?php
 // wsif imports
-require_once(WSIF_DIR.'lib/data/publication/object/comment/ViewablePublicationObjectComment.class.php');
+require_once(WSIF_DIR.'lib/data/entry/comment/ViewableEntryComment.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/data/user/notification/object/NotificationObject.class.php');
