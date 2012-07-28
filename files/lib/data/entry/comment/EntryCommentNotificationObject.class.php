@@ -54,7 +54,7 @@ class EntryCommentNotificationObject extends ViewableEntryComment implements Not
 	 * @see NotificationObject::getIcon()
 	 */
 	public function getIcon() {
-		return 'message';
+		return 'entryComment';
 	}
 
 	/**
