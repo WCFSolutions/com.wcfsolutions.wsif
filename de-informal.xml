@@ -250,6 +250,9 @@
 		<item name="wcf.user.entries"><![CDATA[Einträge]]></item>
 		<item name="wcf.user.entriesPerDay"><![CDATA[({$entries} Einträge pro Tag)]]></item>
 	</category>
+	<category name="wcf.user.notification">
+		<item name="wcf.user.notification.object.type.entryComment"><![CDATA[Kommentare]]></item>
+	</category>
 	<category name="wcf.user.option">
 		<item name="wcf.user.option.entriesPerPage"><![CDATA[Anzahl Einträge pro Seite]]></item>
 		<item name="wcf.user.option.entriesPerPage.description"><![CDATA[Gib die Anzahl der Einträge an, die auf einer Seite angezeigt werden sollen.]]></item>
