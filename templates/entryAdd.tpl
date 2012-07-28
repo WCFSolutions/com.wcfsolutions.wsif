@@ -2,9 +2,9 @@
 <head>
 	<title>{lang}wsif.entry.add{/lang} - {@$category->getTitle()} - {lang}{PAGE_TITLE}{/lang}</title>
 	{include file='headInclude' sandbox=false}
-	
+
 	{include file='imageViewer'}
-	
+
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/TabbedPane.class.js"></script>
 	{if $canUseBBCodes}{include file="wysiwyg"}{/if}
 </head>
@@ -20,20 +20,20 @@
 		{/foreach}
 		<li><a href="index.php?page=Category&amp;categoryID={@$category->categoryID}{@SID_ARG_2ND}"><img src="{icon}{@$category->getIconName()}S.png{/icon}" alt="" /> <span>{@$category->getTitle()}</span></a> &raquo;</li>
 	</ul>
-	
+
 	<div class="mainHeadline">
 		<img src="{icon}entryAddL.png{/icon}" alt="" />
 		<div class="headlineContainer">
 			<h2>{lang}wsif.entry.add{/lang}</h2>
 		</div>
 	</div>
-	
+
 	{if $userMessages|isset}{@$userMessages}{/if}
-	
+
 	{if $errorField}
 		<p class="error">{lang}wcf.global.form.error{/lang}</p>
 	{/if}
-	
+
 	{if $preview|isset}
 		<div class="border messagePreview">
 			<div class="containerHead">
@@ -51,13 +51,13 @@
 			</div>
 		</div>
 	{/if}
-	
+
 	<form enctype="multipart/form-data" method="post" action="index.php?form=EntryAdd&amp;categoryID={@$category->categoryID}">
 		<div class="border content">
 			<div class="container-1">
 				<fieldset>
 					<legend>{lang}wsif.entry.information{/lang}</legend>
-					
+
 					{if $availableLanguages|count > 1}
 						<div class="formElement">
 							<div class="formFieldLabel">
@@ -66,14 +66,13 @@
 							<div class="formField">
 								<select name="languageID" id="languageID" tabindex="{counter name='tabindex'}">
 									{foreach from=$availableLanguages item=availableLanguage}
-									<option value="{@$availableLanguage.languageID}"
-										{if $availableLanguage.languageID == $languageID} selected="selected"{/if}>{lang}wcf.global.language.{@$availableLanguage.languageCode}{/lang}</option>
+										<option value="{@$availableLanguage.languageID}"{if $availableLanguage.languageID == $languageID} selected="selected"{/if}>{lang}wcf.global.language.{@$availableLanguage.languageCode}{/lang}</option>
 									{/foreach}
 								</select>
 							</div>
 						</div>
 					{/if}
-					
+
 					{if $category->getPrefixes() && $category->getPermission('canSetEntryPrefix')}
 						<div class="formElement{if $errorField == 'prefixID'} formError{/if}">
 							<div class="formFieldLabel">
@@ -94,7 +93,7 @@
 							</div>
 						</div>
 					{/if}
-					
+
 					{if !$this->user->userID}
 						<div class="formElement{if $errorField == 'username'} formError{/if}">
 							<div class="formFieldLabel">
@@ -112,7 +111,7 @@
 							</div>
 						</div>
 					{/if}
-					
+
 					<div class="formElement{if $errorField == 'subject'} formError{/if}">
 						<div class="formFieldLabel">
 							<label for="subject">{lang}wsif.entry.subject{/lang}</label>
@@ -126,7 +125,7 @@
 							{/if}
 						</div>
 					</div>
-					
+
 					<div class="formElement{if $errorField == 'teaser'} formError{/if}">
 						<div class="formFieldLabel">
 							<label for="teaser">{lang}wsif.entry.teaser{/lang}</label>
@@ -141,47 +140,24 @@
 							{/if}
 						</div>
 					</div>
-					
+
 					{if MODULE_TAGGING && ENTRY_ENABLE_TAGS && $category->getPermission('canSetEntryTags')}{include file='tagAddBit'}{/if}
-					
+
 					{if $additionalInformationFields|isset}{@$additionalInformationFields}{/if}
 				</fieldset>
-			
+
 				<fieldset>
-					<legend>{lang}wsif.entry.text{/lang}</legend>
-					
-					<div class="editorFrame formElement{if $errorField == 'text'} formError{/if}" id="textDiv">	
-						<div class="formFieldLabel">
-							<label for="text">{lang}wsif.entry.text{/lang}</label>
-						</div>
-						
-						<div class="formField">				
-							<textarea name="text" id="text" rows="15" cols="40" tabindex="{counter name='tabindex'}">{$text}</textarea>
-							{if $errorField == 'text'}
-								<p class="innerError">
-									{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
-									{if $errorType == 'tooLong'}{lang}wcf.message.error.tooLong{/lang}{/if}
-									{if $errorType == 'censoredWordsFound'}{lang}wcf.message.error.censoredWordsFound{/lang}{/if}
-								</p>
-							{/if}
-						</div>					
-					</div>
-					
-					{include file='messageFormTabs'}	
-				</fieldset>
-				
-				{if !$imageID}
-					<fieldset>
-						<legend>{lang}wsif.entry.image{/lang}</legend>
-						
+					<legend>{lang}wsif.entry.image{/lang}</legend>
+
+					{if $imageID}
+						Das Bild &raquo;{$image->title}&laquo; wurde erfolgreich hochgeladen.{if $this->user->getPermission('user.filebase.maxImagesPerEntry') > 1} Im Anschluss können Sie weitere Bilder hinzuf&uuml;gen.{/if}
+					{else}
+						{lang}wsif.entry.add.image.upload.description{/lang}
+
 						<fieldset{if $errorField == 'upload'} class="formError"{/if}>
 							<legend>{lang}wsif.entry.add.image.upload{/lang}</legend>
 							<input type="file" size="50" name="imageUpload" tabindex="{counter name='tabindex'}" />
-								
-							<div class="entryAddImageUploadSubmit" id="entryAddImageUploadSubmit">
-								<input type="submit" name="imageUpload" id="entryAddImageUploadSubmitButton" value="{lang}wsif.entry.add.image.button.upload{/lang}" />
-							</div>
-							
+
 							{if $errorField == 'imageUpload'}
 								<div class="innerError">
 									{if $errorType == 'uploadFailed'}{lang}wsif.entry.add.image.upload.error.uploadFailed{/lang}{/if}
@@ -192,20 +168,24 @@
 									{if $errorType == 'tooManyImages'}{lang}wsif.entry.image.upload.error.tooManyImages{/lang}{/if}
 								</div>
 							{/if}
-							
+
 							<div class="formFieldDesc">
 								<p>{lang}wsif.entry.image.upload.description{/lang}</p>
 							</div>
 						</fieldset>
-					</fieldset>
-				{/if}
-				
-				{if !$fileID}
-					<fieldset>
-						<legend>{lang}wsif.entry.file{/lang}</legend>
-						
+					{/if}
+				</fieldset>
+
+				<fieldset>
+					<legend>{lang}wsif.entry.file{/lang}</legend>
+
+					{if $fileID}
+						Die Datei &raquo;{$file->title}&laquo; wurde erfolgreich hochgeladen.{if $this->user->getPermission('user.filebase.maxImagesPerEntry') > 1} Im Anschluss können Sie weitere Dateien hinzuf&uuml;gen.{/if}
+					{else}
+						{lang}wsif.entry.add.file.upload.description{/lang}
+
 						<script type="text/javascript">
-							//<![CDATA[						
+							//<![CDATA[
 							function setFileType(newType) {
 								switch (newType) {
 									case 0:
@@ -216,15 +196,15 @@
 										$('uploadDiv').hide();
 										$('externalURLDiv').show();
 										break;
+									}
 								}
-							}
-							onloadEvents.push(function() { setFileType({@$fileType}); });
+								onloadEvents.push(function() { setFileType({@$fileType}); });
 							//]]>
 						</script>
-					
+
 						<fieldset>
 							<legend>{lang}wsif.entry.file.fileType{/lang}</legend>
-							
+
 							<div class="formGroup{if $errorField == 'fileType'} formError{/if}">
 								<div class="formGroupLabel">
 									{lang}wsif.entry.file.fileType{/lang}
@@ -247,7 +227,7 @@
 								</div>
 							</div>
 						</fieldset>
-						
+
 						<fieldset{if $errorField == 'externalURL'} class="formError"{/if} id="externalURLDiv">
 							<legend>{lang}wsif.entry.file.externalURL{/lang}</legend>
 							<div class="formElement{if $errorField == 'externalURL'} formError{/if}">
@@ -262,21 +242,14 @@
 											{if $errorType == 'illegalURL'}{lang}wsif.entry.file.externalURL.error.illegalURL{/lang}{/if}
 										</p>
 									{/if}
-									<div class="entryAddFileExternalSubmit" id="entryAddFileExternalSubmit">
-										<input type="submit" name="externalFile" id="entryAddFileExternalSubmitButton" value="{lang}wsif.entry.add.file.button.add{/lang}" />
-									</div>
 								</div>
 							</div>
 						</fieldset>
-						
+
 						<fieldset{if $errorField == 'fileUpload'} class="formError"{/if} id="uploadDiv">
 							<legend>{lang}wsif.entry.add.file.upload{/lang}</legend>
 							<input type="file" size="50" name="fileUpload" tabindex="{counter name='tabindex'}" />
-								
-							<div class="entryAddFileUploadSubmit" id="entryAddFileUploadSubmit">
-								<input type="submit" name="fileUpload" id="entryAddFileUploadSubmitButton" value="{lang}wsif.entry.add.file.button.upload{/lang}" />
-							</div>
-							
+
 							{if $errorField == 'fileUpload'}
 								<div class="innerError">
 									{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
@@ -287,19 +260,42 @@
 									{if $errorType == 'tooManyFiles'}{lang}wsif.entry.file.upload.error.tooManyFiles{/lang}{/if}
 								</div>
 							{/if}
-							
+
 							<div class="formFieldDesc">
 								<p>{lang}wsif.entry.file.upload.description{/lang}</p>
 							</div>
 						</fieldset>
-					</fieldset>
-				{/if}
-				
+					{/if}
+				</fieldset>
+
+				<fieldset>
+					<legend>{lang}wsif.entry.text{/lang}</legend>
+
+					<div class="editorFrame formElement{if $errorField == 'text'} formError{/if}" id="textDiv">
+						<div class="formFieldLabel">
+							<label for="text">{lang}wsif.entry.text{/lang}</label>
+						</div>
+
+						<div class="formField">
+							<textarea name="text" id="text" rows="15" cols="40" tabindex="{counter name='tabindex'}">{$text}</textarea>
+							{if $errorField == 'text'}
+								<p class="innerError">
+									{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
+									{if $errorType == 'tooLong'}{lang}wcf.message.error.tooLong{/lang}{/if}
+									{if $errorType == 'censoredWordsFound'}{lang}wcf.message.error.censoredWordsFound{/lang}{/if}
+								</p>
+							{/if}
+						</div>
+					</div>
+
+					{include file='messageFormTabs'}
+				</fieldset>
+
 				{include file='captcha'}
 				{if $additionalFields|isset}{@$additionalFields}{/if}
 			</div>
 		</div>
-		
+
 		<div class="formSubmit">
 			<input type="submit" name="send" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" tabindex="{counter name='tabindex'}" />
 			<input type="submit" name="preview" accesskey="p" value="{lang}wcf.global.button.preview{/lang}" tabindex="{counter name='tabindex'}" />
