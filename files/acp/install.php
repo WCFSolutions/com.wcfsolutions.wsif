@@ -17,22 +17,22 @@ WCF::getDB()->sendQuery($sql);
 if (!empty($_SERVER['SERVER_NAME'])) {
 	// domain
 	$pageURL = 'http://' . $_SERVER['SERVER_NAME'];
-	
+
 	// port
 	if (!empty($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] != 80) {
 		$pageURL .= ':' . $_SERVER['SERVER_PORT'];
 	}
-	
+
 	// file
-	$path = FileUtil::removeTrailingSlash(FileUtil::getRealPath(FileUtil::addTrailingSlash(dirname(dirname(WCF::getSession()->requestURI))).$this->installation->getPackage()->getDir()));
+	$path = FileUtil::removeTrailingSlash(FileUtil::getRealPath(FileUtil::addTrailingSlash(dirname(WCF::getSession()->requestURI)).RELATIVE_WCF_DIR.$this->installation->getPackage()->getDir()));
 	$pageURL .= $path;
-	
+
 	$sql = "UPDATE	wcf".WCF_N."_option
 		SET	optionValue = '".escapeString($pageURL)."'
 		WHERE	optionName = 'page_url'
 			AND packageID = ".$packageID;
 	WCF::getDB()->sendQuery($sql);
-	
+
 	$sql = "UPDATE	wcf".WCF_N."_option
 		SET	optionValue = '".escapeString($path)."'
 		WHERE	optionName = 'cookie_path'
