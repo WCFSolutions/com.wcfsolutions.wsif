@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/notification-event.xsd">
+	<import>
+		<event>
+			<name>newEntryComment</name>
+                        <objecttype>entryComment</objecttype>
+			<classfile>lib/data/user/notification/event/DefaultNotificationEvent.class.php</classfile>
+                        <languagecategory>wsif.entry.comment</languagecategory>
+                        <defaultnotificationtype>userMessages</defaultnotificationtype>
+                        <icon>message</icon>
+                        <requiresconfirmation>1</requiresconfirmation>
+                        <options>module_comment</options>
+		</event>
+		<event>
+			<name>entrySubscription</name>
+                        <objecttype>entryComment</objecttype>
+			<classfile>lib/data/user/notification/event/DefaultNotificationEvent.class.php</classfile>
+                        <languagecategory>wsif.entry</languagecategory>
+                        <defaultnotificationtype>userMessages</defaultnotificationtype>
+                        <icon>message</icon>
+                        <requiresconfirmation>1</requiresconfirmation>
+                        <options>module_comment</options>
+		</event>
+	</import>
+</data>

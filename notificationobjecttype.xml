@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/notification-object-type.xsd">
+	<import>
+		<type>
+			<name>entryComment</name>
+			<classfile>lib/data/entry/comment/EntryCommentNotificationObjectType.class.php</classfile>
+                        <options>module_comment</options>
+		</type>
+	</import>
+</data>

@@ -8,7 +8,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
 
 /**
  * Represents an entry.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -22,18 +22,22 @@ class Entry extends DatabaseObject {
 
 	/**
 	 * Creates a new Entry object.
-	 * 
+	 *
 	 * @param	integer		$entryID
 	 * @param 	array<mixed>	$row
 	 */
 	public function __construct($entryID, $row = null) {
 		if ($entryID !== null) {
 			$sql = "SELECT		entry.*,
-						entry_rating.rating AS userRating 
+						entry_rating.rating AS userRating
+						".(WCF::getUser()->userID ? ', IF(subscription.userID IS NOT NULL, 1, 0) AS subscribed' : '')."
 				FROM 		wsif".WSIF_N."_entry entry
 				LEFT JOIN 	wsif".WSIF_N."_entry_rating entry_rating
 				ON 		(entry_rating.entryID = entry.entryID
 						AND ".(WCF::getUser()->userID ? "entry_rating.userID = ".WCF::getUser()->userID : "entry_rating.ipAddress = '".escapeString(WCF::getSession()->ipAddress)."'").")
+				LEFT JOIN 	wsif".WSIF_N."_entry_subscription subscription
+				ON 		(subscription.userID = ".WCF::getUser()->userID."
+						AND subscription.entryID = entry.entryID)" : '')."
 				WHERE 		entry.entryID = ".$entryID;
 			$row = WCF::getDB()->getFirstRow($sql);
 		}
@@ -47,34 +51,34 @@ class Entry extends DatabaseObject {
 	 */
 	protected function handleData($data) {
 		parent::handleData($data);
-		
+
 		// get prefix
 		if ($this->prefixID) {
 			$this->prefix = new EntryPrefix($this->prefixID);
 		}
 	}
-	
+
 	/**
 	 * Enters this entry.
 	 */
 	public function enter($category = null) {
 		if ($category == null || $category->categoryID != $this->categoryID) {
 			$category = new Category($this->categoryID);
-		}	
+		}
 		$category->enter();
-		
+
 		// check permissions
 		if ((!$category->getPermission('canViewEntry') && (!$category->getPermission('canViewOwnEntry') || !$this->userID || $this->userID != WCF::getUser()->userID)) || ($this->isDeleted && !$category->getModeratorPermission('canViewDeletedEntry')) || ($this->isDisabled && !$category->getModeratorPermission('canEnableEntry'))) {
 			throw new PermissionDeniedException();
 		}
-		
+
 		// refresh session
 		WCF::getSession()->setEntryID($this->entryID);
-			
+
 		// save category
 		$this->category = $category;
 	}
-	
+
 	/**
 	 * Returns the category of this entry.
 	 *
@@ -86,7 +90,7 @@ class Entry extends DatabaseObject {
 		}
 		return $this->category;
 	}
-	
+
 	/**
 	 * Returns the prefix of this entry.
 	 *
@@ -95,7 +99,7 @@ class Entry extends DatabaseObject {
 	public function getPrefix() {
 		return $this->prefix;
 	}
-	
+
 	/**
 	 * Returns the number of views per day.
 	 *
@@ -108,7 +112,7 @@ class Entry extends DatabaseObject {
 		}
 		return $this->views;
 	}
-	
+
 	/**
 	 * Returns the number of downloads per day.
 	 *
@@ -121,7 +125,7 @@ class Entry extends DatabaseObject {
 		}
 		return $this->downloads;
 	}
-	
+
 	/**
 	 * Returns true, if this entry is marked.
 	 *
@@ -131,40 +135,40 @@ class Entry extends DatabaseObject {
 		$sessionVars = WCF::getSession()->getVars();
 		if (isset($sessionVars['markedEntries'])) {
 			if (in_array($this->entryID, $sessionVars['markedEntries'])) return 1;
-		}		
+		}
 		return 0;
 	}
 
 	/**
 	 * Returns the tags of this entry.
-	 * 
+	 *
 	 * @return	array
 	 */
 	public function getTags($languageIDArray) {
 		// include files
 		require_once(WSIF_DIR.'lib/data/entry/TaggedEntry.class.php');
 		require_once(WCF_DIR.'lib/data/tag/TagEngine.class.php');
-		
+
 		// get tags
 		return TagEngine::getInstance()->getTagsByTaggedObject(new TaggedEntry(null, array(
 			'entryID' => $this->entryID,
 			'taggable' => TagEngine::getInstance()->getTaggable('com.wcfsolutions.wsif.entry')
 		)), $languageIDArray);
 	}
-	
+
 	/**
 	 * Returns true, if the active user can comment this entry.
-	 * 
+	 *
 	 * @param	Category		$category
 	 * @return	boolean
 	 */
 	public function isCommentable(Category $category) {
 		return $category->getPermission('canCommentEntry');
 	}
-	
+
 	/**
 	 * Returns true, if the active user can rate this entry.
-	 * 
+	 *
 	 * @param	Category		$category
 	 * @return	boolean
 	 */
@@ -174,10 +178,10 @@ class Entry extends DatabaseObject {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Returns true, if the active user can edit this entry.
-	 * 
+	 *
 	 * @param	Category		$category
 	 * @return	boolean
 	 */
@@ -187,10 +191,10 @@ class Entry extends DatabaseObject {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Returns true, if the active user can delete this entry.
-	 * 
+	 *
 	 * @param	Category		$category
 	 * @return	boolean
 	 */
@@ -200,7 +204,7 @@ class Entry extends DatabaseObject {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Returns an editor object for this entry.
 	 *

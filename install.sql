@@ -247,6 +247,13 @@ CREATE TABLE wsif1_1_entry_prefix_to_category (
 	PRIMARY KEY (categoryID, prefixID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS wsif1_1_entry_subscription;
+CREATE TABLE wsif1_1_entry_subscription (
+	userID INT(10) NOT NULL DEFAULT 0,
+	entryID INT(10) NOT NULL DEFAULT 0,
+	PRIMARY KEY (userID, entryID)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS wsif1_1_entry_visitor;
 CREATE TABLE wsif1_1_entry_visitor (
 	entryID INT(10) NOT NULL,
