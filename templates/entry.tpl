@@ -19,6 +19,12 @@
 
 							<div class="entryMessage">{@$entry->getFormattedMessage()}</div>
 
+							{if !$category->getPermission('canDownloadEntryFile')}
+								<div class="info">
+									{lang}wsif.entry.noDownloadPermission{/lang}
+								</div>
+							{/if}
+
 							{if !$socialBookmarks|empty}
 								<div class="buttonBar">
 									{@$socialBookmarks}

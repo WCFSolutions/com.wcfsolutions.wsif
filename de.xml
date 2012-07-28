@@ -612,6 +612,7 @@ Den neuen Kommentar erreichen Sie über den folgenden Link:
 		<item name="wsif.entry.file.information.description"><![CDATA[Die Informationen, die Sie hier angeben können, gelten für alle Dateien, die Sie zum Hochladen ausgewählt haben.]]></item>
 		<item name="wsif.entry.file.lastDownloadTime"><![CDATA[Letzter Download]]></item>
 		<item name="wsif.entry.file.link"><![CDATA[Verlinken]]></item>
+		<item name="wsif.entry.file.noDownloadPermission"><![CDATA[Sie besitzen nicht die notwendigen Rechte, um diese Datei herunterladen zu können.{if !$this->user->userID} Möglicherweise müssen Sie sich zunächst anmelden.{/if}]]></item>
 		<item name="wsif.entry.file.setAsDefault"><![CDATA[Zum Standard machen]]></item>
 		<item name="wsif.entry.file.share"><![CDATA[Verbreiten]]></item>
 		<item name="wsif.entry.file.time"><![CDATA[Datum hochgeladen]]></item>
@@ -683,6 +684,7 @@ Erlaubte Dateiendungen: {$allowedImageExtensions}]]></item>
 		<item name="wsif.entry.menu.link.entryComments"><![CDATA[Kommentare]]></item>
 		<item name="wsif.entry.menu.link.entryFiles"><![CDATA[Dateien]]></item>
 		<item name="wsif.entry.menu.link.entryImages"><![CDATA[Bilder]]></item>
+		<item name="wsif.entry.noDownloadPermission"><![CDATA[Sie besitzen nicht die notwendigen Rechte, um Dateien dieses Eintrags herunterladen zu können.{if !$this->user->userID} Möglicherweise müssen Sie sich zunächst anmelden.{/if}]]></item>
 		<item name="wsif.entry.permalink"><![CDATA[Permalink zum {#$messageNumber}. Eintrag]]></item>
 		<item name="wsif.entry.prefix"><![CDATA[Präfix]]></item>
 		<item name="wsif.entry.publishing"><![CDATA[Veröffentlichung]]></item>

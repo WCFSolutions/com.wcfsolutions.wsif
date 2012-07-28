@@ -19,6 +19,12 @@
 
 							{if $file->description}<p class="entryFileDescription">{@$file->getFormattedDescription()}</p>{/if}
 
+							{if !$category->getPermission('canDownloadEntryFile')}
+								<div class="info">
+									{lang}wsif.entry.file.noDownloadPermission{/lang}
+								</div>
+							{/if}
+
 							<div class="buttonBar">
 								<div class="smallButtons">
 									<ul>
