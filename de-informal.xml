@@ -220,7 +220,7 @@
 		<item name="wcf.acp.option.offline_message"><![CDATA[Deaktivierungsnachricht]]></item>
 		<item name="wcf.acp.option.offline_message.description"><![CDATA[Eine Nachricht, die während der Deaktivierung der Filebase angezeigt wird.]]></item>
 		<item name="wcf.acp.option.offline_message_allow_html"><![CDATA[HTML-Code in Deaktivierungsnachricht verwenden]]></item>
-		<item name="wcf.acp.option.offline_message_allow_html.description"><![CDATA[Durch Aktivierung dieser Option können Sie zur Formatierung des Textes auch HTML verwenden.]]></item>
+		<item name="wcf.acp.option.offline_message_allow_html.description"><![CDATA[Durch Aktivierung dieser Option kannst du zur Formatierung des Textes auch HTML verwenden.]]></item>
 		<item name="wcf.acp.option.profile_show_last_entries"><![CDATA[Letzte fünf Einträge aus der Filebase im Profil anzeigen]]></item>
 		<item name="wcf.acp.option.profile_show_last_entries.description"><![CDATA[Aktiviert die Anzeige der letzten fünf Einträge aus der Filebase auf der Startseite des Profils]]></item>
 		<item name="wcf.acp.option.show_clock"><![CDATA[Aktuelle Uhrzeit im Fußbereich der Filebase anzeigen]]></item>
@@ -278,7 +278,7 @@
 		<item name="wsif.acp.category.daysPrune"><![CDATA[Zeitfilter]]></item>
 		<item name="wsif.acp.category.delete"><![CDATA[Kategorie löschen]]></item>
 		<item name="wsif.acp.category.delete.success"><![CDATA[Die Kategorie wurde erfolgreich gelöscht.]]></item>
-		<item name="wsif.acp.category.delete.sure"><![CDATA[Wollen Sie diese Kategorie wirklich löschen?]]></item>
+		<item name="wsif.acp.category.delete.sure"><![CDATA[Willst du diese Kategorie wirklich löschen?]]></item>
 		<item name="wsif.acp.category.description"><![CDATA[Beschreibung]]></item>
 		<item name="wsif.acp.category.edit"><![CDATA[Kategorie bearbeiten]]></item>
 		<item name="wsif.acp.category.edit.success"><![CDATA[Die Kategorie wurde erfolgreich bearbeitet.]]></item>
@@ -354,12 +354,12 @@
 		<item name="wsif.acp.entry.prefix.assignedCategories"><![CDATA[Ausgewählte Kategorien]]></item>
 		<item name="wsif.acp.entry.prefix.assignedCategories.description"><![CDATA[Wähle hier die Kategorien, für die dieses Präfix verfügbar sein soll.]]></item>
 		<item name="wsif.acp.entry.prefix.delete.success"><![CDATA[Das Präfix wurde erfolgreich gelöscht.]]></item>
-		<item name="wsif.acp.entry.prefix.delete.sure"><![CDATA[Wollen Sie dieses Präfix wirklich löschen?]]></item>
+		<item name="wsif.acp.entry.prefix.delete.sure"><![CDATA[Willst du dieses Präfix wirklich löschen?]]></item>
 		<item name="wsif.acp.entry.prefix.edit"><![CDATA[Präfix bearbeiten]]></item>
 		<item name="wsif.acp.entry.prefix.edit.success"><![CDATA[Ihre Änderungen wurden erfolgreich gespeichert.]]></item>
 		<item name="wsif.acp.entry.prefix.general"><![CDATA[Allgemein]]></item>
 		<item name="wsif.acp.entry.prefix.language"><![CDATA[Sprache]]></item>
-		<item name="wsif.acp.entry.prefix.language.description"><![CDATA[Bestimmen Sie hier die Sprache des Präfixes.]]></item>
+		<item name="wsif.acp.entry.prefix.language.description"><![CDATA[Bestimme hier die Sprache des Präfixes.]]></item>
 		<item name="wsif.acp.entry.prefix.prefixMarking"><![CDATA[Markierung]]></item>
 		<item name="wsif.acp.entry.prefix.prefixMarking.description"><![CDATA[Hier kannst du die HTML-Formatierung der Anzeige von dem Präfix ändern. &lt;strong&gt;%s&lt;/strong&gt; stellt den Namen des Präfixes beispielsweise fett dar.]]></item>
 		<item name="wsif.acp.entry.prefix.prefixName"><![CDATA[Präfixname]]></item>
@@ -433,7 +433,7 @@
 		<item name="wsif.category.entries.delete.sure"><![CDATA[Willst du diesen Eintrag wirklich löschen?]]></item>
 		<item name="wsif.category.entries.deleteCompletely.sure"><![CDATA[Willst du diesen Eintrag wirklich endgültig löschen?]]></item>
 		<item name="wsif.category.entries.deleteMarked.reason"><![CDATA[Willst du die markierten Einträge wirklich löschen, optional mit folgender Begründung?]]></item>
-		<item name="wsif.category.entries.deleteMarked.sure"><![CDATA[Willst du Sie die markierten Einträge wirklich löschen?]]></item>
+		<item name="wsif.category.entries.deleteMarked.sure"><![CDATA[Willst du die markierten Einträge wirklich löschen?]]></item>
 		<item name="wsif.category.entries.disable"><![CDATA[Deaktivieren]]></item>
 		<item name="wsif.category.entries.editPrefix"><![CDATA[Präfix bearbeiten]]></item>
 		<item name="wsif.category.entries.editTitle"><![CDATA[Titel bearbeiten]]></item>
@@ -502,7 +502,7 @@
 		<item name="wsif.entry.comment.newEntryComment"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> zu "{$event->additionalData.entrySubject}" erstellt.]]></item>
 		<item name="wsif.entry.comment.newEntryComment.accept"><![CDATA[Bestätigen]]></item>
 		<item name="wsif.entry.comment.newEntryComment.title"><![CDATA[Neuer Kommentar bei eigenen Einträgen]]></item>
-		<item name="wsif.entry.comment.newEntryComment.description"><![CDATA[Sie erhalten eine neue Benachrichtigung, wenn jemand einen Ihrer Einträge kommentiert.]]></item>
+		<item name="wsif.entry.comment.newEntryComment.description"><![CDATA[Du erhältst eine neue Benachrichtigung, wenn jemand einen Ihrer Einträge kommentiert.]]></item>
 		<item name="wsif.entry.comment.newEntryComment.short"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> erstellt.]]></item>
 		<item name="wsif.entry.comment.newEntryComment.medium"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> erstellt.]]></item>
 		<item name="wsif.entry.comment.newEntryComment.userMessages"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> zu "{$event->additionalData.entrySubject}" erstellt.]]></item>
@@ -546,7 +546,7 @@ Den neuen Kommentar erreichst du über den folgenden Link:
 		<item name="wsif.entry.entrySubscription"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> zu "{$event->additionalData.entrySubject}" erstellt.]]></item>
 		<item name="wsif.entry.entrySubscription.accept"><![CDATA[Bestätigen]]></item>
 		<item name="wsif.entry.entrySubscription.title"><![CDATA[Neuer Kommentar bei Abonnements]]></item>
-		<item name="wsif.entry.entrySubscription.description"><![CDATA[Sie erhalten eine neue Benachrichtigung, wenn jemand einen Ihrer abonnierten Einträge kommentiert.]]></item>
+		<item name="wsif.entry.entrySubscription.description"><![CDATA[Du erhältst eine neue Benachrichtigung, wenn jemand einen Ihrer abonnierten Einträge kommentiert.]]></item>
 		<item name="wsif.entry.entrySubscription.short"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> erstellt.]]></item>
 		<item name="wsif.entry.entrySubscription.medium"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> erstellt.]]></item>
 		<item name="wsif.entry.entrySubscription.userMessages"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> zu "{$event->additionalData.entrySubject}" erstellt.]]></item>
@@ -714,7 +714,7 @@ Erlaubte Dateiendungen: {$allowedImageExtensions}]]></item>
 		<item name="wsif.header.userMenu.moderation"><![CDATA[Moderation]]></item>
 		<item name="wsif.header.userMenu.profile"><![CDATA[Profil bearbeiten]]></item>
 		<item name="wsif.header.userMenu.register"><![CDATA[Registrieren]]></item>
-		<item name="wsif.header.userNote.guest"><![CDATA[Sie sind nicht angemeldet.]]></item>
+		<item name="wsif.header.userNote.guest"><![CDATA[Du bist nicht angemeldet.]]></item>
 		<item name="wsif.header.userNote.user"><![CDATA[Angemeldet als <a href="index.php?page=User&amp;userID={@$this->user->userID}{@SID_ARG_2ND}">{$this->user->username}</a>.]]></item>
 		<item name="wsif.header.welcomeBack"><![CDATA[Willkommen zurück, {$this->user->username}!]]></item>
 	</category>
