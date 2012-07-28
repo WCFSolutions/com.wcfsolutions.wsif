@@ -23,7 +23,7 @@ class EntryUnsubscribeAction extends AbstractEntryAction {
 			throw new PermissionDeniedException();
 		}
 
-		if (!$this->entry->isCommentable()) {
+		if (!$this->entry->isCommentable($this->category)) {
 			throw new IllegalLinkException();
 		}
 
