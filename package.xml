@@ -106,10 +106,12 @@
 		<languages languagecode="de-informal">de-informal.xml</languages>
 	</instructions>
 
-	<instructions type="update" fromversion="2.0.2">
+	<instructions type="update" fromversion="2.0.5">
 		<!-- files -->
 		<files>files.tar</files>
 		<templates>templates.tar</templates>
+		<acptemplates>acptemplates.tar</acptemplates>
+		<sql>update_205.sql</sql>
 
 		<!-- config -->
 		<notificationobjecttype>notificationobjecttype.xml</notificationobjecttype>
