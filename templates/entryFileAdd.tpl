@@ -182,7 +182,7 @@
 							//]]>
 						</script>
 					</fieldset>
-				{else}
+				{elseif $file->isUpload()}
 					<fieldset{if $errorField == 'upload'} class="formError"{/if}>
 						<legend>{lang}wsif.entry.file.replace{/lang}</legend>
 

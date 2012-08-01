@@ -133,7 +133,10 @@ class EntryFileEditor extends EntryFile {
 		if ($ipAddress == null) $ipAddress = WCF::getSession()->ipAddress;
 
 		// validate file
-		$filesize = self::validateUploadedFile($field, $tmpName, $filename);
+		$filesize = 0;
+		if ($fileType == self::TYPE_UPLOAD) {
+			$filesize = self::validateUploadedFile($field, $tmpName, $filename);
+		}
 
 		// use filename as title
 		if (empty($title)) {
