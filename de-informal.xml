@@ -481,16 +481,6 @@
 	<category name="wsif.entry">
 		<item name="wsif.entry"><![CDATA[Eintrag]]></item>
 		<item name="wsif.entry.add"><![CDATA[Eintrag hinzufügen]]></item>
-		<item name="wsif.entry.add.file.button.add"><![CDATA[Datei hinzufügen]]></item>
-		<item name="wsif.entry.add.file.button.upload"><![CDATA[Datei hochladen]]></item>
-		<item name="wsif.entry.add.file.upload.error.illegalExtension"><![CDATA[Die Datei hat eine ungültige Dateiendung.]]></item>
-		<item name="wsif.entry.add.file.upload.error.tooLarge"><![CDATA[Die Datei überschreitet die erlaubte Maximalgröße.]]></item>
-		<item name="wsif.entry.add.image.button.upload"><![CDATA[Bild hochladen]]></item>
-		<item name="wsif.entry.add.image.upload.error.badImage"><![CDATA[Die Datei ist beschädigt oder kein gültiges Bild.]]></item>
-		<item name="wsif.entry.add.image.upload.error.copyFailed"><![CDATA[Das Bild konnte nicht erfolgreich kopiert werden.]]></item>
-		<item name="wsif.entry.add.image.upload.error.illegalExtension"><![CDATA[Das Bild hat eine ungültige Dateiendung.]]></item>
-		<item name="wsif.entry.add.image.upload.error.tooLarge"><![CDATA[Das Bild überschreitet die erlaubte Maximalgröße.]]></item>
-		<item name="wsif.entry.add.image.upload.error.uploadFailed"><![CDATA[Das Hochladen des Bilds ist fehlgeschlagen.]]></item>
 		<item name="wsif.entry.add.moderation.redirect"><![CDATA[Dein Eintrag wurde erfolgreich gespeichert. Er wird von einem Moderator überprüft und, falls keine Beanstandung vorliegt, für alle anderen Benutzer freigegeben.]]></item>
 		<item name="wsif.entry.allComments"><![CDATA[Alle Kommentare anzeigen]]></item>
 		<item name="wsif.entry.allFiles"><![CDATA[Alle Dateien anzeigen]]></item>
@@ -629,11 +619,11 @@ Erlaubte Dateiendungen: {$allowedFileExtensions}]]></item>
 Maximale Anzahl an Dateien: {#$maxFiles}<br />
 Maximale Dateigröße: {@$maxFileSize|filesize}<br />
 Erlaubte Dateiendungen: {$allowedFileExtensions}]]></item>
-		<item name="wsif.entry.file.upload.error.copyFailed"><![CDATA[Die Datei &raquo;{$error.filename}&laquo; konnte nicht erfolgreich kopiert werden.]]></item>
-		<item name="wsif.entry.file.upload.error.illegalExtension"><![CDATA[Die Datei &raquo;{$error.filename}&laquo; hat eine ungültige Dateiendung.]]></item>
-		<item name="wsif.entry.file.upload.error.tooLarge"><![CDATA[Die Datei &raquo;{$error.filename}&laquo; überschreitet die erlaubte Maximalgröße.]]></item>
+		<item name="wsif.entry.file.upload.error.copyFailed"><![CDATA[Die Datei &raquo;{$filename}&laquo; konnte nicht erfolgreich kopiert werden.]]></item>
+		<item name="wsif.entry.file.upload.error.illegalExtension"><![CDATA[Die Datei &raquo;{$filename}&laquo; hat eine ungültige Dateiendung.]]></item>
+		<item name="wsif.entry.file.upload.error.tooLarge"><![CDATA[Die Datei &raquo;{$filename}&laquo; überschreitet die erlaubte Maximalgröße.]]></item>
 		<item name="wsif.entry.file.upload.error.tooManyFiles"><![CDATA[Du kannst keine weiteren Dateien mehr hochladen, da du die maximale Anzahl erreicht hast.]]></item>
-		<item name="wsif.entry.file.upload.error.uploadFailed"><![CDATA[Das Hochladen der Datei &raquo;{$error.filename}&laquo; ist fehlgeschlagen.]]></item>
+		<item name="wsif.entry.file.upload.error.uploadFailed"><![CDATA[Das Hochladen der Datei &raquo;{$filename}&laquo; ist fehlgeschlagen.]]></item>
 		<item name="wsif.entry.file.uploader"><![CDATA[Uploader]]></item>
 		<item name="wsif.entry.file.views"><![CDATA[Aufrufe]]></item>
 		<item name="wsif.entry.file.viewsPerDay"><![CDATA[{#$file->getViewsPerDay()} Aufrufe pro Tag]]></item>
@@ -682,12 +672,12 @@ Erlaubte Dateiendungen: {$allowedImageExtensions}]]></item>
 Maximale Anzahl an Bildern: {#$maxImages}<br />
 Maximale Dateigröße: {@$maxImageSize|filesize}<br />
 Erlaubte Dateiendungen: {$allowedImageExtensions}]]></item>
-		<item name="wsif.entry.image.upload.error.badImage"><![CDATA[Die Datei &raquo;{$error.filename}&laquo; ist beschädigt oder kein gültiges Bild.]]></item>
-		<item name="wsif.entry.image.upload.error.copyFailed"><![CDATA[Das Bild &raquo;{$error.filename}&laquo; konnte nicht erfolgreich kopiert werden.]]></item>
-		<item name="wsif.entry.image.upload.error.illegalExtension"><![CDATA[Das Bild &raquo;{$error.filename}&laquo; hat eine ungültige Dateiendung.]]></item>
-		<item name="wsif.entry.image.upload.error.tooLarge"><![CDATA[Das Bild &raquo;{$error.filename}&laquo; überschreitet die erlaubte Maximalgröße.]]></item>
+		<item name="wsif.entry.image.upload.error.badImage"><![CDATA[Die Datei &raquo;{$filename}&laquo; ist beschädigt oder kein gültiges Bild.]]></item>
+		<item name="wsif.entry.image.upload.error.copyFailed"><![CDATA[Das Bild &raquo;{$filename}&laquo; konnte nicht erfolgreich kopiert werden.]]></item>
+		<item name="wsif.entry.image.upload.error.illegalExtension"><![CDATA[Das Bild &raquo;{$filename}&laquo; hat eine ungültige Dateiendung.]]></item>
+		<item name="wsif.entry.image.upload.error.tooLarge"><![CDATA[Das Bild &raquo;{$filename}&laquo; überschreitet die erlaubte Maximalgröße.]]></item>
 		<item name="wsif.entry.image.upload.error.tooManyImages"><![CDATA[Du kannst keine weiteren Bilder mehr hochladen, da du die maximale Anzahl erreicht hast.]]></item>
-		<item name="wsif.entry.image.upload.error.uploadFailed"><![CDATA[Das Hochladen des Bilds &raquo;{$error.filename}&laquo; ist fehlgeschlagen.]]></item>
+		<item name="wsif.entry.image.upload.error.uploadFailed"><![CDATA[Das Hochladen des Bilds &raquo;{$filename}&laquo; ist fehlgeschlagen.]]></item>
 		<item name="wsif.entry.image.uploader"><![CDATA[Hochgeladen von]]></item>
 		<item name="wsif.entry.image.views"><![CDATA[Aufrufe]]></item>
 		<item name="wsif.entry.image.viewsPerDay"><![CDATA[{#$image->getViewsPerDay()} Aufrufe pro Tag]]></item>

@@ -50,6 +50,7 @@
 							<div class="innerError">
 								{if $errorType|is_array}
 									{foreach from=$errorType item=error}
+										{assign var=filename value=$error.filename}
 										<p>
 											{if $error.errorType == 'uploadFailed'}{lang}wsif.entry.image.upload.error.uploadFailed{/lang}{/if}
 											{if $error.errorType == 'copyFailed'}{lang}wsif.entry.image.upload.error.copyFailed{/lang}{/if}
@@ -148,7 +149,7 @@
 						{if $errorField == 'upload'}
 							<div class="innerError">
 								{if $errorType|is_array && $errorType.0|isset}
-									{assign var=error value=$errorType.0}
+									{assign var=filename value=$errorType.0.filename}
 									<p>
 										{if $error.errorType == 'uploadFailed'}{lang}wsif.entry.image.upload.error.uploadFailed{/lang}{/if}
 										{if $error.errorType == 'copyFailed'}{lang}wsif.entry.image.upload.error.copyFailed{/lang}{/if}

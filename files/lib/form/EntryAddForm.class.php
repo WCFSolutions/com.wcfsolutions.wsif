@@ -392,7 +392,12 @@ class EntryAddForm extends MessageForm {
 		}
 
 		// create image
-		$this->image = EntryImageEditor::create('imageUpload', 0, WCF::getUser()->userID, $this->username, $this->imageUpload['tmp_name'], $this->imageUpload['name'], '', '');
+		try {
+			$this->image = EntryImageEditor::create('imageUpload', 0, WCF::getUser()->userID, $this->username, $this->imageUpload['tmp_name'], $this->imageUpload['name'], '', '');
+		}
+		catch (UserInputException $e) {
+			throw new UserInputException('imageUpload', array('errorType' => $e->getType(), 'filename' => $this->imageUpload['name']));
+		}
 		$this->imageID = $this->image->imageID;
 	}
 
@@ -406,7 +411,12 @@ class EntryAddForm extends MessageForm {
 		}
 
 		// create file
-		$this->file = EntryFileEditor::create('fileUpload', 0, WCF::getUser()->userID, $this->username, $this->fileUpload['tmp_name'], $this->fileUpload['name'], $this->fileUpload['type'], '', '', $this->fileType);
+		try {
+			$this->file = EntryFileEditor::create('fileUpload', 0, WCF::getUser()->userID, $this->username, $this->fileUpload['tmp_name'], $this->fileUpload['name'], $this->fileUpload['type'], '', '', $this->fileType);
+		}
+		catch (UserInputException $e) {
+			throw new UserInputException('fileUpload', array('errorType' => $e->getType(), 'filename' => $this->fileUpload['name']));
+		}
 		$this->fileID = $this->file->fileID;
 	}
 

@@ -219,7 +219,6 @@
 					<legend>{lang}wsif.entry.image.default{/lang}</legend>
 
 					{if $imageID}
-						Das Bild &raquo;{$image->title}&laquo; wurde erfolgreich hochgeladen.{if $this->user->getPermission('user.filebase.maxImagesPerEntry') > 1} Im Anschluss können Sie weitere Bilder hinzuf&uuml;gen.{/if}
 						{lang}wsif.entry.image.default.add.success{/lang}
 					{else}
 						{lang}wsif.entry.image.default.add.description{/lang}
@@ -230,12 +229,15 @@
 
 							{if $errorField == 'imageUpload'}
 								<div class="innerError">
-									{if $errorType == 'uploadFailed'}{lang}wsif.entry.add.image.upload.error.uploadFailed{/lang}{/if}
-									{if $errorType == 'copyFailed'}{lang}wsif.entry.add.image.upload.error.copyFailed{/lang}{/if}
-									{if $errorType == 'illegalExtension'}{lang}wsif.entry.add.image.upload.error.illegalExtension{/lang}{/if}
-									{if $errorType == 'tooLarge'}{lang}wsif.entry.add.image.upload.error.tooLarge{/lang}{/if}
-									{if $errorType == 'badImage'}{lang}wsif.entry.add.image.upload.error.badImage{/lang}{/if}
-									{if $errorType == 'tooManyImages'}{lang}wsif.entry.image.upload.error.tooManyImages{/lang}{/if}
+									{if $errorType|is_array}
+										{assign var=filename value=$errorType.filename}
+										{if $errorType.errorType == 'uploadFailed'}{lang}wsif.entry.add.image.upload.error.uploadFailed{/lang}{/if}
+										{if $errorType.errorType == 'copyFailed'}{lang}wsif.entry.add.image.upload.error.copyFailed{/lang}{/if}
+										{if $errorType.errorType == 'illegalExtension'}{lang}wsif.entry.add.image.upload.error.illegalExtension{/lang}{/if}
+										{if $errorType.errorType == 'tooLarge'}{lang}wsif.entry.add.image.upload.error.tooLarge{/lang}{/if}
+										{if $errorType.errorType == 'badImage'}{lang}wsif.entry.add.image.upload.error.badImage{/lang}{/if}
+										{if $errorType.errorType == 'tooManyImages'}{lang}wsif.entry.image.upload.error.tooManyImages{/lang}{/if}
+									{/if}
 								</div>
 							{/if}
 
@@ -250,7 +252,6 @@
 					<legend>{lang}wsif.entry.file.default{/lang}</legend>
 
 					{if $fileID}
-						Die Datei &raquo;{$file->title}&laquo; wurde erfolgreich hochgeladen.{if $this->user->getPermission('user.filebase.maxImagesPerEntry') > 1} Im Anschluss können Sie weitere Dateien hinzuf&uuml;gen.{/if}
 						{lang}wsif.entry.file.default.add.success{/lang}
 					{else}
 						{lang}wsif.entry.file.default.upload.description{/lang}
@@ -305,12 +306,14 @@
 
 							{if $errorField == 'fileUpload'}
 								<div class="innerError">
-									{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
-									{if $errorType == 'uploadFailed'}{lang}wsif.entry.file.add.upload.error.uploadFailed{/lang}{/if}
-									{if $errorType == 'copyFailed'}{lang}wsif.entry.file.add.upload.error.copyFailed{/lang}{/if}
-									{if $errorType == 'illegalExtension'}{lang}wsif.entry.add.file.upload.error.illegalExtension{/lang}{/if}
-									{if $errorType == 'tooLarge'}{lang}wsif.entry.add.file.upload.error.tooLarge{/lang}{/if}
-									{if $errorType == 'tooManyFiles'}{lang}wsif.entry.file.upload.error.tooManyFiles{/lang}{/if}
+									{if $errorType|is_array}
+										{assign var=filename value=$errorType.filename}
+										{if $errorType.errorType == 'uploadFailed'}{lang}wsif.entry.file.add.upload.error.uploadFailed{/lang}{/if}
+										{if $errorType.errorType == 'copyFailed'}{lang}wsif.entry.file.add.upload.error.copyFailed{/lang}{/if}
+										{if $errorType.errorType == 'illegalExtension'}{lang}wsif.entry.add.file.upload.error.illegalExtension{/lang}{/if}
+										{if $errorType.errorType == 'tooLarge'}{lang}wsif.entry.add.file.upload.error.tooLarge{/lang}{/if}
+										{if $errorType.errorType == 'tooManyFiles'}{lang}wsif.entry.file.upload.error.tooManyFiles{/lang}{/if}
+									{elseif $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
 								</div>
 							{/if}
 
