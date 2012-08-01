@@ -113,10 +113,8 @@ class EntryAddForm extends MessageForm {
 	public $externalURL = '';
 
 	protected $maxFileSize = 0;
-	protected $maxFiles = 0;
 
 	protected $maxImageSize = 0;
-	protected $maxImages = 0;
 
 	/**
 	 * @see Page::readParameters()
@@ -139,11 +137,9 @@ class EntryAddForm extends MessageForm {
 
 		// get file quota
 		$this->maxFileSize = WCF::getUser()->getPermission('user.filebase.maxEntryFileSize');
-		$this->maxFiles = WCF::getUser()->getPermission('user.filebase.maxFilesPerEntry');
 
 		// get image quota
 		$this->maxImageSize = WCF::getUser()->getPermission('user.filebase.maxEntryImageSize');
-		$this->maxImages = WCF::getUser()->getPermission('user.filebase.maxImagesPerEntry');
 	}
 
 	/**
@@ -522,12 +518,8 @@ class EntryAddForm extends MessageForm {
 			'file' => $this->file,
 			'fileType' => $this->fileType,
 			'externalURL' => $this->externalURL,
-			'freeFiles' => $this->maxFiles,
-			'maxFiles' => $this->maxFiles,
 			'maxFileSize' => $this->maxFileSize,
 			'allowedFileExtensions' => EntryFileEditor::getAllowedFileExtensionsDesc(),
-			'freeImages' => $this->maxImages,
-			'maxImages' => $this->maxImages,
 			'maxImageSize' => $this->maxImageSize,
 			'allowedImageExtensions' => EntryImageEditor::getAllowedImageExtensionsDesc()
 		));
