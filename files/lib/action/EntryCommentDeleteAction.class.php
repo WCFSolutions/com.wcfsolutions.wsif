@@ -92,8 +92,8 @@ class EntryCommentDeleteAction extends AbstractSecureAction {
 		$this->comment->delete();
 
 		// update comment count
-		$this->frame->getEntry()->getEditor()->updateComments(-1);
-		$this->frame->getCategory()->getEditor()->updateEntryComments(-1);
+		$this->entry->updateComments(-1);
+		$this->category->updateEntryComments(-1);
 		$this->executed();
 
 		// forward

@@ -152,8 +152,8 @@ class EntryCommentEditor extends EntryComment {
 		if (empty($commentIDs)) return;
 
 		// revoke notifications
-		$sql = "SELECT	commentID, comment
-			FROM	wsif".WSIF_N."_comment
+		$sql = "SELECT	commentID, subject
+			FROM	wsif".WSIF_N."_entry_comment
 			WHERE	commentID IN (".$commentIDs.")";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {

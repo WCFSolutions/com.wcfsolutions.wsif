@@ -175,6 +175,7 @@ class EntryAddForm extends MessageForm {
 		}
 		if (isset($_POST['teaser'])) $this->teaser = StringUtil::trim($_POST['teaser']);
 		if (isset($_POST['preview'])) $this->preview = (boolean) $_POST['preview'];
+		if (isset($_POST['send'])) $this->send = (boolean) $_POST['send'];
 		if (isset($_POST['languageID'])) $this->languageID = intval($_POST['languageID']);
 		if (isset($_POST['tags'])) $this->tags = StringUtil::trim($_POST['tags']);
 		if ($this->category->getModeratorPermission('canEnableEntry')) {

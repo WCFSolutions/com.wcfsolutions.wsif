@@ -40,7 +40,7 @@ class EntryCommentNotificationObject extends ViewableEntryComment implements Not
 	 * @see NotificationObject::getTitle()
 	 */
 	public function getTitle() {
-		return $this->getExcerpt();
+		return $this->subject;
 	}
 
 	/**
@@ -61,11 +61,11 @@ class EntryCommentNotificationObject extends ViewableEntryComment implements Not
 	 * @see ViewableEntryComment::getFormattedMessage()
 	 */
 	public function getFormattedMessage($outputType = 'text/html') {
-		$comment = parent::getFormattedComment();
+		$message = parent::getFormattedMessage();
 		if ($outputType == 'text/plain') {
-			$comment = StringUtil::stripHTML($comment);
+			$message = StringUtil::stripHTML($message);
 		}
-		return $comment;
+		return $message;
 	}
 }
 ?>
