@@ -483,11 +483,9 @@
 		<item name="wsif.entry.add"><![CDATA[Eintrag hinzufügen]]></item>
 		<item name="wsif.entry.add.file.button.add"><![CDATA[Datei hinzufügen]]></item>
 		<item name="wsif.entry.add.file.button.upload"><![CDATA[Datei hochladen]]></item>
-		<item name="wsif.entry.add.file.upload"><![CDATA[Datei auswählen]]></item>
 		<item name="wsif.entry.add.file.upload.error.illegalExtension"><![CDATA[Die Datei hat eine ungültige Dateiendung.]]></item>
 		<item name="wsif.entry.add.file.upload.error.tooLarge"><![CDATA[Die Datei überschreitet die erlaubte Maximalgröße.]]></item>
 		<item name="wsif.entry.add.image.button.upload"><![CDATA[Bild hochladen]]></item>
-		<item name="wsif.entry.add.image.upload"><![CDATA[Bild auswählen]]></item>
 		<item name="wsif.entry.add.image.upload.error.badImage"><![CDATA[Die Datei ist beschädigt oder kein gültiges Bild.]]></item>
 		<item name="wsif.entry.add.image.upload.error.copyFailed"><![CDATA[Das Bild konnte nicht erfolgreich kopiert werden.]]></item>
 		<item name="wsif.entry.add.image.upload.error.illegalExtension"><![CDATA[Das Bild hat eine ungültige Dateiendung.]]></item>
@@ -591,6 +589,13 @@ Den neuen Kommentar erreichst du über den folgenden Link:
 		<item name="wsif.entry.file.add.upload.error.copyFailed"><![CDATA[Die Datei konnte nicht erfolgreich kopiert werden.]]></item>
 		<item name="wsif.entry.file.add.upload.error.uploadFailed"><![CDATA[Das Hochladen der Datei ist fehlgeschlagen.]]></item>
 		<item name="wsif.entry.file.by"><![CDATA[Von]]></item>
+		<item name="wsif.entry.file.default"><![CDATA[Hauptdatei]]></item>
+		<item name="wsif.entry.file.default.add.description"><![CDATA[Hier kannst du die Hauptdatei des Eintrags hinzufügen.]]></item>
+		<item name="wsif.entry.file.default.add.success"><![CDATA[Die Hauptdatei &raquo;{$file->title}&laquo; wurde erfolgreich gespeichert.{if $this->user->getPermission('user.filebase.maxImagesPerEntry') > 1} Im Anschluss kannst du weitere Dateien hinzufügen.{/if}]]></item>
+		<item name="wsif.entry.file.default.fileType"><![CDATA[Typ der Datei]]></item>
+		<item name="wsif.entry.file.default.upload"><![CDATA[Datei auswählen]]></item>
+		<item name="wsif.entry.file.default.upload.description"><![CDATA[Maximale Dateigröße: {@$maxFileSize|filesize}<br />
+Erlaubte Dateiendungen: {$allowedFileExtensions}]]></item>
 		<item name="wsif.entry.file.delete"><![CDATA[Datei löschen]]></item>
 		<item name="wsif.entry.file.delete.sure"><![CDATA[Willst du diese Datei wirklich löschen?]]></item>
 		<item name="wsif.entry.file.description"><![CDATA[Beschreibung]]></item>
@@ -641,6 +646,12 @@ Erlaubte Dateiendungen: {$allowedFileExtensions}]]></item>
 		<item name="wsif.entry.image.add"><![CDATA[Bilder hinzufügen]]></item>
 		<item name="wsif.entry.image.add.success"><![CDATA[{if $images|count != 1}{#$images|count} Bilder wurden{else}Ein Bild wurde{/if} erfolgreich hinzugefügt.]]></item>
 		<item name="wsif.entry.image.by"><![CDATA[Von]]></item>
+		<item name="wsif.entry.image.default"><![CDATA[Hauptdatei]]></item>
+		<item name="wsif.entry.image.default.add.description"><![CDATA[Hier kannst du das Vorschaubild des Eintrags hinzufügen.]]></item>
+		<item name="wsif.entry.image.default.add.success"><![CDATA[Das Bild &raquo;{$image->title}&laquo; wurde erfolgreich hochgeladen.{if $this->user->getPermission('user.filebase.maxImagesPerEntry') > 1} Im Anschluss kannst du weitere Bilder hinzufügen.{/if}]]></item>
+		<item name="wsif.entry.image.default.upload"><![CDATA[Bild auswählen]]></item>
+		<item name="wsif.entry.image.default.upload.description"><![CDATA[Maximale Dateigröße: {@$maxFileSize|filesize}<br />
+Erlaubte Dateiendungen: {$allowedFileExtensions}]]></item>
 		<item name="wsif.entry.image.delete"><![CDATA[Bild löschen]]></item>
 		<item name="wsif.entry.image.delete.sure"><![CDATA[Willst du dieses Bild wirklich löschen?]]></item>
 		<item name="wsif.entry.image.description"><![CDATA[Beschreibung]]></item>

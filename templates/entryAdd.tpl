@@ -131,7 +131,7 @@
 							<label for="teaser">{lang}wsif.entry.teaser{/lang}</label>
 						</div>
 						<div class="formField">
-							<textarea id="teaser" name="teaser" rows="5" cols="40">{@$teaser}</textarea>
+							<textarea id="teaser" name="teaser" rows="5" cols="40" tabindex="{counter name='tabindex'}">{@$teaser}</textarea>
 							{if $errorField == 'teaser'}
 								<p class="innerError">
 									{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
@@ -216,15 +216,16 @@
 				{/if}
 
 				<fieldset>
-					<legend>{lang}wsif.entry.image{/lang}</legend>
+					<legend>{lang}wsif.entry.image.default{/lang}</legend>
 
 					{if $imageID}
 						Das Bild &raquo;{$image->title}&laquo; wurde erfolgreich hochgeladen.{if $this->user->getPermission('user.filebase.maxImagesPerEntry') > 1} Im Anschluss können Sie weitere Bilder hinzuf&uuml;gen.{/if}
+						{lang}wsif.entry.image.default.add.success{/lang}
 					{else}
-						{lang}wsif.entry.add.image.upload.description{/lang}
+						{lang}wsif.entry.image.default.add.description{/lang}
 
 						<fieldset{if $errorField == 'upload'} class="formError"{/if}>
-							<legend>{lang}wsif.entry.add.image.upload{/lang}</legend>
+							<legend>{lang}wsif.entry.image.default.upload{/lang}</legend>
 							<input type="file" size="50" name="imageUpload" tabindex="{counter name='tabindex'}" />
 
 							{if $errorField == 'imageUpload'}
@@ -239,19 +240,20 @@
 							{/if}
 
 							<div class="formFieldDesc">
-								<p>{lang}wsif.entry.image.upload.description{/lang}</p>
+								<p>{lang}wsif.entry.image.default.upload.description{/lang}</p>
 							</div>
 						</fieldset>
 					{/if}
 				</fieldset>
 
 				<fieldset>
-					<legend>{lang}wsif.entry.file{/lang}</legend>
+					<legend>{lang}wsif.entry.file.default{/lang}</legend>
 
 					{if $fileID}
 						Die Datei &raquo;{$file->title}&laquo; wurde erfolgreich hochgeladen.{if $this->user->getPermission('user.filebase.maxImagesPerEntry') > 1} Im Anschluss können Sie weitere Dateien hinzuf&uuml;gen.{/if}
+						{lang}wsif.entry.file.default.add.success{/lang}
 					{else}
-						{lang}wsif.entry.add.file.upload.description{/lang}
+						{lang}wsif.entry.file.default.upload.description{/lang}
 
 						<script type="text/javascript">
 							//<![CDATA[
@@ -272,15 +274,15 @@
 						</script>
 
 						<fieldset>
-							<legend>{lang}wsif.entry.file.fileType{/lang}</legend>
+							<legend>{lang}wsif.entry.file.default.fileType{/lang}</legend>
 
 							<div class="formGroup{if $errorField == 'fileType'} formError{/if}">
 								<div class="formGroupLabel">
-									{lang}wsif.entry.file.fileType{/lang}
+									{lang}wsif.entry.file.default.fileType{/lang}
 								</div>
 								<div class="formGroupField">
 									<fieldset>
-										<legend>{lang}wsif.entry.file.fileType{/lang}</legend>
+										<legend>{lang}wsif.entry.file.default.fileType{/lang}</legend>
 										<div class="formField">
 											<ul class="formOptions">
 												<li><label><input onclick="if (IS_SAFARI) setFileType(0)" onfocus="setFileType(0)" type="radio" name="fileType" value="0" {if $fileType == 0}checked="checked" {/if}tabindex="{counter name='tabindex'}" /> {lang}wsif.entry.file.fileType.0{/lang}</label></li>
@@ -290,10 +292,30 @@
 									</fieldset>
 									{if $errorField == 'fileType'}
 										<p class="innerError">
-											{if $errorType == 'invalid'}{lang}wsif.entry.file.error.fileType.invalid{/lang}{/if}
+											{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
 										</p>
 									{/if}
 								</div>
+							</div>
+						</fieldset>
+
+						<fieldset{if $errorField == 'fileUpload'} class="formError"{/if} id="uploadDiv">
+							<legend>{lang}wsif.entry.file.default.upload{/lang}</legend>
+							<input type="file" size="50" name="fileUpload" tabindex="{counter name='tabindex'}" />
+
+							{if $errorField == 'fileUpload'}
+								<div class="innerError">
+									{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
+									{if $errorType == 'uploadFailed'}{lang}wsif.entry.file.add.upload.error.uploadFailed{/lang}{/if}
+									{if $errorType == 'copyFailed'}{lang}wsif.entry.file.add.upload.error.copyFailed{/lang}{/if}
+									{if $errorType == 'illegalExtension'}{lang}wsif.entry.add.file.upload.error.illegalExtension{/lang}{/if}
+									{if $errorType == 'tooLarge'}{lang}wsif.entry.add.file.upload.error.tooLarge{/lang}{/if}
+									{if $errorType == 'tooManyFiles'}{lang}wsif.entry.file.upload.error.tooManyFiles{/lang}{/if}
+								</div>
+							{/if}
+
+							<div class="formFieldDesc">
+								<p>{lang}wsif.entry.file.default.upload.description{/lang}</p>
 							</div>
 						</fieldset>
 
@@ -312,26 +334,6 @@
 										</p>
 									{/if}
 								</div>
-							</div>
-						</fieldset>
-
-						<fieldset{if $errorField == 'fileUpload'} class="formError"{/if} id="uploadDiv">
-							<legend>{lang}wsif.entry.add.file.upload{/lang}</legend>
-							<input type="file" size="50" name="fileUpload" tabindex="{counter name='tabindex'}" />
-
-							{if $errorField == 'fileUpload'}
-								<div class="innerError">
-									{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
-									{if $errorType == 'uploadFailed'}{lang}wsif.entry.file.add.upload.error.uploadFailed{/lang}{/if}
-									{if $errorType == 'copyFailed'}{lang}wsif.entry.file.add.upload.error.copyFailed{/lang}{/if}
-									{if $errorType == 'illegalExtension'}{lang}wsif.entry.add.file.upload.error.illegalExtension{/lang}{/if}
-									{if $errorType == 'tooLarge'}{lang}wsif.entry.add.file.upload.error.tooLarge{/lang}{/if}
-									{if $errorType == 'tooManyFiles'}{lang}wsif.entry.file.upload.error.tooManyFiles{/lang}{/if}
-								</div>
-							{/if}
-
-							<div class="formFieldDesc">
-								<p>{lang}wsif.entry.file.upload.description{/lang}</p>
 							</div>
 						</fieldset>
 					{/if}

@@ -243,7 +243,7 @@ class EntryAddForm extends MessageForm {
 				}
 				// invalid file type
 				else {
-					throw new UserInputException('fileType', 'invalid');
+					throw new UserInputException('fileType');
 				}
 			}
 
