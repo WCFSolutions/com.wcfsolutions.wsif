@@ -182,7 +182,34 @@
 							//]]>
 						</script>
 					</fieldset>
+				{else}
+					<fieldset{if $errorField == 'upload'} class="formError"{/if}>
+						<legend>{lang}wsif.entry.file.replace{/lang}</legend>
 
+						<input type="file" size="50" name="upload[]" tabindex="{counter name='tabindex'}" />
+
+						{if $errorField == 'upload'}
+							<div class="innerError">
+								{if $errorType|is_array && $errorType.0|isset}
+									{assign var=filename value=$errorType.0.filename}
+									<p>
+										{if $errorType.0.errorType == 'uploadFailed'}{lang}wsif.entry.file.upload.error.uploadFailed{/lang}{/if}
+										{if $errorType.0.errorType == 'copyFailed'}{lang}wsif.entry.file.upload.error.copyFailed{/lang}{/if}
+										{if $errorType.0.errorType == 'illegalExtension'}{lang}wsif.entry.file.upload.error.illegalExtension{/lang}{/if}
+										{if $errorType.0.errorType == 'tooLarge'}{lang}wsif.entry.file.upload.error.tooLarge{/lang}{/if}
+										{if $errorType.0.errorType == 'tooManyFiles'}{lang}wsif.entry.file.upload.error.tooManyFiles{/lang}{/if}
+									</p>
+								{/if}
+							</div>
+						{/if}
+
+						<div class="formFieldDesc">
+							<p>{lang}wsif.entry.file.replace.description{/lang}</p>
+						</div>
+					</fieldset>
+				{/if}
+
+				{if $action == 'add' || $this->file->isExternalLink()}
 					<fieldset{if $errorField == 'externalURL'} class="formError"{/if} id="externalURLDiv">
 						<legend>{lang}wsif.entry.file.externalURL{/lang}</legend>
 						<div class="formElement{if $errorField == 'externalURL'} formError{/if}">

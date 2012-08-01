@@ -21,13 +21,51 @@ class EntryFileEditor extends EntryFile {
 	 *
 	 * @param	string		$title
 	 * @param	string		$description
+	 *  @param	string		$externalURL
 	 */
-	public function update($title, $description) {
+	public function update($title, $description, $externalURL) {
 		$sql = "UPDATE 	wsif".WSIF_N."_entry_file
 			SET	title = '".escapeString($title)."',
-				description = '".escapeString($description)."'
+				description = '".escapeString($description)."',
+				externalURL = '".escapeString($externalURL)."'
 			WHERE 	fileID = ".$this->fileID;
 		WCF::getDB()->sendQuery($sql);
+	}
+
+	/*
+	 * Replaces the physical file of this file.
+	 *
+	 * @param	string		$field
+	 * @param	string		$tmpName
+	 * @param	string		$filename
+	 * @param	string		$mimeType
+	 */
+	public function replacePhysicalFile($field, $tmpName, $filename, $mimeType) {
+		// validate file
+		$filesize = self::validateFile($field, $tmpName, $filename);
+
+		// copy file
+		$path = WSIF_DIR.'storage/files/'.$this->fileID;
+		if (!@copy($tmpName, $path)) {
+			// rollback
+			@unlink($tmpName);
+			$sql = "DELETE FROM	wsif".WSIF_N."_entry_file
+				WHERE		fileID = ".$this->fileID;
+			WCF::getDB()->sendQuery($sql);
+			throw new UserInputException($field, 'copyFailed');
+		}
+		@chmod($path, 0777);
+
+		// update file
+		$sql = "UPDATE 	wsif".WSIF_N."_entry_file
+			SET	filesize = ".$filesize.",
+				mimeType = '".escapeString($mimeType)."',
+				uploadTime = ".TIME_NOW."
+			WHERE 	fileID = ".$this->fileID;
+		WCF::getDB()->sendQuery($sql);
+
+		// update filesize
+		$this->data['filesize'] = $filesize;
 	}
 
 	/**
@@ -81,7 +119,7 @@ class EntryFileEditor extends EntryFile {
 	 * @param	integer			$entryID
 	 * @param	integer			$userID
 	 * @param	string			$username
-	 * @param	string			$file
+	 * @param	string			$tmpName
 	 * @param	string			$filename
 	 * @param	string			$mimeType
 	 * @param	string			$title
@@ -91,30 +129,15 @@ class EntryFileEditor extends EntryFile {
 	 * @param	string			$ipAddress
 	 * @return	EntryImageEditor
 	 */
-	public static function create($field, $entryID, $userID, $username, $file, $filename, $mimeType, $title, $description, $fileType, $externalURL = '', $ipAddress = null) {
+	public static function create($field, $entryID, $userID, $username, $tmpName, $filename, $mimeType, $title, $description, $fileType, $externalURL = '', $ipAddress = null) {
 		if ($ipAddress == null) $ipAddress = WCF::getSession()->ipAddress;
 
-		$filesize = 0;
-		if ($fileType == self::TYPE_UPLOAD) {
-			// check file extension
-			$fileExtension = StringUtil::toLowerCase(StringUtil::substring($filename, StringUtil::lastIndexOf($filename, '.') + 1));
-			if (!preg_match(self::getAllowedFileExtensions(), $fileExtension)) {
-				throw new UserInputException($field, 'illegalExtension');
-			}
-
-			// get filesize
-			$filesize = intval(@filesize($file));
-
-			// check size
-			if ($filesize > WCF::getUser()->getPermission('user.filebase.maxEntryFileSize')) {
-				throw new UserInputException($field, 'tooLarge');
-			}
-		}
+		// validate file
+		$filesize = self::validateFile($field, $tmpName, $filename);
 
 		// use filename as title
 		if (empty($title)) {
-			if ($fileType == self::TYPE_UPLOAD) $title = $filename;
-			else $title = $externalURL;
+			$title = ($fileType == self::TYPE_UPLOAD ? $filename : $externalURL);
 		}
 
 		// save file
@@ -129,7 +152,7 @@ class EntryFileEditor extends EntryFile {
 		// copy file
 		if ($fileType == self::TYPE_UPLOAD) {
 			$path = WSIF_DIR.'storage/files/'.$fileID;
-			if (!@copy($file, $path)) {
+			if (!@copy($tmpName, $path)) {
 				// rollback
 				@unlink($file);
 				$sql = "DELETE FROM	wsif".WSIF_N."_entry_file
@@ -140,11 +163,35 @@ class EntryFileEditor extends EntryFile {
 			@chmod($path, 0777);
 		}
 
-		// get new file
-		$file = new EntryFileEditor($fileID);
+		// return new file
+		return new EntryFileEditor($fileID);
+	}
 
-		// return file
-		return $file;
+	/**
+	 * Validates the uploaded file with the given data and returns its filesize.
+	 *
+	 * @param	string		$field
+	 * @param	string		$tmpName
+	 * @param	string		$filename
+	 * @return	integer
+	 */
+	protected static function validateUploadedFile($field, $tmpName, $filename) {
+		// check file extension
+		$fileExtension = StringUtil::toLowerCase(StringUtil::substring($filename, StringUtil::lastIndexOf($filename, '.') + 1));
+		if (!preg_match(self::getAllowedFileExtensions(), $fileExtension)) {
+			throw new UserInputException($field, 'illegalExtension');
+		}
+
+		// get filesize
+		$filesize = intval(@filesize($tmpName));
+
+		// check size
+		if ($filesize > WCF::getUser()->getPermission('user.filebase.maxEntryFileSize')) {
+			throw new UserInputException($field, 'tooLarge');
+		}
+
+		// return filesize
+		return $filesize;
 	}
 
 	/**

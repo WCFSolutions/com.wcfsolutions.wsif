@@ -609,6 +609,9 @@ Erlaubte Dateiendungen: {$allowedFileExtensions}]]></item>
 		<item name="wsif.entry.file.lastDownloadTime"><![CDATA[Letzter Download]]></item>
 		<item name="wsif.entry.file.link"><![CDATA[Verlinken]]></item>
 		<item name="wsif.entry.file.noDownloadPermission"><![CDATA[Sie besitzen nicht die notwendigen Rechte, um diese Datei herunterladen zu können.{if !$this->user->userID} Möglicherweise müssen Sie sich zunächst anmelden.{/if}]]></item>
+		<item name="wsif.entry.file.replace"><![CDATA[Datei ersetzen]]></item>
+		<item name="wsif.entry.file.replace.description"><![CDATA[Maximale Dateigröße: {@$maxFileSize|filesize}<br />
+Erlaubte Dateiendungen: {$allowedFileExtensions}]]></item>
 		<item name="wsif.entry.file.setAsDefault"><![CDATA[Als Hauptdatei festlegen]]></item>
 		<item name="wsif.entry.file.share"><![CDATA[Verbreiten]]></item>
 		<item name="wsif.entry.file.time"><![CDATA[Datum hochgeladen]]></item>

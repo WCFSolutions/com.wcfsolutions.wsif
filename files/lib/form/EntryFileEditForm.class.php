@@ -55,8 +55,59 @@ class EntryFileEditForm extends EntryFileAddForm {
 	public function validate() {
 		AbstractForm::validate();
 
+		// upload
+		if ($this->file->isUpload()) {
+			$this->validateUpload();
+		}
+		// external link
+		else {
+			$this->validateExternalLink();
+		}
+
 		if (empty($this->title)) {
 			throw new UserInputException('title');
+		}
+	}
+
+	/**
+	 * Validates the uploaded files.
+	 */
+	protected function validateUpload() {
+		if (isset($this->upload['name'][0])) {
+			$errors = array();
+
+			if (!empty($this->upload['name'][0])) {
+				try {
+					// check upload
+					if ($this->upload['error'][0] != 0) {
+						throw new UserInputException('upload', 'uploadFailed');
+					}
+
+					// replace file
+					$this->image->replacePhysicalFile('upload', $this->upload['tmp_name'][$x], $this->upload['name'][$x], $this->upload['type'][$x]);
+				}
+				catch (UserInputException $e) {
+					$errors[] = array('errorType' => $e->getType(), 'filename' => $this->upload['name'][0]);
+				}
+			}
+
+			// show error message
+			if (count($errors)) {
+				throw new UserInputException('upload', $errors);
+			}
+		}
+	}
+
+	/**
+	 * Validates the external link.
+	 */
+	protected function validateExternalLink() {
+		if (empty($this->externalURL)) {
+			throw new UserInputException('externalURL');
+		}
+
+		if (!FileUtil::isURL($this->externalURL)) {
+			throw new UserInputException('externalURL', 'illegalURL');
 		}
 	}
 
@@ -67,7 +118,7 @@ class EntryFileEditForm extends EntryFileAddForm {
 		AbstractForm::save();
 
 		// update file
-		$this->file->update($this->title, $this->description);
+		$this->file->update($this->title, $this->description, ($this->file->isExternalLink() ? $this->externalURL : $this->file->externalURL));
 		$this->saved();
 
 		// forward to file
@@ -84,6 +135,7 @@ class EntryFileEditForm extends EntryFileAddForm {
 		if (!count($_POST)) {
 			$this->title = $this->file->title;
 			$this->description = $this->file->description;
+			$this->externalURL = $this->file->externalURL;
 		}
 	}
 
