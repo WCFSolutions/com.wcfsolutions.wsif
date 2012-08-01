@@ -15,6 +15,7 @@ DROP TABLE IF EXISTS wsif1_1_category_structure;
 -- entry
 ALTER TABLE wsif1_1_entry ADD publishingTime INT(10) NOT NULL DEFAULT 0 AFTER time;
 ALTER TABLE wsif1_1_entry ADD comments MEDIUMINT(7) NOT NULL DEFAULT 0 AFTER defaultFileID;
+ALTER TABLE wsif1_1_entry ADD enableComments TINYINT(1) NOT NULL DEFAULT 1 AFTER enableBBCodes;
 
 -- entry menu items
 DROP TABLE IF EXISTS wsif1_1_entry_menu_item;

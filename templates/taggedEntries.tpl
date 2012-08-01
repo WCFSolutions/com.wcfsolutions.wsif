@@ -22,7 +22,7 @@
 										<a href="index.php?page=Entry&amp;entryID={@$entry->entryID}{@SID_ARG_2ND}" title="{lang}wsif.entry.permalink{/lang}" class="messageNumber">{#$messageNumber}</a>
 									</p>
 									<div class="containerIcon">
-										<img src="{icon}{@$entry->getIconName()}M.png{/icon}" alt="" />	
+										<img src="{icon}{@$entry->getIconName()}M.png{/icon}" alt="" />
 									</div>
 									<div class="containerContent">
 										<h3 class="subject">
@@ -32,13 +32,14 @@
 										<p class="light smallFont">{lang}wsif.entry.by{/lang} {if $entry->userID}<a href="index.php?page=User&amp;userID={@$entry->userID}{@SID_ARG_2ND}">{$entry->username}</a>{else}{$entry->username}{/if} ({@$entry->time|time})</p>
 									</div>
 								</div>
-								
+
 								<div class="messageBody">
 									{$entry->teaser}
 								</div>
 
 								<div class="editNote smallFont light">
 									<p>{lang}wsif.entry.downloads{/lang}: {#$entry->downloads}</p>
+									{if MODULE_COMMENT && $entry->enableComments}{/if}<p>{lang}wsif.entry.comments{/lang}: {#$entry->comments}</p>{/if}
 									<p>{lang}wsif.entry.views{/lang}: {#$entry->views}</p>
 								</div>
 

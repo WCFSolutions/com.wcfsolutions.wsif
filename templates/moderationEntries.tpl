@@ -1,7 +1,7 @@
 {include file="documentHeader"}
 <head>
 	<title>{lang}wcf.moderation.{@$action}{/lang} {if $pageNo > 1}- {lang}wcf.page.pageNo{/lang} {/if}- {lang}wcf.moderation{/lang} - {lang}{PAGE_TITLE}{/lang}</title>
-	
+
 	{include file='headInclude' sandbox=false}
 </head>
 <body{if $templateName|isset} id="tpl{$templateName|ucfirst}"{/if}>
@@ -9,35 +9,35 @@
 {include file='header' sandbox=false}
 
 <div id="main">
-	
+
 	{include file="moderationCPHeader"}
-	
+
 	<div class="border tabMenuContent">
 		<div class="container-1">
 			<h3 class="subHeadline">{lang}wcf.moderation.{@$action}{/lang}{if $items > 0} <span>({#$items}){/if}</span></h3>
-			
+
 			{if $permissions.canHandleEntry}
 				<script type="text/javascript">
-					//<![CDATA[	
+					//<![CDATA[
 					var language = new Object();
 					//]]>
 				</script>
 				{include file='entryInlineEdit' pageType=$action}
 			{/if}
-			
+
 			{if $entries|count == 0}
 				<p>{lang}wsif.moderation.{@$action}.noEntries{/lang}</p>
 			{else}
 				<div class="contentHeader">
 					{pages print=true assign=pagesOutput link="index.php?page=$pageName&pageNo=%d"|concat:SID_ARG_2ND_NOT_ENCODED}
-					
+
 					<div class="optionButtons">
 						<ul>
 							<li><a><label><input name="entryMarkAll" type="checkbox" /> <span>{lang}wsif.moderation.entries.markAll{/lang}</span></label></a></li>
 						</ul>
 					</div>
 				</div>
-				
+
 				<div class="entryList">
 					{cycle values='container-1,container-2' name='className' print=false advance=false}
 					{assign var='messageNumber' value=$items-$startIndex+1}
@@ -80,7 +80,7 @@
 													//]]>
 												</script>
 											{/if}
-											<img id="entryEdit{@$entry->entryID}" src="{icon}{@$entry->getIconName()}M.png{/icon}" alt="" />	
+											<img id="entryEdit{@$entry->entryID}" src="{icon}{@$entry->getIconName()}M.png{/icon}" alt="" />
 										</div>
 										<div class="containerContent">
 											<h3 id="entryTitle{@$entry->entryID}" class="subject">
@@ -90,7 +90,7 @@
 											<p class="light smallFont">{lang}wsif.entry.by{/lang} {if $entry->userID}<a href="index.php?page=User&amp;userID={@$entry->userID}{@SID_ARG_2ND}">{$entry->username}</a>{else}{$entry->username}{/if} ({@$entry->time|time})</p>
 										</div>
 									</div>
-									
+
 									<div class="messageBody">
 										<div id="entryMessagePreview{@$entry->entryID}">
 											{$entry->teaser}
@@ -99,9 +99,10 @@
 
 									<div class="editNote smallFont light">
 										<p>{lang}wsif.entry.downloads{/lang}: {#$entry->downloads}</p>
+										{if MODULE_COMMENT && $entry->enableComments}{/if}<p>{lang}wsif.entry.comments{/lang}: {#$entry->comments}</p>{/if}
 										<p>{lang}wsif.entry.views{/lang}: {#$entry->views}</p>
 									</div>
-									
+
 									{if $entry->isDeleted}
 										<p class="deleteNote smallFont light">{lang}wsif.entry.deleteNote{/lang}</p>
 									{/if}
@@ -120,8 +121,8 @@
 						</div>
 						{assign var='messageNumber' value=$messageNumber-1}
 					{/foreach}
-				</div>			
-		
+				</div>
+
 				<div class="contentFooter">
 					{@$pagesOutput}
 
@@ -130,7 +131,7 @@
 			{/if}
 		</div>
 	</div>
-	
+
 </div>
 
 {include file='footer' sandbox=false}

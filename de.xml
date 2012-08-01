@@ -552,6 +552,8 @@ Den neuen Kommentar erreichen Sie über den folgenden Link:
 		<item name="wsif.entry.downloads"><![CDATA[Downloads]]></item>
 		<item name="wsif.entry.downloadsPerDay"><![CDATA[{#$entry->getDownloadsPerDay()} Downloads pro Tag]]></item>
 		<item name="wsif.entry.edit"><![CDATA[Eintrag bearbeiten]]></item>
+		<item name="wsif.entry.enableComments"><![CDATA[Kommentare aktivieren]]></item>
+		<item name="wsif.entry.enableComments.description"><![CDATA[Der Eintrag kann kommentiert werden.]]></item>
 		<item name="wsif.entry.entrySubscription"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> zu "{$event->additionalData.entrySubject}" erstellt.]]></item>
 		<item name="wsif.entry.entrySubscription.accept"><![CDATA[Bestätigen]]></item>
 		<item name="wsif.entry.entrySubscription.title"><![CDATA[Neuer Kommentar bei Abonnements]]></item>

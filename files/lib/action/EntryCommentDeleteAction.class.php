@@ -71,6 +71,11 @@ class EntryCommentDeleteAction extends AbstractSecureAction {
 		$this->category = Category::getCategory($this->entry->categoryID);
 		$this->entry->enter($this->category);
 
+		// check comment availability
+		if (!$this->entry->enableComments) {
+			throw new IllegalLinkException();
+		}
+
 		// check permission
 		if (!$this->comment->isDeletable($this->category)) {
 			throw new PermissionDeniedException();

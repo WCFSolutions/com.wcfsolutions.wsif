@@ -102,6 +102,7 @@ class EntryAddForm extends MessageForm {
 	public $publishingTimeYear = '';
 	public $publishingTimeHour = '';
 	public $disableEntry = 0;
+	public $enableComments = 1;
 
 	// image
 	public $imageUpload = null;
@@ -163,6 +164,8 @@ class EntryAddForm extends MessageForm {
 	public function readFormParameters() {
 		parent::readFormParameters();
 
+		$this->enableComments = 0;
+
 		if (isset($_POST['username'])) $this->username = StringUtil::trim($_POST['username']);
 		if (isset($_POST['prefixID']) && $this->category->getPermission('canSetEntryPrefix')) {
 			$this->prefixID = intval($_POST['prefixID']);
@@ -178,6 +181,7 @@ class EntryAddForm extends MessageForm {
 			if (isset($_POST['publishingTimeHour'])) $this->publishingTimeHour = intval($_POST['publishingTimeHour']);
 			if (isset($_POST['disableEntry'])) $this->disableEntry = intval($_POST['disableEntry']);
 		}
+		if (isset($_POST['enableComments'])) $this->enableComments = intval($_POST['enableComments']);
 
 		// get image
 		if (isset($_POST['imageID'])) $this->imageID = intval($_POST['imageID']);
@@ -428,7 +432,7 @@ class EntryAddForm extends MessageForm {
 		parent::save();
 
 		// save entry
-		$this->entry = EntryEditor::create($this->category->categoryID, $this->languageID, $this->prefixID, $this->subject, $this->text, $this->teaser, WCF::getUser()->userID, $this->username, $this->publishingTime, $this->getOptions(), null, intval(($this->disableEntry || !$this->category->getPermission('canAddNewsEntryWithoutModeration'))));
+		$this->entry = EntryEditor::create($this->category->categoryID, $this->languageID, $this->prefixID, $this->subject, $this->text, $this->teaser, WCF::getUser()->userID, $this->username, $this->publishingTime, $this->enableComments, $this->getOptions(), null, intval(($this->disableEntry || !$this->category->getPermission('canAddNewsEntryWithoutModeration'))));
 
 		// save tags
 		if (MODULE_TAGGING && ENTRY_ENABLE_TAGS && $this->category->getPermission('canSetEntryTags')) {
@@ -511,6 +515,7 @@ class EntryAddForm extends MessageForm {
 			'publishingTimeYear' => $this->publishingTimeYear,
 			'publishingTimeHour' => $this->publishingTimeHour,
 			'disableEntry' => $this->disableEntry,
+			'enableComments' => $this->enableComments,
 			'imageID' => $this->imageID,
 			'image' => $this->image,
 			'fileID' => $this->fileID,

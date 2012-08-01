@@ -357,6 +357,14 @@
 						</div>
 					</div>
 
+					{capture append=additionalSettings}
+						<div class="formField">
+							<label><input type="checkbox" name="enableComments" value="1" {if $enableComments == 1}checked="checked" {/if}/> {lang}wsif.entry.enableComments{/lang}</label>
+						</div>
+						<div class="formFieldDesc">
+							<p>{lang}wsif.entry.enableComments.description{/lang}</p>
+						</div>
+					{/capture}
 					{include file='messageFormTabs'}
 				</fieldset>
 

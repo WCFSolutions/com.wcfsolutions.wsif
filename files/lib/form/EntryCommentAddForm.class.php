@@ -59,6 +59,11 @@ class EntryCommentAddForm extends MessageForm {
 		// get entry frame
 		$this->frame = new EntryFrame($this);
 
+		// check comment availability
+		if (!$this->frame->getEntry()->enableComments) {
+			throw new IllegalLinkException();
+		}
+
 		// check permissions
 		if (!$this->frame->getEntry()->isCommentable($this->frame->getCategory())) {
 			throw new PermissionDeniedException();
@@ -168,8 +173,6 @@ class EntryCommentAddForm extends MessageForm {
 		$this->comment = EntryCommentEditor::create($this->frame->getEntryID(), WCF::getUser()->userID, $this->username, $this->subject, $this->text, $this->getOptions(), $this->attachmentListEditor);
 
 		// update comment count
-		$this->frame->getEntry()->getEditor()->updateComments(1);
-		$this->frame->getCategory()->getEditor()->updateEntryComments(1);
 
 		// send noticications
 		$this->comment->sendNotifications($this->frame->getEntry());

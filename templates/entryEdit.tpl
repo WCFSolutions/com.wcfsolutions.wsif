@@ -150,29 +150,6 @@
 						{if $additionalInformationFields|isset}{@$additionalInformationFields}{/if}
 					</fieldset>
 
-					<fieldset>
-						<legend>{lang}wsif.entry.text{/lang}</legend>
-
-						<div class="editorFrame formElement{if $errorField == 'text'} formError{/if}" id="textDiv">
-							<div class="formFieldLabel">
-								<label for="text">{lang}wsif.entry.text{/lang}</label>
-							</div>
-
-							<div class="formField">
-								<textarea name="text" id="text" rows="15" cols="40" tabindex="{counter name='tabindex'}">{$text}</textarea>
-								{if $errorField == 'text'}
-									<p class="innerError">
-										{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
-										{if $errorType == 'tooLong'}{lang}wcf.message.error.tooLong{/lang}{/if}
-										{if $errorType == 'censoredWordsFound'}{lang}wcf.message.error.censoredWordsFound{/lang}{/if}
-									</p>
-								{/if}
-							</div>
-						</div>
-
-						{include file='messageFormTabs'}
-					</fieldset>
-
 					{if !$entry->everEnabled && $category->getModeratorPermission('canEnableNewsEntry')}
 						<fieldset>
 							<legend>{lang}wsif.entry.publishing{/lang}</legend>
@@ -241,6 +218,37 @@
 							</div>
 						</fieldset>
 					{/if}
+
+					<fieldset>
+						<legend>{lang}wsif.entry.text{/lang}</legend>
+
+						<div class="editorFrame formElement{if $errorField == 'text'} formError{/if}" id="textDiv">
+							<div class="formFieldLabel">
+								<label for="text">{lang}wsif.entry.text{/lang}</label>
+							</div>
+
+							<div class="formField">
+								<textarea name="text" id="text" rows="15" cols="40" tabindex="{counter name='tabindex'}">{$text}</textarea>
+								{if $errorField == 'text'}
+									<p class="innerError">
+										{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
+										{if $errorType == 'tooLong'}{lang}wcf.message.error.tooLong{/lang}{/if}
+										{if $errorType == 'censoredWordsFound'}{lang}wcf.message.error.censoredWordsFound{/lang}{/if}
+									</p>
+								{/if}
+							</div>
+						</div>
+
+						{capture append=additionalSettings}
+							<div class="formField">
+								<label><input type="checkbox" name="enableComments" value="1" {if $enableComments == 1}checked="checked" {/if}/> {lang}wsif.entry.enableComments{/lang}</label>
+							</div>
+							<div class="formFieldDesc">
+								<p>{lang}wsif.entry.enableComments.description{/lang}</p>
+							</div>
+						{/capture}
+						{include file='messageFormTabs'}
+					</fieldset>
 				{/if}
 
 				{if $additionalFields|isset}{@$additionalFields}{/if}

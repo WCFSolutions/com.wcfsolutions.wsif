@@ -75,6 +75,11 @@ class EntryCommentsPage extends MultipleLinkPage {
 		// get entry frame
 		$this->frame = new EntryFrame($this, ($this->commentID ? $this->comment->entryID : null));
 
+		// check comment availability
+		if (!$this->frame->getEntry()->enableComments) {
+			throw new IllegalLinkException();
+		}
+
 		// init comment list
 		$this->commentList = new ViewableEntryCommentList($this->frame->getEntry(), $this->frame->getCategory());
 

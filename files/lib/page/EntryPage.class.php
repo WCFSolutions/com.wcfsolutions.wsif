@@ -89,7 +89,7 @@ class EntryPage extends AbstractPage {
 		parent::readData();
 
 		// get entry comments
-		if (ENTRY_SHOW_LAST_COMMENTS) {
+		if (MODULE_COMMENTS && ENTRY_SHOW_LAST_COMMENTS && $this->frame->getEntry()->enableComments) {
 			$sql = "SELECT		commentID, userID, username, subject, time
 				FROM		wsif".WSIF_N."_entry_comment
 				WHERE		entryID = ".$this->frame->getEntryID()."

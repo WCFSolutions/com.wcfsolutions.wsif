@@ -151,6 +151,7 @@ CREATE TABLE wsif1_1_entry (
 	enableSmilies TINYINT(1) NOT NULL DEFAULT 1,
 	enableHtml TINYINT(1) NOT NULL DEFAULT 0,
 	enableBBCodes TINYINT(1) NOT NULL DEFAULT 1,
+	enableComments TINYINT(1) NOT NULL DEFAULT 1,
 	ipAddress VARCHAR(15) NOT NULL DEFAULT '',
 	FULLTEXT KEY (subject, message),
 	KEY (languageID),

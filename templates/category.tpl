@@ -144,7 +144,7 @@
 
 												<div class="editNote smallFont light">
 													<p>{lang}wsif.entry.downloads{/lang}: {#$entry->downloads}</p>
-													<p>{lang}wsif.entry.comments{/lang}: {#$entry->comments}</p>
+													{if MODULE_COMMENT && $entry->enableComments}{/if}<p>{lang}wsif.entry.comments{/lang}: {#$entry->comments}</p>{/if}
 													<p>{lang}wsif.entry.views{/lang}: {#$entry->views}</p>
 													{if $additionalInformationFields.$entryID|isset}{@$additionalInformationFields.$entryID}{/if}
 												</div>

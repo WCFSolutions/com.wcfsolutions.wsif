@@ -136,7 +136,7 @@ class EntryEditForm extends EntryAddForm {
 		MessageForm::save();
 
 		// update entry
-		$this->entry->update($this->languageID, $this->prefixID, $this->subject, $this->text, $this->teaser, $this->publishingTime, $this->getOptions());
+		$this->entry->update($this->languageID, $this->prefixID, $this->subject, $this->text, $this->teaser, $this->publishingTime, $this->enableComments, $this->getOptions());
 
 		// save tags
 		if (MODULE_TAGGING && ENTRY_ENABLE_TAGS && $this->frame->getCategory()->getPermission('canSetEntryTags')) {
@@ -164,6 +164,7 @@ class EntryEditForm extends EntryAddForm {
 			$this->enableSmilies =  $this->frame->getEntry()->enableSmilies;
 			$this->enableHtml = $this->frame->getEntry()->enableHtml;
 			$this->enableBBCodes = $this->frame->getEntry()->enableBBCodes;
+			$this->enableComments = $this->entry->enableComments;
 
 			// publishing time
 			if ($this->entry->publishingTime) {
