@@ -403,7 +403,7 @@ var EntryListEdit = Class.create({
 				'id': 'entryTitleInput'+id,
 				'type': 'text',
 				'className': 'inputText',
-				'style': ('width: '+title.getWidth()+'px;'),
+				'style': ('width: '+(entrySubjectDiv.getWidth()-5)+'px;'),
 				'value': value
 			});
 			entrySubjectDiv.insert(inputField);
