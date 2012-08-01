@@ -13,7 +13,7 @@
 {/if}
 
 {if $success|isset}
-	<p class="success">{if $action == 'add'}{lang}wsif.acp.category.add.success{/lang}{else}{lang}wsif.acp.category.edit.success{/lang}{/if}</p>	
+	<p class="success">{if $action == 'add'}{lang}wsif.acp.category.add.success{/lang}{else}{lang}wsif.acp.category.edit.success{/lang}{/if}</p>
 {/if}
 
 <script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/Suggestion.class.js"></script>
@@ -29,19 +29,19 @@
 	{foreach from=$permissionSettings item=permissionSetting}
 		language['wsif.acp.category.permissions.{@$permissionSetting}'] = '{lang}wsif.acp.category.permissions.{@$permissionSetting}{/lang}';
 	{/foreach}
-	
+
 	var permissions = new Hash();
-	{assign var=i value=0}		
+	{assign var=i value=0}
 	{foreach from=$permissions item=permission}
 		var settings = new Hash();
 		settings.set('fullControl', -1);
-		
+
 		{foreach from=$permission.settings key=setting item=value}
 			{if $setting != 'name' && $setting != 'type' && $setting != 'id'}
 				settings.set('{@$setting}', {@$value});
 			{/if}
 		{/foreach}
-		
+
 		permissions.set({@$i}, {
 			'name': '{@$permission.name|encodeJS}',
 			'type': '{@$permission.type}',
@@ -51,32 +51,32 @@
 
 		{assign var=i value=$i+1}
 	{/foreach}
-	
+
 	var moderators = new Hash();
 	{assign var=i value=0}
 	{foreach from=$moderators item=moderator}
 		var settings = new Hash();
 		settings.set('fullControl', -1);
-		
+
 		{foreach from=$moderator.settings key=setting item=value}
 			{if $setting != 'name' && $setting != 'type' && $setting != 'id'}
 				settings.set('{@$setting}', {@$value});
 			{/if}
 		{/foreach}
-		
+
 		moderators.set({@$i}, {
 			'name': '{@$moderator.name|encodeJS}',
 			'type': '{@$moderator.type}',
 			'id': '{@$moderator.id}',
 			'settings': settings
 		});
-		
+
 		{assign var=i value=$i+1}
 	{/foreach}
-	
+
 	var permissionSettings = new Array({implode from=$permissionSettings item=permissionSetting}'{@$permissionSetting}'{/implode});
 	var moderatorSettings = new Array({implode from=$moderatorSettings item=moderatorSetting}'{@$moderatorSetting}'{/implode});
-	
+
 	// category type
 	function setCategoryType(newType) {
 		switch (newType) {
@@ -94,18 +94,18 @@
 				break;
 		}
 	}
-	
+
 	document.observe("dom:loaded", function() {
 		setCategoryType({@$categoryType});
-		
+
 		// user/group permissions
 		var permissionList = new CategoryPermissionList('permission', permissions, permissionSettings);
-		
+
 		// moderators
 		var moderatorPermissionList = new CategoryPermissionList('moderator', moderators, moderatorSettings);
-		
+
 		// add onsubmit event
-		$('categoryAddForm').onsubmit = function() { 
+		$('categoryAddForm').onsubmit = function() {
 			if (suggestion.selectedIndex != -1) return false;
 			if (permissionList.inputHasFocus || moderatorPermissionList.inputHasFocus) return false;
 			permissionList.submit(this); moderatorPermissionList.submit(this);
@@ -139,7 +139,7 @@
 					</div>
 				</fieldset>
 			{/if}
-				
+
 			<fieldset>
 				<legend>{lang}wsif.acp.category.categoryType{/lang}</legend>
 				<div class="formElement{if $errorField == 'categoryType'} formError{/if}">
@@ -155,10 +155,10 @@
 					{/if}
 				</div>
 			</fieldset>
-			
+
 			<fieldset>
 				<legend>{lang}wsif.acp.category.general{/lang}</legend>
-					
+
 				{if $action == 'edit'}
 					<div class="formElement" id="languageIDDiv">
 						<div class="formFieldLabel">
@@ -179,7 +179,7 @@
 						inlineHelp.register('languageID');
 					//]]></script>
 				{/if}
-					
+
 				<div class="formElement{if $errorField == 'title'} formError{/if}">
 					<div class="formFieldLabel">
 						<label for="title">{lang}wsif.acp.category.title{/lang}</label>
@@ -193,7 +193,7 @@
 						{/if}
 					</div>
 				</div>
-				
+
 				<div id="descriptionDiv" class="formElement">
 					<div class="formFieldLabel">
 						<label for="description">{lang}wsif.acp.category.description{/lang}</label>
@@ -203,7 +203,7 @@
 						<label><input type="checkbox" name="allowDescriptionHtml" value="1" {if $allowDescriptionHtml}checked="checked" {/if}/> {lang}wsif.acp.category.allowDescriptionHtml{/lang}</label>
 					</div>
 				</div>
-					
+
 				<div id="externalURLDiv" class="formElement{if $errorField == 'externalURL'} formError{/if}">
 					<div class="formFieldLabel">
 						<label for="externalURL">{lang}wsif.acp.category.externalURL{/lang}</label>
@@ -217,13 +217,13 @@
 						{/if}
 					</div>
 				</div>
-					
+
 				{if $additionalGeneralFields|isset}{@$additionalGeneralFields}{/if}
 			</fieldset>
-				
+
 			<fieldset>
 				<legend>{lang}wsif.acp.category.classification{/lang}</legend>
-				
+
 				{if $categoryOptions|count > 0}
 					<div class="formElement{if $errorField == 'parentID'} formError{/if}" id="parentIDDiv">
 						<div class="formFieldLabel">
@@ -248,7 +248,7 @@
 						inlineHelp.register('parentID');
 					//]]></script>
 				{/if}
-				
+
 				<div class="formElement{if $errorField == 'position'} formError{/if}" id="positionDiv">
 					<div class="formFieldLabel">
 						<label for="position">{lang}wsif.acp.category.position{/lang}</label>
@@ -268,13 +268,13 @@
 				<script type="text/javascript">//<![CDATA[
 					inlineHelp.register('position');
 				//]]></script>
-					
+
 				{if $additionalPositionFields|isset}{@$additionalPositionFields}{/if}
 			</fieldset>
-				
+
 			<fieldset id="settings">
 				<legend>{lang}wsif.acp.category.settings{/lang}</legend>
-					
+
 				<div class="formElement">
 					<div class="formFieldLabel">
 						<label for="enableRating">{lang}wsif.acp.category.rating{/lang}</label>
@@ -287,13 +287,13 @@
 						</select>
 					</div>
 				</div>
-					
+
 				{if $additionalSettings|isset}{@$additionalSettings}{/if}
 			</fieldset>
-			
+
 			<fieldset id="filter">
 				<legend>{lang}wsif.acp.category.filter{/lang}</legend>
-				
+
 				<div class="formElement{if $errorField == 'daysPrune'} formError{/if}">
 					<div class="formFieldLabel">
 						<label for="daysPrune">{lang}wsif.acp.category.daysPrune{/lang}</label>
@@ -318,7 +318,7 @@
 						{/if}
 					</div>
 				</div>
-				
+
 				<div class="formElement{if $errorField == 'sortField'} formError{/if}">
 					<div class="formFieldLabel">
 						<label for="sortField">{lang}wsif.acp.category.sortField{/lang}</label>
@@ -340,7 +340,7 @@
 						{/if}
 					</div>
 				</div>
-					
+
 				<div class="formElement{if $errorField == 'sortOrder'} formError{/if}">
 					<div class="formFieldLabel">
 						<label for="sortOrder">{lang}wsif.acp.category.sortOrder{/lang}</label>
@@ -358,7 +358,7 @@
 						{/if}
 					</div>
 				</div>
-				
+
 				<div class="formElement">
 					<div class="formFieldLabel">
 						<label for="entriesPerPage">{lang}wsif.acp.category.entriesPerPage{/lang}</label>
@@ -367,13 +367,13 @@
 						<input type="text" class="inputText" id="entriesPerPage" name="entriesPerPage" value="{@$entriesPerPage}" />
 					</div>
 				</div>
-					
+
 				{if $additionalFilterFields|isset}{@$additionalFilterFields}{/if}
 			</fieldset>
-				
+
 			<fieldset id="style">
 				<legend>{lang}wsif.acp.category.style{/lang}</legend>
-				
+
 				{if $availableStyles|count > 1}
 					<div class="formElement">
 						<div class="formFieldLabel">
@@ -388,12 +388,12 @@
 						</div>
 					</div>
 				{/if}
-				
+
 				<div class="formElement" id="iconDiv">
 					<div class="formFieldLabel">
 						<label for="icon">{lang}wsif.acp.category.icon{/lang}</label>
 					</div>
-					<div class="formField">	
+					<div class="formField">
 						<input type="text" class="inputText" id="icon" name="icon" value="{$icon}" />
 					</div>
 					<div class="formFieldDesc hidden" id="imageHelpMessage">
@@ -405,13 +405,13 @@
 					inlineHelp.register('icon');
 					//]]>
 				</script>
-				
+
 				{if $additionalStyleFields|isset}{@$additionalStyleFields}{/if}
 			</fieldset>
-				
+
 			<fieldset id="permissions">
 				<legend>{lang}wsif.acp.category.permissions{/lang}</legend>
-					
+
 				<div class="formElement">
 					<div class="formFieldLabel" id="permissionTitle">
 						{lang}wsif.acp.category.permissions.title{/lang}
@@ -419,7 +419,7 @@
 					<div class="formField"><div id="permission" class="accessRights"></div></div>
 				</div>
 				<div class="formElement">
-					<div class="formField">	
+					<div class="formField">
 						<input id="permissionAddInput" type="text" name="" value="" class="inputText accessRightsInput" />
 						<script type="text/javascript">
 							//<![CDATA[
@@ -431,7 +431,7 @@
 						<input id="permissionAddButton" type="button" value="{lang}wsif.acp.category.permissions.add{/lang}" />
 					</div>
 				</div>
-					
+
 				<div class="formElement" style="display: none;">
 					<div class="formFieldLabel">
 						<div id="permissionSettingsTitle" class="accessRightsTitle"></div>
@@ -444,13 +444,13 @@
 						<div id="permissionSettings" class="accessRights"></div>
 					</div>
 				</div>
-				
+
 				{if $additionalPermissionFields|isset}{@$additionalPermissionFields}{/if}
 			</fieldset>
-			
+
 			<fieldset id="moderators">
 				<legend>{lang}wsif.acp.category.moderators{/lang}</legend>
-					
+
 				<div class="formElement">
 					<div class="formFieldLabel" id="moderatorTitle">
 						{lang}wsif.acp.category.permissions.title{/lang}
@@ -458,7 +458,7 @@
 					<div class="formField"><div id="moderator" class="accessRights"></div></div>
 				</div>
 				<div class="formElement">
-					<div class="formField">	
+					<div class="formField">
 						<input id="moderatorAddInput" type="text" name="" value="" class="inputText accessRightsInput" />
 						<script type="text/javascript">
 							//<![CDATA[
@@ -468,7 +468,7 @@
 						<input id="moderatorAddButton" type="button" value="{lang}wsif.acp.category.permissions.add{/lang}" />
 					</div>
 				</div>
-					
+
 				<div class="formElement" style="display: none;">
 					<div class="formFieldLabel">
 						<div id="moderatorSettingsTitle" class="accessRightsTitle"></div>
@@ -481,14 +481,14 @@
 						<div id="moderatorSettings" class="accessRights"></div>
 					</div>
 				</div>
-				
+
 				{if $additionalModeratorFields|isset}{@$additionalModeratorFields}{/if}
 			</fieldset>
-			
+
 			{if $additionalFields|isset}{@$additionalFields}{/if}
 		</div>
 	</div>
-		
+
 	<div class="formSubmit">
 		<input type="submit" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" />
 		<input type="reset" accesskey="r" value="{lang}wcf.global.button.reset{/lang}" />

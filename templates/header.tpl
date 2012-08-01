@@ -10,7 +10,7 @@
 			<p style="display: none;" id="userAvatar">
 				{if $this->user->userID && $this->user->getAvatar()}{@$this->user->getAvatar()}{else}<img src="{@RELATIVE_WCF_DIR}images/avatars/avatar-default.png" alt="" />{/if}
 			</p>
-			<p id="userNote"> 
+			<p id="userNote">
 				{if $this->user->userID != 0}{lang}wsif.header.userNote.user{/lang}{else}{lang}wsif.header.userNote.guest{/lang}{/if}
 			</p>
 			<div id="userMenu">
@@ -18,9 +18,9 @@
 					{if $this->user->userID != 0}
 						<li id="userMenuLogout"><a href="index.php?action=UserLogout&amp;t={@SECURITY_TOKEN}{@SID_ARG_2ND}"><img src="{icon}logoutS.png{/icon}" alt="" /> <span>{lang}wsif.header.userMenu.logout{/lang}</span></a></li>
 						<li id="userMenuProfileEdit"><a href="index.php?form=UserProfileEdit{@SID_ARG_2ND}"><img src="{icon}editS.png{/icon}" alt="" /> <span>{lang}wsif.header.userMenu.profile{/lang}</span></a></li>
-						
+
 						{if $additionalUserMenuItems|isset}{@$additionalUserMenuItems}{/if}
-						
+
 						{if $this->user->isModerator()}
 							<li id="userMenuModeration"{if $this->user->getOutstandingModerations()} class="new"{/if}><a href="index.php?page=ModerationCPOverview{@SID_ARG_2ND}"><img src="{icon}moderationcpS.png{/icon}" alt="" /> <span>{lang}wsif.header.userMenu.moderation{/lang}{if $this->user->getOutstandingModerations()} ({#$this->user->getOutstandingModerations()}){/if}</span></a></li>
 						{/if}
@@ -29,11 +29,11 @@
 						{/if}
 					{else}
 						<li id="userMenuLogin"><a href="index.php?form=UserLogin{@SID_ARG_2ND}" id="loginButton"><img src="{icon}loginS.png{/icon}" alt="" id="loginButtonImage" /> <span>{lang}wsif.header.userMenu.login{/lang}</span></a></li>
-						
+
 						{if !REGISTER_DISABLED}<li id="userMenuRegistration"><a href="index.php?page=Register{@SID_ARG_2ND}"><img src="{icon}registerS.png{/icon}" alt="" /> <span>{lang}wsif.header.userMenu.register{/lang}</span></a></li>{/if}
-						
+
 						{if $additionalUserMenuItems|isset}{@$additionalUserMenuItems}{/if}
-						
+
 						{if $this->language->countAvailableLanguages() > 1}
 							<li id="userMenuLanguage" class="languagePicker"><a id="changeLanguage" class="hidden"><img src="{icon}language{@$this->language->getLanguageCode()|ucfirst}S.png{/icon}" alt="" /> <span>{lang}wsif.header.userMenu.changeLanguage{/lang}</span></a>
 								<div class="hidden" id="changeLanguageMenu">
@@ -69,21 +69,21 @@
 			</div>
 		</div>
 	</div>
-	
+
 	{if !$this->user->userID && !LOGIN_USE_CAPTCHA}
 		<script type="text/javascript">
 			//<![CDATA[
 			document.observe("dom:loaded", function() {
 				var loginFormVisible = false;
-				
+
 				var loginBox = $('quickLoginBox');
 				var loginButton = $('loginButton');
-				
+
 				if (loginButton && loginBox) {
 					function showLoginForm(evt) {
 						if (loginBox.hasClassName('hidden')) {
 							loginBox.setStyle('display: none');
-							loginBox.removeClassName('hidden');	
+							loginBox.removeClassName('hidden');
 						}
 						loginBox.setStyle('left: ' + loginButton.cumulativeOffset()[0] + 'px; top: ' + (loginButton.cumulativeOffset()[1] + loginButton.getHeight() + 5) + 'px;');
 						if (loginBox.visible()) {
@@ -102,10 +102,10 @@
 						}
 						evt.stop();
 					}
-					
+
 					loginButton.observe('click', showLoginForm);
 					loginButton.observe('dblclick', function() { document.location.href = fixURL('index.php?form=UserLogin{@SID_ARG_2ND_NOT_ENCODED}'); });
-					
+
 					document.getElementById('quickLoginUsername').onfocus = function() { if (this.value == '{lang}wcf.user.username{/lang}') this.value=''; };
 					document.getElementById('quickLoginUsername').onblur = function() { if (this.value == '') this.value = '{lang}wcf.user.username{/lang}'; };
 					$('loginButtonImage').src = $('loginButtonImage').src.gsub('loginS.png', 'loginOptionsS.png');
@@ -114,9 +114,9 @@
 			//]]>
 		</script>
 	{/if}
-	
+
 	<div id="header">
-		
+
 		{* --- quick search controls ---
 		 * $searchScript=search script; default=index.php?form=Search
 		 * $searchFieldName=name of the search input field; default=q
@@ -127,7 +127,7 @@
 		 * $searchHiddenFields=optional hidden fields; default=empty
 		 * $searchShowExtendedLink=set to false to disable extended search link; default=true
 		 *}
-		
+
 		{if !$searchScript|isset}{assign var='searchScript' value='index.php?form=Search'}{/if}
 		{if !$searchFieldName|isset}{assign var='searchFieldName' value='q'}{/if}
 		{if !$searchFieldValue|isset && $query|isset}{assign var='searchFieldValue' value=$query}{/if}
@@ -138,16 +138,16 @@
 		{/if}
 		{if !$searchExtendedLink|isset}{assign var='searchExtendedLink' value='index.php?form=Search'|concat:SID_ARG_2ND}{/if}
 		{if !$searchShowExtendedLink|isset}{assign var='searchShowExtendedLink' value=true}{/if}
-		
+
 		<div id="search">
 			<form method="post" action="{@$searchScript}">
-				
+
 				<div class="searchContainer">
 					<input type="text" tabindex="{counter name='tabindex'}" id="searchInput" class="inputText" name="{@$searchFieldName}" value="{if !$searchFieldValue|empty}{$searchFieldValue}{else}{@$searchFieldTitle}{/if}" />
 					<input type="image" tabindex="{counter name='tabindex'}" id="searchSubmit" class="searchSubmit inputImage" src="{icon}searchSubmitS.png{/icon}" alt="{lang}wcf.global.button.submit{/lang}" />
 					{@SID_INPUT_TAG}
 					{if $searchHiddenFields|isset}{@$searchHiddenFields}{else}<input type="hidden" name="types[]" value="entry" />{/if}
-					
+
 					<script type="text/javascript">
 						//<![CDATA[
 						document.getElementById('searchInput').setAttribute('autocomplete', 'off');
@@ -172,7 +172,7 @@
 							</div>
 						</div>
 					{/if}
-					
+
 					{if $searchShowExtendedLink}
 						<noscript>
 							<p><a href="{@$searchExtendedLink}">{lang}wsif.header.search.extended{/lang}</a></p>
@@ -196,17 +196,17 @@
 			</div>
 		</div>
 	</div>
-	
+
 	{include file=headerMenu}
-	
+
 {* user messages system*}
 {capture append=userMessages}
 	{if $this->user->userID}
-		
+
 		{if $this->user->activationCode && REGISTER_ACTIVATION_METHOD == 1}<p class="warning">{lang}wcf.user.register.needsActivation{/lang}</p>{/if}
-		
+
 		{if $this->session->isNew}<p class="info">{lang}wsif.header.welcomeBack{/lang}</p>{/if}
-		
+
 		{if $this->user->numberOfInvitations && $this->user->getInvitations()|count}
 			<div class="info deletable" id="invitationContainer">
 				<a href="index.php?action=WhiteListNotificationDisable&amp;ajax=1&amp;t={@SECURITY_TOKEN}{@SID_ARG_2ND}" class="close deleteButton"><img src="{icon}closeS.png{/icon}" alt="" title="{lang}wcf.user.whitelist.notification.cancel{/lang}" longdesc="" /></a>
@@ -233,11 +233,11 @@
 				//]]>
 			</script>
 		{/if}
-	
+
 	{elseif !$this->session->spiderID}
-		
+
 		{if $this->session->isNew}<p class="info">{lang}wcf.user.register.welcome{/lang}</p>{/if}
-		
+
 	{/if}
 	{if OFFLINE == 1 && $this->user->getPermission('user.filebase.canViewFilebaseOffline')}
 		<div class="warning">

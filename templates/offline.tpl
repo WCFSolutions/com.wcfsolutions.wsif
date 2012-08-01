@@ -7,7 +7,7 @@
 {include file='header' sandbox=false}
 
 <div id="main">
-	
+
 	<div class="warning">
 		{lang}wsif.global.offline{/lang}
 		<p>{if OFFLINE_MESSAGE_ALLOW_HTML}{@OFFLINE_MESSAGE}{else}{@OFFLINE_MESSAGE|htmlspecialchars|nl2br}{/if}</p>

@@ -7,9 +7,9 @@
 			new ItemListEditor('categoryList', { itemTitleEdit: true, itemTitleEditURL: 'index.php?action=CategoryRename&categoryID=', tree: true, treeTag: 'ol' });
 		{/if}
 	}
-	
+
 	// when the dom is fully loaded, execute these scripts
-	document.observe("dom:loaded", init);	
+	document.observe("dom:loaded", init);
 	//]]>
 </script>
 
@@ -21,11 +21,11 @@
 </div>
 
 {if $deletedCategoryID}
-	<p class="success">{lang}wsif.acp.category.delete.success{/lang}</p>	
+	<p class="success">{lang}wsif.acp.category.delete.success{/lang}</p>
 {/if}
 
 {if $successfulSorting}
-	<p class="success">{lang}wsif.acp.category.sort.success{/lang}</p>	
+	<p class="success">{lang}wsif.acp.category.sort.success{/lang}</p>
 {/if}
 
 {if $this->user->getPermission('admin.filebase.canAddCategory')}
@@ -45,7 +45,7 @@
 				<ol class="itemList" id="categoryList">
 					{foreach from=$categories item=child}
 						{assign var="category" value=$child.category}
-						
+
 						<li id="item_{@$category->categoryID}">
 							<div class="buttons">
 								{if $this->user->getPermission('admin.filebase.canEditCategory')}
@@ -57,19 +57,19 @@
 									<a href="index.php?form=CategoryAdd&amp;parentID={@$category->categoryID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" title="{lang}wsif.acp.category.add{/lang}"><img src="{@RELATIVE_WCF_DIR}icon/addS.png" alt="" /></a>
 								{else}
 									<img src="{@RELATIVE_WCF_DIR}icon/addDisabledS.png" alt="" title="{lang}wsif.acp.category.add{/lang}" />
-								{/if}								
+								{/if}
 								{if $this->user->getPermission('admin.filebase.canDeleteCategory')}
 									<a href="index.php?action=CategoryDelete&amp;categoryID={@$category->categoryID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" onclick="return confirm('{lang}wsif.acp.category.delete.sure{/lang}')" title="{lang}wsif.acp.category.delete{/lang}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" /></a>
 								{else}
 									<img src="{@RELATIVE_WCF_DIR}icon/deleteDisabledS.png" alt="" title="{lang}wsif.acp.category.delete{/lang}" />
 								{/if}
-								
+
 								{if $child.additionalButtons|isset}{@$child.additionalButtons}{/if}
 							</div>
-							
+
 							<h3 class="itemListTitle">
 								<img src="{@RELATIVE_WSIF_DIR}icon/categoryS.png" alt="" />
-								
+
 								{if $this->user->getPermission('admin.filebase.canEditCategory')}
 									<select name="categoryListPositions[{@$category->categoryID}][{@$child.parentID}]">
 										{section name='positions' loop=$child.maxPosition}
@@ -77,10 +77,10 @@
 										{/section}
 									</select>
 								{/if}
-								
+
 								ID-{@$category->categoryID} <a href="index.php?form=CategoryEdit&amp;categoryID={@$category->categoryID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" class="title">{@$category->getTitle()}</a>
 							</h3>
-						
+
 						{if $child.hasChildren}<ol id="parentItem_{@$category->categoryID}">{else}<ol id="parentItem_{@$category->categoryID}"></ol></li>{/if}
 						{if $child.openParents > 0}{@"</ol></li>"|str_repeat:$child.openParents}{/if}
 					{/foreach}

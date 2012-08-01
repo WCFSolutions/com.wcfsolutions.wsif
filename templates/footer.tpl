@@ -7,7 +7,7 @@
 			<div class="footerOptionsInner">
 				<ul>
 					{if $additionalFooterOptions|isset}{@$additionalFooterOptions}{/if}
-					
+
 					{if $stylePickerOptions|count > 1}
 						<li class="stylePicker{if !SHOW_CLOCK} last{/if}">
 							<a id="changeStyle" class="hidden"><img src="{icon}styleOptionsS.png{/icon}" alt="" /> <span>{lang}wsif.global.changeStyle{/lang}</span></a>
@@ -18,14 +18,14 @@
 									{/foreach}
 								</ul>
 							</div>
-							
+
 							<script type="text/javascript">
 								//<![CDATA[
 								onloadEvents.push(function() { document.getElementById('changeStyle').className=''; });
 								popupMenuList.register('changeStyle');
 								//]]>
 							</script>
-							
+
 							<noscript>
 								<form method="get" action="index.php" class="quickJump">
 									<div>

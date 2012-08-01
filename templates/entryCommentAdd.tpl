@@ -2,13 +2,13 @@
 <head>
 	<title>{$entry->subject} - {lang}{PAGE_TITLE}{/lang}</title>
 	{include file='headInclude' sandbox=false}
-	
+
 	{include file='imageViewer'}
-	
+
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/TabbedPane.class.js"></script>
 	<script type="text/javascript">
 		//<![CDATA[
-		var INLINE_IMAGE_MAX_WIDTH = {@INLINE_IMAGE_MAX_WIDTH}; 
+		var INLINE_IMAGE_MAX_WIDTH = {@INLINE_IMAGE_MAX_WIDTH};
 		//]]>
 	</script>
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/ImageResizer.class.js"></script>
@@ -23,14 +23,14 @@
 			<p class="error">{lang}wcf.global.form.error{/lang}</p>
 		{/if}
 	{/capture}
-	
+
 	{include file="entryHeader" activeTabMenuItem='entryComments'}
-	
+
 	<form method="post" enctype="multipart/form-data" action="index.php?form=EntryComment{@$action|ucfirst}{if $action == 'add'}&amp;entryID={@$entryID}{elseif $action == 'edit'}&amp;commentID={@$commentID}{/if}">
 		<div class="border tabMenuContent">
 			<div class="container-1">
 				<h3 class="subHeadline">{lang}wsif.entry.comment.{@$action}{/lang}</h3>
-				
+
 				<div class="contentHeader">
 					<div class="largeButtons">
 						<ul>
@@ -39,7 +39,7 @@
 						</ul>
 					</div>
 				</div>
-				
+
 				{if $preview|isset}
 					<div class="message content">
 						<div class="messageInner container-1">
@@ -55,7 +55,7 @@
 
 				<fieldset>
 					<legend>{lang}wsif.entry.comment.information{/lang}</legend>
-					
+
 					{if !$this->user->userID}
 						<div class="formElement{if $errorField == 'username'} formError{/if}">
 							<div class="formFieldLabel">
@@ -73,7 +73,7 @@
 							</div>
 						</div>
 					{/if}
-					
+
 					<div class="formElement{if $errorField == 'subject'} formError{/if}">
 						<div class="formFieldLabel">
 							<label for="subject">{lang}wsif.entry.comment.subject{/lang}</label>
@@ -87,19 +87,19 @@
 							{/if}
 						</div>
 					</div>
-					
+
 					{if $additionalInformationFields|isset}{@$additionalInformationFields}{/if}
 				</fieldset>
-			
+
 				<fieldset>
 					<legend>{lang}wsif.entry.comment.message{/lang}</legend>
-					
-					<div class="editorFrame formElement{if $errorField == 'text'} formError{/if}" id="textDiv">	
+
+					<div class="editorFrame formElement{if $errorField == 'text'} formError{/if}" id="textDiv">
 						<div class="formFieldLabel">
 							<label for="text">{lang}wsif.entry.comment.message{/lang}</label>
 						</div>
-						
-						<div class="formField">				
+
+						<div class="formField">
 							<textarea name="text" id="text" rows="15" cols="40" tabindex="{counter name='tabindex'}">{$text}</textarea>
 							{if $errorField == 'text'}
 								<p class="innerError">
@@ -108,17 +108,17 @@
 									{if $errorType == 'censoredWordsFound'}{lang}wcf.message.error.censoredWordsFound{/lang}{/if}
 								</p>
 							{/if}
-						</div>					
+						</div>
 					</div>
-					
-					{include file='messageFormTabs'}	
+
+					{include file='messageFormTabs'}
 				</fieldset>
-				
+
 				{include file='captcha'}
 				{if $additionalFields|isset}{@$additionalFields}{/if}
 			</div>
 		</div>
-		
+
 		<div class="formSubmit">
 			<input type="submit" name="send" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" tabindex="{counter name='tabindex'}" />
 			<input type="submit" name="preview" accesskey="p" value="{lang}wcf.global.button.preview{/lang}" tabindex="{counter name='tabindex'}" />

@@ -12,7 +12,7 @@
 {/if}
 
 {if $success|isset}
-	<p class="success">{lang}wsif.acp.entry.prefix.{@$action}.success{/lang}</p>	
+	<p class="success">{lang}wsif.acp.entry.prefix.{@$action}.success{/lang}</p>
 {/if}
 
 <div class="contentHeader">
@@ -25,7 +25,7 @@
 		<div class="container-1">
 			<fieldset>
 				<legend>{lang}wsif.acp.entry.prefix.prefixType{/lang}</legend>
-						
+
 				<div class="formGroup">
 					<div class="formGroupLabel">
 						{lang}wsif.acp.entry.prefix.prefixType{/lang}
@@ -47,7 +47,7 @@
 						</fieldset>
 					</div>
 				</div>
-						
+
 				{if $prefixType != 1}
 					<script type="text/javascript">
 						//<![CDATA[
@@ -75,10 +75,10 @@
 					</div>
 				</div>
 			</fieldset>
-			
+
 			<fieldset>
 				<legend>{lang}wsif.acp.entry.prefix.general{/lang}</legend>
-				
+
 				{if $action == 'edit'}
 					<div class="formElement" id="languageIDDiv">
 						<div class="formFieldLabel">
@@ -99,7 +99,7 @@
 						inlineHelp.register('languageID');
 					//]]></script>
 				{/if}
-				
+
 				<div class="formElement{if $errorField == 'prefixName'} formError{/if}" id="titleDiv">
 					<div class="formFieldLabel">
 						<label for="prefixName">{lang}wsif.acp.entry.prefix.prefixName{/lang}</label>
@@ -119,7 +119,7 @@
 				<script type="text/javascript">//<![CDATA[
 					inlineHelp.register('prefixName');
 				//]]></script>
-				
+
 				<div class="formElement{if $errorField == 'prefixMarking'} formError{/if}" id="titleDiv">
 					<div class="formFieldLabel">
 						<label for="prefixName">{lang}wsif.acp.entry.prefix.prefixMarking{/lang}</label>
@@ -139,12 +139,12 @@
 				<script type="text/javascript">//<![CDATA[
 					inlineHelp.register('prefixMarking');
 				//]]></script>
-				
+
 				<div class="formElement" id="showOrderDiv">
 					<div class="formFieldLabel">
 						<label for="showOrder">{lang}wsif.acp.entry.prefix.showOrder{/lang}</label>
 					</div>
-					<div class="formField">	
+					<div class="formField">
 						<input type="text" class="inputText" name="showOrder" id="showOrder" value="{$showOrder}" />
 					</div>
 					<div class="formFieldDesc hidden" id="showOrderHelpMessage">
@@ -155,11 +155,11 @@
 					inlineHelp.register('showOrder');
 				//]]></script>
 			</fieldset>
-			
+
 			{if $additionalFields|isset}{@$additionalFields}{/if}
 		</div>
 	</div>
-	
+
 	<div class="formSubmit">
 		<input type="submit" name="send" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" />
 		<input type="reset" accesskey="r" value="{lang}wcf.global.button.reset{/lang}" />

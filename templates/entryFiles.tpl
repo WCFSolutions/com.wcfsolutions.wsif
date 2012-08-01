@@ -8,15 +8,15 @@
 
 <div id="main">
 	{include file="entryHeader" activeTabMenuItem='entryFiles'}
-	
+
 	<div class="border">
 		<div class="layout-1">
-			<div class="columnContainer">	
+			<div class="columnContainer">
 				<div class="container-1 column first">
 					<div class="columnInner">
 						<div class="contentBox">
 							<h3 class="subHeadline">{lang}wsif.entry.files{/lang} <span>({#$items})</span></h3>
-								
+
 							<div class="contentHeader">
 								{assign var=multiplePagesLink value="index.php?page=EntryFiles&entryID=$entryID&pageNo=%d"}
 								{pages print=true assign=pagesOutput link=$multiplePagesLink|concat:SID_ARG_2ND_NOT_ENCODED}
@@ -30,7 +30,7 @@
 									</div>
 								{/if}
 							</div>
-								
+
 							<div class="border">
 								<table class="tableList">
 									<thead>
@@ -41,10 +41,10 @@
 										</tr>
 									</thead>
 									<tbody>
-							
+
 										{foreach from=$files item=file}
 											{assign var=fileID value=$file->fileID}
-										
+
 											<tr class="{cycle values='container-1,container-2'}">
 												<td class="columnIcon">
 													<img src="{icon}entryFileM.png{/icon}" alt="" />
@@ -59,20 +59,20 @@
 															{$file->username}
 														{/if}
 														({@$file->uploadTime|shorttime})
-													</p>												
+													</p>
 												</td>
 												<td class="columnDownloads">{#$file->downloads}</td>
 												<td class="columnViews">{#$file->views}</td>
 											</tr>
 										{/foreach}
-								
+
 									</tbody>
 								</table>
 							</div>
-							
+
 							<div class="contentFooter">
 								{@$pagesOutput}
-									
+
 								{if $entry->isEditable($category) || $additionalLargeButtons|isset}
 									<div class="largeButtons">
 										<ul>
@@ -82,7 +82,7 @@
 									</div>
 								{/if}
 							</div>
-								
+
 							<div class="buttonBar">
 								<div class="smallButtons">
 									<ul>
@@ -91,7 +91,7 @@
 									</ul>
 								</div>
 							</div>
-			
+
 							{if $additionalContent1|isset}{@$additionalContent1}{/if}
 						</div>
 					</div>

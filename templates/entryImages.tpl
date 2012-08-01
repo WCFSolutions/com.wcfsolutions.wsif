@@ -9,15 +9,15 @@
 
 <div id="main">
 	{include file="entryHeader" activeTabMenuItem='entryImages'}
-	
+
 	<div class="border">
 		<div class="layout-1">
-			<div class="columnContainer">	
+			<div class="columnContainer">
 				<div class="container-1 column first">
 					<div class="columnInner">
 						<div class="contentBox">
 							<h3 class="subHeadline">{lang}wsif.entry.images{/lang} <span>({#$items})</span></h3>
-							
+
 							{if $images|count > 0}
 								<div class="contentHeader">
 									{assign var=multiplePagesLink value="index.php?page=EntryImages&entryID=$entryID&pageNo=%d"}
@@ -32,7 +32,7 @@
 										</div>
 									{/if}
 								</div>
-								
+
 								<ul class="entryImageList floatContainer">
 									{foreach from=$images item=image}
 										<li class="floatedElement container-4">
@@ -44,10 +44,10 @@
 										</li>
 									{/foreach}
 								</ul>
-								
+
 								<div class="contentFooter">
 									{@$pagesOutput}
-										
+
 									{if $entry->isEditable($category) || $additionalLargeButtons|isset}
 										<div class="largeButtons">
 											<ul>
@@ -57,7 +57,7 @@
 										</div>
 									{/if}
 								</div>
-								
+
 								<div class="buttonBar">
 									<div class="smallButtons">
 										<ul>
@@ -68,8 +68,8 @@
 								</div>
 							{else}
 								<p>{lang}wsif.entry.image.noImages{/lang}</p>
-								
-								<div class="contentFooter">									
+
+								<div class="contentFooter">
 									{if $entry->isEditable($category) || $additionalLargeButtons|isset}
 										<div class="largeButtons">
 											<ul>
@@ -80,7 +80,7 @@
 									{/if}
 								</div>
 							{/if}
-							
+
 							{if $additionalContent1|isset}{@$additionalContent1}{/if}
 						</div>
 					</div>
@@ -88,7 +88,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	{include file='entryFooter'}
 </div>
 

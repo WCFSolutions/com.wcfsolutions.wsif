@@ -9,18 +9,18 @@
 
 <div id="main">
 	{include file="entryHeader" activeTabMenuItem='entryImages'}
-	
+
 	<div class="border">
 		<div class="layout-2">
-			<div class="columnContainer">	
+			<div class="columnContainer">
 				<div class="container-1 column first">
 					<div class="columnInner">
 						<div class="contentBox">
 							<h3 class="subHeadline">{$image->title}</h3>
-						
+
 							<div class="entryImage"><a href="index.php?page=EntryImageShow&amp;imageID={@$image->imageID}{SID_ARG_2ND}" class="enlargable" title="{$image->title}"><img src="index.php?page=EntryImageShow&amp;imageID={@$image->imageID}" style="max-width: {@$image->width}px; max-height: {@$image->height}px" alt="" /></a></div>
 							{if $image->description}<p class="entryImageCaption">{@$image->getFormattedDescription()}</p>{/if}
-						
+
 							<div class="buttonBar">
 								<div class="smallButtons">
 									<ul>
@@ -32,22 +32,22 @@
 									</ul>
 								</div>
 							</div>
-						
+
 							{if $additionalContent1|isset}{@$additionalContent1}{/if}
 						</div>
 					</div>
 				</div>
-					
+
 				<div class="container-3 column second">
 					<div class="columnInner">
-					
+
 						{if $previousImage || $nextImage}
 							<div class="contentBox">
 								<div class="border">
 									<div class="containerHead">
 										<h3>{lang}wsif.entry.image.navigation{/lang}</h3>
 									</div>
-									
+
 									<ul class="dataList">
 										{if $previousImage}
 											<li class="{cycle values='container-1,container-2'}">
@@ -75,13 +75,13 @@
 								</div>
 							</div>
 						{/if}
-					
+
 						<div class="contentBox">
 							<div class="border">
 								<div class="containerHead">
 									<h3>{lang}wsif.entry.image.general{/lang}</h3>
 								</div>
-								
+
 								<ul class="dataList">
 									<li class="{cycle values='container-1,container-2'}">
 										<div class="containerIcon">
@@ -126,13 +126,13 @@
 								</ul>
 							</div>
 						</div>
-						
+
 						<div class="contentBox">
 							<div class="border">
 								<div class="containerHead">
 									<h3>{lang}wsif.entry.image.share{/lang}</h3>
 								</div>
-								
+
 								<ul class="dataList">
 									<li class="{cycle values='container-1,container-2'}">
 										<div class="containerIcon">
@@ -155,7 +155,7 @@
 								</ul>
 							</div>
 						</div>
-						
+
 						{if $additionalContent3|isset}{@$additionalContent3}{/if}
 					</div>
 				</div>

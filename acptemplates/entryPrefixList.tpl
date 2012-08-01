@@ -7,7 +7,7 @@
 			new ItemListEditor('entryPrefixList', { itemTitleEdit: true, itemTitleEditURL: 'index.php?action=EntryPrefixRename&prefixID=' });
 		{/if}
 	}
-	
+
 	// when the dom is fully loaded, execute these scripts
 	document.observe("dom:loaded", init);
 	//]]>
@@ -21,11 +21,11 @@
 </div>
 
 {if $deletedPrefixID}
-	<p class="success">{lang}wsif.acp.entry.prefix.delete.success{/lang}</p>	
+	<p class="success">{lang}wsif.acp.entry.prefix.delete.success{/lang}</p>
 {/if}
 
 {if $successfullSorting}
-	<p class="success">{lang}wsif.acp.entry.prefix.sort.success{/lang}</p>	
+	<p class="success">{lang}wsif.acp.entry.prefix.sort.success{/lang}</p>
 {/if}
 
 <div class="contentHeader">
@@ -39,33 +39,33 @@
 {if $prefixes|count}
 	<form method="post" action="index.php?action=EntryPrefixSort">
 		<div class="border content">
-			<div class="container-1">		
+			<div class="container-1">
 				<ol id="entryPrefixList" class="itemList">
 					{foreach from=$prefixes item=prefix}
 						<li id="item_{@$prefix->prefixID}">
 							<div class="buttons">
-								{if $this->user->getPermission('admin.filebase.canEditEntryPrefix')}									
+								{if $this->user->getPermission('admin.filebase.canEditEntryPrefix')}
 									<a href="index.php?form=EntryPrefixEdit&amp;prefixID={@$prefix->prefixID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}"><img src="{@RELATIVE_WCF_DIR}icon/editS.png" alt="" title="{lang}wsif.acp.entry.prefix.edit{/lang}" /></a>
 								{else}
 									<img src="{@RELATIVE_WCF_DIR}icon/editDisabledS.png" alt="" title="{lang}wsif.acp.entry.prefix.editDisabled{/lang}" />
 								{/if}
-								
+
 								{if $this->user->getPermission('admin.filebase.canDeleteEntryPrefix')}
 									<a href="index.php?action=EntryPrefixDelete&amp;prefixID={@$prefix->prefixID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" onclick="return confirm('{lang}wsif.acp.entry.prefix.delete.sure{/lang}')" title="{lang}wsif.acp.entry.prefix.delete{/lang}"><img src="{@RELATIVE_WCF_DIR}icon/deleteS.png" alt="" /></a>
 								{else}
 									<img src="{@RELATIVE_WCF_DIR}icon/deleteDisabledS.png" alt="" title="{lang}wsif.acp.entry.prefix.deleteDisabled{/lang}" />
 								{/if}
 							</div>
-							
+
 							<h3 class="itemListTitle">
 								{if $this->user->getPermission('admin.filebase.canEditEntryPrefix')}
 									<select name="entryPrefixListPositions[{$prefix->prefixID}]">
 										{section name='prefixPositions' loop=$prefixes|count}
 											<option value="{@$prefixPositions+1}"{if $prefixPositions+1 == $prefix->showOrder} selected="selected"{/if}>{@$prefixPositions+1}</option>
 										{/section}
-									</select>	
+									</select>
 								{/if}
-																	
+
 								ID-{@$prefix->prefixID}
 								{if $this->user->getPermission('admin.filebase.canEditEntryPrefix')}
 									<a href="index.php?form=EntryPrefixEdit&amp;prefixID={@$prefix->prefixID}&amp;packageID={@PACKAGE_ID}{@SID_ARG_2ND}" class="title">{lang}wsif.entry.prefix.{$prefix->prefix}{/lang}</a>
@@ -78,7 +78,7 @@
 				</ol>
 			</div>
 		</div>
-		
+
 		{if $this->user->getPermission('admin.filebase.canEditEntryPrefix')}
 			<div class="formSubmit">
 				<input type="submit" accesskey="s" value="{lang}wcf.global.button.submit{/lang}" />
