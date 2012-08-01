@@ -14,7 +14,12 @@
 <!-- wsif styles -->
 <link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_WSIF_DIR}style/wsif{if PAGE_DIRECTION == 'rtl'}-rtl{/if}.css" />
 <style type="text/css">
-
+	.entryThumbnail img, .entryImageList li.floatedElement, .entryImage img {
+		border-color: {@$this->getStyle()->getVariable('divider.color')};
+	}
+	.entryThumbnail img:hover, .entryImageList li.floatedElement:hover, .entryImage img:hover {
+		border-color: {@$this->getStyle()->getVariable('container.border.outer.color')};
+	}
 </style>
 
 {if $specialStyles|isset}

@@ -203,15 +203,6 @@ Copyright 2009-2012 by WCF Solutions <http://www.wcfsolutions.com/>
 	overflow: hidden;
 }
 
-/* @todo move color definitions */
-.entryThumbnail img:hover, .entryImageList li.floatedElement:hover, .entryImage img:hover {
-	border-color: #999;
-}
-
-.entryThumbnail img, .entryImageList li.floatedElement, .entryImage img {
-	border-color: #bbb;
-}
-
 /* ### -- -- -- -- -- Entry Overview -- -- -- -- -- ### */
 
 .entryThumbnail {
