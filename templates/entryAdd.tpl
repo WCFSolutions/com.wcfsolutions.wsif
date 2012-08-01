@@ -6,6 +6,29 @@
 	{include file='imageViewer'}
 
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/TabbedPane.class.js"></script>
+	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/Calendar.class.js"></script>
+	<script type="text/javascript">
+		//<![CDATA[
+		var calendar = new Calendar('{$monthList}', '{$weekdayList}', {@$startOfWeek});
+
+		document.observe('dom:loaded', function() {
+			var checkbox = $('disableEntry');
+			if (checkbox) {
+				checkbox.observe('change', function() {
+					if (this.checked) {
+						enableOptions('publishingTime');
+					}
+					else {
+						disableOptions('publishingTime');
+					}
+				});
+			}
+		{if !$disableEntry}
+			disableOptions('publishingTime');
+		{/if}
+		});
+		//]]>
+	</script>
 	{if $canUseBBCodes}{include file="wysiwyg"}{/if}
 </head>
 <body{if $templateName|isset} id="tpl{$templateName|ucfirst}"{/if}>

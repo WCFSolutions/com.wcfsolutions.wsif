@@ -6,6 +6,12 @@
 	{include file='imageViewer'}
 
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/TabbedPane.class.js"></script>
+	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/Calendar.class.js"></script>
+	<script type="text/javascript">
+		//<![CDATA[
+		var calendar = new Calendar('{$monthList}', '{$weekdayList}', {@$startOfWeek});
+		//]]>
+	</script>
 	{if $canUseBBCodes}{include file="wysiwyg"}{/if}
 </head>
 <body{if $templateName|isset} id="tpl{$templateName|ucfirst}"{/if}>

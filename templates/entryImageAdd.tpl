@@ -151,12 +151,12 @@
 								{if $errorType|is_array && $errorType.0|isset}
 									{assign var=filename value=$errorType.0.filename}
 									<p>
-										{if $error.errorType == 'uploadFailed'}{lang}wsif.entry.image.upload.error.uploadFailed{/lang}{/if}
-										{if $error.errorType == 'copyFailed'}{lang}wsif.entry.image.upload.error.copyFailed{/lang}{/if}
-										{if $error.errorType == 'illegalExtension'}{lang}wsif.entry.image.upload.error.illegalExtension{/lang}{/if}
-										{if $error.errorType == 'tooLarge'}{lang}wsif.entry.image.upload.error.tooLarge{/lang}{/if}
-										{if $error.errorType == 'badImage'}{lang}wsif.entry.image.upload.error.badImage{/lang}{/if}
-										{if $error.errorType == 'tooManyImages'}{lang}wsif.entry.image.upload.error.tooManyImages{/lang}{/if}
+										{if $errorType.0.errorType == 'uploadFailed'}{lang}wsif.entry.image.upload.error.uploadFailed{/lang}{/if}
+										{if $errorType.0.errorType == 'copyFailed'}{lang}wsif.entry.image.upload.error.copyFailed{/lang}{/if}
+										{if $errorType.0.errorType == 'illegalExtension'}{lang}wsif.entry.image.upload.error.illegalExtension{/lang}{/if}
+										{if $errorType.0.errorType == 'tooLarge'}{lang}wsif.entry.image.upload.error.tooLarge{/lang}{/if}
+										{if $errorType.0.errorType == 'badImage'}{lang}wsif.entry.image.upload.error.badImage{/lang}{/if}
+										{if $errorType.0.errorType == 'tooManyImages'}{lang}wsif.entry.image.upload.error.tooManyImages{/lang}{/if}
 									</p>
 								{elseif $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
 							</div>
