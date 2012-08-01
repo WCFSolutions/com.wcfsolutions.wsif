@@ -479,7 +479,6 @@
 		<item name="wsif.category.stats.entryImages"><![CDATA[Bild{if $categoryStats.$categoryID.entryImages != 1}er{/if}]]></item>
 	</category>
 	<category name="wsif.entry">
-		<item name="wsif.entry"><![CDATA[Eintrag]]></item>
 		<item name="wsif.entry.add"><![CDATA[Eintrag hinzufügen]]></item>
 		<item name="wsif.entry.add.moderation.redirect"><![CDATA[Dein Eintrag wurde erfolgreich gespeichert. Er wird von einem Moderator überprüft und, falls keine Beanstandung vorliegt, für alle anderen Benutzer freigegeben.]]></item>
 		<item name="wsif.entry.allComments"><![CDATA[Alle Kommentare anzeigen]]></item>
@@ -685,11 +684,8 @@ Erlaubte Dateiendungen: {$allowedImageExtensions}]]></item>
 		<item name="wsif.entry.information"><![CDATA[Eintragsinformationen]]></item>
 		<item name="wsif.entry.language"><![CDATA[Sprache]]></item>
 		<item name="wsif.entry.link"><![CDATA[Verlinken]]></item>
-		<item name="wsif.entry.menu.link.entry"><![CDATA[Eintrag]]></item>
-		<item name="wsif.entry.menu.link.entryComments"><![CDATA[Kommentare]]></item>
-		<item name="wsif.entry.menu.link.entryFiles"><![CDATA[Dateien]]></item>
-		<item name="wsif.entry.menu.link.entryImages"><![CDATA[Bilder]]></item>
 		<item name="wsif.entry.noDownloadPermission"><![CDATA[Du besitzt nicht die notwendigen Rechte, um Dateien dieses Eintrags herunterladen zu können.{if !$this->user->userID} Möglicherweise musst du dich zunächst anmelden.{/if}]]></item>
+		<item name="wsif.entry.overview"><![CDATA[Übersicht]]></item>
 		<item name="wsif.entry.permalink"><![CDATA[Permalink zum {#$messageNumber}. Eintrag]]></item>
 		<item name="wsif.entry.prefix"><![CDATA[Präfix]]></item>
 		<item name="wsif.entry.publishing"><![CDATA[Veröffentlichung]]></item>

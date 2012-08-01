@@ -15,7 +15,7 @@
 				<div class="container-1 column first">
 					<div class="columnInner">
 						<div class="contentBox">
-							<h3 class="subHeadline">{lang}wsif.entry{/lang}</h3>
+							<h3 class="subHeadline">{lang}wsif.entry.overview{/lang}</h3>
 
 							<div class="entryMessage">{@$entry->getFormattedMessage()}</div>
 
