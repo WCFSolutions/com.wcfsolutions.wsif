@@ -37,6 +37,7 @@
 								</div>
 
 								<div class="editNote smallFont light">
+									{if $entry->publishingTime}<p>{lang}wsif.entry.publishingTime{/lang}: {@$entry->publishingTime|time}{/if}
 									<p>{lang}wsif.entry.downloads{/lang}: {#$entry->downloads}</p>
 									{if MODULE_COMMENT && $entry->enableComments}{/if}<p>{lang}wsif.entry.comments{/lang}: {#$entry->comments}</p>{/if}
 									<p>{lang}wsif.entry.views{/lang}: {#$entry->views}</p>

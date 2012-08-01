@@ -46,19 +46,18 @@
 						<div class="message" id="entryRow{@$entry->entryID}">
 							<div class="messageInner {cycle name='className'}">
 								<div class="entryImage">
-									{if $entry->defaultImageID}
-										{if $entry->getImage()->hasThumbnail}
-											<a href="index.php?page=EntryImageShow&amp;imageID={@$entry->getImage()->imageID}{@SID_ARG_2ND}" class="enlargable" title="{$entry->getImage()->title}"><img src="index.php?page=EntryImageShow&amp;imageID={@$entry->getImage()->imageID}{if $entry->getImage()->hasThumbnail}&amp;thumbnail=1{/if}{@SID_ARG_2ND}" alt="{$entry->getImage()->title}" /></a>
-										{else}
-											<img src="index.php?page=EntryImageShow&amp;imageID={@$entry->getImage()->imageID}{@SID_ARG_2ND}" alt="{$entry->getImage()->title}" title="{$entry->getImage()->title}" />
+									<a href="index.php?page=Entry&amp;entryID={@$entry->entryID}{@SID_ARG_2ND}">
+										{if $entry->defaultImageID}
+											<img src="index.php?page=EntryImageShow&amp;imageID={@$entry->getImage()->imageID}{if $entry->getImage()->hasThumbnail}&amp;thumbnail=1{/if}{@SID_ARG_2ND}" alt="{$entry->getImage()->title}" />
+											{else}
+											<img src="images/noThumbnail.png" alt="" />
 										{/if}
-									{else}
-										<img src="images/noThumbnail.png" alt="" />
-									{/if}
+									</a>
 								</div>
 								<div class="entryDetails">
 									<div class="messageHeader">
 										<p class="messageCount">
+											{@$entry->getLanguageIcon()}
 											<a href="index.php?page=Entry&amp;entryID={@$entry->entryID}{@SID_ARG_2ND}" title="{lang}wsif.entry.permalink{/lang}" class="messageNumber">{#$messageNumber}</a>
 											{if $permissions.canMarkEntry}
 												<span class="messageMarkCheckBox">
@@ -98,6 +97,7 @@
 									</div>
 
 									<div class="editNote smallFont light">
+										{if $entry->publishingTime}<p>{lang}wsif.entry.publishingTime{/lang}: {@$entry->publishingTime|time}{/if}
 										<p>{lang}wsif.entry.downloads{/lang}: {#$entry->downloads}</p>
 										{if MODULE_COMMENT && $entry->enableComments}{/if}<p>{lang}wsif.entry.comments{/lang}: {#$entry->comments}</p>{/if}
 										<p>{lang}wsif.entry.views{/lang}: {#$entry->views}</p>
