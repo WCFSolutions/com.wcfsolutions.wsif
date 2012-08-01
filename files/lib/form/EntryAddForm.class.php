@@ -90,6 +90,20 @@ class EntryAddForm extends MessageForm {
 	 */
 	public $publishingTime = 0;
 
+	/**
+	 * max image size
+	 *
+	 * @var integer
+	 */
+	protected $maxImageSize = 0;
+
+	/**
+	 * max file size
+	 *
+	 * @var integer
+	 */
+	protected $maxFileSize = 0;
+
 	// form parameters
 	public $prefixID = 0;
 	public $username = '';
@@ -103,18 +117,10 @@ class EntryAddForm extends MessageForm {
 	public $publishingTimeHour = '';
 	public $disableEntry = 0;
 	public $enableComments = 1;
-
-	// image
 	public $imageUpload = null;
-
-	// file
 	public $fileType = 0;
 	public $fileUpload = null;
 	public $externalURL = '';
-
-	protected $maxFileSize = 0;
-
-	protected $maxImageSize = 0;
 
 	/**
 	 * @see Page::readParameters()
@@ -183,7 +189,7 @@ class EntryAddForm extends MessageForm {
 		if (isset($_POST['imageID'])) $this->imageID = intval($_POST['imageID']);
 		if ($this->imageID) {
 			$this->image = new EntryImageEditor($this->imageID);
-			if (!$this->image->imageID) {
+			if (!$this->image->imageID || $this->image->entryID != 0) {
 				throw new IllegalLinkException();
 			}
 		}
@@ -195,7 +201,7 @@ class EntryAddForm extends MessageForm {
 		if (isset($_POST['fileID'])) $this->fileID = intval($_POST['fileID']);
 		if ($this->fileID) {
 			$this->file = new EntryFileEditor($this->fileID);
-			if (!$this->file->fileID) {
+			if (!$this->file->fileID || $this->file->entryID != 0) {
 				throw new IllegalLinkException();
 			}
 		}
