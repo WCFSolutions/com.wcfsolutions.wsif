@@ -22,24 +22,24 @@ class HiddenEntriesModerationType extends AbstractModerationType {
 	public function getName() {
 		return 'hiddenEntries';
 	}
-	
+
 	/**
 	 * @see ModerationType::getIcon()
 	 */
 	public function getIcon() {
 		return 'entry';
 	}
-	
+
 	/**
 	 * @see ModerationType::getURL()
 	 */
 	public function getURL() {
 		return "index.php?page=ModerationHiddenEntries".SID_ARG_2ND;
 	}
-	
+
 	/**
 	 * @see ModerationType::isImportant()
-	 */	
+	 */
 	public function isImportant() {
 		return true;
 	}
@@ -50,7 +50,7 @@ class HiddenEntriesModerationType extends AbstractModerationType {
 	public function isModerator() {
 		return WCF::getUser()->getPermission('mod.filebase.canEnableEntry');
 	}
-	
+
 	/**
 	 * @see ModerationType::getOutstandingModerations()
 	 */

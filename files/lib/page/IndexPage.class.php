@@ -18,23 +18,23 @@ require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
 class IndexPage extends AbstractPage {
 	public $templateName = 'index';
 	public $tags = array();
-	
+
 	/**
 	 * @see Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
-		
+
 		// read categories
 		$this->categoryList = new CategoryList();
 		$this->categoryList->readCategories();
-		
+
 		// read tags
 		if (MODULE_TAGGING && ENTRY_ENABLE_TAGS && INDEX_ENABLE_TAGS) {
 			$this->readTags();
 		}
 	}
-	
+
 	/**
 	 * @see Page::assignVariables();
 	 */
@@ -45,14 +45,14 @@ class IndexPage extends AbstractPage {
 		if (INDEX_ENABLE_STATS) {
 			$this->renderStats();
 		}
-		
+
 		$this->categoryList->assignVariables();
 		WCF::getTPL()->assign(array(
 			'allowSpidersToIndexThisPage' => true,
 			'tags' => $this->tags
 		));
 	}
-	
+
 	/**
 	 * Renders the filebase stats.
 	 */
@@ -60,14 +60,14 @@ class IndexPage extends AbstractPage {
 		$stats = WCF::getCache()->get('stat');
 		WCF::getTPL()->assign('stats', $stats);
 	}
-	
+
 	/**
 	 * Reads the tags.
 	 */
 	protected function readTags() {
 		// include files
 		require_once(WCF_DIR.'lib/data/tag/TagCloud.class.php');
-		
+
 		// get tags
 		$tagCloud = new TagCloud(WCF::getSession()->getVisibleLanguageIDArray());
 		$this->tags = $tagCloud->getTags();

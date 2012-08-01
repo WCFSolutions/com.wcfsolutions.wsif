@@ -15,31 +15,31 @@ require_once(WCF_DIR.'lib/data/moderation/type/AbstractModerationType.class.php'
  * @subpackage	data.moderation.type
  * @category	Infinite Filebase
  */
-class DeletedEntriesModerationType extends AbstractModerationType {	
+class DeletedEntriesModerationType extends AbstractModerationType {
 	/**
 	 * @see ModerationType::getName()
 	 */
 	public function getName() {
 		return 'deletedEntries';
 	}
-	
+
 	/**
 	 * @see ModerationType::getIcon()
 	 */
 	public function getIcon() {
 		return 'entry';
 	}
-	
+
 	/**
 	 * @see ModerationType::getURL()
 	 */
 	public function getURL() {
 		return "index.php?page=ModerationDeletedEntries".SID_ARG_2ND;
 	}
-	
+
 	/**
 	 * @see ModerationType::isImportant()
-	 */	
+	 */
 	public function isImportant() {
 		return true;
 	}
@@ -50,7 +50,7 @@ class DeletedEntriesModerationType extends AbstractModerationType {
 	public function isModerator() {
 		return WCF::getUser()->getPermission('mod.filebase.canViewDeletedEntry');
 	}
-	
+
 	/**
 	 * @see ModerationType::getOutstandingModerations()
 	 */

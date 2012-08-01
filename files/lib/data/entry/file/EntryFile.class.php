@@ -17,7 +17,7 @@ class EntryFile extends DatabaseObject {
 	 * Defines that a file is an upload.
 	 */
 	const TYPE_UPLOAD = 0;
-	
+
 	/**
 	 * Defines that a file is an external link.
 	 */
@@ -41,19 +41,19 @@ class EntryFile extends DatabaseObject {
 		}
 		parent::__construct($row);
 	}
-	
+
 	/**
 	 * Returns the formatted description of this file.
-	 * 
+	 *
 	 * @return	string
 	 */
 	public function getFormattedDescription() {
 		if ($this->description) {
 			return nl2br(StringUtil::encodeHTML($this->description));
-		}	
+		}
 		return '';
 	}
-	
+
 	/**
 	 * Returns the number of views per day.
 	 *
@@ -66,7 +66,7 @@ class EntryFile extends DatabaseObject {
 		}
 		return $this->views;
 	}
-	
+
 	/**
 	 * Returns the number of downloads per day.
 	 *
@@ -79,7 +79,7 @@ class EntryFile extends DatabaseObject {
 		}
 		return $this->downloads;
 	}
-	
+
 	/**
 	 * Returns true, if this file is an upload.
 	 *
@@ -91,7 +91,7 @@ class EntryFile extends DatabaseObject {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Returns true, if this file is an external link.
 	 *
@@ -103,10 +103,10 @@ class EntryFile extends DatabaseObject {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Returns true, if the active user can edit this file.
-	 * 
+	 *
 	 * @return	boolean
 	 */
 	public function isEditable($category) {
@@ -115,10 +115,10 @@ class EntryFile extends DatabaseObject {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Returns true, if the active user can delete this file.
-	 * 
+	 *
 	 * @return	boolean
 	 */
 	public function isDeletable($entry, $category) {

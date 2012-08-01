@@ -6,7 +6,7 @@ require_once(WCF_DIR.'lib/data/feed/FeedReaderSource.class.php');
 
 /**
  * Shows the welcome page in the filebase admin control panel.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -17,20 +17,20 @@ require_once(WCF_DIR.'lib/data/feed/FeedReaderSource.class.php');
 class IndexPage extends AbstractPage {
 	// system
 	public $templateName = 'index';
-	
+
 	// data
 	public $os = '', $webserver = '', $sqlVersion = '', $sqlType = '', $load = '';
 	public $stat = array();
 	public $news = array();
 	public $minorUpdates = array();
 	public $majorUpdates = array();
-	
+
 	/**
 	 * @see Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
-		
+
 		$this->os = PHP_OS;
 		if (isset($_SERVER['SERVER_SOFTWARE'])) $this->webserver = $_SERVER['SERVER_SOFTWARE'];
 		$this->sqlVersion = WCF::getDB()->getVersion();
@@ -42,13 +42,13 @@ class IndexPage extends AbstractPage {
 		$this->readLoad();
 		$this->readStat();
 	}
-	
+
 	/**
 	 * @see Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
-		
+
 		WCF::getTPL()->assign(array(
 			'os' => $this->os,
 			'webserver' => $this->webserver,
@@ -63,17 +63,17 @@ class IndexPage extends AbstractPage {
 		));
 		WCF::getTPL()->assign($this->stat);
 	}
-	
+
 	/**
 	 * Gets a list of available updates.
-	 */	
+	 */
 	protected function readUpdates() {
 		require_once(WCF_DIR.'lib/acp/package/update/PackageUpdate.class.php');
 		$updates = PackageUpdate::getAvailableUpdates();
-		
+
 		foreach ($updates as $update) {
 			$versions = array_reverse($update['versions']);
-			
+
 			// find newest minor update
 			$i = 0;
 			$currentVersionStatus = (preg_match('/(alpha|beta|RC)/i', $update['packageVersion']) ? 'unstable' : 'stable');
@@ -86,35 +86,35 @@ class IndexPage extends AbstractPage {
 						$this->minorUpdates[] = $minorUpdate;
 						if ($i != 0) {
 							$this->majorUpdates[] = $update;
-						}							
+						}
 						continue 2;
 					}
 				}
-				
+
 				$i++;
 			}
-			
+
 			$this->majorUpdates[] = $update;
 		}
 	}
-	
+
 	/**
 	 * Gets a list of available news.
-	 */	
+	 */
 	protected function readNews() {
 		$this->news = FeedReaderSource::getEntries(5);
 		foreach ($this->news as $key => $news) {
 			$this->news[$key]['description'] = preg_replace('/href="(.*?)"/e', '\'href="'.RELATIVE_WCF_DIR.'acp/dereferrer.php?url=\'.rawurlencode(\'$1\').\'" class="externalURL"\'', $news['description']);
 		}
 	}
-	
+
 	/**
 	 * Gets a list of simple statistics.
 	 */
 	protected function readStat() {
 		WCF::getCache()->addResource('acpStat', WSIF_DIR.'cache/cache.acpStat.php', WSIF_DIR.'lib/system/cache/CacheBuilderACPStat.class.php', 0, 3600 * 12);
 		$this->stat = WCF::getCache()->get('acpStat');
-		
+
 		// users online
 		$sql = "SELECT	COUNT(*) AS usersOnline
 			FROM	wcf".WCF_N."_session
@@ -123,7 +123,7 @@ class IndexPage extends AbstractPage {
 		$row = WCF::getDB()->getFirstRow($sql);
 		$this->stat['usersOnline'] = $row['usersOnline'];
 	}
-	
+
 	/**
 	 * Gets the current server load.
 	 */

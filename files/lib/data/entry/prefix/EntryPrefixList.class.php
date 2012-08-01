@@ -7,7 +7,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 
 /**
  * Represents a list of entry prefixes.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -18,7 +18,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 class EntryPrefixList extends DatabaseObjectList {
 	/**
 	 * list of prefixes
-	 * 
+	 *
 	 * @var array<EntryPrefix>
 	 */
 	public $prefixes = array();
@@ -29,7 +29,7 @@ class EntryPrefixList extends DatabaseObjectList {
 	 * @var	string
 	 */
 	public $sqlOrderBy = 'entry_prefix.showOrder ASC';
-	
+
 	/**
 	 * @see DatabaseObjectList::countObjects()
 	 */
@@ -40,7 +40,7 @@ class EntryPrefixList extends DatabaseObjectList {
 		$row = WCF::getDB()->getFirstRow($sql);
 		return $row['count'];
 	}
-	
+
 	/**
 	 * @see DatabaseObjectList::readObjects()
 	 */
@@ -56,7 +56,7 @@ class EntryPrefixList extends DatabaseObjectList {
 			$this->prefixes[$row['prefixID']] = new EntryPrefix(null, $row);
 		}
 	}
-	
+
 	/**
 	 * @see DatabaseObjectList::getObjects()
 	 */

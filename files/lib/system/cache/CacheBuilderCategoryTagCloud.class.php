@@ -4,7 +4,7 @@ require_once(WCF_DIR.'lib/system/cache/CacheBuilderTagCloud.class.php');
 
 /**
  * Caches a category tag cloud.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -23,7 +23,7 @@ class CacheBuilderCategoryTagCloud extends CacheBuilderTagCloud {
 		// get taggable
 		require_once(WCF_DIR.'lib/data/tag/TagEngine.class.php');
 		$taggable = TagEngine::getInstance()->getTaggable('com.wcfsolutions.wsif.entry');
-		
+
 		// get tag ids
 		$tagIDArray = array();
 		$sql = "SELECT		COUNT(*) AS counter, object.tagID
@@ -39,7 +39,7 @@ class CacheBuilderCategoryTagCloud extends CacheBuilderTagCloud {
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$tagIDArray[$row['tagID']] = $row['counter'];
 		}
-			
+
 		// get tags
 		if (count($tagIDArray)) {
 			$sql = "SELECT		name, tagID
@@ -53,10 +53,10 @@ class CacheBuilderCategoryTagCloud extends CacheBuilderTagCloud {
 
 			// sort by counter
 			uasort($this->tags, array('self', 'compareTags'));
-						
+
 			$data = $this->tags;
 		}
-		
+
 		return $data;
 	}
 }

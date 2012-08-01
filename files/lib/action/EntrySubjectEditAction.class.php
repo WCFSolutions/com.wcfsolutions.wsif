@@ -4,7 +4,7 @@ require_once(WSIF_DIR.'lib/action/AbstractEntryAction.class.php');
 
 /**
  * Edits the subject of an entry.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -19,13 +19,13 @@ class EntrySubjectEditAction extends AbstractEntryAction {
 	 * @var	string
 	 */
 	public $subject = '';
-	
+
 	/**
 	 * @see Action::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
-		
+
 		// get subject
 		if (isset($_REQUEST['subject'])) {
 			$this->subject = StringUtil::trim($_REQUEST['subject']);
@@ -38,13 +38,13 @@ class EntrySubjectEditAction extends AbstractEntryAction {
 	 */
 	public function execute() {
 		parent::execute();
-		
+
 		// check permission
 		$this->category->checkModeratorPermission('canEditEntry');
 
-		// edit subject	
+		// edit subject
 		$this->entry->setSubject($this->subject);
-			
+
 		// reset cache
 		if ($this->entry->time == $this->category->getLastEntryTime($this->entry->languageID)) {
 			WCF::getCache()->clearResource('categoryData', true);

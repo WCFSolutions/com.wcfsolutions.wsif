@@ -33,10 +33,10 @@ class EntryComment extends DatabaseObject {
 		}
 		parent::__construct($row);
 	}
-	
+
 	/**
 	 * Returns true, if the active user can edit this comment.
-	 * 
+	 *
 	 * @return	boolean
 	 */
 	public function isEditable($category) {
@@ -45,10 +45,10 @@ class EntryComment extends DatabaseObject {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Returns true, if the active user can delete this comment.
-	 * 
+	 *
 	 * @return	boolean
 	 */
 	public function isDeletable($category) {

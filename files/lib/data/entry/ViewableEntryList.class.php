@@ -5,7 +5,7 @@ require_once(WSIF_DIR.'lib/data/entry/ViewableEntry.class.php');
 
 /**
  * Represents a viewable list of entries.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -16,18 +16,18 @@ require_once(WSIF_DIR.'lib/data/entry/ViewableEntry.class.php');
 class ViewableEntryList extends EntryList {
 	/**
 	 * list of object ids
-	 * 
+	 *
 	 * @var	array<integer>
 	 */
 	public $objectIDArray = array();
-	
+
 	/**
 	 * list of tags
-	 * 
+	 *
 	 * @var	array
 	 */
 	public $tags = array();
-	
+
 	/**
 	 * Gets the object ids.
 	 */
@@ -64,18 +64,18 @@ class ViewableEntryList extends EntryList {
 			}
 		}
 	}
-	
+
 	/**
 	 * @see DatabaseObjectList::readObjects()
 	 */
 	public function readObjects() {
 		// get ids
 		$this->readObjectIDArray();
-		
+
 		// get entries
 		if (count($this->objectIDArray)) {
 			$this->readTags();
-			
+
 			$sql = "SELECT		".(!empty($this->sqlSelects) ? $this->sqlSelects.',' : '')."
 						entry.*,
 						entry_image.imageID, entry_image.hasThumbnail
@@ -94,7 +94,7 @@ class ViewableEntryList extends EntryList {
 
 	/**
 	 * Returns the list of tags.
-	 * 
+	 *
 	 * @return	array
 	 */
 	public function getTags() {

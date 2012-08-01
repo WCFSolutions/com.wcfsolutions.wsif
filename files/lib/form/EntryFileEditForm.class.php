@@ -15,18 +15,18 @@ require_once(WSIF_DIR.'lib/form/EntryFileAddForm.class.php');
 class EntryFileEditForm extends EntryFileAddForm {
 	/**
 	 * file id
-	 * 
+	 *
 	 * @var	integer
 	 */
 	public $fileID = 0;
-	
+
 	/**
 	 * file editor object
-	 * 
+	 *
 	 * @var	EntryFileEditor
 	 */
 	public $file = null;
-	
+
 	/**
 	 * @see Page::readParameters()
 	 */
@@ -39,42 +39,42 @@ class EntryFileEditForm extends EntryFileAddForm {
 		if (!$this->file->fileID) {
 			throw new IllegalLinkException();
 		}
-		
+
 		// get entry frame
 		$this->frame = new EntryFrame($this, $this->file->entryID);
-		
+
 		// check permission
 		if (!$this->file->isEditable($this->frame->getCategory())) {
 			throw new PermissionDeniedException();
 		}
 	}
-	
+
 	/**
 	 * @see	Form::validate()
 	 */
 	public function validate() {
 		AbstractForm::validate();
-		
+
 		if (empty($this->title)) {
 			throw new UserInputException('title');
 		}
 	}
-	
+
 	/**
 	 * @see Form::save()
 	 */
 	public function save() {
 		AbstractForm::save();
-		
+
 		// update file
 		$this->file->update($this->title, $this->description);
 		$this->saved();
-		
+
 		// forward to file
 		HeaderUtil::redirect('index.php?page=EntryFile&fileID='.$this->file->fileID.SID_ARG_2ND_NOT_ENCODED);
 		exit;
 	}
-	
+
 	/**
 	 * @see Page::readData()
 	 */
@@ -86,13 +86,13 @@ class EntryFileEditForm extends EntryFileAddForm {
 			$this->description = $this->file->description;
 		}
 	}
-	
+
 	/**
 	 * @see Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
-		
+
 		WCF::getTPL()->assign(array(
 			'action' => 'edit',
 			'fileID' =>  $this->fileID,

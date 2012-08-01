@@ -22,26 +22,26 @@ class MarkedEntriesModerationType extends AbstractModerationType {
 	public function getName() {
 		return 'markedEntries';
 	}
-	
+
 	/**
 	 * @see ModerationType::getIcon()
-	 */	
+	 */
 	public function getIcon() {
 		return 'entry';
 	}
-	
+
 	/**
 	 * Returns the url of this moderation type.
-	 * 
+	 *
 	 * @return	string
 	 */
 	public function getURL() {
 		return "index.php?page=ModerationMarkedEntries".SID_ARG_2ND;
 	}
-	
+
 	/**
 	 * @see ModerationType::isImportant()
-	 */	
+	 */
 	public function isImportant() {
 		return false;
 	}
@@ -52,7 +52,7 @@ class MarkedEntriesModerationType extends AbstractModerationType {
 	public function isModerator() {
 		return intval(WCF::getUser()->getPermission('mod.filebase.canDeleteEntry') || WCF::getUser()->getPermission('mod.filebase.canMoveEntry'));
 	}
-	
+
 	/**
 	 * @see ModerationType::getOutstandingModerations()
 	 */

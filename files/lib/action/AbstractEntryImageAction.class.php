@@ -17,28 +17,28 @@ require_once(WCF_DIR.'lib/action/AbstractSecureAction.class.php');
  * @subpackage	action
  * @category	Infinite Filebase
  */
-abstract class AbstractEntryImageAction extends AbstractSecureAction {	
+abstract class AbstractEntryImageAction extends AbstractSecureAction {
 	/**
 	 * image id
 	 *
 	 * @var	integer
 	 */
 	public $imageID = 0;
-	
+
 	/**
 	 * image object
-	 * 
+	 *
 	 * @var	EntryImage
 	 */
 	public $image = null;
-	
+
 	/**
 	 * entry object
 	 *
 	 * @var ViewableEntry
 	 */
 	public $entry = null;
-	
+
 	/**
 	 * category object
 	 *
@@ -51,17 +51,17 @@ abstract class AbstractEntryImageAction extends AbstractSecureAction {
 	 */
 	public function readParameters() {
 		parent::readParameters();
-		
+
 		// get image
 		if (isset($_REQUEST['imageID'])) $this->imageID = intval($_REQUEST['imageID']);
 		$this->image = new EntryImageEditor($this->imageID);
 		if (!$this->image->imageID) {
 			throw new IllegalLinkException();
 		}
-		
+
 		// get entry
 		$this->entry = new EntryEditor($this->image->entryID);
-		
+
 		// get category
 		$this->category = new CategoryEditor($this->entry->categoryID);
 		$this->entry->enter($this->category);

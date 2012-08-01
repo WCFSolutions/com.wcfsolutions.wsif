@@ -9,7 +9,7 @@ require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
 
 /**
  * Shows the entry file page.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -19,25 +19,25 @@ require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
  */
 class EntryFilePage extends AbstractPage {
 	// system
-	public $templateName = 'entryFile';	
-	
+	public $templateName = 'entryFile';
+
 	/**
 	 * file id
 	 *
 	 * @var	integer
 	 */
 	public $fileID = 0;
-	
+
 	/**
 	 * file object
-	 * 
+	 *
 	 * @var	EntryFile
 	 */
 	public $file = null;
-	
+
 	/**
 	 * entry frame object
-	 * 
+	 *
 	 * @var EntryFrame
 	 */
 	public $frame = null;
@@ -51,17 +51,17 @@ class EntryFilePage extends AbstractPage {
 
 	/**
 	 * @see Page::readParameters()
-	 */	
+	 */
 	public function readParameters() {
 		parent::readParameters();
-		
+
 		// get file
 		if (isset($_REQUEST['fileID'])) $this->fileID = intval($_REQUEST['fileID']);
 		$this->file = new EntryFile($this->fileID);
 		if (!$this->file->fileID) {
 			throw new IllegalLinkException();
 		}
-		
+
 		// get entry frame
 		$this->frame = new EntryFrame($this, $this->file->entryID);
 
@@ -70,13 +70,13 @@ class EntryFilePage extends AbstractPage {
 			$this->updateViews();
 		}
 	}
-	
+
 	/**
 	 * @see Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
-		
+
 		// get file downloaders
 		$sql = "SELECT		avatar.*, user_table.*, downloader.*
 			FROM		wsif".WSIF_N."_entry_file_downloader downloader
@@ -91,13 +91,13 @@ class EntryFilePage extends AbstractPage {
 			$this->fileDownloaders[] = new WSIFUser(null, $row);
 		}
 	}
-	
+
 	/**
 	* @see Page::assignVariables();
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
-		
+
 		$this->frame->assignVariables();
 		WCF::getTPL()->assign(array(
 			'fileID' => $this->fileID,
@@ -106,7 +106,7 @@ class EntryFilePage extends AbstractPage {
 			'allowSpidersToIndexThisPage' => true
 		));
 	}
-	
+
 	/**
 	 * Updates the views of this entry file.
 	 */

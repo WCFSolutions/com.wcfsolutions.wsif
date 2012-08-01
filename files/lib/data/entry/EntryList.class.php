@@ -7,7 +7,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 
 /**
  * Represents a list of entries.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -18,7 +18,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 class EntryList extends DatabaseObjectList {
 	/**
 	 * list of items
-	 * 
+	 *
 	 * @var array<ViewableEntry>
 	 */
 	public $entries = array();
@@ -29,7 +29,7 @@ class EntryList extends DatabaseObjectList {
 	 * @var	string
 	 */
 	public $sqlOrderBy = 'entry.time DESC';
-	
+
 	/**
 	 * @see DatabaseObjectList::countObjects()
 	 */
@@ -40,7 +40,7 @@ class EntryList extends DatabaseObjectList {
 		$row = WCF::getDB()->getFirstRow($sql);
 		return $row['count'];
 	}
-	
+
 	/**
 	 * @see DatabaseObjectList::readObjects()
 	 */
@@ -56,7 +56,7 @@ class EntryList extends DatabaseObjectList {
 			$this->entries[] = new ViewableEntry(null, $row);
 		}
 	}
-	
+
 	/**
 	 * @see DatabaseObjectList::getObjects()
 	 */

@@ -14,7 +14,7 @@ require_once(WCF_DIR.'lib/data/user/UserProfile.class.php');
  */
 class WSIFUser extends UserProfile {
 	protected $avatar = null;
-	
+
 	/**
 	 * @see UserProfile::__construct()
 	 */
@@ -22,10 +22,10 @@ class WSIFUser extends UserProfile {
 		$this->sqlJoins .= ' LEFT JOIN wsif'.WSIF_N.'_user wsif_user ON (wsif_user.userID = user.userID) ';
 		parent::__construct($userID, $row, $username, $email);
 	}
-	
+
 	/**
 	 * Updates the amount of entries of an user.
-	 * 
+	 *
 	 * @param	integer		$userID
 	 * @param	integer		$entries
 	 */

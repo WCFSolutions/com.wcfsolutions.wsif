@@ -33,14 +33,14 @@ class TaggableEntry extends AbstractTaggableObject {
 		}
 		return $taggedObjects;
 	}
-	
+
 	/**
 	 * @see Taggable::countObjectsByTagID()
 	 */
 	public function countObjectsByTagID($tagID) {
 		$accessibleCategoryIDArray = Category::getAccessibleCategoryIDArray();
 		if (count($accessibleCategoryIDArray) == 0) return 0;
-		
+
 		$sql = "SELECT		COUNT(*) AS count
 			FROM		wcf".WCF_N."_tag_to_object tag_to_object
 			LEFT JOIN	wsif".WSIF_N."_entry entry
@@ -53,14 +53,14 @@ class TaggableEntry extends AbstractTaggableObject {
 		$row = WCF::getDB()->getFirstRow($sql);
 		return $row['count'];
 	}
-	
+
 	/**
 	 * @see Taggable::getObjectsByTagID()
 	 */
 	public function getObjectsByTagID($tagID, $limit = 0, $offset = 0) {
 		$accessibleCategoryIDArray = Category::getAccessibleCategoryIDArray();
 		if (count($accessibleCategoryIDArray) == 0) return array();
-		
+
 		$entries = array();
 		$sql = "SELECT		entry.*,
 					entry_image.imageID, entry_image.hasThumbnail
@@ -91,14 +91,14 @@ class TaggableEntry extends AbstractTaggableObject {
 	public function getIDFieldName() {
 		return 'entryID';
 	}
-	
+
 	/**
 	 * @see Taggable::getResultTemplateName()
 	 */
 	public function getResultTemplateName() {
 		return 'taggedEntries';
 	}
-	
+
 	/**
 	 * @see Taggable::getSmallSymbol()
 	 */
@@ -112,7 +112,7 @@ class TaggableEntry extends AbstractTaggableObject {
 	public function getMediumSymbol() {
 		return StyleManager::getStyle()->getIconPath('entryM.png');
 	}
-	
+
 	/**
 	 * @see Taggable::getLargeSymbol()
 	 */

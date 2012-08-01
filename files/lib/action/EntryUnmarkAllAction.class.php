@@ -4,7 +4,7 @@ require_once(WCF_DIR.'lib/action/AbstractSecureAction.class.php');
 
 /**
  * Unmarks all entries.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -18,7 +18,7 @@ class EntryUnmarkAllAction extends AbstractSecureAction {
 	 */
 	public function execute() {
 		parent::execute();
-		
+
 		// unmark
 		WCF::getSession()->unregister('markedEntries');
 		$this->executed();

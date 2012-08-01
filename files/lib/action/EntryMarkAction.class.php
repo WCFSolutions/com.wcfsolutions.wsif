@@ -8,7 +8,7 @@ require_once(WCF_DIR.'lib/action/AbstractSecureAction.class.php');
 
 /**
  * Marks / unmarks entries.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -34,22 +34,22 @@ class EntryMarkAction extends AbstractSecureAction {
 		}
 		if (isset($_POST['action'])) $this->action = $_POST['action'];
 	}
-	
+
 	/**
 	 * @see Action::execute()
 	 */
 	public function execute() {
 		parent::execute();
-		
+
 		// get categories
 		list($categories, $categoryIDs) = EntryEditor::getCategoriesByEntryIDs(implode(',', $this->entryIDArray));
-			
+
 		// check permissions
 		foreach ($categories as $category) {
 			$category->checkModeratorPermission(array('canDeleteEntry', 'canMoveEntry', 'canCopyEntry'));
 		}
 
-		// mark / unmark		
+		// mark / unmark
 		foreach ($this->entryIDArray as $entryID) {
 			$entry = new EntryEditor($entryID);
 			$entry->enter();

@@ -19,14 +19,14 @@ class EntryImageEditForm extends EntryImageAddForm {
 	 * @var	integer
 	 */
 	public $imageID = 0;
-	
+
 	/**
 	 * image object
-	 * 
+	 *
 	 * @var	EntryImageEditor
 	 */
 	public $image = null;
-	
+
 	/**
 	 * @see Page::readParameters()
 	 */
@@ -39,42 +39,42 @@ class EntryImageEditForm extends EntryImageAddForm {
 		if (!$this->image->imageID) {
 			throw new IllegalLinkException();
 		}
-		
+
 		// get entry frame
 		$this->frame = new EntryFrame($this, $this->image->entryID);
-		
+
 		// check permission
 		if (!$this->image->isEditable($this->frame->getCategory())) {
 			throw new PermissionDeniedException();
 		}
 	}
-	
+
 	/**
 	 * @see	Form::validate()
 	 */
 	public function validate() {
 		AbstractForm::validate();
-		
+
 		if (empty($this->title)) {
 			throw new UserInputException('title');
 		}
 	}
-	
+
 	/**
 	 * @see Form::save()
 	 */
 	public function save() {
 		AbstractForm::save();
-		
+
 		// update image
 		$this->image->update($this->title, $this->description);
 		$this->saved();
-		
+
 		// forward to image
 		HeaderUtil::redirect('index.php?page=EntryImage&imageID='.$this->image->imageID.SID_ARG_2ND_NOT_ENCODED);
 		exit;
 	}
-	
+
 	/**
 	 * @see Page::readData()
 	 */
@@ -86,13 +86,13 @@ class EntryImageEditForm extends EntryImageAddForm {
 			$this->description = $this->image->description;
 		}
 	}
-	
+
 	/**
 	 * @see Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
-		
+
 		WCF::getTPL()->assign(array(
 			'action' => 'edit',
 			'imageID' =>  $this->imageID,

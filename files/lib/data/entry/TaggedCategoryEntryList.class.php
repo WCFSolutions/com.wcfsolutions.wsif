@@ -7,7 +7,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 
 /**
  * TaggedCategoryEntryList provides extended functions for displaying a list of entries of a specific tag in a category.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -49,14 +49,14 @@ class TaggedCategoryEntryList extends TaggedEntryList {
 		else if (count(WCF::getSession()->getVisibleLanguageIDArray()) && (CATEGORY_ENTRIES_ENABLE_LANGUAGE_FILTER_FOR_GUESTS == 1 || WCF::getUser()->userID != 0)) {
 			$this->sqlConditions .= " AND entry.languageID IN (".implode(',', WCF::getSession()->getVisibleLanguageIDArray()).")";
 		}
-		
+
 		// ratings
 		if ($enableRating) {
 			$this->sqlSelectRating = $this->sqlSelects = "if (ratings>0 AND ratings>=".ENTRY_MIN_RATINGS.",rating/ratings,0) AS ratingResult";
 		}
 		parent::__construct($tagID);
 	}
-	
+
 	/**
 	 * @see ViewableEntryList::readObjectIDArray()
 	 */

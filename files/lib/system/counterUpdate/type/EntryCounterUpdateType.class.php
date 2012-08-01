@@ -7,7 +7,7 @@ require_once(WCF_DIR.'lib/system/counterUpdate/type/AbstractCounterUpdateType.cl
 
 /**
  * Updates the entry counters.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -22,7 +22,7 @@ class EntryCounterUpdateType extends AbstractCounterUpdateType {
 	public function getDefaultLimit() {
 		return 500;
 	}
-	
+
 	/**
 	 * @see	CounterUpdateType::countItems()
 	 */
@@ -32,13 +32,13 @@ class EntryCounterUpdateType extends AbstractCounterUpdateType {
 		$row = WCF::getDB()->getFirstRow($sql);
 		return $row['count'];
 	}
-	
+
 	/**
 	 * @see	CounterUpdateType::update()
 	 */
 	public function update($offset, $limit) {
 		parent::update($offset, $limit);
-		
+
 		// get entry ids
 		$entryIDs = '';
 		$sql = "SELECT		entryID
@@ -53,7 +53,7 @@ class EntryCounterUpdateType extends AbstractCounterUpdateType {
 			$this->finished = true;
 			return;
 		}
-		
+
 		// refresh entries
 		EntryEditor::refreshAll($entryIDs);
 		$this->updated();

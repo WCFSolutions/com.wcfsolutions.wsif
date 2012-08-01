@@ -21,7 +21,7 @@ require_once(WCF_DIR.'lib/data/message/sidebar/MessageSidebarObject.class.php');
 class ViewableEntryComment extends EntryComment implements MessageSidebarObject {
 	protected $user;
 	protected $entry;
-	
+
 	/**
 	 * Creates a new ViewablePost object.
 	 *
@@ -33,7 +33,7 @@ class ViewableEntryComment extends EntryComment implements MessageSidebarObject 
 		parent::__construct($commentID, $row);
 		$this->entry = $entry;
 	}
-	
+
 	/**
 	 * @see DatabaseObject::handleData()
 	 */
@@ -41,7 +41,7 @@ class ViewableEntryComment extends EntryComment implements MessageSidebarObject 
 		parent::handleData($data);
 		$this->user = new WSIFUser(null, $data);
 	}
-	
+
 	/**
 	 * Returns the formatted message.
 	 *
@@ -53,7 +53,7 @@ class ViewableEntryComment extends EntryComment implements MessageSidebarObject 
 		AttachmentBBCode::setMessageID($this->commentID);
 		return $parser->parse($this->message, $this->enableSmilies, $this->enableHtml, $this->enableBBCodes, !$this->messagePreview);
 	}
-	
+
 	// MessageSidebarObject implementation
 	/**
 	 * @see MessageSidebarObject::getUser()
@@ -61,14 +61,14 @@ class ViewableEntryComment extends EntryComment implements MessageSidebarObject 
 	public function getUser() {
 		return $this->user;
 	}
-	
+
 	/**
 	 * @see MessageSidebarObject::getMessageID()
 	 */
 	public function getMessageID() {
 		return $this->commentID;
 	}
-	
+
 	/**
 	 * @see MessageSidebarObject::getMessageType()
 	 */

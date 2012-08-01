@@ -23,7 +23,7 @@ class EntrySearchResult extends ViewableEntry {
 		$data['messagePreview'] = true;
 		parent::handleData($data);
 	}
-	
+
 	/**
 	 * @see ViewableEntry::getFormattedMessage()
 	 */

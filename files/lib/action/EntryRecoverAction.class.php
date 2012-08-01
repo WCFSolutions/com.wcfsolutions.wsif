@@ -4,7 +4,7 @@ require_once(WSIF_DIR.'lib/action/AbstractEntryAction.class.php');
 
 /**
  * Recovers an entry.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -24,7 +24,7 @@ class EntryRecoverAction extends AbstractEntryAction {
 		}
 
 		$this->category->checkModeratorPermission('canDeleteEntry');
-		
+
 		// recover entry
 		if ($this->entry->isDeleted) {
 			$this->entry->restore();
@@ -34,7 +34,7 @@ class EntryRecoverAction extends AbstractEntryAction {
 			if ($this->entry->time > $this->category->getLastEntryTime($this->entry->languageID)) {
 				$this->category->setLastEntry($this->entry);
 			}
-			
+
 			// reset cache
 			WCF::getCache()->clearResource('categoryData', true);
 			WCF::getCache()->clearResource('stat');

@@ -9,7 +9,7 @@ require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
 
 /**
  * Shows the entry image page.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -19,57 +19,57 @@ require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
  */
 class EntryImagePage extends AbstractPage {
 	// system
-	public $templateName = 'entryImage';	
+	public $templateName = 'entryImage';
 	public $itemsPerPage = ENTRY_IMAGES_PER_PAGE;
-	
+
 	/**
 	 * image id
 	 *
 	 * @var	integer
 	 */
 	public $imageID = 0;
-	
+
 	/**
 	 * image object
-	 * 
+	 *
 	 * @var	EntryImage
 	 */
 	public $image = null;
-	
+
 	/**
 	 * entry frame object
-	 * 
+	 *
 	 * @var EntryFrame
 	 */
 	public $frame = null;
-	
+
 	/**
 	 * previous image
-	 * 
+	 *
 	 * @var	EntryImage
 	 */
 	public $previousImage = null;
-	
+
 	/**
 	 * next image
-	 * 
+	 *
 	 * @var	EntryImage
 	 */
 	public $nextImage = null;
 
 	/**
 	 * @see Page::readParameters()
-	 */	
+	 */
 	public function readParameters() {
 		parent::readParameters();
-		
+
 		// get image
 		if (isset($_REQUEST['imageID'])) $this->imageID = intval($_REQUEST['imageID']);
 		$this->image = new EntryImage($this->imageID);
 		if (!$this->image->imageID) {
 			throw new IllegalLinkException();
 		}
-		
+
 		// get entry frame
 		$this->frame = new EntryFrame($this, $this->image->entryID);
 
@@ -78,13 +78,13 @@ class EntryImagePage extends AbstractPage {
 			$this->updateViews();
 		}
 	}
-	
+
 	/**
 	 * @see Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
-	
+
 		// get previous image
 		if (!$this->image->isDefault) {
 			$sql = "SELECT		imageID, title, uploadTime
@@ -101,7 +101,7 @@ class EntryImagePage extends AbstractPage {
 			$this->previousImage = new EntryImage(null, WCF::getDB()->getFirstRow($sql));
 			if (!$this->previousImage->imageID) $this->previousImage = null;
 		}
-		
+
 		// get next image
 		$sql = "SELECT		imageID, title, uploadTime
 			FROM		wsif".WSIF_N."_entry_image
@@ -115,13 +115,13 @@ class EntryImagePage extends AbstractPage {
 		$this->nextImage = new EntryImage(null, WCF::getDB()->getFirstRow($sql));
 		if (!$this->nextImage->imageID) $this->nextImage = null;
 	}
-	
+
 	/**
 	* @see Page::assignVariables();
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
-		
+
 		$this->frame->assignVariables();
 		WCF::getTPL()->assign(array(
 			'imageID' => $this->imageID,
@@ -131,7 +131,7 @@ class EntryImagePage extends AbstractPage {
 			'allowSpidersToIndexThisPage' => true
 		));
 	}
-	
+
 	/**
 	 * Updates the views of this entry image.
 	 */

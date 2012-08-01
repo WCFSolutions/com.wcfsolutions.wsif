@@ -7,7 +7,7 @@ require_once(WCF_DIR.'lib/system/cache/CacheBuilder.class.php');
 
 /**
  * Caches all categories and the category structure.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -21,24 +21,24 @@ class CacheBuilderCategory implements CacheBuilder {
 	 */
 	public function getData($cacheResource) {
 		$data = array('categories' => array(), 'categoryStructure' => array());
-				
+
 		// categories
-		$sql = "SELECT	* 
+		$sql = "SELECT	*
 			FROM	wsif".WSIF_N."_category";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$data['categories'][$row['categoryID']] = new Category(null, $row);
 		}
-			
+
 		// category structure
-		$sql = "SELECT		* 
+		$sql = "SELECT		*
 			FROM		wsif".WSIF_N."_category_structure
 			ORDER BY 	parentID, position";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
-			$data['categoryStructure'][$row['parentID']][] = $row['categoryID'];		
+			$data['categoryStructure'][$row['parentID']][] = $row['categoryID'];
 		}
-		
+
 		return $data;
 	}
 }

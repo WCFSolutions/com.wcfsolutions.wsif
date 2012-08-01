@@ -15,7 +15,7 @@ require_once(WSIF_DIR.'lib/page/ModerationEntriesPage.class.php');
 class ModerationHiddenEntriesPage extends ModerationEntriesPage {
 	public $action = 'hiddenEntries';
 	public $neededPermissions = 'mod.filebase.canEnableEntry';
-	
+
 	/**
 	 * @see Page::readParameters()
 	 */

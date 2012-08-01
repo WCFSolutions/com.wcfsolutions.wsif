@@ -15,10 +15,10 @@ require_once(WSIF_DIR.'lib/data/entry/file/EntryFile.class.php');
 class EntryFileEditor extends EntryFile {
 	protected static $allowedFileExtensions = null;
 	protected static $allowedFileExtensionsDesc = null;
-	
+
 	/**
 	 * Updates this file.
-	 * 
+	 *
 	 * @param	string		$title
 	 * @param	string		$description
 	 */
@@ -29,7 +29,7 @@ class EntryFileEditor extends EntryFile {
 			WHERE 	fileID = ".$this->fileID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Sets the entry id for this file.
 	 *
@@ -42,7 +42,7 @@ class EntryFileEditor extends EntryFile {
 		WCF::getDB()->sendQuery($sql);
 		$this->data['entryID'] = $entryID;
 	}
-	
+
 	/**
 	 * Sets this file as default.
 	 */
@@ -53,30 +53,30 @@ class EntryFileEditor extends EntryFile {
 			WHERE	entryID = ".$this->entryID."
 				AND isDefault = 1";
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// set new default
 		$sql = "UPDATE 	wsif".WSIF_N."_entry_file
 			SET	isDefault = 1
 			WHERE 	fileID = ".$this->fileID;
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// update entry
 		$sql = "UPDATE 	wsif".WSIF_N."_entry
 			SET	defaultFileID = ".$this->fileID."
 			WHERE 	entryID = ".$this->entryID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Deletes this file.
 	 */
 	public function delete() {
 		self::deleteAll($this->fileID);
 	}
-	
+
 	/**
 	 * Creates a new file.
-	 * 
+	 *
 	 * @param	string			$field
 	 * @param	integer			$entryID
 	 * @param	integer			$userID
@@ -93,7 +93,7 @@ class EntryFileEditor extends EntryFile {
 	 */
 	public static function create($field, $entryID, $userID, $username, $file, $filename, $mimeType, $title, $description, $fileType, $externalURL = '', $ipAddress = null) {
 		if ($ipAddress == null) $ipAddress = WCF::getSession()->ipAddress;
-		
+
 		$filesize = 0;
 		if ($fileType == self::TYPE_UPLOAD) {
 			// check file extension
@@ -101,31 +101,31 @@ class EntryFileEditor extends EntryFile {
 			if (!preg_match(self::getAllowedFileExtensions(), $fileExtension)) {
 				throw new UserInputException($field, 'illegalExtension');
 			}
-			
+
 			// get filesize
 			$filesize = intval(@filesize($file));
-			
+
 			// check size
 			if ($filesize > WCF::getUser()->getPermission('user.filebase.maxEntryFileSize')) {
 				throw new UserInputException($field, 'tooLarge');
 			}
 		}
-		
+
 		// use filename as title
 		if (empty($title)) {
 			if ($fileType == self::TYPE_UPLOAD) $title = $filename;
 			else $title = $externalURL;
 		}
-		
+
 		// save file
 		$sql = "INSERT INTO	wsif".WSIF_N."_entry_file
 					(entryID, userID, username, title, description, fileType, filename, filesize, externalURL, mimeType, uploadTime, ipAddress)
 			VALUES		(".$entryID.", ".$userID.", '".escapeString($username)."', '".escapeString($title)."', '".escapeString($description)."', '".escapeString($fileType)."', '".escapeString($filename)."', '".$filesize."', '".escapeString($externalURL)."', '".escapeString($mimeType)."', ".TIME_NOW.", '".escapeString($ipAddress)."')";
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// get file id
 		$fileID = WCF::getDB()->getInsertID("wsif".WSIF_N."_entry_file", 'fileID');
-		
+
 		// copy file
 		if ($fileType == self::TYPE_UPLOAD) {
 			$path = WSIF_DIR.'storage/files/'.$fileID;
@@ -139,14 +139,14 @@ class EntryFileEditor extends EntryFile {
 			}
 			@chmod($path, 0777);
 		}
-		
+
 		// get new file
 		$file = new EntryFileEditor($fileID);
-		
+
 		// return file
 		return $file;
 	}
-	
+
 	/**
 	 * Deletes all files with the given file ids.
 	 *
@@ -154,24 +154,24 @@ class EntryFileEditor extends EntryFile {
 	 */
 	public static function deleteAll($fileIDs) {
 		if (empty($fileIDs)) return;
-		
+
 		// delete file
 		$sql = "DELETE FROM	wsif".WSIF_N."_entry_file
 			WHERE		fileID IN (".$fileIDs.")";
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// delete file downloaders
 		$sql = "DELETE FROM	wsif".WSIF_N."_entry_file_downloader
 			WHERE		fileID IN (".$fileIDs.")";
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// delete file from filesystem
-		$fileIDArray = explode(',', $fileIDs); 
+		$fileIDArray = explode(',', $fileIDs);
 		foreach ($fileIDArray as $fileID) {
 			if (file_exists(WSIF_DIR.'storage/files/'.$fileID)) @unlink(WSIF_DIR.'storage/files/'.$fileID);
 		}
 	}
-	
+
 	/**
 	 * Returns the allowed file extensions.
 	 *
@@ -184,7 +184,7 @@ class EntryFileEditor extends EntryFile {
 		}
 		return self::$allowedFileExtensions;
 	}
-	
+
 	/**
 	 * Returns the allowed file extensions description.
 	 *
@@ -197,7 +197,7 @@ class EntryFileEditor extends EntryFile {
 
 			// sort
 			sort($allowedExtensions);
-			
+
 			// check wildcards
 			for ($i = 0, $j = count($allowedExtensions); $i < $j; $i++) {
 				if (strpos($allowedExtensions[$i], '*') !== false) {
@@ -209,7 +209,7 @@ class EntryFileEditor extends EntryFile {
 					}
 				}
 			}
-			
+
 			// implode to string
 			self::$allowedFileExtensionsDesc = implode(', ', $allowedExtensions);
 		}

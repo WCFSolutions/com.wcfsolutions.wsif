@@ -7,7 +7,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 
 /**
  * TaggedEntryList provides extended functions for displaying a list of entries of a specific tag.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -18,14 +18,14 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 class TaggedEntryList extends ViewableEntryList {
 	/**
 	 * tag id
-	 * 
+	 *
 	 * @var	integer
 	 */
 	public $tagID = 0;
-	
+
 	/**
 	 * taggable object
-	 * 
+	 *
 	 * @var	Taggable
 	 */
 	public $taggable = null;
@@ -37,7 +37,7 @@ class TaggedEntryList extends ViewableEntryList {
 		$this->tagID = $tagID;
 		$this->taggable = TagEngine::getInstance()->getTaggable('com.wcfsolutions.wsif.entry');
 	}
-	
+
 	/**
 	 * @see DatabaseObjectList::countObjects()
 	 */
@@ -60,7 +60,7 @@ class TaggedEntryList extends ViewableEntryList {
 		$row = WCF::getDB()->getFirstRow($sql);
 		return $row['count'];
 	}
-	
+
 	/**
 	 * @see ViewableEntryList::readObjectIDArray()
 	 */

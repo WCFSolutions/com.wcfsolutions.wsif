@@ -4,7 +4,7 @@ require_once(WSIF_DIR.'lib/acp/form/CategoryAddForm.class.php');
 
 /**
  * Shows the category edit form.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -16,53 +16,53 @@ class CategoryEditForm extends CategoryAddForm {
 	// system
 	public $activeMenuItem = 'wsif.acp.menu.link.content.category';
 	public $neededPermissions = 'admin.filebase.canEditCategory';
-	
+
 	/**
 	 * category id
-	 * 
+	 *
 	 * @var	integer
 	 */
 	public $categoryID = 0;
-	
+
 	/**
 	 * language id
-	 * 
+	 *
 	 * @var	integer
 	 */
 	public $languageID = 0;
-	
+
 	/**
 	 * list of available languages
 	 *
 	 * @var	array
 	 */
 	public $languages = array();
-	
+
 	/**
 	 * @see Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
-		
+
 		// get language id
 		if (isset($_REQUEST['languageID'])) $this->languageID = intval($_REQUEST['languageID']);
 		else $this->languageID = WCF::getLanguage()->getLanguageID();
-		
+
 		// get category
 		if (isset($_REQUEST['categoryID'])) $this->categoryID = intval($_REQUEST['categoryID']);
 		$this->category = new CategoryEditor($this->categoryID);
 	}
-	
+
 	/**
 	 * @see Page::readData()
 	 */
 	public function readData() {
 		parent::readData();
-		
+
 		// get all available languages
 		$this->languages = Language::getLanguageCodes();
-		
-		if (!count($_POST)) {			
+
+		if (!count($_POST)) {
 			// get values
 			$this->parentID = $this->category->parentID;
 			$this->allowDescriptionHtml = $this->category->allowDescriptionHtml;
@@ -76,14 +76,14 @@ class CategoryEditForm extends CategoryAddForm {
 			$this->sortOrder = $this->category->sortOrder;
 			$this->enableRating = $this->category->enableRating;
 			$this->entriesPerPage = $this->category->entriesPerPage;
-			
+
 			// get position
 			$sql = "SELECT	position
 				FROM	wsif".WSIF_N."_category_structure
 				WHERE	categoryID = ".$this->categoryID;
 			$row = WCF::getDB()->getFirstRow($sql);
 			if (isset($row['position'])) $this->position = $row['position'];
-			
+
 			// get permissions
 			$sql = "		(SELECT		user_permission.*, user.userID AS id, 'user' AS type, user.username AS name
 						FROM		wsif".WSIF_N."_category_to_user user_permission
@@ -108,7 +108,7 @@ class CategoryEditForm extends CategoryAddForm {
 				$permission['settings'] = $row;
 				$this->permissions[] = $permission;
 			}
-			
+
 			// get moderators
 			$sql = "SELECT		moderator.*, IFNULL(user.username, usergroup.groupName) AS name, user.userID, usergroup.groupID
 				FROM		wsif".WSIF_N."_category_moderator moderator
@@ -129,72 +129,72 @@ class CategoryEditForm extends CategoryAddForm {
 				$moderator['settings'] = $row;
 				$this->moderators[] = $moderator;
 			}
-			
+
 			// get title and description
 			if (WCF::getLanguage()->getLanguageID() != $this->languageID) $language = new Language($this->languageID);
-			else $language = WCF::getLanguage();			
+			else $language = WCF::getLanguage();
 			$this->title = $language->get('wsif.category.'.$this->category->category);
 			if ($this->title == 'wsif.category.'.$this->category->category) $this->title = '';
 			$this->description = $language->get('wsif.category.'.$this->category->category.'.description');
 			if ($this->description == 'wsif.category.'.$this->category->category.'.description') $this->description = '';
 		}
-		
+
 		// get category options
 		$this->categoryOptions = Category::getCategorySelect(array(), false, array($this->categoryID));
 	}
-	
+
 	/**
 	 * @see BoardAddForm::validateParentID()
 	 */
 	protected function validateParentID() {
 		parent::validateParentID();
-		
+
 		if ($this->parentID) {
 			if ($this->categoryID == $this->parentID || Category::searchChildren($this->categoryID, $this->parentID)) {
 				throw new UserInputException('parentID', 'invalid');
 			}
 		}
 	}
-	
+
 	/**
 	 * @see Form::save()
 	 */
 	public function save() {
 		AbstractForm::save();
-		
+
 		// update category
 		$this->category->update($this->parentID, $this->title, $this->description, $this->allowDescriptionHtml, $this->categoryType, $this->icon, $this->externalURL,
 		$this->styleID, $this->enforceStyle, $this->daysPrune, $this->sortField, $this->sortOrder, $this->enableRating, $this->entriesPerPage, $this->languageID);
 		$this->category->removePositions();
 		$this->category->addPosition($this->parentID, ($this->position ? $this->position : null));
-		
+
 		// save permissions
 		$this->permissions = CategoryEditor::getCleanedPermissions($this->permissions);
 		$this->category->removePermissions();
 		$this->category->addPermissions($this->permissions, $this->permissionSettings);
-		
+
 		// save moderators
 		$this->moderators = CategoryEditor::getCleanedPermissions($this->moderators);
 		$this->category->removeModerators();
 		$this->category->addModerators($this->moderators, $this->moderatorSettings);
-		
+
 		// reset cache
 		Category::resetCache();
-		
+
 		// reset sessions
 		Session::resetSessions(array(), true, false);
 		$this->saved();
-		
+
 		// show success message
 		WCF::getTPL()->assign('success', true);
 	}
-	
+
 	/**
 	 * @see Page::assignVariables()
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
-		
+
 		WCF::getTPL()->assign(array(
 			'action' => 'edit',
 			'categoryID' => $this->categoryID,

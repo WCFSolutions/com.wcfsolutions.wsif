@@ -26,7 +26,7 @@ class EntryPrefix extends DatabaseObject {
 		if ($row != null) parent::__construct($row);
 		if ($cacheObject != null) parent::__construct($cacheObject->data);
 	}
-	
+
 	/**
 	 * Returns the prefix name.
 	 *
@@ -35,7 +35,7 @@ class EntryPrefix extends DatabaseObject {
 	public function getPrefixName() {
 		return WCF::getLanguage()->getDynamicVariable('wsif.entry.prefix.'.$this->prefix);
 	}
-	
+
 	/**
 	 * Returns the styled prefix.
 	 *
@@ -47,10 +47,10 @@ class EntryPrefix extends DatabaseObject {
 		}
 		return StringUtil::encodeHTML($this->getPrefixName());
 	}
-	
+
 	/**
 	 * Returns the prefix with the given prefix id from cache.
-	 * 
+	 *
 	 * @param 	integer		$prefixID
 	 * @return	EntryPrefix
 	 */
@@ -62,7 +62,7 @@ class EntryPrefix extends DatabaseObject {
 		if (!isset(self::$prefixes[$prefixID])) {
 			throw new IllegalLinkException();
 		}
-		
+
 		return self::$prefixes[$prefixID];
 	}
 }

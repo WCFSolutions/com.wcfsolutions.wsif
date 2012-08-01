@@ -7,7 +7,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 
 /**
  * Represents a list of entry files.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -18,7 +18,7 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
 class EntryFileList extends DatabaseObjectList {
 	/**
 	 * list of files
-	 * 
+	 *
 	 * @var array<EntryFile>
 	 */
 	public $files = array();
@@ -29,7 +29,7 @@ class EntryFileList extends DatabaseObjectList {
 	 * @var	string
 	 */
 	public $sqlOrderBy = 'entry_file.uploadTime DESC';
-	
+
 	/**
 	 * @see DatabaseObjectList::countObjects()
 	 */
@@ -40,7 +40,7 @@ class EntryFileList extends DatabaseObjectList {
 		$row = WCF::getDB()->getFirstRow($sql);
 		return $row['count'];
 	}
-	
+
 	/**
 	 * @see DatabaseObjectList::readObjects()
 	 */
@@ -56,7 +56,7 @@ class EntryFileList extends DatabaseObjectList {
 			$this->files[] = new EntryFile(null, $row);
 		}
 	}
-	
+
 	/**
 	 * @see DatabaseObjectList::getObjects()
 	 */

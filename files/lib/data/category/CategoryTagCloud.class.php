@@ -15,11 +15,11 @@ require_once(WCF_DIR.'lib/data/tag/TagCloud.class.php');
 class CategoryTagCloud extends TagCloud {
 	/**
 	 * category id
-	 * 
+	 *
 	 * @var	integer
 	 */
 	public $categoryID = 0;
-	
+
 	/**
 	 * Contructs a new CategoryTagCloud.
 	 *
@@ -30,12 +30,12 @@ class CategoryTagCloud extends TagCloud {
 		$this->categoryID = $categoryID;
 		$this->languageIDArray = $languageIDArray;
 		if (!count($this->languageIDArray)) $this->languageIDArray = array(0);
-		
+
 		// init cache
 		$this->cacheName = 'tagCloud-'.$this->categoryID.'-'.implode(',', $this->languageIDArray);
 		$this->loadCache();
 	}
-	
+
 	/**
 	 * Loads the tag cloud cache.
 	 */

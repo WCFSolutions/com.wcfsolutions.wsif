@@ -9,7 +9,7 @@ require_once(WCF_DIR.'lib/data/user/avatar/Avatar.class.php');
 
 /**
  * Represents a user session in the filebase.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -20,14 +20,14 @@ require_once(WCF_DIR.'lib/data/user/avatar/Avatar.class.php');
 class WSIFUserSession extends AbstractWSIFUserSession {
 	protected $outstandingModerations = null;
 	protected $invitations = null;
-	
+
 	/**
 	 * displayable avatar object.
 	 *
 	 * @var DisplayableAvatar
 	 */
 	protected $avatar = null;
-	
+
 	/**
 	 * @see UserSession::__construct()
 	 */
@@ -38,13 +38,13 @@ class WSIFUserSession extends AbstractWSIFUserSession {
 					LEFT JOIN wcf".WCF_N."_avatar avatar ON (avatar.avatarID = user.avatarID) ";
 		parent::__construct($userID, $row, $username);
 	}
-	
+
 	/**
 	 * @see User::handleData()
 	 */
 	protected function handleData($data) {
 		parent::handleData($data);
-		
+
 		if (MODULE_AVATAR == 1 && !$this->disableAvatar && $this->showAvatar) {
 			if (MODULE_GRAVATAR == 1 && $this->gravatar) {
 				$this->avatar = new Gravatar($this->gravatar);
@@ -54,14 +54,14 @@ class WSIFUserSession extends AbstractWSIFUserSession {
 			}
 		}
 	}
-	
+
 	/**
 	 * Updates the user session.
 	 */
 	public function update() {
 		// update global last activity timestamp
 		WSIFUserSession::updateLastActivityTime($this->userID);
-		
+
 		if (!$this->wsifUserID) {
 			$sql = "INSERT IGNORE INTO	wsif".WSIF_N."_user
 							(userID)
@@ -69,22 +69,22 @@ class WSIFUserSession extends AbstractWSIFUserSession {
 			WCF::getDB()->registerShutdownUpdate($sql);
 		}
 	}
-	
+
 	/**
 	 * Initialises the user session.
 	 */
 	public function init() {
 		parent::init();
-		
+
 		$this->invitations = $this->outstandingModerations = null;
 	}
-	
+
 	/**
 	 * @see UserSession::getGroupData()
 	 */
 	protected function getGroupData() {
 		parent::getGroupData();
-		
+
 		// get user permissions
 		$userPermissions = array();
 		$sql = "SELECT		*
@@ -96,11 +96,11 @@ class WSIFUserSession extends AbstractWSIFUserSession {
 			unset($row['categoryID'], $row['userID']);
 			$userPermissions[$categoryID] = $row;
 		}
-		
+
 		if (count($userPermissions)) {
 			require_once(WSIF_DIR.'lib/data/category/Category.class.php');
 			Category::inheritPermissions(0, $userPermissions);
-		
+
 			foreach ($userPermissions as $categoryID => $row) {
 				foreach ($row as $key => $val) {
 					if ($val != -1) {
@@ -110,10 +110,10 @@ class WSIFUserSession extends AbstractWSIFUserSession {
 			}
 		}
 	}
-	
+
 	/**
 	 * Updates the global last activity timestamp in user database.
-	 * 
+	 *
 	 * @param	integer		$userID
 	 * @param	integer		$timestamp
 	 */
@@ -126,16 +126,16 @@ class WSIFUserSession extends AbstractWSIFUserSession {
 
 	/**
 	 * Returns true, if the user is a moderator.
-	 * 
+	 *
 	 * @return	integer
 	 */
 	public function isModerator() {
 		return Moderation::isModerator();
 	}
-	
+
 	/**
 	 * Returns the number of outstanding moderations.
-	 * 
+	 *
 	 * @return	integer
 	 */
 	public function getOutstandingModerations() {
@@ -148,7 +148,7 @@ class WSIFUserSession extends AbstractWSIFUserSession {
 		}
 		return $this->outstandingModerations;
 	}
-	
+
 	/**
 	 * Returns the outstanding invitations.
 	 */
@@ -170,10 +170,10 @@ class WSIFUserSession extends AbstractWSIFUserSession {
 		}
 		return $this->invitations;
 	}
-	
+
 	/**
 	 * Returns the avatar of this user.
-	 * 
+	 *
 	 * @return	DisplayableAvatar
 	 */
 	public function getAvatar() {

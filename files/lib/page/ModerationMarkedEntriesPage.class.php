@@ -14,7 +14,7 @@ require_once(WSIF_DIR.'lib/page/ModerationEntriesPage.class.php');
  */
 class ModerationMarkedEntriesPage extends ModerationEntriesPage {
 	public $action = 'markedEntries';
-	
+
 	/**
 	 * @see Page::readParameters()
 	 */

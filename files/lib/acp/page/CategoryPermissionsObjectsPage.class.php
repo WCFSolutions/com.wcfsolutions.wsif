@@ -15,17 +15,17 @@ require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
 class CategoryPermissionsObjectsPage extends AbstractPage {
 	/**
 	 * query
-	 * 
+	 *
 	 * @var	array
 	 */
 	public $query = array();
-	
+
 	/**
 	 * @see Page::readParameters()
 	 */
 	public function readParameters() {
 		parent::readParameters();
-		
+
 		if (isset($_REQUEST['query'])) {
 			$queryString = $_REQUEST['query'];
 			if (CHARSET != 'UTF-8') {
@@ -34,24 +34,24 @@ class CategoryPermissionsObjectsPage extends AbstractPage {
 			$this->query = ArrayUtil::trim(explode(',', $queryString));
 		}
 	}
-	
+
 	/**
 	 * @see Page::show()
 	 */
 	public function show() {
 		parent::show();
-				
+
 		header('Content-type: text/xml');
 		echo "<?xml version=\"1.0\" encoding=\"".CHARSET."\"?>\n<objects>";
-		
+
 		if (count($this->query)) {
 			// get users and groups
 			$names = implode("','", array_map('escapeString', $this->query));
-			$sql = "(SELECT		username AS name, userID AS id, 'user' AS type 
+			$sql = "(SELECT		username AS name, userID AS id, 'user' AS type
 				FROM		wcf".WCF_N."_user
 				WHERE		username IN ('".$names."'))
 				UNION
-				(SELECT		groupName AS name, groupID AS id, 'group' AS type 
+				(SELECT		groupName AS name, groupID AS id, 'group' AS type
 				FROM		wcf".WCF_N."_group
 				WHERE		groupName IN ('".$names."'))
 				ORDER BY 	name";

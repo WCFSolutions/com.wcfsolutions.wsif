@@ -8,7 +8,7 @@ require_once(WCF_DIR.'lib/data/page/location/Location.class.php');
 
 /**
  * EntryImageLocation is an implementation of Location for the entry image page.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -19,14 +19,14 @@ require_once(WCF_DIR.'lib/data/page/location/Location.class.php');
 class EntryImageLocation implements Location {
 	public $cachedImageIDs = array();
 	public $entries = null;
-	
+
 	/**
 	 * @see Location::cache()
 	 */
 	public function cache($location, $requestURI, $requestMethod, $match) {
 		$this->cachedImageIDs[] = $match[1];
 	}
-	
+
 	/**
 	 * @see Location::get()
 	 */
@@ -34,32 +34,32 @@ class EntryImageLocation implements Location {
 		if ($this->entries === null) {
 			$this->readEntries();
 		}
-		
+
 		$imageID = $match[1];
 		if (!isset($this->entries[$imageID])) {
 			return '';
 		}
-		
+
 		return WCF::getLanguage()->get($location['locationName'], array(
 			'$image' => '<a href="index.php?page=EntryImage&amp;imageID='.$imageID.SID_ARG_2ND.'">'.StringUtil::encodeHTML($this->entries[$imageID]->title).'</a>',
 			'$entry' => ($this->entries[$imageID]->prefixID ? $this->entries[$imageID]->getPrefix()->getStyledPrefix().' ' : '').'<a href="index.php?page=Entry&amp;entryID='.$this->entries[$imageID]->entryID.SID_ARG_2ND.'">'.StringUtil::encodeHTML($this->entries[$imageID]->subject).'</a>'
 		));
 	}
-	
+
 	/**
 	 * Gets the entries.
 	 */
 	protected function readEntries() {
 		$this->entries = array();
-		
+
 		if (!count($this->cachedImageIDs)) {
 			return;
 		}
-		
+
 		// get accessible categories
 		$categoryIDs = Category::getAccessibleCategories();
 		if (empty($categoryIDs)) return;
-		
+
 		$sql = "SELECT		entry_image.imageID, entry_image.title, entry.entryID, entry.prefixID, entry.subject
 			FROM		wsif".WSIF_N."_entry_image entry_image
 			LEFT JOIN	wsif".WSIF_N."_entry entry

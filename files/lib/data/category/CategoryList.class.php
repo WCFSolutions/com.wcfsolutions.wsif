@@ -24,7 +24,7 @@ class CategoryList {
 	protected $lastEntries = array();
 	protected $subCategories = array();
 	protected $categoryStats = array();
-	
+
 	/**
 	 * Creates a new CategoryList object.
 	 *
@@ -36,26 +36,26 @@ class CategoryList {
 
 	/**
 	 * Reads the categories.
-	 */	
+	 */
 	public function readCategories() {
-		// get category structure		
+		// get category structure
 		$this->categoryStructure = WCF::getCache()->get('category', 'categoryStructure');
-		
+
 		if (!isset($this->categoryStructure[$this->categoryID])) return;
-		
+
 		// get categories
 		$this->categories = WCF::getCache()->get('category', 'categories');
-				
+
 		// last entries
 		if (CATEGORY_LIST_ENABLE_LAST_ENTRY) {
 			$lastEntries = WCF::getCache()->get('categoryData', 'lastEntries');
-			
+
 			if (is_array($lastEntries)) {
 				$visibleLanguages = false;
 				if (count(WCF::getSession()->getVisibleLanguageIDArray())) {
 					$visibleLanguages = WCF::getSession()->getVisibleLanguageIDArray();
 				}
-				
+
 				foreach ($lastEntries as $categoryID => $languages) {
 					foreach ($languages as $languageID => $row) {
 						if (!$languageID || !$visibleLanguages || in_array($languageID, $visibleLanguages)) {
@@ -75,7 +75,7 @@ class CategoryList {
 		// clear and update category list
 		$this->clearCategoryList($this->categoryID);
 		$this->updateCategoryList($this->categoryID);
-				
+
 		// categories
 		if (isset($this->categoryStructure[$this->categoryID])) {
 			foreach ($this->categoryStructure[$this->categoryID] as $categoryID) {
@@ -91,30 +91,30 @@ class CategoryList {
 			}
 		}
 	}
-	
+
 	/**
 	 * Removes invisible categories from category list.
-	 * 
+	 *
 	 * @param	integer		parentID
 	 */
 	protected function clearCategoryList($parentID = 0) {
 		if (!isset($this->categoryStructure[$parentID])) return;
-		
+
 		// remove invisible categories
 		foreach ($this->categoryStructure[$parentID] as $key => $categoryID) {
 			$category = $this->categories[$categoryID];
 			if (!$category->getPermission()) {
 				unset($this->categoryStructure[$parentID][$key]);
 				continue;
-			}			
+			}
 			$this->clearCategoryList($categoryID);
 		}
-		
+
 		if (!count($this->categoryStructure[$parentID])) {
 			unset($this->categoryStructure[$parentID]);
 		}
 	}
-	
+
 	/**
 	 * Updates one level of the category structure.
 	 *
@@ -125,15 +125,15 @@ class CategoryList {
 
 		foreach ($this->categoryStructure[$parentID] as $categoryID) {
 			$category = $this->categories[$categoryID];
-			
+
 			// update next level of the category list
 			$this->updateCategoryList($categoryID);
-			
+
 			// user can not enter category - unset last entry
 			if (!$category->getPermission('canEnterCategory') && isset($this->lastEntries[$categoryID])) {
 				unset($this->lastEntries[$categoryID]);
 			}
-			
+
 			// update last entries
 			if ($parentID != 0 && CATEGORY_LIST_ENABLE_LAST_ENTRY) {
 				if (isset($this->lastEntries[$categoryID])) {
@@ -142,7 +142,7 @@ class CategoryList {
 					}
 				}
 			}
-			
+
 			// update parent stats
 			if ($parentID != 0 && CATEGORY_LIST_ENABLE_STATS) {
 				if (isset($this->categoryStats[$parentID]) && isset($this->categoryStats[$categoryID])) {
@@ -154,11 +154,11 @@ class CategoryList {
 			}
 		}
 	}
-	
+
 	public function getCategoryList() {
 		return $this->categoryList;
 	}
-	
+
 	/**
 	 * Assigns the variables to the template engine.
 	 */

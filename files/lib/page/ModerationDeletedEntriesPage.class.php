@@ -15,7 +15,7 @@ require_once(WSIF_DIR.'lib/page/ModerationEntriesPage.class.php');
 class ModerationDeletedEntriesPage extends ModerationEntriesPage {
 	public $action = 'deletedEntries';
 	public $neededPermissions = 'mod.filebase.canViewDeletedEntry';
-	
+
 	/**
 	 * @see Page::readParameters()
 	 */

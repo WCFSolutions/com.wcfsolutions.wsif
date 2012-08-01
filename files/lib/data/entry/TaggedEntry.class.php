@@ -19,7 +19,7 @@ require_once(WCF_DIR.'lib/data/user/User.class.php');
 class TaggedEntry extends ViewableEntry implements Tagged {
 	/**
 	 * user object
-	 * 
+	 *
 	 * @var	User
 	 */
 	protected $user = null;
@@ -29,7 +29,7 @@ class TaggedEntry extends ViewableEntry implements Tagged {
 	 */
 	protected function handleData($data) {
 		parent::handleData($data);
-		
+
 		// get user
 		$this->user = new User(null, array('userID' => $this->userID, 'username' => $this->username));
 	}
@@ -54,7 +54,7 @@ class TaggedEntry extends ViewableEntry implements Tagged {
 	public function getTaggable() {
 		return $this->taggable;
 	}
-	
+
 	/**
 	 * @see Tagged::getDescription()
 	 */
@@ -78,7 +78,7 @@ class TaggedEntry extends ViewableEntry implements Tagged {
 	public function getMediumSymbol() {
 		return StyleManager::getStyle()->getIconPath('entryM.png');
 	}
-	
+
 	/**
 	 * @see Tagged::getLargeSymbol()
 	 */
@@ -92,14 +92,14 @@ class TaggedEntry extends ViewableEntry implements Tagged {
 	public function getUser() {
 		return $this->user;
 	}
-	
+
 	/**
 	 * @see Tagged::getDate()
 	 */
 	public function getDate() {
 		return $this->time;
 	}
-	
+
 	/**
 	 * @see Tagged::getDate()
 	 */

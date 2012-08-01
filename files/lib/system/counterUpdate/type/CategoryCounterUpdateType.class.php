@@ -7,7 +7,7 @@ require_once(WCF_DIR.'lib/system/counterUpdate/type/AbstractCounterUpdateType.cl
 
 /**
  * Updates the category counters.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -22,7 +22,7 @@ class CategoryCounterUpdateType extends AbstractCounterUpdateType {
 	public function getDefaultLimit() {
 		return 50;
 	}
-	
+
 	/**
 	 * @see	CounterUpdateType::countItems()
 	 */
@@ -32,13 +32,13 @@ class CategoryCounterUpdateType extends AbstractCounterUpdateType {
 		$row = WCF::getDB()->getFirstRow($sql);
 		return $row['count'];
 	}
-	
+
 	/**
 	 * @see	CounterUpdateType::update()
 	 */
 	public function update($offset, $limit) {
 		parent::update($offset, $limit);
-		
+
 		// get category ids
 		$categoryIDs = '';
 		$sql = "SELECT		categoryID
@@ -48,7 +48,7 @@ class CategoryCounterUpdateType extends AbstractCounterUpdateType {
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			if (!empty($categoryIDs)) $categoryIDs .= ',';
 			$categoryIDs .= $row['categoryID'];
-			
+
 			// update last entry
 			$category = new CategoryEditor($row['categoryID']);
 			$category->setLastEntries();
@@ -59,7 +59,7 @@ class CategoryCounterUpdateType extends AbstractCounterUpdateType {
 			$this->finished = true;
 			return;
 		}
-		
+
 		// refresh categories
 		CategoryEditor::refreshAll($categoryIDs);
 		$this->updated();

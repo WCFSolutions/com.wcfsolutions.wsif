@@ -29,28 +29,28 @@ class EntryPrefixEditor extends EntryPrefix {
 			parent::__construct(null, $row);
 		}
 	}
-	
+
 	/**
 	 * Assigns this prefix to the given categories.
-	 * 
+	 *
 	 * @param	array		$categoryIDs
 	 */
 	public function assignCategories($categoryIDs) {
 		$categoryIDs = array_unique($categoryIDs);
-	
+
 		$inserts = '';
 		foreach ($categoryIDs as $categoryID) {
 			if (!empty($inserts)) $inserts .= ',';
 			$inserts .= '('.$categoryID.', '.$this->prefixID.')';
 		}
-	
+
 		// insert new categories
 		$sql = "INSERT IGNORE INTO 	wsif".WSIF_N."_entry_prefix_to_category
 						(categoryID, prefixID)
 			VALUES			".$inserts;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Removes assigned categories.
 	 */
@@ -59,10 +59,10 @@ class EntryPrefixEditor extends EntryPrefix {
 			WHERE		prefixID = ".$this->prefixID;
 		WCF::getDB()->sendQuery($sql);
 	}
-	
+
 	/**
 	 * Returns the list of assigned categories.
-	 * 
+	 *
 	 * @return	array		list of category ids
 	 */
 	public function getAssignedCategories() {
@@ -79,7 +79,7 @@ class EntryPrefixEditor extends EntryPrefix {
 
 	/**
 	 * Updates this prefix.
-	 * 
+	 *
 	 * @param	string		$prefixName
 	 * @param	string		$prefixMarking
 	 * @param	integer		$prefixType
@@ -103,7 +103,7 @@ class EntryPrefixEditor extends EntryPrefix {
 				WCF::getDB()->sendQuery($sql);
 			}
 		}
-		
+
 		// update prefix
 		$sql = "UPDATE	wsif".WSIF_N."_entry_prefix
 			SET	".($languageID == 0 ? "prefix = '".escapeString($prefixName)."'," : '')."
@@ -112,7 +112,7 @@ class EntryPrefixEditor extends EntryPrefix {
 				showOrder = ".$showOrder."
 			WHERE	prefixID = ".$this->prefixID;
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// update language items
 		if ($languageID != 0) {
 			// save language variables
@@ -122,7 +122,7 @@ class EntryPrefixEditor extends EntryPrefix {
 			//$language->deleteCompiledTemplates();
 		}
 	}
-	
+
 	/**
 	 * Deletes this prefix.
 	 */
@@ -132,31 +132,31 @@ class EntryPrefixEditor extends EntryPrefix {
 			SET	showOrder = showOrder - 1
 			WHERE	showOrder >= ".$this->showOrder;
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// delete prefix
 		$sql = "DELETE FROM	wsif".WSIF_N."_entry_prefix
 			WHERE		prefixID = ".$this->prefixID;
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// delete prefix to category
 		$sql = "DELETE FROM	wsif".WSIF_N."_entry_prefix_to_category
 			WHERE		prefixID = ".$this->prefixID;
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// update entries
 		$sql = "UPDATE	wsif".WSIF_N."_entry
 			SET	prefixID = 0
 			WHERE	prefixID = ".$this->prefixID;
 		WCF::getDB()->sendQuery($sql);
-			
+
 		// delete language variables
 		LanguageEditor::deleteVariable('wsif.entry.prefix.'.$this->prefix);
-		LanguageEditor::deleteVariable('wsif.entry.prefix.'.$this->prefix.'.description');		
+		LanguageEditor::deleteVariable('wsif.entry.prefix.'.$this->prefix.'.description');
 	}
-	
+
 	/**
 	 * Creates a new entry prefix.
-	 * 
+	 *
 	 * @param	string			$prefixName
 	 * @param	string			$prefixMarking
 	 * @param	integer			$prefixType
@@ -179,7 +179,7 @@ class EntryPrefixEditor extends EntryPrefix {
 				WHERE 	showOrder >= ".$showOrder;
 			WCF::getDB()->sendQuery($sql);
 		}
-		
+
 		// get prefix name
 		$prefix = '';
 		if ($languageID == 0) $prefix = $prefixName;
@@ -189,10 +189,10 @@ class EntryPrefixEditor extends EntryPrefix {
 					(prefix, prefixMarking, prefixType, showOrder)
 			VALUES		('".escapeString($prefix)."', '".escapeString($prefixMarking)."', ".$prefixType.", ".$showOrder.")";
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// get id
 		$prefixID = WCF::getDB()->getInsertID("wsif".WSIF_N."_entry_prefix", 'prefixID');
-		
+
 		// update language items
 		if ($languageID != 0) {
 			// set name
@@ -201,19 +201,19 @@ class EntryPrefixEditor extends EntryPrefix {
 				SET	prefix = '".escapeString($prefix)."'
 				WHERE 	prefixID = ".$prefixID;
 			WCF::getDB()->sendQuery($sql);
-			
+
 			// save language variables
 			$language = new LanguageEditor($languageID);
 			$language->updateItems(array('wsif.entry.prefix.'.$prefix => $prefixName));
 		}
-		
+
 		// get new object
 		$prefix = new EntryPrefixEditor($prefixID, null, null, false);
-		
+
 		// return object
 		return $prefix;
 	}
-	
+
 	/**
 	 * Updates the positions of an entry prefix directly.
 	 *

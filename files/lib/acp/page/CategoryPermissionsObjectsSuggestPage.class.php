@@ -18,10 +18,10 @@ class CategoryPermissionsObjectsSuggestPage extends UserSuggestPage {
 	 */
 	public function show() {
 		AbstractPage::show();
-				
+
 		header('Content-type: text/xml');
 		echo "<?xml version=\"1.0\" encoding=\"".CHARSET."\"?>\n<suggestions>\n";
-		
+
 		if (!empty($this->query)) {
 			// get suggestions
 			$sql = "(SELECT		username AS name, 'user' AS type

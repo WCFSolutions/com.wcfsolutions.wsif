@@ -4,7 +4,7 @@ require_once(WCF_DIR.'lib/data/cronjobs/Cronjob.class.php');
 
 /**
  * Cronjob empties the recycle bin for entries.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>

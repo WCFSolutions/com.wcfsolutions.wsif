@@ -19,43 +19,43 @@ class WSIFACP extends WCFACP {
 	protected function getOptionsFilename() {
 		return WSIF_DIR.'options.inc.php';
 	}
-	
+
 	/**
 	 * Initialises the template engine.
 	 */
 	protected function initTPL() {
 		global $packageDirs;
-		
+
 		self::$tplObj = new ACPTemplate(self::getLanguage()->getLanguageID(), ArrayUtil::appendSuffix($packageDirs, 'acp/templates/'));
 		$this->assignDefaultTemplateVariables();
 	}
-	
+
 	/**
 	 * Does the user authentication.
 	 */
 	protected function initAuth() {
 		parent::initAuth();
-		
+
 		// user ban
 		if (self::getUser()->banned) {
 			throw new PermissionDeniedException();
 		}
 	}
-	
+
 	/**
 	 * @see WCF::assignDefaultTemplateVariables()
 	 */
 	protected function assignDefaultTemplateVariables() {
 		parent::assignDefaultTemplateVariables();
-		
+
 		self::getTPL()->assign(array(
-			// add jump to filebase link 			
+			// add jump to filebase link
 			'additionalHeaderButtons' => '<li><a href="'.RELATIVE_WSIF_DIR.'index.php?page=Index"><img src="'.RELATIVE_WSIF_DIR.'icon/indexS.png" alt="" /> <span>'.WCF::getLanguage()->get('wsif.acp.jumpToFilebase').'</span></a></li>',
 			// individual page title
 			'pageTitle' => WCF::getLanguage()->get(StringUtil::encodeHTML(PAGE_TITLE)).' - '.StringUtil::encodeHTML(PACKAGE_NAME.' '.PACKAGE_VERSION)
 		));
 	}
-	
+
 	/**
 	 * @see WCF::loadDefaultCacheResources()
 	 */
@@ -63,7 +63,7 @@ class WSIFACP extends WCFACP {
 		parent::loadDefaultCacheResources();
 		$this->loadDefaultWSIFCacheResources();
 	}
-	
+
 	/**
 	 * Loads default cache resources of community filebase acp.
 	 * Can be called statically from other applications or plugins.

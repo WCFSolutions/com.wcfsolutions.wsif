@@ -18,11 +18,11 @@ var EntryListEdit = Class.create({
 			entryID:		0,
 			enableRecycleBin:	true
 		}, arguments[3] || { });
-		
+
 		// get parent object
 		this.parentObject = new InlineListEdit('entry', this);
 	},
-	
+
 	/**
 	 * Initialises special entry options.
 	 */
@@ -39,7 +39,7 @@ var EntryListEdit = Class.create({
 				}.bind(this, id);
 			}
 		}
-			
+
 		// init prefix edit
 		if (permissions['canEditEntry'] && this.prefixData.keys().length > 0) {
 			var entryPrefixSpan = $('entryPrefix'+id);
@@ -47,40 +47,40 @@ var EntryListEdit = Class.create({
 				entryPrefixSpan.ondblclick = function(name) { this.startPrefixEdit(name); }.bind(this, id);
 			}
 		}
-	},	
-	
+	},
+
 	/**
 	 * Show the status of an entry.
 	 */
 	showStatus: function(id) {
 		var entry = this.data.get(id);
-		
+
 		// get row
 		var row = $('entryRow'+id);
-		
+
 		// update css class
 		if (row) {
 			// remove all classes
-			row.removeClassName('marked');			
+			row.removeClassName('marked');
 			row.removeClassName('disabled');
 			row.removeClassName('deleted');
-			
+
 			// disabled
 			if (entry.isDisabled) {
 				row.addClassName('disabled');
 			}
-			
+
 			// deleted
 			if (entry.isDeleted) {
 				row.addClassName('deleted');
 			}
-			
+
 			// marked
 			if (entry.isMarked) {
 				row.addClassName('marked');
 			}
 		}
-		
+
 		// update icon
 		var icon = $('entryEdit'+id);
 		if (icon && icon.src != undefined) {
@@ -93,7 +93,7 @@ var EntryListEdit = Class.create({
 			}
 		}
 	},
-	
+
 	/**
 	 * Saves the marked status.
 	 */
@@ -103,7 +103,7 @@ var EntryListEdit = Class.create({
 			parameters: data
 		});
 	},
-	
+
 	/**
 	 * Returns a list of the edit options for the edit menu.
 	 */
@@ -119,7 +119,7 @@ var EntryListEdit = Class.create({
 			options[i]['text'] = language['wsif.category.entries.editTitle'];
 			i++;
 		}
-				
+
 		// edit prefix
 		if (permissions['canEditEntry'] && this.prefixData.keys().length > 0 && $('entryPrefix'+id)) {
 			options[i] = new Object();
@@ -127,7 +127,7 @@ var EntryListEdit = Class.create({
 			options[i]['text'] = language['wsif.category.entries.editPrefix'];
 			i++;
 		}
-				
+
 		// enable / disable
 		if (permissions['canEnableEntry']) {
 			if (entry.isDisabled == 1) {
@@ -143,7 +143,7 @@ var EntryListEdit = Class.create({
 				i++;
 			}
 		}
-			
+
 		// delete
 		if (permissions['canDeleteEntry'] && (permissions['canDeleteEntryCompletely'] || (entry.isDeleted == 0 && this.options.enableRecycleBin))) {
 			options[i] = new Object();
@@ -151,7 +151,7 @@ var EntryListEdit = Class.create({
 			options[i]['text'] = (entry.isDeleted == 0 ? language['wcf.global.button.delete'] : language['wcf.global.button.deleteCompletely']);
 			i++;
 		}
-				
+
 		// recover
 		if (entry.isDeleted == 1 && permissions['canDeleteEntryCompletely']) {
 			options[i] = new Object();
@@ -159,7 +159,7 @@ var EntryListEdit = Class.create({
 			options[i]['text'] = language['wsif.category.entries.recover'];
 			i++;
 		}
-				
+
 		// marked status
 		if (permissions['canMarkEntry']) {
 			var markedStatus = entry ? entry.isMarked : false;
@@ -168,7 +168,7 @@ var EntryListEdit = Class.create({
 			options[i]['text'] = markedStatus ? language['wcf.global.button.unmark'] : language['wcf.global.button.mark'];
 			i++;
 		}
-				
+
 		return options;
 	},
 
@@ -178,7 +178,7 @@ var EntryListEdit = Class.create({
 	getEditMarkedOptions: function() {
 		var options = new Array();
 		var i = 0;
-		
+
 		if (this.options.page == 'category') {
 			// move
 			if (permissions['canMoveEntry']) {
@@ -188,7 +188,7 @@ var EntryListEdit = Class.create({
 				i++;
 			}
 		}
-		
+
 		// delete
 		if (permissions['canDeleteEntry'] && (permissions['canDeleteEntryCompletely'] || this.options.enableRecycleBin)) {
 			options[i] = new Object();
@@ -196,7 +196,7 @@ var EntryListEdit = Class.create({
 			options[i]['text'] = language['wcf.global.button.delete'];
 			i++;
 		}
-		
+
 		// recover
 		if (this.options.enableRecycleBin && permissions['canDeleteEntryCompletely']) {
 			options[i] = new Object();
@@ -204,36 +204,36 @@ var EntryListEdit = Class.create({
 			options[i]['text'] = language['wsif.category.entries.recover'];
 			i++;
 		}
-		
+
 		// unmark all
 		options[i] = new Object();
 		options[i]['function'] = 'entryListEdit.unmarkAll();';
 		options[i]['text'] = language['wcf.global.button.unmark'];
 		i++;
-		
+
 		// show marked
 		options[i] = new Object();
 		options[i]['function'] = 'document.location.href = fixURL("index.php?page=ModerationMarkedEntries'+SID_ARG_2ND+'")';
 		options[i]['text'] = language['wsif.category.entries.showMarked'];
 		i++;
-		
+
 		return options;
 	},
-	
+
 	/**
 	 * Returns the title of the edit marked menu.
 	 */
 	getMarkedTitle: function() {
 		return eval(language['wsif.category.entries.markedEntries']);
 	},
-	
+
 	/**
 	 * Moves this entry.
 	 */
 	move: function(action) {
 		document.location.href = fixURL('index.php?action=EntryMoveMarked&categoryID='+this.options.categoryID+'&url='+encodeURIComponent(this.options.url)+'&t='+SECURITY_TOKEN+SID_ARG_2ND);
 	},
-	
+
 	/**
 	 * Deletes this entry.
 	 */
@@ -269,7 +269,7 @@ var EntryListEdit = Class.create({
 			}
 		}
 	},
-	
+
 	/**
 	 * Deletes all marked entries.
 	 */
@@ -284,14 +284,14 @@ var EntryListEdit = Class.create({
 			document.location.href = fixURL('index.php?action=EntryDeleteMarked&url='+encodeURIComponent(this.options.url)+'&t='+SECURITY_TOKEN+SID_ARG_2ND);
 		}
 	},
-	
+
 	/**
 	 * Recovers all marked entries.
 	 */
 	recoverAll: function(id) {
 		document.location.href = fixURL('index.php?action=EntryRecoverMarked&url='+encodeURIComponent(this.options.url)+'&t='+SECURITY_TOKEN+SID_ARG_2ND);
 	},
-	
+
 	/**
 	 * Unmarkes all marked entries.
 	 */
@@ -299,26 +299,26 @@ var EntryListEdit = Class.create({
 		new Ajax.Request('index.php?action=EntryUnmarkAll&t='+SECURITY_TOKEN+SID_ARG_2ND, {
 			method: 'get'
 		});
-		
+
 		// checkboxes
 		this.count = 0;
 		var entryIDArray = this.data.keys();
 		for (var i = 0; i < entryIDArray.length; i++) {
 			var id = entryIDArray[i];
 			var entry = this.data.get(id);
-		
+
 			entry.isMarked = 0;
 			var checkbox = $('entryMark'+id);
 			if (checkbox) {
 				checkbox.checked = false;
 			}
-			
+
 			this.showStatus(id);
 		}
-		
+
 		// mark all checkboxes
 		this.parentObject.checkMarkAll(false);
-		
+
 		// edit marked menu
 		this.parentObject.showMarked();
 	},
@@ -342,7 +342,7 @@ var EntryListEdit = Class.create({
 			});
 		}
 	},
-	
+
 	/**
 	 * Enables an entry.
 	 */
@@ -374,7 +374,7 @@ var EntryListEdit = Class.create({
 			});
 		}
 	},
-	
+
 	/**
 	 * Starts the editing of an entry title.
 	 */
@@ -397,7 +397,7 @@ var EntryListEdit = Class.create({
 					value = title.innerHTML.unescapeHTML();
 				}
 			}
-		
+
 			// show input field
 			var inputField = new Element('input', {
 				'id': 'entryTitleInput'+id,
@@ -407,16 +407,16 @@ var EntryListEdit = Class.create({
 				'value': value
 			});
 			entrySubjectDiv.insert(inputField);
-			
+
 			// add event listeners
 			inputField.onkeydown = function(name, e) { this.doTitleEdit(name, e); }.bind(this, id);
 			inputField.onblur = function(name) { this.abortTitleEdit(name); }.bind(this, id);
-			
+
 			// set focus
 			inputField.focus();
 		}
 	},
-	
+
 	/**
 	 * Aborts the editing of an entry title.
 	 */
@@ -426,7 +426,7 @@ var EntryListEdit = Class.create({
 		if (entrySubjectInputDiv) {
 			entrySubjectInputDiv.remove();
 		}
-		
+
 		// show title
 		var entrySubjectDiv = $('entryTitle'+id);
 		if (entrySubjectDiv) {
@@ -437,7 +437,7 @@ var EntryListEdit = Class.create({
 			}
 		}
 	},
-	
+
 	/**
 	 * Takes the value of the input-field and creates an ajax-request to save the new title.
 	 * enter = save
@@ -445,15 +445,15 @@ var EntryListEdit = Class.create({
 	 */
 	doTitleEdit: function(id, e) {
 		if (!e) e = window.event;
-		
+
 		// get key code
 		var keyCode = 0;
 		if (e.which) keyCode = e.which;
 		else if (e.keyCode) keyCode = e.keyCode;
-	
+
 		// get input field
 		var inputField = $('entryTitleInput'+id);
-		
+
 		// enter
 		if (keyCode == '13' && inputField.value != '') {
 			// set new value
@@ -463,7 +463,7 @@ var EntryListEdit = Class.create({
 			if (title) {
 				title.update(inputField.getValue().escapeHTML());
 			}
-			
+
 			// save new value
 			new Ajax.Request('index.php?action=EntrySubjectEdit&entryID='+id+'&t='+SECURITY_TOKEN+SID_ARG_2ND, {
 				method: 'get',
@@ -471,7 +471,7 @@ var EntryListEdit = Class.create({
 					subject: inputField.getValue()
 				}
 			});
-			
+
 			// abort editing
 			inputField.blur();
 			return false;
@@ -482,7 +482,7 @@ var EntryListEdit = Class.create({
 			return false;
 		}
 	},
-	
+
 	/**
 	 * Starts the editing of an entry prefix.
 	 */
@@ -490,55 +490,55 @@ var EntryListEdit = Class.create({
 		if ($('entryPrefixSelect'+id)) return;
 		var entry = this.data.get(id);
 		var entryPrefixSpan = $('entryPrefix'+id);
-		if (entryPrefixSpan) {			
+		if (entryPrefixSpan) {
 			// hide span
 			entryPrefixSpan.firstDescendant().addClassName('hidden');
 			var value = this.prefixData.get(entry.prefixID);
-			
+
 			// show select field
 			var selectField = new Element('select', {
 				'id': 'entryPrefixSelect'+id
 			});
 			entryPrefixSpan.appendChild(selectField);
-			
+
 			// add empty option
 			var optionField = new Element('option', {
 				'value': 0
 			});
 			selectField.appendChild(optionField);
-			
+
 			var idArray = this.prefixData.keys();
 			for (var i = 0; i < idArray.length; i++) {
 				var prefixID = idArray[i];
 				var prefix = this.prefixData.get(prefixID);
-				
+
 				var optionField = new Element('option', {
 					'value': prefixID,
 					'selected': (entry.prefixID == prefixID ? true : false)
 				});
-				
+
 				selectField.appendChild(optionField);
 				optionField.appendChild(document.createTextNode(prefix.prefixName));
 			}
-			
+
 			// add event listeners
 			selectField.onchange = function(name, selectField) { this.doPrefixEdit(name, selectField); }.bind(this, id, selectField);
 			selectField.onblur = function(name) { this.abortPrefixEdit(name); }.bind(this, id);
-			
+
 			// set focus
 			selectField.focus();
 		}
 	},
-	
+
 	/**
 	 * Aborts the editing of an entry prefix.
 	 */
 	abortPrefixEdit: function(id) {
 		var entry = this.data.get(id);
-		
+
 		var entryPrefixSpan = $('entryPrefix'+id);
 		if (entryPrefixSpan) {
-			// remove select field			
+			// remove select field
 			var selects = entryPrefixSpan.select('select');
 			for (var i = 0; i < selects.length; i++) {
 				entryPrefixSpan.removeChild(selects[i]);
@@ -548,23 +548,23 @@ var EntryListEdit = Class.create({
 			entryPrefixSpan.firstDescendant().removeClassName('hidden');
 		}
 	},
-	
+
 	/**
 	 * Saves the new value of an entry prefix.
 	 */
 	doPrefixEdit: function(id, selectField) {
 		var entry = this.data.get(id);
-		
+
 		// get new value
 		var newPrefixID = selectField.options[selectField.selectedIndex].value;
-		
+
 		// set new value
 		entry.prefixID = newPrefixID;
 		var entryPrefixSpan = $('entryPrefix'+id);
-		
+
 		var newPrefixValue = (newPrefixID != 0 ? this.prefixData.get(newPrefixID).styledPrefixName : '');
 		entryPrefixSpan.firstDescendant().update(newPrefixValue);
-		
+
 		// save new value
 		new Ajax.Request('index.php?action=EntryPrefixEdit&entryID='+id+'&t='+SECURITY_TOKEN+SID_ARG_2ND, {
 			method: 'post',
@@ -572,7 +572,7 @@ var EntryListEdit = Class.create({
 				prefixID: newPrefixID
 			}
 		});
-			
+
 		// abort editing
 		selectField.blur();
 	}

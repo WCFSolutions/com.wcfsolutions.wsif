@@ -4,7 +4,7 @@ require_once(WCF_DIR.'lib/system/counterUpdate/type/AbstractCounterUpdateType.cl
 
 /**
  * Updates the installation date timestamp.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -19,13 +19,13 @@ class InstallationDateCounterUpdateType extends AbstractCounterUpdateType {
 	public function getDefaultLimit() {
 		return 1;
 	}
-	
+
 	/**
 	 * @see	CounterUpdateType::update()
 	 */
 	public function update($offset, $limit) {
 		parent::update($offset, $limit);
-		
+
 		// set installation date
 		$sql = "UPDATE	wcf".WCF_N."_option
 			SET	optionValue = IFNULL((
@@ -36,11 +36,11 @@ class InstallationDateCounterUpdateType extends AbstractCounterUpdateType {
 			WHERE	optionName = 'install_date'
 				AND packageID = ".PACKAGE_ID;
 		WCF::getDB()->sendQuery($sql);
-		
+
 		// delete options file
-		@unlink(WSIF_DIR.'options.inc.php');		
+		@unlink(WSIF_DIR.'options.inc.php');
 		$this->finished = true;
-		$this->updated();		
+		$this->updated();
 	}
 }
 ?>

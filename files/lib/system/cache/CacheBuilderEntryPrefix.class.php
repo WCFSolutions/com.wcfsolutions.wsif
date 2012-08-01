@@ -7,7 +7,7 @@ require_once(WCF_DIR.'lib/system/cache/CacheBuilder.class.php');
 
 /**
  * Builds the entry prefix cache.
- * 
+ *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
@@ -21,12 +21,12 @@ class CacheBuilderEntryPrefix implements CacheBuilder {
 	 */
 	public function getData($cacheResource) {
 		$data = array('prefixes' => array(), 'categories' => array());
-		
+
 		// get all prefixes
 		$sql = "SELECT	*
 			FROM	wsif".WSIF_N."_entry_prefix";
 		$result = WCF::getDB()->sendQuery($sql);
-		while ($row = WCF::getDB()->fetchArray($result)) {			
+		while ($row = WCF::getDB()->fetchArray($result)) {
 			$data['prefixes'][$row['prefixID']] = new EntryPrefix(null, $row);
 		}
 
@@ -34,7 +34,7 @@ class CacheBuilderEntryPrefix implements CacheBuilder {
 		$sql = "SELECT		category.categoryID, entry_prefix.prefixID
 			FROM		wsif".WSIF_N."_category category,
 					wsif".WSIF_N."_entry_prefix entry_prefix
-			WHERE		entry_prefix.prefixType = 0 
+			WHERE		entry_prefix.prefixType = 0
 					OR entry_prefix.prefixID IN (
 						SELECT	prefixID
 						FROM	wsif".WSIF_N."_entry_prefix_to_category
@@ -45,7 +45,7 @@ class CacheBuilderEntryPrefix implements CacheBuilder {
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$data['categories'][$row['categoryID']][] = $row['prefixID'];
 		}
-		
+
 		return $data;
 	}
 }
