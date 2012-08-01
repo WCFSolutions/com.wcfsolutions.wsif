@@ -608,7 +608,7 @@ Erlaubte Dateiendungen: {$allowedFileExtensions}]]></item>
 		<item name="wsif.entry.file.lastDownloadTime"><![CDATA[Letzter Download]]></item>
 		<item name="wsif.entry.file.link"><![CDATA[Verlinken]]></item>
 		<item name="wsif.entry.file.noDownloadPermission"><![CDATA[Du besitzt nicht die notwendigen Rechte, um diese Datei herunterladen zu können.{if !$this->user->userID} Möglicherweise musst du dich zunächst anmelden.{/if}]]></item>
-		<item name="wsif.entry.file.setAsDefault"><![CDATA[Zum Standard machen]]></item>
+		<item name="wsif.entry.file.setAsDefault"><![CDATA[Als Hauptdatei festlegen]]></item>
 		<item name="wsif.entry.file.share"><![CDATA[Verbreiten]]></item>
 		<item name="wsif.entry.file.time"><![CDATA[Datum hochgeladen]]></item>
 		<item name="wsif.entry.file.title"><![CDATA[Name]]></item>
@@ -661,7 +661,7 @@ Erlaubte Dateiendungen: {$allowedFileExtensions}]]></item>
 		<item name="wsif.entry.image.replace"><![CDATA[Bild ersetzen]]></item>
 		<item name="wsif.entry.image.replace.description"><![CDATA[Maximale Dateigröße: {@$maxImageSize|filesize}<br />
 Erlaubte Dateiendungen: {$allowedImageExtensions}]]></item>
-		<item name="wsif.entry.image.setAsDefault"><![CDATA[Zum Standard machen]]></item>
+		<item name="wsif.entry.image.setAsDefault"><![CDATA[Als Vorschaubild festlegen]]></item>
 		<item name="wsif.entry.image.share"><![CDATA[Verbreiten]]></item>
 		<item name="wsif.entry.image.time"><![CDATA[Datum hochgeladen]]></item>
 		<item name="wsif.entry.image.title"><![CDATA[Name]]></item>
