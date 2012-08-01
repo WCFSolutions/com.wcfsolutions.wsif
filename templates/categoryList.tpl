@@ -74,10 +74,12 @@
 									<dt>{lang}wsif.category.stats.entries{/lang}</dt>
 									<dd>{#$categoryStats.$categoryID.entries}</dd>
 								</dl>
-								<dl>
-									<dt>{lang}wsif.category.stats.entryComments{/lang}</dt>
-									<dd>{#$categoryStats.$categoryID.entryComments}</dd>
-								</dl>
+								{if MODULE_COMMENT}
+									<dl>
+										<dt>{lang}wsif.category.stats.entryComments{/lang}</dt>
+										<dd>{#$categoryStats.$categoryID.entryComments}</dd>
+									</dl>
+								{/if}
 								<dl>
 									<dt>{lang}wsif.category.stats.entryImages{/lang}</dt>
 									<dd>{#$categoryStats.$categoryID.entryImages}</dd>
