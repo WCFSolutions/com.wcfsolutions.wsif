@@ -98,6 +98,7 @@
 											<div class="entryDetails">
 												<div class="messageHeader">
 													<p class="messageCount">
+														{@$entry->getLanguageIcon()}
 														<a href="index.php?page=Entry&amp;entryID={@$entry->entryID}{@SID_ARG_2ND}" title="{lang}wsif.entry.permalink{/lang}" class="messageNumber">{#$messageNumber}</a>
 														{if $permissions.canMarkEntry}
 															<span class="messageMarkCheckBox">

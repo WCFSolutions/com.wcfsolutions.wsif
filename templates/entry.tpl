@@ -172,6 +172,15 @@
 											<p>{@$entry->time|time}</p>
 										</div>
 									</li>
+									{assign var=languageIcon value=$entry->getLanguageIcon()}
+									{if !$languageIcon|empty}
+										<li class="{cycle values='container-1,container-2'}">
+											<div class="containerContent">
+												<h4 class="smallFont">{lang}wsif.entry.language{/lang}</h4>
+												<p>{@$languageIcon}</p>
+											</div>
+										</li>
+									{/if}
 									<li class="{cycle values='container-1,container-2'}">
 										<div class="containerIcon">
 											<img src="{icon}visitsM.png{/icon}" alt="" />

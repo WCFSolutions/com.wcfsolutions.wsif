@@ -16,6 +16,9 @@
 			</div>
 			<div class="entryDetails">
 				<div class="messageHeader">
+					<p class="messageCount">
+						{@$entry->getLanguageIcon()}
+					</p>
 					<div class="containerIcon">
 						<img src="{icon}{@$entry->getIconName()}M.png{/icon}" alt="" />
 					</div>

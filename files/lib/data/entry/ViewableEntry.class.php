@@ -52,7 +52,7 @@ class ViewableEntry extends Entry {
 	}
 
 	/**
-	 * Returns the flag icon for the thread language.
+	 * Returns the flag icon for the entry language.
 	 *
 	 * @return	string
 	 */
