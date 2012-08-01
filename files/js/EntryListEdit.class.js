@@ -32,11 +32,11 @@ var EntryListEdit = Class.create({
 		if (permissions['canEditEntry']) {
 			var entrySubjectDiv = $('entryTitle'+id);
 			if (entrySubjectDiv) {
-				entrySubjectDiv.ondblclick = function(name, event) {
+				entrySubjectDiv.observe('dblclick', function(name, event) {
 					if (!event) event = window.event;
 					if (Event.element(event).parentNode.getAttribute('id') == 'entryPrefix'+name) return;
 					this.startTitleEdit(name);
-				}.bind(this, id);
+				}.bind(this, id));
 			}
 		}
 
@@ -44,7 +44,7 @@ var EntryListEdit = Class.create({
 		if (permissions['canEditEntry'] && this.prefixData.keys().length > 0) {
 			var entryPrefixSpan = $('entryPrefix'+id);
 			if (entryPrefixSpan) {
-				entryPrefixSpan.ondblclick = function(name) { this.startPrefixEdit(name); }.bind(this, id);
+				entryPrefixSpan.observe('dblclick', function(name) { this.startPrefixEdit(name); }.bind(this, id));
 			}
 		}
 	},
@@ -409,8 +409,8 @@ var EntryListEdit = Class.create({
 			entrySubjectDiv.insert(inputField);
 
 			// add event listeners
-			inputField.onkeydown = function(name, e) { this.doTitleEdit(name, e); }.bind(this, id);
-			inputField.onblur = function(name) { this.abortTitleEdit(name); }.bind(this, id);
+			inputField.observe('keydown', function(name, e) { this.doTitleEdit(name, e); }.bind(this, id));
+			inputField.observe('blur', function(name) { this.abortTitleEdit(name); }.bind(this, id));
 
 			// set focus
 			inputField.focus();
@@ -522,8 +522,8 @@ var EntryListEdit = Class.create({
 			}
 
 			// add event listeners
-			selectField.onchange = function(name, selectField) { this.doPrefixEdit(name, selectField); }.bind(this, id, selectField);
-			selectField.onblur = function(name) { this.abortPrefixEdit(name); }.bind(this, id);
+			selectField.observe('change', function(name, selectField) { this.doPrefixEdit(name, selectField); }.bind(this, id, selectField));
+			selectField.observe('blur', function(name) { this.abortPrefixEdit(name); }.bind(this, id));
 
 			// set focus
 			selectField.focus();
