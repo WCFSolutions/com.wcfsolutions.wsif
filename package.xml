@@ -65,7 +65,6 @@
 		<optionalpackage file="optionals/com.wcfsolutions.wsif.extensionKit.tar">com.wcfsolutions.wsif.extensionKit</optionalpackage>
 		<optionalpackage file="optionals/com.wcfsolutions.wsif.entry.file.license.tar">com.wcfsolutions.wsif.entry.file.license</optionalpackage>
 		<optionalpackage file="optionals/com.wcfsolutions.wsif.entry.customFields.tar">com.wcfsolutions.wsif.entry.customFields</optionalpackage>
-		<optionalpackage file="optionals/com.wcfsolutions.wsif.delayedEntries.tar">com.wcfsolutions.wsif.delayedEntries</optionalpackage>
 	</optionalpackages>
 
 	<excludedpackages>
@@ -73,9 +72,6 @@
 	</excludedpackages>
 
 	<instructions type="install">
-		<!-- pips -->
-		<packageinstallationplugins>pip.tar</packageinstallationplugins>
-
 		<!-- files -->
 		<files>files.tar</files>
 		<templates>templates.tar</templates>
