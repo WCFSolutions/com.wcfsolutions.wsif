@@ -398,12 +398,19 @@ var EntryListEdit = Class.create({
 				}
 			}
 
+			// calculate input field width
+			var inputFieldWidth = entrySubjectDiv.getWidth() - 5;
+			var entryPrefixSpan = $('entryPrefix'+id);
+			if (entryPrefixSpan) {
+				inputFieldWidth -= entryPrefixSpan.getWidth() + 10;
+			}
+
 			// show input field
 			var inputField = new Element('input', {
 				'id': 'entryTitleInput'+id,
 				'type': 'text',
 				'className': 'inputText',
-				'style': ('width: '+(entrySubjectDiv.getWidth()-5)+'px;'),
+				'style': ('width: '+inputFieldWidth+'px;'),
 				'value': value
 			});
 			entrySubjectDiv.insert(inputField);
