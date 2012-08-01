@@ -146,7 +146,7 @@
 					{if $additionalInformationFields|isset}{@$additionalInformationFields}{/if}
 				</fieldset>
 
-				{if $category->getModeratorPermission('canEnableNewsEntry')}
+				{if $category->getModeratorPermission('canEnableEntry')}
 					<fieldset>
 						<legend>{lang}wsif.entry.publishing{/lang}</legend>
 
@@ -221,7 +221,9 @@
 					{if $imageID}
 						{lang}wsif.entry.image.default.add.success{/lang}
 					{else}
-						{lang}wsif.entry.image.default.add.description{/lang}
+						<div class="formFieldDesc">
+							<p>{lang}wsif.entry.image.default.add.description{/lang}</p>
+						</div>
 
 						<fieldset{if $errorField == 'upload'} class="formError"{/if}>
 							<legend>{lang}wsif.entry.image.default.upload{/lang}</legend>
@@ -231,11 +233,11 @@
 								<div class="innerError">
 									{if $errorType|is_array}
 										{assign var=filename value=$errorType.filename}
-										{if $errorType.errorType == 'uploadFailed'}{lang}wsif.entry.add.image.upload.error.uploadFailed{/lang}{/if}
-										{if $errorType.errorType == 'copyFailed'}{lang}wsif.entry.add.image.upload.error.copyFailed{/lang}{/if}
-										{if $errorType.errorType == 'illegalExtension'}{lang}wsif.entry.add.image.upload.error.illegalExtension{/lang}{/if}
-										{if $errorType.errorType == 'tooLarge'}{lang}wsif.entry.add.image.upload.error.tooLarge{/lang}{/if}
-										{if $errorType.errorType == 'badImage'}{lang}wsif.entry.add.image.upload.error.badImage{/lang}{/if}
+										{if $errorType.errorType == 'uploadFailed'}{lang}wsif.entry.image.upload.error.uploadFailed{/lang}{/if}
+										{if $errorType.errorType == 'copyFailed'}{lang}wsif.entry.image.upload.error.copyFailed{/lang}{/if}
+										{if $errorType.errorType == 'illegalExtension'}{lang}wsif.entry.image.upload.error.illegalExtension{/lang}{/if}
+										{if $errorType.errorType == 'tooLarge'}{lang}wsif.entry.image.upload.error.tooLarge{/lang}{/if}
+										{if $errorType.errorType == 'badImage'}{lang}wsif.entry.image.upload.error.badImage{/lang}{/if}
 										{if $errorType.errorType == 'tooManyImages'}{lang}wsif.entry.image.upload.error.tooManyImages{/lang}{/if}
 									{/if}
 								</div>
@@ -254,7 +256,9 @@
 					{if $fileID}
 						{lang}wsif.entry.file.default.add.success{/lang}
 					{else}
-						{lang}wsif.entry.file.default.upload.description{/lang}
+						<div class="formFieldDesc">
+							<p>{lang}wsif.entry.file.default.add.description{/lang}</p>
+						</div>
 
 						<script type="text/javascript">
 							//<![CDATA[
@@ -308,10 +312,10 @@
 								<div class="innerError">
 									{if $errorType|is_array}
 										{assign var=filename value=$errorType.filename}
-										{if $errorType.errorType == 'uploadFailed'}{lang}wsif.entry.file.add.upload.error.uploadFailed{/lang}{/if}
-										{if $errorType.errorType == 'copyFailed'}{lang}wsif.entry.file.add.upload.error.copyFailed{/lang}{/if}
-										{if $errorType.errorType == 'illegalExtension'}{lang}wsif.entry.add.file.upload.error.illegalExtension{/lang}{/if}
-										{if $errorType.errorType == 'tooLarge'}{lang}wsif.entry.add.file.upload.error.tooLarge{/lang}{/if}
+										{if $errorType.errorType == 'uploadFailed'}{lang}wsif.entry.file.upload.error.uploadFailed{/lang}{/if}
+										{if $errorType.errorType == 'copyFailed'}{lang}wsif.entry.file.upload.error.copyFailed{/lang}{/if}
+										{if $errorType.errorType == 'illegalExtension'}{lang}wsif.entry.file.upload.error.illegalExtension{/lang}{/if}
+										{if $errorType.errorType == 'tooLarge'}{lang}wsif.entry.file.upload.error.tooLarge{/lang}{/if}
 										{if $errorType.errorType == 'tooManyFiles'}{lang}wsif.entry.file.upload.error.tooManyFiles{/lang}{/if}
 									{elseif $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
 								</div>

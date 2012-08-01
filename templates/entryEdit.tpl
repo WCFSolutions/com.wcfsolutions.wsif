@@ -150,7 +150,7 @@
 						{if $additionalInformationFields|isset}{@$additionalInformationFields}{/if}
 					</fieldset>
 
-					{if !$entry->everEnabled && $category->getModeratorPermission('canEnableNewsEntry')}
+					{if !$entry->everEnabled && $category->getModeratorPermission('canEnableEntry')}
 						<fieldset>
 							<legend>{lang}wsif.entry.publishing{/lang}</legend>
 

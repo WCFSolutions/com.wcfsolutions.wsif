@@ -7,6 +7,7 @@ require_once(WSIF_DIR.'lib/data/entry/image/EntryImageEditor.class.php');
 
 // wcf imports
 require_once(WCF_DIR.'lib/form/MessageForm.class.php');
+require_once(WCF_DIR.'lib/page/util/InlineCalendar.class.php');
 require_once(WCF_DIR.'lib/system/language/Language.class.php');
 
 /**
@@ -512,6 +513,8 @@ class EntryAddForm extends MessageForm {
 	 */
 	public function assignVariables() {
 		parent::assignVariables();
+
+		InlineCalendar::assignVariables();
 
 		WCF::getTPL()->assign(array(
 			'username' => $this->username,

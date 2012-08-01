@@ -319,7 +319,8 @@ class EntryEditor extends Entry {
 		// enable entries
 		$sql = "UPDATE 	wsif".WSIF_N."_entry
 			SET	isDisabled = 0,
-				everEnabled = 1
+				everEnabled = 1,
+				publishingTime = 0
 			WHERE 	entryID IN (".$entryIDs.")";
 		WCF::getDB()->registerShutdownUpdate($sql);
 	}

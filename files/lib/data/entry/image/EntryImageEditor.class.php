@@ -173,7 +173,7 @@ class EntryImageEditor extends EntryImage {
 		if ($ipAddress == null) $ipAddress = WCF::getSession()->ipAddress;
 
 		// get validated data
-		$data = self::validateFile($field, $tmpName, $filename, title);
+		$data = self::validateFile($field, $tmpName, $filename, $title);
 
 		// save image
 		$sql = "INSERT INTO	wsif".WSIF_N."_entry_image
