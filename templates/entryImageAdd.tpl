@@ -32,37 +32,6 @@
 					</div>
 				</div>
 
-				<fieldset>
-					<legend>{lang}wsif.entry.image.information{/lang}</legend>
-					{if $action == 'add'}<p class="formFieldDesc">{lang}wsif.entry.image.information.description{/lang}</p>{/if}
-
-					<div class="formElement{if $errorField == 'title'} formError{/if}">
-						<div class="formFieldLabel">
-							<label for="title">{lang}wsif.entry.image.title{/lang}</label>
-						</div>
-						<div class="formField">
-							<input type="text" class="inputText" id="title" name="title" value="{$title}" tabindex="{counter name='tabindex'}" />
-							{if $errorField == 'title'}
-								<p class="innerError">
-									{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
-								</p>
-							{/if}
-						</div>
-						{if $action == 'add'}<p class="formFieldDesc">{lang}wsif.entry.image.title.description{/lang}</p>{/if}
-					</div>
-
-					<div class="formElement">
-						<div class="formFieldLabel">
-							<label for="description">{lang}wsif.entry.image.description{/lang}</label>
-						</div>
-						<div class="formField">
-							<textarea name="description" id="description" rows="10" cols="40" tabindex="{counter name='tabindex'}">{$description}</textarea>
-						</div>
-					</div>
-
-					{if $additionalInformationFields|isset}{@$additionalInformationFields}{/if}
-				</fieldset>
-
 				{if $action == 'add'}
 					<fieldset{if $errorField == 'upload'} class="formError"{/if}>
 						<legend>{lang}wsif.entry.image.upload{/lang}</legend>
@@ -170,7 +139,64 @@
 							//]]>
 						</script>
 					</fieldset>
+				{else}
+					<fieldset{if $errorField == 'upload'} class="formError"{/if}>
+						<legend>{lang}wsif.entry.image.replace{/lang}</legend>
+
+						<input type="file" size="50" name="upload[]" tabindex="{counter name='tabindex'}" />
+
+						{if $errorField == 'upload'}
+							<div class="innerError">
+								{if $errorType|is_array && $errorType.0|isset}
+									{assign var=error value=$errorType.0}
+									<p>
+										{if $error.errorType == 'uploadFailed'}{lang}wsif.entry.image.upload.error.uploadFailed{/lang}{/if}
+										{if $error.errorType == 'copyFailed'}{lang}wsif.entry.image.upload.error.copyFailed{/lang}{/if}
+										{if $error.errorType == 'illegalExtension'}{lang}wsif.entry.image.upload.error.illegalExtension{/lang}{/if}
+										{if $error.errorType == 'tooLarge'}{lang}wsif.entry.image.upload.error.tooLarge{/lang}{/if}
+										{if $error.errorType == 'badImage'}{lang}wsif.entry.image.upload.error.badImage{/lang}{/if}
+										{if $error.errorType == 'tooManyImages'}{lang}wsif.entry.image.upload.error.tooManyImages{/lang}{/if}
+									</p>
+								{elseif $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
+							</div>
+						{/if}
+
+						<div class="formFieldDesc">
+							<p>{lang}wsif.entry.image.replace.description{/lang}</p>
+						</div>
+					</fieldset>
 				{/if}
+
+				<fieldset>
+					<legend>{lang}wsif.entry.image.information{/lang}</legend>
+					{if $action == 'add'}<p class="formFieldDesc">{lang}wsif.entry.image.information.description{/lang}</p>{/if}
+
+					<div class="formElement{if $errorField == 'title'} formError{/if}">
+						<div class="formFieldLabel">
+							<label for="title">{lang}wsif.entry.image.title{/lang}</label>
+						</div>
+						<div class="formField">
+							<input type="text" class="inputText" id="title" name="title" value="{$title}" tabindex="{counter name='tabindex'}" />
+							{if $errorField == 'title'}
+								<p class="innerError">
+									{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
+								</p>
+							{/if}
+						</div>
+						{if $action == 'add'}<p class="formFieldDesc">{lang}wsif.entry.image.title.description{/lang}</p>{/if}
+					</div>
+
+					<div class="formElement">
+						<div class="formFieldLabel">
+							<label for="description">{lang}wsif.entry.image.description{/lang}</label>
+						</div>
+						<div class="formField">
+							<textarea name="description" id="description" rows="10" cols="40" tabindex="{counter name='tabindex'}">{$description}</textarea>
+						</div>
+					</div>
+
+					{if $additionalInformationFields|isset}{@$additionalInformationFields}{/if}
+				</fieldset>
 
 				{if $additionalFields|isset}{@$additionalFields}{/if}
 			</div>

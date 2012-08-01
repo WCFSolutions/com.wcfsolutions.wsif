@@ -126,7 +126,7 @@ class EntryImageAddForm extends AbstractForm {
 						}
 
 						// save image
-						$this->images[] = EntryImageEditor::create('upload', $this->frame->getEntryID(), WCF::getUser()->userID, WCF::getUser()->username, $this->upload['tmp_name'][$x], $this->upload['name'][$x], $this->title, $this->description);
+						$this->validateImage($this->upload['tmp_name'][$x], $this->upload['name'][$x]);
 
 						// update free images
 						$this->freeImages--;
@@ -149,6 +149,16 @@ class EntryImageAddForm extends AbstractForm {
 		else {
 			throw new UserInputException('upload');
 		}
+	}
+
+	/**
+	 * Validates the image with the given data.
+	 *
+	 * @param	string		$tmpName
+	 * @param	string		$filename
+	 */
+	protected function validateImage($tmpName, $filename) {
+		$this->images[] = EntryImageEditor::create('upload', $this->frame->getEntryID(), WCF::getUser()->userID, WCF::getUser()->username, $tmpName, $filename, $this->title, $this->description);
 	}
 
 	/**

@@ -53,11 +53,49 @@ class EntryImageEditForm extends EntryImageAddForm {
 	 * @see	Form::validate()
 	 */
 	public function validate() {
-		AbstractForm::validate();
+		// upload
+		parent::validate();
 
+		// title
 		if (empty($this->title)) {
 			throw new UserInputException('title');
 		}
+	}
+
+	/**
+	 * @see	EntryImageAddForm::validateUpload()
+	 */
+	protected function validateUpload() {
+		if (isset($this->upload['name'][0])) {
+			$errors = array();
+
+			if (!empty($this->upload['name'][0])) {
+				try {
+					// check upload
+					if ($this->upload['error'][0] != 0) {
+						throw new UserInputException('upload', 'uploadFailed');
+					}
+
+					// save image
+					$this->validateImage($this->upload['tmp_name'][0], $this->upload['name'][0]);
+				}
+				catch (UserInputException $e) {
+					$errors[] = array('errorType' => $e->getType(), 'filename' => $this->upload['name'][0]);
+				}
+			}
+
+			// show error message
+			if (count($errors)) {
+				throw new UserInputException('upload', $errors);
+			}
+		}
+	}
+
+	/**
+	 * @see	EntryImageAddForm::validateImage()
+	 */
+	protected function validateImage($tmpName, $filename) {
+		$this->image->replacePhysicalImage('upload', $tmpName, $filename, $this->image->title);
 	}
 
 	/**

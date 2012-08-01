@@ -32,37 +32,6 @@
 					</div>
 				</div>
 
-				<fieldset>
-					<legend>{lang}wsif.entry.file.information{/lang}</legend>
-					{if $action == 'add'}<p class="formFieldDesc">{lang}wsif.entry.file.information.description{/lang}</p>{/if}
-
-					<div class="formElement{if $errorField == 'title'} formError{/if}">
-						<div class="formFieldLabel">
-							<label for="title">{lang}wsif.entry.file.title{/lang}</label>
-						</div>
-						<div class="formField">
-							<input type="text" class="inputText" id="title" name="title" value="{$title}" tabindex="{counter name='tabindex'}" />
-							{if $errorField == 'title'}
-								<p class="innerError">
-									{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
-								</p>
-							{/if}
-						</div>
-						{if $action == 'add'}<p class="formFieldDesc">{lang}wsif.entry.file.title.description{/lang}</p>{/if}
-					</div>
-
-					<div class="formElement">
-						<div class="formFieldLabel">
-							<label for="description">{lang}wsif.entry.file.description{/lang}</label>
-						</div>
-						<div class="formField">
-							<textarea name="description" id="description" rows="10" cols="40" tabindex="{counter name='tabindex'}">{$description}</textarea>
-						</div>
-					</div>
-
-					{if $additionalInformationFields|isset}{@$additionalInformationFields}{/if}
-				</fieldset>
-
 				{if $action == 'add'}
 					<script type="text/javascript">
 						//<![CDATA[
@@ -232,6 +201,37 @@
 						</div>
 					</fieldset>
 				{/if}
+
+				<fieldset>
+					<legend>{lang}wsif.entry.file.information{/lang}</legend>
+					{if $action == 'add'}<p class="formFieldDesc">{lang}wsif.entry.file.information.description{/lang}</p>{/if}
+
+					<div class="formElement{if $errorField == 'title'} formError{/if}">
+						<div class="formFieldLabel">
+							<label for="title">{lang}wsif.entry.file.title{/lang}</label>
+						</div>
+						<div class="formField">
+							<input type="text" class="inputText" id="title" name="title" value="{$title}" tabindex="{counter name='tabindex'}" />
+							{if $errorField == 'title'}
+								<p class="innerError">
+									{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
+								</p>
+							{/if}
+						</div>
+						{if $action == 'add'}<p class="formFieldDesc">{lang}wsif.entry.file.title.description{/lang}</p>{/if}
+					</div>
+
+					<div class="formElement">
+						<div class="formFieldLabel">
+							<label for="description">{lang}wsif.entry.file.description{/lang}</label>
+						</div>
+						<div class="formField">
+							<textarea name="description" id="description" rows="10" cols="40" tabindex="{counter name='tabindex'}">{$description}</textarea>
+						</div>
+					</div>
+
+					{if $additionalInformationFields|isset}{@$additionalInformationFields}{/if}
+				</fieldset>
 
 				{if $additionalFields|isset}{@$additionalFields}{/if}
 			</div>

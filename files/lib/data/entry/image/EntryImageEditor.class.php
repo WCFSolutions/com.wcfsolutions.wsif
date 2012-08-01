@@ -30,6 +30,49 @@ class EntryImageEditor extends EntryImage {
 		WCF::getDB()->sendQuery($sql);
 	}
 
+	/*
+	 * Replaces the physical image of this image.
+	 *
+	 * @param	string		$field
+	 * @param	string		$tmpName
+	 * @param	string		$filename
+	 * @param	string		$title
+	 * @return	EntryImageEditor
+	 */
+	public function replacePhysicalImage($field, $tmpName, $filename, $title) {
+		// get validated data
+		$data = self::validateFile($field, $tmpName, $filename, $title);
+
+		// copy image
+		$path = WSIF_DIR.'storage/images/'.$this->imageID;
+		if (!@copy($tmpName, $path)) {
+			// rollback
+			@unlink($tmpName);
+			$sql = "DELETE FROM	wsif".WSIF_N."_entry_image
+				WHERE		imageID = ".$this->imageID;
+			WCF::getDB()->sendQuery($sql);
+			throw new UserInputException($field, 'copyFailed');
+		}
+		@chmod($path, 0777);
+
+		// update image
+		$sql = "UPDATE 	wsif".WSIF_N."_entry_image
+			SET	title = '".escapeString($data['title'])."',
+				filesize = ".$data['filesize'].",
+				mimeType = '".escapeString($data['mimeType'])."',
+				uploadTime = ".TIME_NOW.",
+				width = ".$data['width'].",
+				height = ".$data['height']."
+			WHERE 	imageID = ".$this->imageID;
+		WCF::getDB()->sendQuery($sql);
+
+		// update instance
+		$this->data = array_merge($this->data, $data);
+
+		// create thumbnail
+		$this->createThumbnail();
+	}
+
 	/**
 	 * Sets the entry id for this image.
 	 *
@@ -129,6 +172,50 @@ class EntryImageEditor extends EntryImage {
 	public static function create($field, $entryID, $userID, $username, $tmpName, $filename, $title, $description = '', $ipAddress = null) {
 		if ($ipAddress == null) $ipAddress = WCF::getSession()->ipAddress;
 
+		// get validated data
+		$data = self::validateFile($field, $tmpName, $filename, title);
+
+		// save image
+		$sql = "INSERT INTO	wsif".WSIF_N."_entry_image
+					(entryID, userID, username, title, description, filename, filesize, mimeType, uploadTime, width, height, ipAddress)
+			VALUES		(".$entryID.", ".$userID.", '".escapeString($username)."', '".escapeString($data['title'])."', '".escapeString($description)."', '".escapeString($filename)."', '".$data['filesize']."', '".escapeString($data['mimeType'])."', ".TIME_NOW.", ".$data['width'].", ".$data['height'].", '".escapeString($ipAddress)."')";
+		WCF::getDB()->sendQuery($sql);
+
+		// get image id
+		$imageID = WCF::getDB()->getInsertID("wsif".WSIF_N."_entry_image", 'imageID');
+
+		// copy image
+		$path = WSIF_DIR.'storage/images/'.$imageID;
+		if (!@copy($tmpName, $path)) {
+			// rollback
+			@unlink($tmpName);
+			$sql = "DELETE FROM	wsif".WSIF_N."_entry_image
+				WHERE		imageID = ".$imageID;
+			WCF::getDB()->sendQuery($sql);
+			throw new UserInputException($field, 'copyFailed');
+		}
+		@chmod($path, 0777);
+
+		// get new image
+		$image = new EntryImageEditor($imageID);
+
+		// create thumbnail
+		$image->createThumbnail();
+
+		// return image
+		return $image;
+	}
+
+	/**
+	 * Validates the file with the given data and returns the validated data.
+	 *
+	 * @param	string		$field
+	 * @param	string		$tmpName
+	 * @param	string		$filename
+	 * @param	string		$title
+	 * @return	array
+	 */
+	protected static function validateFile($field, $tmpName, $filename, $title) {
 		// check image content
 		if (!ImageUtil::checkImageContent($tmpName)) {
 			throw new UserInputException($field, 'badImage');
@@ -170,35 +257,14 @@ class EntryImageEditor extends EntryImage {
 			$title = $filename;
 		}
 
-		// save image
-		$sql = "INSERT INTO	wsif".WSIF_N."_entry_image
-					(entryID, userID, username, title, description, filename, filesize, mimeType, uploadTime, width, height, ipAddress)
-			VALUES		(".$entryID.", ".$userID.", '".escapeString($username)."', '".escapeString($title)."', '".escapeString($description)."', '".escapeString($filename)."', '".$filesize."', '".escapeString($mimeType)."', ".TIME_NOW.", ".$width.", ".$height.", '".escapeString($ipAddress)."')";
-		WCF::getDB()->sendQuery($sql);
-
-		// get image id
-		$imageID = WCF::getDB()->getInsertID("wsif".WSIF_N."_entry_image", 'imageID');
-
-		// copy image
-		$path = WSIF_DIR.'storage/images/'.$imageID;
-		if (!@copy($tmpName, $path)) {
-			// rollback
-			@unlink($tmpName);
-			$sql = "DELETE FROM	wsif".WSIF_N."_entry_image
-				WHERE		imageID = ".$imageID;
-			WCF::getDB()->sendQuery($sql);
-			throw new UserInputException($field, 'copyFailed');
-		}
-		@chmod($path, 0777);
-
-		// get new image
-		$image = new EntryImageEditor($imageID);
-
-		// create thumbnail
-		$image->createThumbnail();
-
-		// return image
-		return $image;
+		// return validated data
+		return array(
+			'title' => $title,
+			'filesize' => $filesize,
+			'mimeType' => $mimeType,
+			'width' => $width,
+			'height' => $height
+		);
 	}
 
 	/**

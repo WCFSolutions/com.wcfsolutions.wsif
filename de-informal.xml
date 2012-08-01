@@ -669,6 +669,9 @@ Erlaubte Dateiendungen: {$allowedFileExtensions}]]></item>
 		<item name="wsif.entry.image.next"><![CDATA[Nächstes Bild]]></item>
 		<item name="wsif.entry.image.noImages"><![CDATA[Es ist kein Bild zu diesem Eintrag vorhanden.]]></item>
 		<item name="wsif.entry.image.previous"><![CDATA[Vorheriges Bild]]></item>
+		<item name="wsif.entry.image.replace"><![CDATA[Bild ersetzen]]></item>
+		<item name="wsif.entry.image.replace.description"><![CDATA[Maximale Dateigröße: {@$maxImageSize|filesize}<br />
+Erlaubte Dateiendungen: {$allowedImageExtensions}]]></item>
 		<item name="wsif.entry.image.setAsDefault"><![CDATA[Zum Standard machen]]></item>
 		<item name="wsif.entry.image.share"><![CDATA[Verbreiten]]></item>
 		<item name="wsif.entry.image.time"><![CDATA[Datum hochgeladen]]></item>
