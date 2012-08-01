@@ -11,9 +11,9 @@ require_once(WCF_DIR.'lib/data/moderation/type/AbstractModerationType.class.php'
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package	com.mysteryforce.wscfb
+ * @package	com.wcfsolutions.wsif
  * @subpackage	data.moderation.type
- * @category 	Community Filebase
+ * @category	Infinite Filebase
  */
 class MarkedEntriesModerationType extends AbstractModerationType {
 	/**

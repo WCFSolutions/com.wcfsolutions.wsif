@@ -11,8 +11,11 @@
 <script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/PopupMenuList.class.js"></script>
 <script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/AjaxRequest.class.js"></script>
 
-<!-- wscfb styles -->
+<!-- wsif styles -->
 <link rel="stylesheet" type="text/css" media="screen" href="{@RELATIVE_WSIF_DIR}style/wsif{if PAGE_DIRECTION == 'rtl'}-rtl{/if}.css" />
+<style type="text/css">
+
+</style>
 
 {if $specialStyles|isset}
 	<!-- special styles -->
@@ -87,7 +90,7 @@
 		//]]>
 	</script>
 	{if $this->getStyle()->getVariable('user.MSIEFixes.IE7.use')}
-	<style type="text/css">	
+	<style type="text/css">
 		{@$this->getStyle()->getVariable('user.MSIEFixes.IE7.use')}
 	</style>
 	{/if}
