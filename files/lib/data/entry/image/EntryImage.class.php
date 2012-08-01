@@ -28,19 +28,19 @@ class EntryImage extends DatabaseObject {
 		}
 		parent::__construct($row);
 	}
-	
+
 	/**
 	 * Returns the formatted description of this image.
-	 * 
+	 *
 	 * @return	string
 	 */
 	public function getFormattedDescription() {
 		if ($this->description) {
 			return nl2br(StringUtil::encodeHTML($this->description));
-		}	
+		}
 		return '';
 	}
-	
+
 	/**
 	 * Returns the number of views per day.
 	 *
@@ -53,10 +53,10 @@ class EntryImage extends DatabaseObject {
 		}
 		return $this->views;
 	}
-	
+
 	/**
 	 * Returns true, if the active user can edit this image.
-	 * 
+	 *
 	 * @return	boolean
 	 */
 	public function isEditable($category) {
@@ -65,14 +65,14 @@ class EntryImage extends DatabaseObject {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Returns true, if the active user can delete this image.
-	 * 
+	 *
 	 * @return	boolean
 	 */
 	public function isDeletable($entry, $category) {
-		if ($this->imageID != $entry->defaultImageID && (($this->userID && $this->userID == WCF::getUser()->userID && $category->getPermission('canDeleteOwnEntryImage')) || $category->getModeratorPermission('canDeleteEntryImage'))) {
+		if (($this->userID && $this->userID == WCF::getUser()->userID && $category->getPermission('canDeleteOwnEntryImage')) || $category->getModeratorPermission('canDeleteEntryImage')) {
 			return true;
 		}
 		return false;
