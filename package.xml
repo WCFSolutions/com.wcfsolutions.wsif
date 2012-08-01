@@ -16,7 +16,7 @@
 
 	<requiredpackages>
 		<!-- basics -->
-		<requiredpackage minversion="1.1.4 Beta 1">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="1.1.9">com.woltlab.wcf</requiredpackage>
 		<requiredpackage minversion="1.1.2">com.woltlab.wcf.data.cronjobs</requiredpackage>
 		<requiredpackage minversion="1.0.3">com.woltlab.wcf.data.feed.reader</requiredpackage>
 		<requiredpackage minversion="1.1.0">com.woltlab.wcf.data.image</requiredpackage>
@@ -96,6 +96,7 @@
 		<counterupdatetype>counterupdatetype.xml</counterupdatetype>
 		<searchablemessagetypes>smt.xml</searchablemessagetypes>
 		<feedsource>feedsource.xml</feedsource>
+		<rateableobject>rateableobject.xml</rateableobject>
 		<notificationobjecttype>notificationobjecttype.xml</notificationobjecttype>
 		<notificationevent>notificationevent.xml</notificationevent>
 
@@ -113,6 +114,7 @@
 
 		<!-- config -->
 		<cronjobs>cronjobs.xml</cronjobs>
+		<rateableobject>rateableobject.xml</rateableobject>
 		<notificationobjecttype>notificationobjecttype.xml</notificationobjecttype>
 		<notificationevent>notificationevent.xml</notificationevent>
 

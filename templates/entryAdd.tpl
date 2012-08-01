@@ -246,7 +246,7 @@
 							<p>{lang}wsif.entry.image.default.add.description{/lang}</p>
 						</div>
 
-						<fieldset{if $errorField == 'upload'} class="formError"{/if}>
+						<fieldset{if $errorField == 'imageUpload'} class="formError"{/if}>
 							<legend>{lang}wsif.entry.image.default.upload{/lang}</legend>
 							<input type="file" size="50" name="imageUpload" tabindex="{counter name='tabindex'}" />
 
