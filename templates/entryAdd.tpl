@@ -150,16 +150,14 @@
 					<fieldset>
 						<legend>{lang}wsif.entry.publishing{/lang}</legend>
 
-						{if $action == 'add'}
-							<div class="formElement">
-								<div class="formField">
-									<label><input type="checkbox" name="disableEntry" id="disableEntry" value="1" {if $disableEntry == 1}checked="checked" {/if}/> {lang}wsif.entry.disableEntry{/lang}</label>
-								</div>
-								<div class="formFieldDesc">
-									<p>{lang}wsif.entry.disableEntry.description{/lang}</p>
-								</div>
+						<div class="formElement">
+							<div class="formField">
+								<label><input type="checkbox" name="disableEntry" id="disableEntry" value="1" {if $disableEntry == 1}checked="checked" {/if}/> {lang}wsif.entry.disableEntry{/lang}</label>
 							</div>
-						{/if}
+							<div class="formFieldDesc">
+								<p>{lang}wsif.entry.disableEntry.description{/lang}</p>
+							</div>
+						</div>
 
 						<div class="formGroup{if $errorField == 'publishingTime'} formError{/if}" id="publishingTimeDiv">
 							<div class="formGroupLabel">

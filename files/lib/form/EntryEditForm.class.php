@@ -189,7 +189,6 @@ class EntryEditForm extends EntryAddForm {
 
 		$this->frame->assignVariables();
 		WCF::getTPL()->assign(array(
-			'action' => 'edit',
 			'deleteReason' => $this->deleteReason
 		));
 	}

@@ -187,6 +187,14 @@
 											<p>{@$entry->time|time}</p>
 										</div>
 									</li>
+									{if $entry->publishingTime}
+										<li class="{cycle values='container-1,container-2'}">
+											<div class="containerContent">
+												<h4 class="smallFont">{lang}wsif.entry.publishingTime{/lang}</h4>
+												<p>{@$entry->publishingTime|time}</p>
+											</div>
+										</li>
+									{/if}
 									{assign var=languageIcon value=$entry->getLanguageIcon()}
 									{if !$languageIcon|empty}
 										<li class="{cycle values='container-1,container-2'}">
