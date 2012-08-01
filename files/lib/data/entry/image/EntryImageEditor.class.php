@@ -36,12 +36,10 @@ class EntryImageEditor extends EntryImage {
 	 * @param	string		$field
 	 * @param	string		$tmpName
 	 * @param	string		$filename
-	 * @param	string		$title
-	 * @return	EntryImageEditor
 	 */
-	public function replacePhysicalImage($field, $tmpName, $filename, $title) {
+	public function replacePhysicalImage($field, $tmpName, $filename) {
 		// get validated data
-		$data = self::validateFile($field, $tmpName, $filename, $title);
+		$data = self::validateImage($field, $tmpName, $filename);
 
 		// copy image
 		$path = WSIF_DIR.'storage/images/'.$this->imageID;
@@ -57,8 +55,7 @@ class EntryImageEditor extends EntryImage {
 
 		// update image
 		$sql = "UPDATE 	wsif".WSIF_N."_entry_image
-			SET	title = '".escapeString($data['title'])."',
-				filesize = ".$data['filesize'].",
+			SET	filesize = ".$data['filesize'].",
 				mimeType = '".escapeString($data['mimeType'])."',
 				uploadTime = ".TIME_NOW.",
 				width = ".$data['width'].",
@@ -173,12 +170,17 @@ class EntryImageEditor extends EntryImage {
 		if ($ipAddress == null) $ipAddress = WCF::getSession()->ipAddress;
 
 		// get validated data
-		$data = self::validateFile($field, $tmpName, $filename, $title);
+		$data = self::validateImage($field, $tmpName, $filename);
+
+		// use filename as title
+		if (empty($title)) {
+			$title = $filename;
+		}
 
 		// save image
 		$sql = "INSERT INTO	wsif".WSIF_N."_entry_image
 					(entryID, userID, username, title, description, filename, filesize, mimeType, uploadTime, width, height, ipAddress)
-			VALUES		(".$entryID.", ".$userID.", '".escapeString($username)."', '".escapeString($data['title'])."', '".escapeString($description)."', '".escapeString($filename)."', '".$data['filesize']."', '".escapeString($data['mimeType'])."', ".TIME_NOW.", ".$data['width'].", ".$data['height'].", '".escapeString($ipAddress)."')";
+			VALUES		(".$entryID.", ".$userID.", '".escapeString($username)."', '".escapeString($title)."', '".escapeString($description)."', '".escapeString($filename)."', '".$data['filesize']."', '".escapeString($data['mimeType'])."', ".TIME_NOW.", ".$data['width'].", ".$data['height'].", '".escapeString($ipAddress)."')";
 		WCF::getDB()->sendQuery($sql);
 
 		// get image id
@@ -207,15 +209,14 @@ class EntryImageEditor extends EntryImage {
 	}
 
 	/**
-	 * Validates the file with the given data and returns the validated data.
+	 * Validates the image with the given data and returns the validated data.
 	 *
 	 * @param	string		$field
 	 * @param	string		$tmpName
 	 * @param	string		$filename
-	 * @param	string		$title
 	 * @return	array
 	 */
-	protected static function validateFile($field, $tmpName, $filename, $title) {
+	protected static function validateImage($field, $tmpName, $filename) {
 		// check image content
 		if (!ImageUtil::checkImageContent($tmpName)) {
 			throw new UserInputException($field, 'badImage');
@@ -252,14 +253,8 @@ class EntryImageEditor extends EntryImage {
 			throw new UserInputException($field, 'tooLarge');
 		}
 
-		// use filename as title
-		if (empty($title)) {
-			$title = $filename;
-		}
-
 		// return validated data
 		return array(
-			'title' => $title,
 			'filesize' => $filesize,
 			'mimeType' => $mimeType,
 			'width' => $width,

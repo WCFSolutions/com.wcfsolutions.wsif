@@ -158,7 +158,7 @@
 										{if $errorType.0.errorType == 'badImage'}{lang}wsif.entry.image.upload.error.badImage{/lang}{/if}
 										{if $errorType.0.errorType == 'tooManyImages'}{lang}wsif.entry.image.upload.error.tooManyImages{/lang}{/if}
 									</p>
-								{elseif $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
+								{/if}
 							</div>
 						{/if}
 

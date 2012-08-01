@@ -63,7 +63,7 @@ class EntryImageEditForm extends EntryImageAddForm {
 	}
 
 	/**
-	 * @see	EntryImageAddForm::validateUpload()
+	 * Validates the uploaded images.
 	 */
 	protected function validateUpload() {
 		if (isset($this->upload['name'][0])) {
@@ -76,8 +76,8 @@ class EntryImageEditForm extends EntryImageAddForm {
 						throw new UserInputException('upload', 'uploadFailed');
 					}
 
-					// save image
-					$this->validateImage($this->upload['tmp_name'][0], $this->upload['name'][0]);
+					// replace image
+					$this->image->replacePhysicalImage('upload', $this->upload['tmp_name'][$x], $this->upload['name'][$x]);
 				}
 				catch (UserInputException $e) {
 					$errors[] = array('errorType' => $e->getType(), 'filename' => $this->upload['name'][0]);
@@ -89,13 +89,6 @@ class EntryImageEditForm extends EntryImageAddForm {
 				throw new UserInputException('upload', $errors);
 			}
 		}
-	}
-
-	/**
-	 * @see	EntryImageAddForm::validateImage()
-	 */
-	protected function validateImage($tmpName, $filename) {
-		$this->image->replacePhysicalImage('upload', $tmpName, $filename, $this->image->title);
 	}
 
 	/**
