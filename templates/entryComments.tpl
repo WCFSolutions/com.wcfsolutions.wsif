@@ -2,7 +2,7 @@
 <head>
 	<title>{$entry->subject} - {lang}{PAGE_TITLE}{/lang}</title>
 	{include file='headInclude' sandbox=false}
-	
+
 	{include file='imageViewer'}
 	<script type="text/javascript" src="{@RELATIVE_WCF_DIR}js/MultiPagesLinks.class.js"></script>
 </head>
@@ -11,15 +11,15 @@
 
 <div id="main">
 	{include file="entryHeader" activeTabMenuItem='entryComments'}
-	
+
 	<div class="border">
 		<div class="layout-1">
-			<div class="columnContainer">	
+			<div class="columnContainer">
 				<div class="container-1 column first">
 					<div class="columnInner">
 						<div class="contentBox">
 							<h3 class="subHeadline">{lang}wsif.entry.comments{/lang} <span>({#$items})</span></h3>
-							
+
 							{if $comments|count > 0}
 								<div class="contentHeader">
 									{assign var=multiplePagesLink value="index.php?page=EntryComments&entryID=$entryID&pageNo=%d"}
@@ -34,13 +34,13 @@
 										</div>
 									{/if}
 								</div>
-								
+
 								{if $this->getStyle()->getVariable('messages.color.cycle')}
 									{cycle name=messageCycle values='2,1' print=false}
 								{else}
 									{cycle name=messageCycle values='1' print=false}
 								{/if}
-								
+
 								{if $this->getStyle()->getVariable('messages.sidebar.color.cycle')}
 									{if $this->getStyle()->getVariable('messages.color.cycle')}
 										{cycle name=commentCycle values='1,2' print=false}
@@ -50,22 +50,22 @@
 								{else}
 									{cycle name=commentCycle values='3' print=false}
 								{/if}
-								
+
 								{capture assign='messageClass'}message{if $this->getStyle()->getVariable('messages.framed')}Framed{/if}{@$this->getStyle()->getVariable('messages.sidebar.alignment')|ucfirst}{if $this->getStyle()->getVariable('messages.sidebar.divider.use')} dividers{/if}{/capture}
 								{capture assign='messageFooterClass'}messageFooter{@$this->getStyle()->getVariable('messages.footer.alignment')|ucfirst}{/capture}
-								
+
 								{assign var='messageNumber' value=$items-$startIndex+1}
 								{foreach from=$comments item=comment}
 									{assign var="sidebar" value=$sidebarFactory->get('entryComment', $comment->commentID)}
 									{assign var="author" value=$sidebar->getUser()}
 									{assign var="messageID" value=$comment->commentID}
-								
+
 									<div id="commentRow{@$comment->commentID}" class="message">
 										<div class="messageInner {@$messageClass} container-{cycle name=commentCycle}">
 											<a id="comment{@$comment->commentID}"></a>
-											
+
 											{include file='messageSidebar'}
-											
+
 											<div class="messageContent">
 												<div class="messageContentInner color-{cycle name=messageCycle}">
 													<div class="messageHeader">
@@ -79,17 +79,17 @@
 															<p class="smallFont light">{@$comment->time|time}</p>
 														</div>
 													</div>
-													
+
 													<h3 id="entryCommentSubject{@$comment->commentID}" class="messageTitle"><span>{$comment->subject}</span></h3>
-													
+
 													<div class="messageBody">
 														<div id="entryCommentText{@$comment->commentID}">
 															{@$comment->getFormattedMessage()}
 														</div>
 													</div>
-													
+
 													{include file='attachmentsShow'}
-													
+
 													<div class="{@$messageFooterClass}">
 														<div class="smallButtons">
 															<ul id="entryCommentButtons{@$comment->commentID}">
@@ -103,15 +103,15 @@
 													<hr />
 												</div>
 											</div>
-											
+
 										</div>
 									</div>
 									{assign var='messageNumber' value=$messageNumber-1}
 								{/foreach}
-								
+
 								<div class="contentFooter">
 									{@$pagesOutput}
-									
+
 									{if $entry->isCommentable($category) || $additionalLargeButtons|isset}
 										<div class="largeButtons">
 											<ul>
@@ -123,8 +123,8 @@
 								</div>
 							{else}
 								<p>{lang}wsif.entry.comment.noComments{/lang}</p>
-								
-								<div class="contentFooter">									
+
+								<div class="contentFooter">
 									{if $entry->isCommentable($category) || $additionalLargeButtons|isset}
 										<div class="largeButtons">
 											<ul>
@@ -135,8 +135,23 @@
 									{/if}
 								</div>
 							{/if}
+
+							<div class="buttonBar">
+								<div class="smallButtons">
+									<ul>
+										<li class="extraButton"><a href="#top" title="{lang}wcf.global.scrollUp{/lang}"><img src="{icon}upS.png{/icon}" alt="{lang}wcf.global.scrollUp{/lang}" /> <span class="hidden">{lang}wcf.global.scrollUp{/lang}</span></a></li>
+										{if $this->user->userID}
+											{if !$entry->subscribed}
+												<li><a href="index.php?action=EntrySubscribe&amp;entryID={@$entry->entryID}&amp;t={@SECURITY_TOKEN}{@SID_ARG_2ND}" title="{lang}wsif.entry.subscribe{/lang}"><img src="{icon}entrySubscribeS.png{/icon}" alt="" /> <span>{lang}wsif.entry.subscribe{/lang}</span></a></li>
+												{else}
+												<li><a href="index.php?action=EntryUnsubscribe&amp;entryID={@$entry->entryID}&amp;t={@SECURITY_TOKEN}{@SID_ARG_2ND}" title="{lang}wsif.entry.unsubscribe{/lang}"><img src="{icon}entryUnsubscribeS.png{/icon}" alt="" /> <span>{lang}wsif.entry.unsubscribe{/lang}</span></a></li>
+											{/if}
+										{/if}
+									</ul>
+								</div>
+							</div>
 						</div>
-		
+
 						{if $additionalContent1|isset}{@$additionalContent1}{/if}
 					</div>
 				</div>
