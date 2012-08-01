@@ -186,12 +186,40 @@ Copyright 2009-2012 by WCF Solutions <http://www.wcfsolutions.com/>
 .entryDetails {
 	margin-left: 186px;
 }
-.entryDetails:after{
+.entryDetails:after {
 	clear: left;
 }
 .entryList .entryDetails .containerContent h3 {
 	padding: 0;
 	margin: 0;
+}
+
+/* ### -- -- -- -- -- Image Appearance -- -- -- -- -- ### */
+
+.entryThumbnail img, .entryImageList li.floatedElement, .entryImage img {
+	border-style: solid;
+	border-width: 1px;
+	padding: 10px;
+	overflow: hidden;
+}
+
+/* @todo move color definitions */
+.entryThumbnail img:hover, .entryImageList li.floatedElement:hover, .entryImage img:hover {
+	border-color: #999;
+}
+
+.entryThumbnail img, .entryImageList li.floatedElement, .entryImage img {
+	border-color: #bbb;
+}
+
+/* ### -- -- -- -- -- Entry Overview -- -- -- -- -- ### */
+
+.entryThumbnail {
+	text-align: center;
+}
+
+.entryThumbnail img {
+	margin: 7px 0;
 }
 
 /* ### -- -- -- -- -- Entry Image List -- -- -- -- -- ### */
@@ -202,11 +230,7 @@ Copyright 2009-2012 by WCF Solutions <http://www.wcfsolutions.com/>
 }
 
 .entryImageList li.floatedElement {
-	border-style: solid;
-	border-width: 1px;
 	margin: 0 7px 7px 0;
-	padding: 10px;
-	overflow: hidden;
 	text-align: center;
 	height: 183px;
 	width: 158px;
@@ -245,33 +269,11 @@ Copyright 2009-2012 by WCF Solutions <http://www.wcfsolutions.com/>
 	margin: 0 7px;
 }
 
-/* @todo move color definitions */
-.entryImageList li.floatedElement:hover {
-	border-color: #999;
-}
-
-.entryImageList li.floatedElement {
-	border-color: #bbb;
-}
-
 /* ### -- -- -- -- -- Entry Image Detail -- -- -- -- -- ### */
 
 .entryImage img {
-	border-style: solid;
-	border-width: 1px;
 	margin: 0 7px 7px 0;
-	padding: 10px;
-	overflow: hidden;
 	width: 90%;
-}
-
-/* @todo move color definitions */
-.entryImage img:hover {
-	border-color: #999;
-}
-
-.entryImage img {
-	border-color: #bbb;
 }
 
 .entryImageCaption {

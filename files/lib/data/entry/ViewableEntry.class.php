@@ -21,6 +21,31 @@ require_once(WCF_DIR.'lib/data/message/bbcode/AttachmentBBCode.class.php');
 class ViewableEntry extends Entry {
 	protected $image = null;
 
+
+	/**
+	 * Creates a new ViewableEntry object.
+	 *
+	 * @param	integer		$entryID
+	 * @param 	array<mixed>	$row
+	 */
+	public function __construct($entryID, $row = null) {
+		if ($entryID !== null) {
+			$sql = "SELECT		entry.*,
+						entry_image.imageID, entry_image.hasThumbnail
+						".(WCF::getUser()->userID ? ', IF(subscription.userID IS NOT NULL, 1, 0) AS subscribed' : '')."
+				FROM 		wsif".WSIF_N."_entry entry
+				LEFT JOIN	wsif".WSIF_N."_entry_image entry_image
+				ON		(entry_image.imageID = entry.defaultImageID)
+				".(WCF::getUser()->userID ? "
+				LEFT JOIN 	wsif".WSIF_N."_entry_subscription subscription
+				ON 		(subscription.userID = ".WCF::getUser()->userID."
+						AND subscription.entryID = entry.entryID)" : '')."
+				WHERE 		entry.entryID = ".$entryID;
+			$row = WCF::getDB()->getFirstRow($sql);
+		}
+		DatabaseObject::__construct($row);
+	}
+
 	/**
 	 * @see DatabaseObject::handleData()
 	 */

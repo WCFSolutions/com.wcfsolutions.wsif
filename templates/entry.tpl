@@ -147,6 +147,21 @@
 				<div class="container-3 column second">
 					<div class="columnInner">
 
+						{if $entry->defaultImageID}
+							<div class="contentBox">
+								<div class="border">
+									<div class="containerHead">
+										<h3>{lang}wsif.entry.image.default{/lang}</h3>
+									</div>
+									<div class="container-1">
+										<div class="entryThumbnail">
+											<a href="index.php?page=EntryImage&amp;imageID={@$entry->getImage()->imageID}{@SID_ARG_2ND}" class="enlargable" title="{$entry->getImage()->title}"><img src="index.php?page=EntryImageShow&amp;imageID={@$entry->getImage()->imageID}{if $entry->getImage()->hasThumbnail}&amp;thumbnail=1{/if}{@SID_ARG_2ND}" alt="{$entry->getImage()->title}" /></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						{/if}
+
 						<div class="contentBox">
 							<div class="border">
 								<div class="containerHead">
