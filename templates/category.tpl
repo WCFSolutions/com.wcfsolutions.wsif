@@ -1,5 +1,5 @@
 {include file="documentHeader"}
-<head>
+<head xmlns="http://www.w3.org/1999/html">
 	<title>{@$category->getTitle()} {if $pageNo > 1}- {lang}wcf.page.pageNo{/lang} {/if}- {lang}{PAGE_TITLE}{/lang}</title>
 	{include file='headInclude' sandbox=false}
 
@@ -89,11 +89,13 @@
 									<div class="message" id="entryRow{@$entry->entryID}">
 										<div class="messageInner {cycle name='className'}">
 											<div class="entryImage">
-												{if $entry->defaultImageID}
-													<a href="index.php?page=Entry&amp;entryID={@$entry->entryID}{@SID_ARG_2ND}" class="enlargable" title="{$entry->getImage()->title}"><img src="index.php?page=EntryImageShow&amp;imageID={@$entry->getImage()->imageID}{if $entry->getImage()->hasThumbnail}&amp;thumbnail=1{/if}{@SID_ARG_2ND}" alt="{$entry->getImage()->title}" /></a>
-												{else}
-													<img src="images/noThumbnail.png" alt="" />
-												{/if}
+												<a href="index.php?page=Entry&amp;entryID={@$entry->entryID}{@SID_ARG_2ND}">
+													{if $entry->defaultImageID}
+														<img src="index.php?page=EntryImageShow&amp;imageID={@$entry->getImage()->imageID}{if $entry->getImage()->hasThumbnail}&amp;thumbnail=1{/if}{@SID_ARG_2ND}" alt="{$entry->getImage()->title}" />
+													{else}
+														<img src="images/noThumbnail.png" alt="" />
+													{/if}
+												</a>
 											</div>
 											<div class="entryDetails">
 												<div class="messageHeader">
@@ -145,7 +147,7 @@
 
 												<div class="editNote smallFont light">
 													<p>{lang}wsif.entry.downloads{/lang}: {#$entry->downloads}</p>
-													{if MODULE_COMMENT && $entry->enableComments}{/if}<p>{lang}wsif.entry.comments{/lang}: {#$entry->comments}</p>{/if}
+													{if MODULE_COMMENT && $entry->enableComments}<p>{lang}wsif.entry.comments{/lang}: {#$entry->comments}</p>{/if}
 													<p>{lang}wsif.entry.views{/lang}: {#$entry->views}</p>
 													{if $additionalInformationFields.$entryID|isset}{@$additionalInformationFields.$entryID}{/if}
 												</div>

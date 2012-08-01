@@ -4,15 +4,13 @@
 	<div class="message">
 		<div class="messageInner container-{cycle name='results'}">
 			<div class="entryImage">
-				{if $entry->defaultImageID}
-					{if $entry->getImage()->hasThumbnail}
-						<a href="index.php?page=EntryImageShow&amp;imageID={@$entry->getImage()->imageID}{@SID_ARG_2ND}" title="{$entry->getImage()->title}"><img src="index.php?page=EntryImageShow&amp;imageID={@$entry->getImage()->imageID}{if $entry->getImage()->hasThumbnail}&amp;thumbnail=1{/if}{@SID_ARG_2ND}" alt="{$entry->getImage()->title}" /></a>
-					{else}
-						<img src="index.php?page=EntryImageShow&amp;imageID={@$entry->getImage()->imageID}{@SID_ARG_2ND}" alt="{$entry->getImage()->title}" title="{$entry->getImage()->title}" />
+				<a href="index.php?page=Entry&amp;entryID={@$entry->entryID}{@SID_ARG_2ND}">
+					{if $entry->defaultImageID}
+						<img src="index.php?page=EntryImageShow&amp;imageID={@$entry->getImage()->imageID}{if $entry->getImage()->hasThumbnail}&amp;thumbnail=1{/if}{@SID_ARG_2ND}" alt="{$entry->getImage()->title}" />
+						{else}
+						<img src="images/noThumbnail.png" alt="" />
 					{/if}
-				{else}
-					<img src="images/noThumbnail.png" alt="" />
-				{/if}
+				</a>
 			</div>
 			<div class="entryDetails">
 				<div class="messageHeader">
