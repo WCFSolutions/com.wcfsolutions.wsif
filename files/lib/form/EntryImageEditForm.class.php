@@ -77,7 +77,7 @@ class EntryImageEditForm extends EntryImageAddForm {
 					}
 
 					// replace image
-					$this->image->replacePhysicalImage('upload', $this->upload['tmp_name'][$x], $this->upload['name'][$x]);
+					$this->image->replacePhysicalImage('upload', $this->upload['tmp_name'][0], $this->upload['name'][0]);
 				}
 				catch (UserInputException $e) {
 					$errors[] = array('errorType' => $e->getType(), 'filename' => $this->upload['name'][0]);

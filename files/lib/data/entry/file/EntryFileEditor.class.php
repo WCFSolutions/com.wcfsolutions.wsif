@@ -42,7 +42,7 @@ class EntryFileEditor extends EntryFile {
 	 */
 	public function replacePhysicalFile($field, $tmpName, $filename, $mimeType) {
 		// validate file
-		$filesize = self::validateFile($field, $tmpName, $filename);
+		$filesize = self::validateUploadedFile($field, $tmpName, $filename);
 
 		// copy file
 		$path = WSIF_DIR.'storage/files/'.$this->fileID;
@@ -133,7 +133,7 @@ class EntryFileEditor extends EntryFile {
 		if ($ipAddress == null) $ipAddress = WCF::getSession()->ipAddress;
 
 		// validate file
-		$filesize = self::validateFile($field, $tmpName, $filename);
+		$filesize = self::validateUploadedFile($field, $tmpName, $filename);
 
 		// use filename as title
 		if (empty($title)) {

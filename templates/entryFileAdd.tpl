@@ -209,7 +209,7 @@
 					</fieldset>
 				{/if}
 
-				{if $action == 'add' || $this->file->isExternalLink()}
+				{if $action == 'add' || $file->isExternalLink()}
 					<fieldset{if $errorField == 'externalURL'} class="formError"{/if} id="externalURLDiv">
 						<legend>{lang}wsif.entry.file.externalURL{/lang}</legend>
 						<div class="formElement{if $errorField == 'externalURL'} formError{/if}">
