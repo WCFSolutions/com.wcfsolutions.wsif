@@ -55,8 +55,8 @@
 
 		<!-- wcfsolutions packages -->
 		<requiredpackage minversion="2.0.2" file="requirements/com.wcfsolutions.wsif.core.tar">com.wcfsolutions.wsif.core</requiredpackage>
-		<requiredpackage minversion="2.0.1" file="requirements/com.wcfsolutions.wcf.acp.system.counterUpdate.tar">com.wcfsolutions.wcf.acp.system.counterUpdate</requiredpackage>
-		<requiredpackage minversion="2.0.3" file="requirements/com.wcfsolutions.wcf.data.moderation.tar">com.wcfsolutions.wcf.data.moderation</requiredpackage>
+		<requiredpackage minversion="2.0.2" file="requirements/com.wcfsolutions.wcf.acp.system.counterUpdate.tar">com.wcfsolutions.wcf.acp.system.counterUpdate</requiredpackage>
+		<requiredpackage minversion="2.0.4" file="requirements/com.wcfsolutions.wcf.data.moderation.tar">com.wcfsolutions.wcf.data.moderation</requiredpackage>
 	</requiredpackages>
 
 	<optionalpackages>
