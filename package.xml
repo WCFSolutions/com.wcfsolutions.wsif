@@ -61,7 +61,7 @@
 
 	<optionalpackages>
 		<!--<optionalpackage file="optionals/com.wcfsolutions.wsif.import.tar">com.wcfsolutions.wsif.import</optionalpackage>-->
-		<!--<optionalpackage file="optionals/com.wcfsolutions.wsif.box.tar">com.wcfsolutions.wsif.box</optionalpackage>-->
+		<optionalpackage file="optionals/com.wcfsolutions.wsif.box.tar">com.wcfsolutions.wsif.box</optionalpackage>
 		<optionalpackage file="optionals/com.wcfsolutions.wsif.extensionKit.tar">com.wcfsolutions.wsif.extensionKit</optionalpackage>
 		<optionalpackage file="optionals/com.wcfsolutions.wsif.entry.file.license.tar">com.wcfsolutions.wsif.entry.file.license</optionalpackage>
 		<optionalpackage file="optionals/com.wcfsolutions.wsif.entry.customFields.tar">com.wcfsolutions.wsif.entry.customFields</optionalpackage>
