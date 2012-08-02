@@ -113,6 +113,7 @@
 		<sql>update_205.sql</sql>
 
 		<!-- config -->
+		<options>options.xml</options>
 		<cronjobs>cronjobs.xml</cronjobs>
 		<rateableobject>rateableobject.xml</rateableobject>
 		<notificationobjecttype>notificationobjecttype.xml</notificationobjecttype>
