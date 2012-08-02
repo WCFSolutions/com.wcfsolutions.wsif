@@ -47,6 +47,9 @@ class EntryImageEditForm extends EntryImageAddForm {
 		if (!$this->image->isEditable($this->frame->getCategory())) {
 			throw new PermissionDeniedException();
 		}
+
+		// get quota
+		$this->maxImageSize = WCF::getUser()->getPermission('user.filebase.maxEntryImageSize');
 	}
 
 	/**

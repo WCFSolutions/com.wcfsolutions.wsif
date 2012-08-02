@@ -194,6 +194,14 @@ Copyright 2009-2012 by WCF Solutions <http://www.wcfsolutions.com/>
 	margin: 0;
 }
 
+.entryList .messageHeader p {
+	display: inline;
+}
+
+.entryList .messageHeader .rating {
+	margin-top: -1px;
+}
+
 /* ### -- -- -- -- -- Image Appearance -- -- -- -- -- ### */
 
 .entryThumbnail img, .entryImageList li.floatedElement, .entryImage img {

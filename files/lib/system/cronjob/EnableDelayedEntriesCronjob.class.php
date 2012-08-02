@@ -46,6 +46,11 @@ class EnableDelayedEntriesCronjob implements Cronjob {
 			// refresh categories
 			CategoryEditor::refreshAll($categoryIDs);
 
+			// set last entries
+			foreach ($categories as $category) {
+				$category->setLastEntries();
+			}
+
 			// reset cache
 			WCF::getCache()->clearResource('categoryData', true);
 			WCF::getCache()->clearResource('stat');

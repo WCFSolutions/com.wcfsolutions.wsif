@@ -47,6 +47,9 @@ class EntryFileEditForm extends EntryFileAddForm {
 		if (!$this->file->isEditable($this->frame->getCategory())) {
 			throw new PermissionDeniedException();
 		}
+
+		// get quota
+		$this->maxFileSize = WCF::getUser()->getPermission('user.filebase.maxEntryFileSize');
 	}
 
 	/**

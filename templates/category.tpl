@@ -130,6 +130,7 @@
 															<a href="index.php?page=Entry&amp;entryID={@$entry->entryID}{@SID_ARG_2ND}">{$entry->subject}</a>
 														</h3>
 														<p class="light smallFont">{lang}wsif.entry.by{/lang} {if $entry->userID}<a href="index.php?page=User&amp;userID={@$entry->userID}{@SID_ARG_2ND}">{$entry->username}</a>{else}{$entry->username}{/if} ({@$entry->time|time})</p>
+														{if ENTRY_ENABLE_RATING && $category->enableRating == -1 ||  $category->enableRating}<p class="rating">{@$entry->getRatingOutput()}</p>{/if}
 													</div>
 												</div>
 

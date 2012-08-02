@@ -21,7 +21,7 @@ class CategoryTagCloud extends TagCloud {
 	public $categoryID = 0;
 
 	/**
-	 * Contructs a new CategoryTagCloud.
+	 * Creates a new CategoryTagCloud object.
 	 *
 	 * @param	integer		$categoryID
 	 * @param	array<integer>	$languageIDArray

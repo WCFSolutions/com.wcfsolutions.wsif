@@ -83,7 +83,7 @@ class Entry extends DatabaseObject {
 	 */
 	public function getCategory() {
 		if ($this->category === null) {
-			$this->category = new Category($this->categoryID);
+			$this->category = Category::getCategory($this->categoryID);
 		}
 		return $this->category;
 	}
@@ -170,7 +170,7 @@ class Entry extends DatabaseObject {
 	 * @return	boolean
 	 */
 	public function isRatable($category) {
-		if ($this->userID && $this->userID != WCF::getUser()->userID && $category->getPermission('canRateEntry')) {
+		if ((!$this->userID || $this->userID != WCF::getUser()->userID) && $category->getPermission('canRateEntry')) {
 			return true;
 		}
 		return false;

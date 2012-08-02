@@ -68,6 +68,13 @@ class EntryPage extends AbstractPage {
 	public $entryVisitors = array();
 
 	/**
+	 * rating object
+	 *
+	 * @var	Rating
+	 */
+	public $rating = null;
+
+	/**
 	 * @see Page::readParameters()
 	 */
 	public function readParameters() {
@@ -75,11 +82,6 @@ class EntryPage extends AbstractPage {
 
 		// get entry frame
 		$this->frame = new EntryFrame($this);
-
-		// update views
-		if (!WCF::getSession()->spiderID) {
-			$this->updateViews();
-		}
 	}
 
 	/**
@@ -140,6 +142,16 @@ class EntryPage extends AbstractPage {
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$this->entryVisitors[] = new WSIFUser(null, $row);
 		}
+
+		// init rating
+		if ($this->frame->enableRating) {
+			$this->rating = new Rating('com.wcfsolutions.wsif.entry', $this->frame->getEntryID(), PACKAGE_ID);
+		}
+
+		// update views
+		if (!WCF::getSession()->spiderID) {
+			$this->updateViews();
+		}
 	}
 
 	/**
@@ -155,6 +167,7 @@ class EntryPage extends AbstractPage {
 			'entryFiles' => $this->entryFiles,
 			'tags' => $this->tags,
 			'entryVisitors' => $this->entryVisitors,
+			'rating' => $this->rating,
 			'socialBookmarks' => SocialBookmarks::getInstance()->getSocialBookmarks(PAGE_URL.'/index.php?page=Entry&entryID='.$this->frame->getEntryID(), $this->frame->getEntry()->subject),
 			'allowSpidersToIndexThisPage' => true
 		));
