@@ -187,8 +187,8 @@ class CategoryPage extends SortablePage {
 		if ($this->entryList != null) {
 			$this->entryList->sqlLimit = $this->itemsPerPage;
 			$this->entryList->sqlOffset = ($this->pageNo - 1) * $this->itemsPerPage;
-			$this->entryList->sqlOrderBy = ($this->sortField != 'ratingResult' ? 'entry.' : '').$this->sortField." ".$this->sortOrder.
-							($this->sortField == 'ratingResult' ? ", entry.ratings ".$this->sortOrder : '');
+			$this->entryList->sqlOrderBy = 'entry'.$this->sortField." ".$this->sortOrder.
+							($this->sortField == 'rating' ? ", entry.ratings ".$this->sortOrder : '');
 			$this->entryList->readObjects();
 		}
 
@@ -259,7 +259,7 @@ class CategoryPage extends SortablePage {
 			case 'time':
 			case 'views':
 			case 'downloads': break;
-			case 'ratingResult': if ($this->enableRating) break;
+			case 'rating': if ($this->enableRating) break;
 			default: $this->sortField = $this->defaultSortField;
 		}
 	}

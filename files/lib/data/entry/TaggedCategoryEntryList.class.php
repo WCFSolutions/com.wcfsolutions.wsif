@@ -16,8 +16,6 @@ require_once(WCF_DIR.'lib/data/DatabaseObjectList.class.php');
  * @category	Infinite Filebase
  */
 class TaggedCategoryEntryList extends TaggedEntryList {
-	public $sqlSelectRating = '';
-
 	/**
 	 * Creates a new TaggedCategoryEntryList object.
 	 */
@@ -50,10 +48,6 @@ class TaggedCategoryEntryList extends TaggedEntryList {
 			$this->sqlConditions .= " AND entry.languageID IN (".implode(',', WCF::getSession()->getVisibleLanguageIDArray()).")";
 		}
 
-		// ratings
-		if ($enableRating) {
-			$this->sqlSelectRating = $this->sqlSelects = "if (ratings>0 AND ratings>=".ENTRY_MIN_RATINGS.",rating/ratings,0) AS ratingResult";
-		}
 		parent::__construct($tagID);
 	}
 
@@ -61,7 +55,7 @@ class TaggedCategoryEntryList extends TaggedEntryList {
 	 * @see ViewableEntryList::readObjectIDArray()
 	 */
 	protected function readObjectIDArray() {
-		$sql = "SELECT		entry.entryID, ".$this->sqlSelectRating."
+		$sql = "SELECT		entry.entryID
 			FROM		wcf".WCF_N."_tag_to_object tag_to_object,
 					wsif".WSIF_N."_entry entry
 			WHERE		tag_to_object.tagID = ".$this->tagID."

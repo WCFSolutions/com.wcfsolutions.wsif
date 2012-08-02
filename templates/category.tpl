@@ -237,7 +237,7 @@
 										<option value="time"{if $sortField == 'time'} selected="selected"{/if}>{lang}wsif.entry.time{/lang}</option>
 										<option value="views"{if $sortField == 'views'} selected="selected"{/if}>{lang}wsif.entry.views{/lang}</option>
 										<option value="downloads"{if $sortField == 'downloads'} selected="selected"{/if}>{lang}wsif.entry.downloads{/lang}</option>
-										{if $enableRating}<option value="ratingResult"{if $sortField == 'ratingResult'} selected="selected"{/if}>{lang}wsif.entry.rating{/lang}</option>{/if}
+										{if $enableRating}<option value="rating"{if $sortField == 'rating'} selected="selected"{/if}>{lang}wsif.entry.rating{/lang}</option>{/if}
 									</select>
 									<select name="sortOrder">
 										<option value="ASC"{if $sortOrder == 'ASC'} selected="selected"{/if}>{lang}wcf.global.sortOrder.ascending{/lang}</option>

@@ -202,8 +202,6 @@
 		<item name="wcf.acp.option.entry_files_per_page.description"><![CDATA[Wieviele Dateien sollen pro Seite aufgelistet werden?]]></item>
 		<item name="wcf.acp.option.entry_images_per_page"><![CDATA[Bilder pro Seite]]></item>
 		<item name="wcf.acp.option.entry_images_per_page.description"><![CDATA[Wieviele Bilder sollen pro Seite aufgelistet werden?]]></item>
-		<item name="wcf.acp.option.entry_min_ratings"><![CDATA[Anzahl notwendiger Bewertungen]]></item>
-		<item name="wcf.acp.option.entry_min_ratings.description"><![CDATA[Welche Anzahl muss erreicht werden, damit die Bewertung des Eintrags angezeigt wird?]]></item>
 		<item name="wcf.acp.option.entry_show_last_comments"><![CDATA[Letzte fünf Kommentare anzeigen]]></item>
 		<item name="wcf.acp.option.entry_show_last_comments.description"><![CDATA[Aktiviert die Anzeige der letzten fünf Kommentare des Eintrags]]></item>
 		<item name="wcf.acp.option.entry_show_last_files"><![CDATA[Letzte fünf Dateien anzeigen]]></item>

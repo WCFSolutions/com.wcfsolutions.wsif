@@ -13,8 +13,6 @@ require_once(WSIF_DIR.'lib/data/entry/ViewableEntryList.class.php');
  * @category	Infinite Filebase
  */
 class CategoryEntryList extends ViewableEntryList {
-	public $sqlSelectRating = '';
-
 	/**
 	 * Creates a new CategoryEntryList object.
 	 */
@@ -46,18 +44,13 @@ class CategoryEntryList extends ViewableEntryList {
 		else if (count(WCF::getSession()->getVisibleLanguageIDArray()) && (CATEGORY_ENTRIES_ENABLE_LANGUAGE_FILTER_FOR_GUESTS == 1 || WCF::getUser()->userID != 0)) {
 			$this->sqlConditions .= " AND entry.languageID IN (".implode(',', WCF::getSession()->getVisibleLanguageIDArray()).")";
 		}
-
-		// ratings
-		if ($enableRating) {
-			$this->sqlSelectRating = $this->sqlSelects = "if (ratings>0 AND ratings>=".ENTRY_MIN_RATINGS.",rating/ratings,0) AS ratingResult";
-		}
 	}
 
 	/**
 	 * Gets the object ids.
 	 */
 	protected function readObjectIDArray() {
-		$sql = "SELECT		entry.entryID".(!empty($this->sqlSelectRating) ? ", ".$this->sqlSelectRating : '')."
+		$sql = "SELECT		entry.entryID
 			FROM		wsif".WSIF_N."_entry entry
 			".(!empty($this->sqlConditions) ? "WHERE ".$this->sqlConditions : '')."
 			".(!empty($this->sqlOrderBy) ? "ORDER BY ".$this->sqlOrderBy : '');

@@ -148,7 +148,7 @@ class CategoryAddForm extends ACPForm {
 
 		// sortField
 		switch ($this->sortField) {
-			case '': case 'subject': case 'username': case 'time': case 'ratingResult': case 'downloads': case 'views': break;
+			case '': case 'subject': case 'username': case 'time': case 'rating': case 'downloads': case 'views': break;
 			default: throw new UserInputException('sortField', 'invalid');
 		}
 

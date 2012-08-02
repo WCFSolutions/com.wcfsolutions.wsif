@@ -563,14 +563,16 @@ class EntryEditor extends Entry {
 		WCF::getDB()->sendQuery($sql);
 
 		// delete entry rating
-		$sql = "DELETE FROM	wsif".WSIF_N."_entry_rating
-			WHERE 		entryID IN (".$entryIDs.")";
-		WCF::getDB()->registerShutdownUpdate($sql);
+		$sql = "DELETE FROM	wcf".WCF_N."_rating
+			WHERE		objectID IN (".$entryIDs.")
+					AND objectName = 'com.wcfsolutions.wsif.entry'
+					AND packageID = ".PACKAGE_ID;
+		WCF::getDB()->sendQuery($sql);
 
 		// delete entry visitors
 		$sql = "DELETE FROM	wsif".WSIF_N."_entry_visitor
 			WHERE 		entryID IN (".$entryIDs.")";
-		WCF::getDB()->registerShutdownUpdate($sql);
+		WCF::getDB()->sendQuery($sql);
 
 		// delete tags
 		if (MODULE_TAGGING) {
@@ -580,7 +582,7 @@ class EntryEditor extends Entry {
 			$sql = "DELETE FROM	wcf".WCF_N."_tag_to_object
 				WHERE 		taggableID = ".$taggable->getTaggableID()."
 						AND objectID IN (".$entryIDs.")";
-			WCF::getDB()->registerShutdownUpdate($sql);
+			WCF::getDB()->sendQuery($sql);
 		}
 	}
 

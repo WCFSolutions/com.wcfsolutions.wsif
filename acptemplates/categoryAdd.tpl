@@ -329,7 +329,7 @@
 							<option value="subject"{if $sortField == 'subject'} selected="selected"{/if}>{lang}wsif.entry.subject{/lang}</option>
 							<option value="username"{if $sortField == 'username'} selected="selected"{/if}>{lang}wsif.entry.username{/lang}</option>
 							<option value="time"{if $sortField == 'time'} selected="selected"{/if}>{lang}wsif.entry.time{/lang}</option>
-							<option value="ratingResult"{if $sortField == 'ratingResult'} selected="selected"{/if}>{lang}wsif.entry.rating{/lang}</option>
+							<option value="rating"{if $sortField == 'rating'} selected="selected"{/if}>{lang}wsif.entry.rating{/lang}</option>
 							<option value="downloads"{if $sortField == 'downloads'} selected="selected"{/if}>{lang}wsif.entry.downloads{/lang}</option>
 							<option value="views"{if $sortField == 'views'} selected="selected"{/if}>{lang}wsif.entry.views{/lang}</option>
 						</select>

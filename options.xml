@@ -186,7 +186,7 @@ username:wsif.entry.username
 time:wsif.entry.time
 views:wsif.entry.views
 downloads:wsif.entry.downloads
-ratingResult:wsif.entry.rating]]></selectoptions>
+rating:wsif.entry.rating]]></selectoptions>
 			</option>
 			<option name="category_entries_default_sort_order">
 				<categoryname>filebase.category.entries</categoryname>
@@ -223,12 +223,6 @@ DESC:wcf.global.sortOrder.descending]]></selectoptions>
 			<option name="entry_enable_rating">
 				<categoryname>filebase.entry.general</categoryname>
 				<optiontype>boolean</optiontype>
-				<defaultvalue>1</defaultvalue>
-				<enableoptions><![CDATA[entry_min_ratings]]></enableoptions>
-			</option>
-			<option name="entry_min_ratings">
-				<categoryname>filebase.entry.general</categoryname>
-				<optiontype>integer</optiontype>
 				<defaultvalue>1</defaultvalue>
 			</option>
 			<option name="entry_show_last_comments">
