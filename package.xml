@@ -30,7 +30,7 @@
 		<requiredpackage minversion="1.1.4">com.woltlab.wcf.data.help</requiredpackage>
 
 		<!-- message -->
-		<requiredpackage minversion="1.1.7">com.woltlab.wcf.data.message</requiredpackage>
+		<requiredpackage minversion="1.1.2">com.woltlab.wcf.data.message</requiredpackage>
 		<requiredpackage minversion="1.1.7">com.woltlab.wcf.data.message.attachment</requiredpackage>
 		<requiredpackage minversion="1.1.7">com.woltlab.wcf.data.message.bbcode</requiredpackage>
 		<requiredpackage minversion="1.1.4">com.woltlab.wcf.form.message.wysiwyg</requiredpackage>
