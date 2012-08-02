@@ -5,8 +5,8 @@
 		<packagedescription>Infinite Filebase is a modern download database with many features.</packagedescription>
 		<packagedescription language="de">Infinite Filebase ist eine moderne Download-Datenbank mit vielen Funktionen.</packagedescription>
 		<standalone>1</standalone>
-		<version>2.1.0 Alpha 1</version>
-		<date>2012-02-19</date>
+		<version>2.1.0 Beta 1</version>
+		<date>2012-08-02</date>
 	</packageinformation>
 
 	<authorinformation>
@@ -17,38 +17,38 @@
 	<requiredpackages>
 		<!-- basics -->
 		<requiredpackage minversion="1.1.9">com.woltlab.wcf</requiredpackage>
-		<requiredpackage minversion="1.1.2">com.woltlab.wcf.data.cronjobs</requiredpackage>
+		<requiredpackage minversion="1.1.4">com.woltlab.wcf.data.cronjobs</requiredpackage>
 		<requiredpackage minversion="1.0.3">com.woltlab.wcf.data.feed.reader</requiredpackage>
-		<requiredpackage minversion="1.1.0">com.woltlab.wcf.data.image</requiredpackage>
+		<requiredpackage minversion="1.1.1">com.woltlab.wcf.data.image</requiredpackage>
 		<requiredpackage minversion="1.1.0">com.woltlab.wcf.data.image.captcha</requiredpackage>
-		<requiredpackage minversion="1.0.1">com.woltlab.wcf.imageViewer</requiredpackage>
+		<requiredpackage minversion="1.1.0">com.woltlab.wcf.imageViewer</requiredpackage>
 
 		<!-- page system -->
 		<requiredpackage minversion="1.1.1">com.woltlab.wcf.data.page.headerMenu</requiredpackage>
-		<requiredpackage minversion="1.1.0">com.woltlab.wcf.system.style</requiredpackage>
-		<requiredpackage minversion="1.1.0">com.woltlab.wcf.data.page</requiredpackage>
-		<requiredpackage minversion="1.1.1">com.woltlab.wcf.data.help</requiredpackage>
+		<requiredpackage minversion="1.1.3">com.woltlab.wcf.system.style</requiredpackage>
+		<requiredpackage minversion="1.1.1">com.woltlab.wcf.data.page</requiredpackage>
+		<requiredpackage minversion="1.1.4">com.woltlab.wcf.data.help</requiredpackage>
 
 		<!-- message -->
-		<requiredpackage minversion="1.1.0">com.woltlab.wcf.data.message</requiredpackage>
-		<requiredpackage minversion="1.1.2">com.woltlab.wcf.data.message.attachment</requiredpackage>
-		<requiredpackage minversion="1.1.1">com.woltlab.wcf.data.message.bbcode</requiredpackage>
-		<requiredpackage minversion="1.1.2">com.woltlab.wcf.form.message.wysiwyg</requiredpackage>
-		<requiredpackage minversion="1.0.1">com.woltlab.wcf.tagging</requiredpackage>
+		<requiredpackage minversion="1.1.7">com.woltlab.wcf.data.message</requiredpackage>
+		<requiredpackage minversion="1.1.7">com.woltlab.wcf.data.message.attachment</requiredpackage>
+		<requiredpackage minversion="1.1.7">com.woltlab.wcf.data.message.bbcode</requiredpackage>
+		<requiredpackage minversion="1.1.4">com.woltlab.wcf.form.message.wysiwyg</requiredpackage>
+		<requiredpackage minversion="1.0.4">com.woltlab.wcf.tagging</requiredpackage>
 
 		<!-- user profile -->
-		<requiredpackage minversion="1.1.2">com.woltlab.wcf.form.user</requiredpackage>
-		<requiredpackage minversion="1.1.2">com.woltlab.wcf.page.user.profile</requiredpackage>
+		<requiredpackage minversion="1.1.6">com.woltlab.wcf.form.user</requiredpackage>
+		<requiredpackage minversion="1.1.6">com.woltlab.wcf.page.user.profile</requiredpackage>
 
 		<!-- messages -->
-		<requiredpackage minversion="1.1.1">com.woltlab.wcf.data.message.poll</requiredpackage>
+		<requiredpackage minversion="1.1.4">com.woltlab.wcf.data.message.poll</requiredpackage>
 		<requiredpackage minversion="1.1.0">com.woltlab.wcf.data.message.censorship</requiredpackage>
-		<requiredpackage minversion="1.1.2">com.woltlab.wcf.form.message</requiredpackage>
+		<requiredpackage minversion="1.1.3">com.woltlab.wcf.form.message</requiredpackage>
 		<requiredpackage minversion="1.1.1">com.woltlab.wcf.data.message.search</requiredpackage>
-		<requiredpackage minversion="1.0.1">com.woltlab.wcf.message.sidebar</requiredpackage>
-		<requiredpackage minversion="1.0.0">com.woltlab.wcf.data.message.search.tagging</requiredpackage>
-		<requiredpackage minversion="1.0.0 Beta 1">com.woltlab.wcf.rating</requiredpackage>
-		<requiredpackage minversion="1.0.0 Beta 1">com.woltlab.wcf.socialBookmarks</requiredpackage>
+		<requiredpackage minversion="1.0.2">com.woltlab.wcf.message.sidebar</requiredpackage>
+		<requiredpackage minversion="1.0.2">com.woltlab.wcf.data.message.search.tagging</requiredpackage>
+		<requiredpackage minversion="1.0.0">com.woltlab.wcf.rating</requiredpackage>
+		<requiredpackage minversion="1.0.1">com.woltlab.wcf.socialBookmarks</requiredpackage>
 
 		<!-- 3rd party packages -->
 		<requiredpackage minversion="1.0.12" file="requirements/com.woltlab.community.wcf.user.notification.tar">com.woltlab.community.wcf.user.notification</requiredpackage>
@@ -60,7 +60,7 @@
 	</requiredpackages>
 
 	<optionalpackages>
-		<optionalpackage file="optionals/com.wcfsolutions.wsif.import.tar">com.wcfsolutions.wsif.import</optionalpackage>
+		<!--<optionalpackage file="optionals/com.wcfsolutions.wsif.import.tar">com.wcfsolutions.wsif.import</optionalpackage>-->
 		<optionalpackage file="optionals/com.wcfsolutions.wsif.box.tar">com.wcfsolutions.wsif.box</optionalpackage>
 		<optionalpackage file="optionals/com.wcfsolutions.wsif.extensionKit.tar">com.wcfsolutions.wsif.extensionKit</optionalpackage>
 		<optionalpackage file="optionals/com.wcfsolutions.wsif.entry.file.license.tar">com.wcfsolutions.wsif.entry.file.license</optionalpackage>
