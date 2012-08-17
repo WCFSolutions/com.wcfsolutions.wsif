@@ -56,6 +56,13 @@ class EntryFrame {
 	public $markedEntries = 0;
 
 	/**
+	 * rating object
+	 *
+	 * @var	Rating
+	 */
+	public $rating = null;
+
+	/**
 	 * Creates a new EntryFrame.
 	 *
 	 * @param	object		$container
@@ -98,6 +105,11 @@ class EntryFrame {
 		$sessionVars = WCF::getSession()->getVars();
 		if (isset($sessionVars['markedEntries'])) {
 			$this->markedEntries = count($sessionVars['markedEntries']);
+		}
+
+		// init rating
+		if ($this->enableRating) {
+			$this->rating = new Rating('com.wcfsolutions.wsif.entry', $this->entryID, PACKAGE_ID);
 		}
 	}
 
@@ -144,6 +156,7 @@ class EntryFrame {
 			'enableRating' => $this->enableRating,
 			'permissions' => $this->category->getModeratorPermissions(),
 			'markedEntries' => $this->markedEntries,
+			'rating' => $this->rating,
 			'categoryQuickJumpOptions' => Category::getCategorySelect()
 		));
 	}
