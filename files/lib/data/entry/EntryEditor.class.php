@@ -191,7 +191,7 @@ class EntryEditor extends Entry {
 	}
 
 	/**
-	 * Restores this deleted thread.
+	 * Restores this deleted entry.
 	 */
 	public function restore() {
 		self::restoreAll($this->entryID);
@@ -242,7 +242,6 @@ class EntryEditor extends Entry {
 	 *
 	 * @param	string		$subject
 	 * @param	string		$text
-	 *
 	 * @return	string
 	 */
 	public static function createPreview($subject, $message, $enableSmilies = 1, $enableHtml = 0, $enableBBCodes = 1) {
@@ -351,21 +350,16 @@ class EntryEditor extends Entry {
 				AND userID <> 0";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
+			if (!isset($userEntries[$row['userID']])) $userEntries[$row['userID']] = 0;
+			if (!isset($userActivityPoints[$row['userID']])) $userActivityPoints[$row['userID']] = 0;
+
 			switch ($mode) {
 				case 'enable':
-					// entries
-					if (!isset($userEntries[$row['userID']])) $userEntries[$row['userID']] = 0;
 					$userEntries[$row['userID']]++;
-					// activity points
-					if (!isset($userActivityPoints[$row['userID']])) $userActivityPoints[$row['userID']] = 0;
 					$userActivityPoints[$row['userID']] += ACTIVITY_POINTS_PER_ENTRY;
 					break;
 				case 'delete':
-					// entries
-					if (!isset($userEntries[$row['userID']])) $userEntries[$row['userID']] = 0;
 					$userEntries[$row['userID']]--;
-					// activity points
-					if (!isset($userActivityPoints[$row['userID']])) $userActivityPoints[$row['userID']] = 0;
 					$userActivityPoints[$row['userID']] -= ACTIVITY_POINTS_PER_ENTRY;
 					break;
 			}
@@ -397,9 +391,6 @@ class EntryEditor extends Entry {
 	public static function moveAll($entryIDs, $newCategoryID) {
 		if (empty($entryIDs)) return;
 
-		// update user posts and activity points
-		self::updateUserStats($entryIDs, 'move', $newCategoryID);
-
 		// move entries
 		$sql = "UPDATE 	wsif".WSIF_N."_entry
 			SET	categoryID = ".$newCategoryID."
@@ -415,7 +406,12 @@ class EntryEditor extends Entry {
 		if (empty($entryIDs)) return;
 
 		$sql = "UPDATE 	wsif".WSIF_N."_entry entry
-			SET	images = (
+			SET	comments = (
+					SELECT	COUNT(*)
+					FROM	wsif".WSIF_N."_entry_comment
+					WHERE	entryID = entry.entryID
+				),
+				images = (
 					SELECT	COUNT(*)
 					FROM	wsif".WSIF_N."_entry_image
 					WHERE	entryID = entry.entryID
@@ -494,8 +490,9 @@ class EntryEditor extends Entry {
 	 * Deletes the entries with the given entry ids completely.
 	 *
 	 * @param	string		$entryIDs
+	 * @param	boolean		$updateUserStats
 	 */
-	public static function deleteAllCompletely($entryIDs, $updateUserStats = true, $deleteComments = true, $deleteImages = true, $deleteFiles = true) {
+	public static function deleteAllCompletely($entryIDs, $updateUserStats = true) {
 		if (empty($entryIDs)) return;
 
 		// update user stats
@@ -504,63 +501,52 @@ class EntryEditor extends Entry {
 		}
 
 		// get all comment ids
-		if ($deleteComments) {
-			$commentIDs = '';
-			$sql = "SELECT	commentID
-				FROM	wsif".WSIF_N."_entry_comment
-				WHERE	entryID IN (".$entryIDs.")";
-			$result = WCF::getDB()->sendQuery($sql);
-			while ($row = WCF::getDB()->fetchArray($result)) {
-				if (!empty($commentIDs)) $commentIDs .= ',';
-				$commentIDs .= $row['commentID'];
-			}
-			if (!empty($commentIDs)) {
-				// delete comments
-				require_once(WSIF_DIR.'lib/data/entry/comment/EntryCommentEditor.class.php');
-				EntryCommentEditor::deleteAll($commentIDs);
-			}
+		$commentIDs = '';
+		$sql = "SELECT	commentID
+			FROM	wsif".WSIF_N."_entry_comment
+			WHERE	entryID IN (".$entryIDs.")";
+		$result = WCF::getDB()->sendQuery($sql);
+		while ($row = WCF::getDB()->fetchArray($result)) {
+			if (!empty($commentIDs)) $commentIDs .= ',';
+			$commentIDs .= $row['commentID'];
+		}
+		if (!empty($commentIDs)) {
+			// delete comments
+			require_once(WSIF_DIR.'lib/data/entry/comment/EntryCommentEditor.class.php');
+			EntryCommentEditor::deleteAll($commentIDs);
 		}
 
 		// get all image ids
-		if ($deleteImages) {
-			$imageIDs = '';
-			$sql = "SELECT	imageID
-				FROM	wsif".WSIF_N."_entry_image
-				WHERE	entryID IN (".$entryIDs.")";
-			$result = WCF::getDB()->sendQuery($sql);
-			while ($row = WCF::getDB()->fetchArray($result)) {
-				if (!empty($imageIDs)) $imageIDs .= ',';
-				$imageIDs .= $row['imageID'];
-			}
-			if (!empty($imageIDs)) {
-				// delete images
-				require_once(WSIF_DIR.'lib/data/entry/image/EntryImageEditor.class.php');
-				EntryImageEditor::deleteAll($imageIDs);
-			}
+		$imageIDs = '';
+		$sql = "SELECT	imageID
+			FROM	wsif".WSIF_N."_entry_image
+			WHERE	entryID IN (".$entryIDs.")";
+		$result = WCF::getDB()->sendQuery($sql);
+		while ($row = WCF::getDB()->fetchArray($result)) {
+			if (!empty($imageIDs)) $imageIDs .= ',';
+			$imageIDs .= $row['imageID'];
+		}
+		if (!empty($imageIDs)) {
+			// delete images
+			require_once(WSIF_DIR.'lib/data/entry/image/EntryImageEditor.class.php');
+			EntryImageEditor::deleteAll($imageIDs);
 		}
 
 		// get all file ids
-		if ($deleteFiles) {
-			$fileIDs = '';
-			$sql = "SELECT	fileID
-				FROM	wsif".WSIF_N."_entry_file
-				WHERE	entryID IN (".$entryIDs.")";
-			$result = WCF::getDB()->sendQuery($sql);
-			while ($row = WCF::getDB()->fetchArray($result)) {
-				if (!empty($fileIDs)) $fileIDs .= ',';
-				$fileIDs .= $row['fileID'];
-			}
-			if (!empty($fileIDs)) {
-				// delete images
-				require_once(WSIF_DIR.'lib/data/entry/file/EntryFileEditor.class.php');
-				EntryFileEditor::deleteAll($fileIDs);
-			}
+		$fileIDs = '';
+		$sql = "SELECT	fileID
+			FROM	wsif".WSIF_N."_entry_file
+			WHERE	entryID IN (".$entryIDs.")";
+		$result = WCF::getDB()->sendQuery($sql);
+		while ($row = WCF::getDB()->fetchArray($result)) {
+			if (!empty($fileIDs)) $fileIDs .= ',';
+			$fileIDs .= $row['fileID'];
 		}
-
-		// delete entry
-		$sql = "DELETE FROM	wsif".WSIF_N."_entry
-			WHERE 		entryID IN (".$entryIDs.")";
-		WCF::getDB()->sendQuery($sql);
+		if (!empty($fileIDs)) {
+			// delete files
+			require_once(WSIF_DIR.'lib/data/entry/file/EntryFileEditor.class.php');
+			EntryFileEditor::deleteAll($fileIDs);
+		}
 
 		// delete entry rating
 		$sql = "DELETE FROM	wcf".WCF_N."_rating
@@ -575,15 +561,18 @@ class EntryEditor extends Entry {
 		WCF::getDB()->sendQuery($sql);
 
 		// delete tags
-		if (MODULE_TAGGING) {
-			require_once(WCF_DIR.'lib/data/tag/TagEngine.class.php');
-			$taggable = TagEngine::getInstance()->getTaggable('com.wcfsolutions.wsif.entry');
+		require_once(WCF_DIR.'lib/data/tag/TagEngine.class.php');
+		$taggable = TagEngine::getInstance()->getTaggable('com.wcfsolutions.wsif.entry');
 
-			$sql = "DELETE FROM	wcf".WCF_N."_tag_to_object
-				WHERE 		taggableID = ".$taggable->getTaggableID()."
-						AND objectID IN (".$entryIDs.")";
-			WCF::getDB()->sendQuery($sql);
-		}
+		$sql = "DELETE FROM	wcf".WCF_N."_tag_to_object
+			WHERE 		taggableID = ".$taggable->getTaggableID()."
+					AND objectID IN (".$entryIDs.")";
+		WCF::getDB()->sendQuery($sql);
+
+		// delete entry
+		$sql = "DELETE FROM	wsif".WSIF_N."_entry
+			WHERE 		entryID IN (".$entryIDs.")";
+		WCF::getDB()->sendQuery($sql);
 	}
 
 	/**
