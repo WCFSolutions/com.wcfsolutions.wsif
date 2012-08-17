@@ -154,60 +154,6 @@ class CategoryEditor extends Category {
 	}
 
 	/**
-	 * Removes the positions of this category.
-	 */
-	public function removePositions() {
-		// unshift categories
-		$sql = "SELECT 	parentID, position
-			FROM	wsif".WSIF_N."_category_structure
-			WHERE	categoryID = ".$this->categoryID;
-		$result = WCF::getDB()->sendQuery($sql);
-		while ($row = WCF::getDB()->fetchArray($result)) {
-			$sql = "UPDATE	wsif".WSIF_N."_category_structure
-				SET	position = position - 1
-				WHERE 	parentID = ".$row['parentID']."
-					AND position > ".$row['position'];
-			WCF::getDB()->sendQuery($sql);
-		}
-
-		// delete category structure record
-		$sql = "DELETE FROM	wsif".WSIF_N."_category_structure
-			WHERE		categoryID = ".$this->categoryID;
-		WCF::getDB()->sendQuery($sql);
-	}
-
-	/**
-	 * Adds the position for this category.
-	 *
-	 * @param	integer		$parentID
-	 * @param	integer		$position
-	 */
-	public function addPosition($parentID, $position = null) {
-		// shift categories
-		if ($position !== null) {
-			$sql = "UPDATE	wsif".WSIF_N."_category_structure
-				SET	position = position + 1
-				WHERE 	parentID = ".$parentID."
-					AND position >= ".$position;
-			WCF::getDB()->sendQuery($sql);
-		}
-
-		// get final position
-		$sql = "SELECT 	IFNULL(MAX(position), 0) + 1 AS position
-			FROM	wsif".WSIF_N."_category_structure
-			WHERE	parentID = ".$parentID."
-				".($position ? "AND position <= ".$position : '');
-		$row = WCF::getDB()->getFirstRow($sql);
-		$position = $row['position'];
-
-		// save position
-		$sql = "INSERT INTO	wsif".WSIF_N."_category_structure
-					(parentID, categoryID, position)
-			VALUES		(".$parentID.", ".$this->categoryID.", ".$position.")";
-		WCF::getDB()->sendQuery($sql);
-	}
-
-	/**
 	 * Returns the cleaned permission list.
 	 * Removes default permissions from the given permission list.
 	 *
@@ -334,9 +280,30 @@ class CategoryEditor extends Category {
 	 * @param	string		$sortOrder
 	 * @param	integer		$enableRating
 	 * @param	integer		$entriesPerPage
+	 * @param	integer		$showOrder
 	 * @param	integer		$languageID
 	 */
-	public function update($parentID, $title, $description = '', $allowDescriptionHtml = 0, $categoryType = 0, $icon = '', $externalURL = '', $styleID = 0, $enforceStyle = 0, $daysPrune = 0, $sortField = '', $sortOrder = '', $enableRating = -1, $entriesPerPage = 0, $languageID = 0) {
+	public function update($parentID, $title, $description = '', $allowDescriptionHtml = 0, $categoryType = 0, $icon = '', $externalURL = '', $styleID = 0, $enforceStyle = 0, $daysPrune = 0, $sortField = '', $sortOrder = '', $enableRating = -1, $entriesPerPage = 0, $showOrder = 0, $languageID = 0) {
+		// update show order
+		if ($this->showOrder != $showOrder) {
+			if ($showOrder < $this->showOrder) {
+				$sql = "UPDATE	wsif".WSIF_N."_category
+					SET 	showOrder = showOrder + 1
+					WHERE 	showOrder >= ".$showOrder."
+						AND showOrder < ".$this->showOrder."
+						AND parentID = ".$parentID;
+				WCF::getDB()->sendQuery($sql);
+			}
+			else if ($showOrder > $this->showOrder) {
+				$sql = "UPDATE	wsif".WSIF_N."_category
+					SET	showOrder = showOrder - 1
+					WHERE	showOrder <= ".$showOrder."
+						AND showOrder > ".$this->showOrder."
+						AND parentID = ".$parentID;
+				WCF::getDB()->sendQuery($sql);
+			}
+		}
+
 		// update category
 		$sql = "UPDATE	wsif".WSIF_N."_category
 			SET	parentID = ".$parentID.",
@@ -351,7 +318,8 @@ class CategoryEditor extends Category {
 				sortField = '".escapeString($sortField)."',
 				sortOrder = '".escapeString($sortOrder)."',
 				enableRating = ".$enableRating.",
-				entriesPerPage = ".$entriesPerPage."
+				entriesPerPage = ".$entriesPerPage.",
+				showOrder = ".$showOrder."
 			WHERE	categoryID = ".$this->categoryID;
 		WCF::getDB()->sendQuery($sql);
 
@@ -384,16 +352,15 @@ class CategoryEditor extends Category {
 			EntryEditor::deleteAllCompletely($entryIDs);
 		}
 
-		// remove positions
-		$this->removePositions();
+		// update neighbour categories
+		$sql = "UPDATE	wsif".WSIF_N."_category
+			SET	showOrder = showOrder - 1
+			WHERE	showOrder > ".$this->showOrder."
+				AND parentID = ".$this->parentID;
+		WCF::getDB()->sendQuery($sql);
 
 		// update sub categories
 		$sql = "UPDATE	wsif".WSIF_N."_category
-			SET	parentID = ".$this->parentID."
-			WHERE	parentID = ".$this->categoryID;
-		WCF::getDB()->sendQuery($sql);
-
-		$sql = "UPDATE	wsif".WSIF_N."_category_structure
 			SET	parentID = ".$this->parentID."
 			WHERE	parentID = ".$this->categoryID;
 		WCF::getDB()->sendQuery($sql);
@@ -502,17 +469,13 @@ class CategoryEditor extends Category {
 	 *
 	 * @param	integer		$categoryID
 	 * @param	integer		$parentID
-	 * @param	integer		$position
+	 * @param	integer		$showOrder
 	 */
-	public static function updatePosition($categoryID, $parentID, $position) {
+	public static function updatePosition($categoryID, $parentID, $showOrder) {
 		$sql = "UPDATE	wsif".WSIF_N."_category
-			SET	parentID = ".$parentID."
+			SET	parentID = ".$parentID.",
+				showOrder = ".$showOrder."
 			WHERE 	categoryID = ".$categoryID;
-		WCF::getDB()->sendQuery($sql);
-
-		$sql = "REPLACE INTO	wsif".WSIF_N."_category_structure
-					(parentID, categoryID, position)
-			VALUES		(".$parentID.", ".$categoryID.", ".$position.")";
 		WCF::getDB()->sendQuery($sql);
 	}
 

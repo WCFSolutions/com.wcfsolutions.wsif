@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS wsif1_1_category_structure;

@@ -53,14 +53,6 @@ CREATE TABLE wsif1_1_category_moderator (
 	KEY (groupID)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS wsif1_1_category_structure;
-CREATE TABLE wsif1_1_category_structure (
-	parentID INT(10) NOT NULL DEFAULT 0,
-	categoryID INT(10) NOT NULL DEFAULT 0,
-	position SMALLINT(5) NOT NULL DEFAULT 0,
-	PRIMARY KEY (parentID, categoryID)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
 DROP TABLE IF EXISTS wsif1_1_category_to_group;
 CREATE TABLE wsif1_1_category_to_group (
 	categoryID INT(10) NOT NULL DEFAULT 0,

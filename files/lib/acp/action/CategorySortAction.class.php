@@ -41,23 +41,12 @@ class CategorySortAction extends AbstractAction {
 		// check permission
 		WCF::getUser()->checkPermission('admin.filebase.canEditCategory');
 
-		// delete old positions
-		$sql = "TRUNCATE wsif".WSIF_N."_category_structure";
-		WCF::getDB()->sendQuery($sql);
-
 		// update postions
 		foreach ($this->positions as $categoryID => $data) {
-			foreach ($data as $parentID => $position) {
-				CategoryEditor::updatePosition(intval($categoryID), intval($parentID), $position);
+			foreach ($data as $parentID => $showOrder) {
+				CategoryEditor::updatePosition(intval($categoryID), intval($parentID), $showOrder);
 			}
 		}
-
-		// insert default values
-		$sql = "INSERT IGNORE INTO	wsif".WSIF_N."_category_structure
-						(parentID, categoryID)
-			SELECT			parentID, categoryID
-			FROM			wsif".WSIF_N."_category";
-		WCF::getDB()->sendQuery($sql);
 
 		// reset cache
 		WCF::getCache()->clearResource('category');

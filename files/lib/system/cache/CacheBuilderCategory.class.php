@@ -22,20 +22,16 @@ class CacheBuilderCategory implements CacheBuilder {
 	public function getData($cacheResource) {
 		$data = array('categories' => array(), 'categoryStructure' => array());
 
-		// categories
-		$sql = "SELECT	*
-			FROM	wsif".WSIF_N."_category";
+		$sql = "SELECT		*
+			FROM		wsif".WSIF_N."_category
+			ORDER BY	showOrder";
 		$result = WCF::getDB()->sendQuery($sql);
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$data['categories'][$row['categoryID']] = new Category(null, $row);
-		}
 
-		// category structure
-		$sql = "SELECT		*
-			FROM		wsif".WSIF_N."_category_structure
-			ORDER BY 	parentID, position";
-		$result = WCF::getDB()->sendQuery($sql);
-		while ($row = WCF::getDB()->fetchArray($result)) {
+			if (!isset($data['categoryStructure'][$row['parentID']])) {
+				$data['categoryStructure'][$row['parentID']] = array();
+			}
 			$data['categoryStructure'][$row['parentID']][] = $row['categoryID'];
 		}
 

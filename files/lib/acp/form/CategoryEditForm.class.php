@@ -76,13 +76,7 @@ class CategoryEditForm extends CategoryAddForm {
 			$this->sortOrder = $this->category->sortOrder;
 			$this->enableRating = $this->category->enableRating;
 			$this->entriesPerPage = $this->category->entriesPerPage;
-
-			// get position
-			$sql = "SELECT	position
-				FROM	wsif".WSIF_N."_category_structure
-				WHERE	categoryID = ".$this->categoryID;
-			$row = WCF::getDB()->getFirstRow($sql);
-			if (isset($row['position'])) $this->position = $row['position'];
+			$this->showOrder = $this->category->showOrder;
 
 			// get permissions
 			$sql = "		(SELECT		user_permission.*, user.userID AS id, 'user' AS type, user.username AS name
