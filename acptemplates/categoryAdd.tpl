@@ -249,27 +249,22 @@
 					//]]></script>
 				{/if}
 
-				<div class="formElement{if $errorField == 'position'} formError{/if}" id="positionDiv">
+				<div class="formElement" id="showOrderDiv">
 					<div class="formFieldLabel">
-						<label for="position">{lang}wsif.acp.category.position{/lang}</label>
+						<label for="showOrder">{lang}wsif.acp.category.showOrder{/lang}</label>
 					</div>
 					<div class="formField">
-						<input type="text" class="inputText" id="position" name="position" value="{@$position}" />
-						{if $errorField == 'position'}
-							<p class="innerError">
-								{if $errorType == 'empty'}{lang}wcf.global.error.empty{/lang}{/if}
-							</p>
-						{/if}
+						<input type="text" class="inputText" name="showOrder" id="showOrder" value="{$showOrder}" />
 					</div>
-					<div class="formFieldDesc hidden" id="positionHelpMessage">
-						<p>{lang}wsif.acp.category.position.description{/lang}</p>
+					<div class="formFieldDesc hidden" id="showOrderHelpMessage">
+					{lang}wsif.acp.category.showOrder.description{/lang}
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
-					inlineHelp.register('position');
+				inlineHelp.register('showOrder');
 				//]]></script>
 
-				{if $additionalPositionFields|isset}{@$additionalPositionFields}{/if}
+				{if $additionalClassificationFields|isset}{@$additionalClassificationFields}{/if}
 			</fieldset>
 
 			<fieldset id="settings">

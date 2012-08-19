@@ -59,7 +59,6 @@ class CategoryAddForm extends ACPForm {
 
 	// parameters
 	public $parentID = 0;
-	public $position = '';
 	public $title = '';
 	public $description = '';
 	public $allowDescriptionHtml = 0;
@@ -75,6 +74,7 @@ class CategoryAddForm extends ACPForm {
 	public $entriesPerPage = 0;
 	public $permissions = array();
 	public $moderators = array();
+	public $showOrder = 0;
 
 	/**
 	 * @see Page::readParameters()
@@ -104,7 +104,6 @@ class CategoryAddForm extends ACPForm {
 	public function readFormParameters() {
 		parent::readFormParameters();
 
-		if (!empty($_POST['position'])) $this->position = intval($_POST['position']);
 		if (isset($_POST['title'])) $this->title = StringUtil::trim($_POST['title']);
 		if (isset($_POST['description'])) $this->description = StringUtil::trim($_POST['description']);
 		if (isset($_POST['allowDescriptionHtml'])) $this->allowDescriptionHtml = intval($_POST['allowDescriptionHtml']);
@@ -120,6 +119,7 @@ class CategoryAddForm extends ACPForm {
 		if (isset($_POST['entriesPerPage'])) $this->entriesPerPage = intval($_POST['entriesPerPage']);
 		if (isset($_POST['permission']) && is_array($_POST['permission'])) $this->permissions = $_POST['permission'];
 		if (isset($_POST['moderator']) && is_array($_POST['moderator'])) $this->moderators = $_POST['moderator'];
+		if (isset($_POST['showOrder'])) $this->showOrder = intval($_POST['showOrder']);
 	}
 
 	/**
@@ -237,8 +237,8 @@ class CategoryAddForm extends ACPForm {
 		parent::save();
 
 		// save category
-		$this->category = CategoryEditor::create($this->parentID, ($this->position ? $this->position : null), $this->title, $this->description, $this->allowDescriptionHtml, $this->categoryType,
-		$this->icon, $this->externalURL, $this->styleID, $this->enforceStyle, $this->daysPrune, $this->sortField, $this->sortOrder, $this->enableRating, $this->entriesPerPage, WCF::getLanguage()->getLanguageID());
+		$this->category = CategoryEditor::create($this->parentID, $this->title, $this->description, $this->allowDescriptionHtml, $this->categoryType, $this->icon, $this->externalURL, $this->styleID,
+			$this->enforceStyle, $this->daysPrune, $this->sortField, $this->sortOrder, $this->enableRating, $this->entriesPerPage, $this->showOrder, WCF::getLanguage()->getLanguageID());
 
 		// save permissions
 		$this->permissions = CategoryEditor::getCleanedPermissions($this->permissions);
@@ -257,7 +257,7 @@ class CategoryAddForm extends ACPForm {
 
 		// reset values
 		$this->parentID = $this->allowDescriptionHtml = $this->categoryType = $this->styleID = $this->enforceStyle = $this->daysPrune = $this->entriesPerPage = 0;
-		$this->position = $this->title = $this->description = $this->icon = $this->externalURL = $this->sortField = $this->sortOrder = '';
+		$this->title = $this->description = $this->icon = $this->externalURL = $this->sortField = $this->sortOrder = '';
 		$this->enableRating = -1;
 		$this->permissions = $this->moderators = array();
 
@@ -280,7 +280,7 @@ class CategoryAddForm extends ACPForm {
 			'permissionSettings' => $this->permissionSettings,
 			'moderatorSettings' => $this->moderatorSettings,
 			'parentID' => $this->parentID,
-			'position' => $this->position,
+			'showOrder' => $this->showOrder,
 			'title' => $this->title,
 			'description' => $this->description,
 			'allowDescriptionHtml' => $this->allowDescriptionHtml,

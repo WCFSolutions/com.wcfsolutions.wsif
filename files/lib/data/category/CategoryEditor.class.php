@@ -404,7 +404,6 @@ class CategoryEditor extends Category {
 	 * Creates a new category.
 	 *
 	 * @param	integer		$parentID
-	 * @param	integer		$position
 	 * @param	string		$title
 	 * @param	string		$description
 	 * @param	integer		$allowDescriptionHtml
@@ -418,10 +417,29 @@ class CategoryEditor extends Category {
 	 * @param	string		$sortOrder
 	 * @param	integer		$enableRating
 	 * @param	integer		$entriesPerPage
+	 * @param	integer		$showOrder
 	 * @param	integer		$languageID
 	 * @return	CategoryEditor
 	 */
-	public static function create($parentID, $position, $title, $description = '', $allowDescriptionHtml = 0, $categoryType = 0, $icon = '', $externalURL = '', $styleID = 0, $enforceStyle = 0, $daysPrune = 0, $sortField = '', $sortOrder = '', $enableRating = -1, $entriesPerPage = 0, $languageID = 0) {
+	public static function create($parentID, $title, $description = '', $allowDescriptionHtml = 0, $categoryType = 0, $icon = '', $externalURL = '', $styleID = 0, $enforceStyle = 0, $daysPrune = 0, $sortField = '', $sortOrder = '', $enableRating = -1, $entriesPerPage = 0, $showOrder = 0, $languageID = 0) {
+		// get show order
+		if ($showOrder == 0) {
+			// get next number in row
+			$sql = "SELECT	MAX(showOrder) AS showOrder
+				FROM	wsif".WSIF_N."_category
+				WHERE	parentID = ".$parentID;
+			$row = WCF::getDB()->getFirstRow($sql);
+			if (!empty($row)) $showOrder = intval($row['showOrder']) + 1;
+			else $showOrder = 1;
+		}
+		else {
+			$sql = "UPDATE	wsif".WSIF_N."_category
+				SET 	showOrder = showOrder + 1
+				WHERE 	showOrder >= ".$showOrder."
+					AND parentID = ".$parentID;
+			WCF::getDB()->sendQuery($sql);
+		}
+
 		// get title
 		$category = '';
 		if ($languageID == 0) $category = $title;
@@ -430,10 +448,10 @@ class CategoryEditor extends Category {
 		$sql = "INSERT INTO	wsif".WSIF_N."_category
 					(parentID, category, allowDescriptionHtml, categoryType, icon, time, externalURL,
 					styleID, enforceStyle, daysPrune, sortField, sortOrder,
-					enableRating, entriesPerPage)
+					enableRating, entriesPerPage, showOrder)
 			VALUES		(".$parentID.", '".escapeString($category)."', ".$allowDescriptionHtml.", ".$categoryType.", '".escapeString($icon)."', ".TIME_NOW.", '".escapeString($externalURL)."',
 					".$styleID.", ".$enforceStyle.", ".$daysPrune.", '".escapeString($sortField)."', '".escapeString($sortOrder)."',
-					".$enableRating.", ".$entriesPerPage.")";
+					".$enableRating.", ".$entriesPerPage.", ".$showOrder.")";
 		WCF::getDB()->sendQuery($sql);
 
 		// get category id
@@ -454,14 +472,8 @@ class CategoryEditor extends Category {
 			LanguageEditor::deleteLanguageFiles($languageID, 'wsif.category', PACKAGE_ID);
 		}
 
-		// get category
-		$category = new CategoryEditor($categoryID, null, null, false);
-
-		// add position
-		$category->addPosition($parentID, $position);
-
 		// return new category
-		return $category;
+		return new CategoryEditor($categoryID, null, null, false);
 	}
 
 	/**

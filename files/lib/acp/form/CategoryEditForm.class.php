@@ -158,9 +158,7 @@ class CategoryEditForm extends CategoryAddForm {
 
 		// update category
 		$this->category->update($this->parentID, $this->title, $this->description, $this->allowDescriptionHtml, $this->categoryType, $this->icon, $this->externalURL,
-		$this->styleID, $this->enforceStyle, $this->daysPrune, $this->sortField, $this->sortOrder, $this->enableRating, $this->entriesPerPage, $this->languageID);
-		$this->category->removePositions();
-		$this->category->addPosition($this->parentID, ($this->position ? $this->position : null));
+			$this->styleID, $this->enforceStyle, $this->daysPrune, $this->sortField, $this->sortOrder, $this->enableRating, $this->entriesPerPage, $this->showOrder, $this->languageID);
 
 		// save permissions
 		$this->permissions = CategoryEditor::getCleanedPermissions($this->permissions);
