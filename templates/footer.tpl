@@ -49,7 +49,7 @@
 				</ul>
 			</div>
 		</div>
-		<p class="copyright">{lang}wsif.global.copyright{/lang}{if $additionalCopyrightContents|isset}{@$additionalCopyrightContents}{/if}</p>
+		<p class="copyright">{@$this->copyrightHandler->getOutput()}</p>
 	</div>
 </div>
 {if !$this->user->userID && !LOGIN_USE_CAPTCHA}

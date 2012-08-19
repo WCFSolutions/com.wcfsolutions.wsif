@@ -5,6 +5,7 @@ require_once(WCF_DIR.'lib/page/util/menu/PageMenuContainer.class.php');
 require_once(WCF_DIR.'lib/page/util/menu/UserCPMenuContainer.class.php');
 require_once(WCF_DIR.'lib/page/util/menu/UserProfileMenuContainer.class.php');
 require_once(WCF_DIR.'lib/system/style/StyleManager.class.php');
+require_once(WCF_DIR.'lib/system/CopyrightHandler.class.php');
 
 /**
  * This class extends the main WCF class by filebase specific functions.
@@ -172,14 +173,6 @@ class WSIFCore extends WCF implements ModerationCPMenuContainer, PageMenuContain
 	}
 
 	/**
-	 * @see PageMenuContainer::getPageMenu()
-	 * @deprecated
-	 */
-	public static final function getHeaderMenu() {
-		return self::getPageMenu();
-	}
-
-	/**
 	 * @see UserCPMenuContainer::getUserCPMenu()
 	 */
 	public static final function getUserCPMenu() {
@@ -206,6 +199,15 @@ class WSIFCore extends WCF implements ModerationCPMenuContainer, PageMenuContain
 	 */
 	public static final function getStyle() {
 		return StyleManager::getStyle();
+	}
+
+	/**
+	 * Returns the copyright handler object.
+	 *
+	 * @return	CopyrightHandler
+	 */
+	public static final function getCopyrightHandler() {
+		return CopyrightHandler::getInstance();
 	}
 
 	/**
