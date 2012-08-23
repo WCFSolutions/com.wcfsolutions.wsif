@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/language.xsd" languagecode="pl">
+	<category name="wcf.acp.counterUpdate">
+		<item name="wcf.acp.counterUpdate.type.category"><![CDATA[Aktualizacja kategorii]]></item>
+		<item name="wcf.acp.counterUpdate.type.entry"><![CDATA[Aktualizacja wpisów]]></item>
+		<item name="wcf.acp.counterUpdate.type.installationDate"><![CDATA[Aktualizacja daty instalacji]]></item>
+	</category>
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.option.admin.filebase.canAddCategory"><![CDATA[Może tworzyć kategorie]]></item>
+		<item name="wcf.acp.group.option.admin.filebase.canAddCategory.description"><![CDATA[Użytkownicy należący do tej grupy mogą tworzyć kategorie.]]></item>
+		<item name="wcf.acp.group.option.admin.filebase.canAddEntryPrefix"><![CDATA[Może tworzyć prefixy]]></item>
+		<item name="wcf.acp.group.option.admin.filebase.canAddEntryPrefix.description"><![CDATA[Użytkownicy należący do tej grupy mogą tworzyć prefixy.]]></item>
+		<item name="wcf.acp.group.option.admin.filebase.canDeleteCategory"><![CDATA[Może usuwać katerie]]></item>
+		<item name="wcf.acp.group.option.admin.filebase.canDeleteCategory.description"><![CDATA[Użytkownicy należący do tej grupy mogą usuwać kategorie.]]></item>
+		<item name="wcf.acp.group.option.admin.filebase.canDeleteEntryPrefix"><![CDATA[Może usuwać prefixy]]></item>
+		<item name="wcf.acp.group.option.admin.filebase.canDeleteEntryPrefix.description"><![CDATA[Użytkownicy należący do tej grupy mogą usuwać prefixy.]]></item>
+		<item name="wcf.acp.group.option.admin.filebase.canEditCategory"><![CDATA[Może edytować kategorie]]></item>
+		<item name="wcf.acp.group.option.admin.filebase.canEditCategory.description"><![CDATA[Użytkownicy należący do tej grupy mogą edytować kategorie.]]></item>
+		<item name="wcf.acp.group.option.admin.filebase.canEditEntryPrefix"><![CDATA[Może edytować prefixy]]></item>
+		<item name="wcf.acp.group.option.admin.filebase.canEditEntryPrefix.description"><![CDATA[Użytkownicy należący do tej grupy mogą edytować kategorie.]]></item>
+		<item name="wcf.acp.group.option.category.admin.filebase"><![CDATA[Filebase]]></item>
+		<item name="wcf.acp.group.option.category.admin.filebase.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.mod.filebase"><![CDATA[Filebase]]></item>
+		<item name="wcf.acp.group.option.category.mod.filebase.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.mod.filebase.entry"><![CDATA[Wpisy]]></item>
+		<item name="wcf.acp.group.option.category.mod.filebase.entry.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.mod.filebase.entryComment"><![CDATA[Komentarze]]></item>
+		<item name="wcf.acp.group.option.category.mod.filebase.entryComment.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.mod.filebase.entryFile"><![CDATA[Pliki]]></item>
+		<item name="wcf.acp.group.option.category.mod.filebase.entryFile.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.mod.filebase.entryImage"><![CDATA[Obrazy]]></item>
+		<item name="wcf.acp.group.option.category.mod.filebase.entryImage.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.user.filebase"><![CDATA[Filebase]]></item>
+		<item name="wcf.acp.group.option.category.user.filebase.category"><![CDATA[Kategorie]]></item>
+		<item name="wcf.acp.group.option.category.user.filebase.category.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.user.filebase.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.user.filebase.entry"><![CDATA[Wpisy]]></item>
+		<item name="wcf.acp.group.option.category.user.filebase.entry.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.user.filebase.entryComment"><![CDATA[Komentarze]]></item>
+		<item name="wcf.acp.group.option.category.user.filebase.entryComment.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.user.filebase.entryFile"><![CDATA[Pliki]]></item>
+		<item name="wcf.acp.group.option.category.user.filebase.entryFile.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.user.filebase.entryImage"><![CDATA[Obrazy]]></item>
+		<item name="wcf.acp.group.option.category.user.filebase.entryImage.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.user.filebase.general"><![CDATA[Główne]]></item>
+		<item name="wcf.acp.group.option.category.user.filebase.general.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canDeleteEntry"><![CDATA[Może usuwać wpisy]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canDeleteEntry.description"><![CDATA[Użytkownicy należący do tej grupy mogą usuwać wpisy.]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canDeleteEntryComment"><![CDATA[Może usuwać komentarze]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canDeleteEntryComment.description"><![CDATA[Użytkownicy należący do tej grupy mogą usuwać komentarze.]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canDeleteEntryCompletely"><![CDATA[Może trwale usuwać wpisy]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canDeleteEntryCompletely.description"><![CDATA[Użytkownicy należący do tej grupy mogą trwale usuwać wpisy, bez wcześniejszego przenoszenia ich do kosza.]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canDeleteEntryFile"><![CDATA[Może usuwać pliki]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canDeleteEntryFile.description"><![CDATA[Użytkownicy należący do tej grupy mogą usuwać pliki.]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canDeleteEntryImage"><![CDATA[Może usuwać zdjęcia]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canDeleteEntryImage.description"><![CDATA[Użytkownicy należący do tej grupy mogą usuwać zdjęcia.]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canEditEntry"><![CDATA[Może edytować wpisy]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canEditEntry.description"><![CDATA[Użytkownicy należący do tej grupy mogą edytować wpisy.]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canEditEntryComment"><![CDATA[Może edytować komentarze]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canEditEntryComment.description"><![CDATA[Użytkownicy należący do tej grupy mogą edytować komentarze.]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canEditEntryFile"><![CDATA[Może edytować pliki]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canEditEntryFile.description"><![CDATA[Użytkownicy należący do tej grupy mogą edytować pliki.]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canEditEntryImage"><![CDATA[Może edytować zdjęcia]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canEditEntryImage.description"><![CDATA[Użytkownicy należący do tej grupy mogą edytować zdjęcia.]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canEnableEntry"><![CDATA[Może odblokowywać wpisy]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canEnableEntry.description"><![CDATA[Użytkownicy należący do tej grupy mogą odblokowywać wpisy.]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canMoveEntry"><![CDATA[Może przenosić wpisy]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canMoveEntry.description"><![CDATA[Użytkownicy należący do tej grupy mogą przenosić wpisy do innych kategorii.]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canViewDeletedEntry"><![CDATA[Widzi usunięte wpisy]]></item>
+		<item name="wcf.acp.group.option.mod.filebase.canViewDeletedEntry.description"><![CDATA[Użytkownicy należący do tej grupy widzą usunięte wpisy.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.allowedEntryCommentAttachmentExtensions"><![CDATA[Dopuszczalne rozszerzenia załączników]]></item>
+		<item name="wcf.acp.group.option.user.filebase.allowedEntryCommentAttachmentExtensions.description"><![CDATA[Dopuszczalne rozszerzenia załączników.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.allowedEntryFileExtensions"><![CDATA[Dopuszczalne rozszerzenia plików]]></item>
+		<item name="wcf.acp.group.option.user.filebase.allowedEntryFileExtensions.description"><![CDATA[Dopuszczalne rozszerzenia dla przesyłanych plików.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.allowedEntryImageExtensions"><![CDATA[Dopuszczalne rozszerzenia zdjęć]]></item>
+		<item name="wcf.acp.group.option.user.filebase.allowedEntryImageExtensions.description"><![CDATA[Dopuszczalne rozszerzenia dla przesyłanych zdjęć.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canAddEntry"><![CDATA[Można dodawać wpisy]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canAddEntry.description"><![CDATA[Użytkownicy należący do tej grupy mogą dodawać wpisy.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canAddEntryWithoutModeration"><![CDATA[Może dodawać wpisy bez kontroli]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canAddEntryWithoutModeration.description"><![CDATA[Użytkownicy należący do tej grupy mogą dodawać wpisy bez wcześniejszego sprawdzenia przez moderatora.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canCommentEntry"><![CDATA[Może komentować wpisy]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canCommentEntry.description"><![CDATA[Użytkownicy należący do tej grupy mogą komentować wpisy.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canDeleteOwnEntry"><![CDATA[Może usuwać własne wpisy]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canDeleteOwnEntry.description"><![CDATA[Użytkownicy należący do tej grupy mogą usuwać własne wpisy.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canDeleteOwnEntryComment"><![CDATA[Może usuwać własne komentarze]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canDeleteOwnEntryComment.description"><![CDATA[Użytkownicy należący do tej grupy mogą usuwać własne komentarze.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canDeleteOwnEntryFile"><![CDATA[Może usuwać własne pliki]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canDeleteOwnEntryFile.description"><![CDATA[Użytkwonicy należący do tej grupy mogą usuwać własne pliki.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canDeleteOwnEntryImage"><![CDATA[Może usuwać własne zdjęcia]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canDeleteOwnEntryImage.description"><![CDATA[Użytkwonicy należący do tej grupy mogą usuwać własne zdjęcia.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canDownloadEntryCommentAttachment"><![CDATA[Może pobierać załączniki]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canDownloadEntryCommentAttachment.description"><![CDATA[Użytkownicy należący do tej grupy mogą pobierać/wysyłać załączniki.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canDownloadEntryFile"><![CDATA[Może pobierać pliki]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canDownloadEntryFile.description"><![CDATA[Użytkownicy należący do tej grupy mogą pobierać pliki.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canEditOwnEntry"><![CDATA[Może edytować własne wpisy]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canEditOwnEntry.description"><![CDATA[Użytkownicy należący do tej grupy mogą edytować własne wpisy.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canEditOwnEntryComment"><![CDATA[Może edytować własne komentarze]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canEditOwnEntryComment.description"><![CDATA[Użytkownicy należący do tej grupy mogą edytować własne komentarze.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canEditOwnEntryFile"><![CDATA[Może edytować własne pliki]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canEditOwnEntryFile.description"><![CDATA[Użytkownicy należący do tej grupy mogą edytować własne pliki.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canEditOwnEntryImage"><![CDATA[Może edytować własne zdjęcia.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canEditOwnEntryImage.description"><![CDATA[Użytkownicy należący do tej grupy mogą edytować własne zdjęcia.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canEnterCategory"><![CDATA[Ma dostęp do kategorii]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canEnterCategory.description"><![CDATA[Użytkownicy należący do tej grupy mają dostęp do kategorii.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canRateEntry"><![CDATA[Może oceniać wpisy]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canRateEntry.description"><![CDATA[Użytkownicy należący do tej grupy mogą oceniać wpisy.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canSetEntryPrefix"><![CDATA[Może używać prefix'ów]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canSetEntryPrefix.description"><![CDATA[Użytkownicy należący do tej grupy mogą używać prefix'ów.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canSetEntryTags"><![CDATA[Może dodawać tagi]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canSetEntryTags.description"><![CDATA[Użytkownicy należący do tej grupy mogą dodawać tagi.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canUploadEntryCommentAttachment"><![CDATA[Może przesyłać załączniki]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canUploadEntryCommentAttachment.description"><![CDATA[Użytkownicy należący do tej grupy mogą przesyłać załączniki.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canViewCategory"><![CDATA[Widzi kategorie]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canViewCategory.description"><![CDATA[Użytkownicy należący do tej grupy widzą kategorie.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canViewEntry"><![CDATA[Widzi wpisy]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canViewEntry.description"><![CDATA[Użytkownicy należący do tej grupy widzą wpisy.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canViewEntryCommentAttachmentPreview"><![CDATA[Może podglądać załączniki]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canViewEntryCommentAttachmentPreview.description"><![CDATA[Użytkownicy należący do tej grupy mogą podglądać załączniki.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canViewFilebaseOffline"><![CDATA[Ma dostęp do Filebase w trybie offline]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canViewFilebaseOffline.description"><![CDATA[Użytkownicy należący do tej grupy widzą Filebase, gdy forum jest w trybie offline.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canViewOwnEntry"><![CDATA[Widzi własne wpisy]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canViewOwnEntry.description"><![CDATA[Użytkownicy należący do tej grupy widzą własne wpisy.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryCommentAttachmentCount"><![CDATA[ Maksymalna liczba załączników w wpisie]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryCommentAttachmentCount.description"><![CDATA[Ile maksymalnie załączników można dodać do wpisu?]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryCommentAttachmentSize"><![CDATA[ Maksymalny rozmiar załącznika]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryCommentAttachmentSize.description"><![CDATA[Maksymalny rozmiar załącznika [w bajtach].]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryFileSize"><![CDATA[ Maksymalny rozmiar pliku]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryFileSize.description"><![CDATA[Maksymalny rozmiar pliku [w bajtach].]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryImageHeight"><![CDATA[ Maksymalna wysokość zdjęcia]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryImageHeight.description"><![CDATA[Maksymalna wysokość zdjęcia [w pikselach].]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryImageSize"><![CDATA[Maksymalny rozmiar zdjęć]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryImageSize.description"><![CDATA[Maksymalny rozmiar zdjęć [w bajtach].]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryImageWidth"><![CDATA[ Maksymalna szerokość zdjęcia]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryImageWidth.description"><![CDATA[Maksymalna szerokość zdjęcia [w pikselach].]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxFilesPerEntry"><![CDATA[Maksymalna liczba plików w wpisie]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxFilesPerEntry.description"><![CDATA[Ile ta grupa może dodać plików do wpisu?]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxImagesPerEntry"><![CDATA[Maksymalna liczba zdjęć w wpisie]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxImagesPerEntry.description"><![CDATA[Ile ta grupa może dodać zdjęć do wpisu?]]></item>
+	</category>
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option"><![CDATA[wcf.acp.option.category.filebase.entry.add.description]]></item>
+		<item name="wcf.acp.option.activity_points_per_entry"><![CDATA[Punkty aktywności za wpis]]></item>
+		<item name="wcf.acp.option.activity_points_per_entry.description"><![CDATA[Ile punktów aktywności ma być przyznawanych za wpis?]]></item>
+		<item name="wcf.acp.option.category.filebase"><![CDATA[Filebase]]></item>
+		<item name="wcf.acp.option.category.filebase.category"><![CDATA[Kategorie]]></item>
+		<item name="wcf.acp.option.category.filebase.category.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.filebase.category.entries"><![CDATA[Pozycje]]></item>
+		<item name="wcf.acp.option.category.filebase.category.entries.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.filebase.category.general"><![CDATA[Główne]]></item>
+		<item name="wcf.acp.option.category.filebase.category.general.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.filebase.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.filebase.entry"><![CDATA[Wpisy]]></item>
+		<item name="wcf.acp.option.category.filebase.entry.add"><![CDATA[Dodawanie]]></item>
+		<item name="wcf.acp.option.category.filebase.entry.add.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.filebase.entry.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.filebase.entry.files"><![CDATA[Lista plików]]></item>
+		<item name="wcf.acp.option.category.filebase.entry.files.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.filebase.entry.general"><![CDATA[Główne]]></item>
+		<item name="wcf.acp.option.category.filebase.entry.general.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.filebase.entry.images"><![CDATA[Lista zdjęć]]></item>
+		<item name="wcf.acp.option.category.filebase.entry.images.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.filebase.index"><![CDATA[Strona główna]]></item>
+		<item name="wcf.acp.option.category.filebase.index.categories"><![CDATA[Lista kategorii]]></item>
+		<item name="wcf.acp.option.category.filebase.index.categories. description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.filebase.index.categories.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.filebase.index.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.filebase.index.general"><![CDATA[Główne]]></item>
+		<item name="wcf.acp.option.category.filebase.index.general.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.offline.general"><![CDATA[Wyłącz tymczasowo Filebase]]></item>
+		<item name="wcf.acp.option.category.offline.general.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category_enable_stats"><![CDATA[Pokazuj statystyki kategorii]]></item>
+		<item name="wcf.acp.option.category_enable_stats.description"><![CDATA[Pokazywać statystyki kategorii?]]></item>
+		<item name="wcf.acp.option.category_enable_tags"><![CDATA[Włacz chmurę tagów w kategoriach]]></item>
+		<item name="wcf.acp.option.category_enable_tags.description"><![CDATA[Pokazywać chmurę tagów?]]></item>
+		<item name="wcf.acp.option.category_entries_default_days_prune"><![CDATA[Filtr czasowy]]></item>
+		<item name="wcf.acp.option.category_entries_default_days_prune.description"><![CDATA[Ile czasu ma być wyświetlany wpis?]]></item>
+		<item name="wcf.acp.option.category_entries_default_sort_field"><![CDATA[Sortowanie]]></item>
+		<item name="wcf.acp.option.category_entries_default_sort_field.description"><![CDATA[Jak domyślnie powinny być sortowane wpisy?]]></item>
+		<item name="wcf.acp.option.category_entries_default_sort_order"><![CDATA[Sortowanie]]></item>
+		<item name="wcf.acp.option.category_entries_default_sort_order.description"><![CDATA[W jakiej kolejności powinny być wyświetlane wpisy?]]></item>
+		<item name="wcf.acp.option.category_entries_enable_language_filter_for_guests"><![CDATA[Włącz filtr językowy dla gości]]></item>
+		<item name="wcf.acp.option.category_entries_enable_language_filter_for_guests.description"><![CDATA[Zostanie aktywowany filtr językowy dla gości.]]></item>
+		<item name="wcf.acp.option.category_entries_per_page"><![CDATA[Wpisów na stronę]]></item>
+		<item name="wcf.acp.option.category_entries_per_page.description"><![CDATA[Ile wpisów ma być wyświetlanych na stronę?]]></item>
+		<item name="wcf.acp.option.category_list_enable_last_entry"><![CDATA[Ostatni wpis w kategorii]]></item>
+		<item name="wcf.acp.option.category_list_enable_last_entry.description"><![CDATA[Ostatnio dodany wpis w kategorii zostanie wyświetlony na stronie głównej]]></item>
+		<item name="wcf.acp.option.category_list_enable_stats"><![CDATA[Pokazuj statystyki dla każdej kategorii]]></item>
+		<item name="wcf.acp.option.category_list_enable_stats.description"><![CDATA[Pokazywać statystyki dla każdej kategorii?]]></item>
+		<item name="wcf.acp.option.category_list_enable_sub_categories"><![CDATA[Podkategorie]]></item>
+		<item name="wcf.acp.option.category_list_enable_sub_categories.description"><![CDATA[Pokazywać podkategorie pod głównymi kategoriami?]]></item>
+		<item name="wcf.acp.option.entry_add_use_captcha"><![CDATA[Tworzenie wpisów w Filebase]]></item>
+		<item name="wcf.acp.option.entry_add_use_captcha.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.entry_empty_recycle_bin_cycle"><![CDATA[Automatyczne opróżnianie kosza]]></item>
+		<item name="wcf.acp.option.entry_empty_recycle_bin_cycle.description"><![CDATA[Po ilu dniach kosz ma być automatycznie opróżniany?]]></item>
+		<item name="wcf.acp.option.entry_enable_rating"><![CDATA[Aktywuj ocenianie wpisów]]></item>
+		<item name="wcf.acp.option.entry_enable_rating.description"><![CDATA[Aktywować ocenianie wpisów?]]></item>
+		<item name="wcf.acp.option.entry_enable_recycle_bin"><![CDATA[Aktywuj kosz]]></item>
+		<item name="wcf.acp.option.entry_enable_recycle_bin.description"><![CDATA[Aktywować kosz do którego można tymczasowo przenosić wpisy?]]></item>
+		<item name="wcf.acp.option.entry_enable_tags"><![CDATA[Włącz chmurę tagów dla wpisów]]></item>
+		<item name="wcf.acp.option.entry_enable_tags.description"><![CDATA[Używane przez użytkowników tagi mogą być wyświetlone w chmurze tagów.]]></item>
+		<item name="wcf.acp.option.entry_files_per_page"><![CDATA[Plików na stronę]]></item>
+		<item name="wcf.acp.option.entry_files_per_page.description"><![CDATA[Ile plików ma być wyświetlanych na jednej stronie?]]></item>
+		<item name="wcf.acp.option.entry_images_per_page"><![CDATA[Zdjęć na stronę]]></item>
+		<item name="wcf.acp.option.entry_images_per_page.description"><![CDATA[Ile zdjęć ma być wyświetlanych na jednej stronie?]]></item>
+		<item name="wcf.acp.option.entry_show_last_comments"><![CDATA[Pokaż ostatanie pięć komentarzy]]></item>
+		<item name="wcf.acp.option.entry_show_last_comments.description"><![CDATA[Włączenie tej opcji spowoduje wyświetlenie ostatnich pięciu komentarzy w wpisie.]]></item>
+		<item name="wcf.acp.option.entry_show_last_files"><![CDATA[Pokaż ostatnie pięć plików]]></item>
+		<item name="wcf.acp.option.entry_show_last_files.description"><![CDATA[Włączenie tej opcji spowoduje wyświetlenie ostatnich pięciu plików w wpisie.]]></item>
+		<item name="wcf.acp.option.entry_show_last_images"><![CDATA[Pokaż ostatnie pięć zdjęć]]></item>
+		<item name="wcf.acp.option.entry_show_last_images.description"><![CDATA[Włączenie tej opcji spowoduje wyświetlenie ostatnich pięciu zdjęć w wpisie.]]></item>
+		<item name="wcf.acp.option.index_enable_stats"><![CDATA[Pokaż ogólne statystyki]]></item>
+		<item name="wcf.acp.option.index_enable_stats.description"><![CDATA[Pokazywać ogólne statystyki?]]></item>
+		<item name="wcf.acp.option.index_enable_tags"><![CDATA[Pokaż chmurę tagów]]></item>
+		<item name="wcf.acp.option.index_enable_tags.description"><![CDATA[Pokazywać najczęściej używane tagi przez użytkowników?]]></item>
+		<item name="wcf.acp.option.module_comment"><![CDATA[Komentarze]]></item>
+		<item name="wcf.acp.option.module_comment.description"><![CDATA[Włącz komentowanie wpisów.]]></item>
+		<item name="wcf.acp.option.offline"><![CDATA[Wyłącz Filebase]]></item>
+		<item name="wcf.acp.option.offline.description"><![CDATA[Tutaj możesz chwilowo wyłączyć Filebase.]]></item>
+		<item name="wcf.acp.option.offline_message"><![CDATA[Wiadomość]]></item>
+		<item name="wcf.acp.option.offline_message.description"><![CDATA[Wpisz tutaj wiadomość, która będzie wyświetlana podczas wyłączenia Filebase.]]></item>
+		<item name="wcf.acp.option.offline_message_allow_html"><![CDATA[Użyj kodu HTML]]></item>
+		<item name="wcf.acp.option.offline_message_allow_html.description"><![CDATA[Włączenie tej opcji pozwoli formatować tekst za pomocą HTML.]]></item>
+		<item name="wcf.acp.option.profile_show_last_entries"><![CDATA[Ostatnie pięć wpisów z Filebase w profilu]]></item>
+		<item name="wcf.acp.option.profile_show_last_entries.description"><![CDATA[Wyświetlić ostatnie pięć wpisów z Filebase w profilu?]]></item>
+		<item name="wcf.acp.option.show_clock"><![CDATA[Aktualny czas w stopce Filebase]]></item>
+		<item name="wcf.acp.option.show_clock.description"><![CDATA[Pokazywać aktualny czas w stopce Filebase?]]></item>
+		<item name="wcf.acp.option.show_style_chooser"><![CDATA[Pokaż wybór stylu]]></item>
+		<item name="wcf.acp.option.show_style_chooser.description"><![CDATA[Pokazywać w stopce wybór stylu?]]></item>
+		<item name="wcf.acp.option.show_version_number"><![CDATA[Wersja Filebase]]></item>
+		<item name="wcf.acp.option.show_version_number.description"><![CDATA[Włączenie tej opcji spowoduje wyświetlenie numeru wersji w stopce.]]></item>
+	</category>
+	<category name="wcf.moderation">
+		<item name="wcf.moderation.deletedEntries"><![CDATA[Kosz]]></item>
+		<item name="wcf.moderation.hiddenEntries"><![CDATA[Ukryte wpisy]]></item>
+		<item name="wcf.moderation.markedEntries"><![CDATA[Wybrane wpisy]]></item>
+		<item name="wcf.moderation.menu.link.deletedEntries"><![CDATA[Kosz]]></item>
+		<item name="wcf.moderation.menu.link.entries"><![CDATA[Wpisy]]></item>
+		<item name="wcf.moderation.menu.link.hiddenEntries"><![CDATA[Ukryte wpisy]]></item>
+		<item name="wcf.moderation.menu.link.markedEntries"><![CDATA[Wybrane wpisy]]></item>
+	</category>
+	<category name="wcf.search">
+		<item name="wcf.search.type.entry"><![CDATA[Wpisy]]></item>
+	</category>
+	<category name="wcf.tagging">
+		<item name="wcf.tagging.taggable.all.com.wcfsolutions.wsif.entry"><![CDATA[Wszystkie wpisy]]></item>
+		<item name="wcf.tagging.taggable.com.wcfsolutions.wsif.entry"><![CDATA[Wpisy]]></item>
+	</category>
+	<category name="wcf.user">
+		<item name="wcf.user.entries"><![CDATA[Wpisy]]></item>
+		<item name="wcf.user.entriesPerDay"><![CDATA[({$entries} wpisów dziennie)]]></item>
+	</category>
+	<category name="wcf.user.notification">
+		<item name="wcf.user.notification.object.type.entryComment"><![CDATA[Komentarze]]></item>
+	</category>
+	<category name="wcf.user.option">
+		<item name="wcf.user.option.entriesPerPage"><![CDATA[Wpisy na strone]]></item>
+		<item name="wcf.user.option.entriesPerPage.description"><![CDATA[Podaj, ile wpisów ma być wyświetlane na jednej stronie.]]></item>
+		<item name="wcf.user.option.entryDaysPrune"><![CDATA[Filtr dla wpisów]]></item>
+		<item name="wcf.user.option.entryDaysPrune.description"><![CDATA[Określ, czy wpisy z każdej kategorii mają być wyświetlane.]]></item>
+	</category>
+	<category name="wcf.user.profile">
+		<item name="wcf.user.profile.allEntries"><![CDATA[Wszystkie wpisy]]></item>
+		<item name="wcf.user.profile.lastEntries"><![CDATA[Wpisy]]></item>
+		<item name="wcf.user.profile.search"><![CDATA[Szukaj wpisy &raquo;{$username}&laquo;'a]]></item>
+	</category>
+	<category name="wsif.acp">
+		<item name="wsif.acp.index.credits.icons"><![CDATA[Ikony]]></item>
+		<item name="wsif.acp.jumpToFilebase"><![CDATA[Powrót do Filebase]]></item>
+	</category>
+	<category name="wsif.acp.category">
+		<item name="wsif.acp.category.add"><![CDATA[Dodaj kategorię]]></item>
+		<item name="wsif.acp.category.add.success"><![CDATA[Kategoria została pomyślnie dodana.]]></item>
+		<item name="wsif.acp.category.allowDescriptionHtml"><![CDATA[Kod HTML w opisie]]></item>
+		<item name="wsif.acp.category.categoryType"><![CDATA[Typ kategorii]]></item>
+		<item name="wsif.acp.category.categoryType.0"><![CDATA[Kategoria]]></item>
+		<item name="wsif.acp.category.categoryType.1"><![CDATA[Główna kategoria]]></item>
+		<item name="wsif.acp.category.categoryType.2"><![CDATA[Kategoria jako link]]></item>
+		<item name="wsif.acp.category.classification"><![CDATA[Klasyfikacja]]></item>
+		<item name="wsif.acp.category.count.noCategories"><![CDATA[Obecnie nie ma żadnych kategorii.]]></item>
+		<item name="wsif.acp.category.daysPrune"><![CDATA[Filtr czasowy]]></item>
+		<item name="wsif.acp.category.delete"><![CDATA[Usuń kategorię]]></item>
+		<item name="wsif.acp.category.delete.success"><![CDATA[Kategoria została pomyślnie usunięta.]]></item>
+		<item name="wsif.acp.category.delete.sure"><![CDATA[Czy na pewno chcesz usunąć tą kategorię?]]></item>
+		<item name="wsif.acp.category.description"><![CDATA[Opis]]></item>
+		<item name="wsif.acp.category.edit"><![CDATA[Edytuj kategorię]]></item>
+		<item name="wsif.acp.category.edit.success"><![CDATA[Kategoria została pomyślnie edytowana.]]></item>
+		<item name="wsif.acp.category.enforceStyle"><![CDATA[Nadpisz styl dla użytkowników]]></item>
+		<item name="wsif.acp.category.entriesPerPage"><![CDATA[Wpisów na stronę]]></item>
+		<item name="wsif.acp.category.externalURL"><![CDATA[ Adres URL linku]]></item>
+		<item name="wsif.acp.category.filter"><![CDATA[Filtrowanie i sortowanie wpisów]]></item>
+		<item name="wsif.acp.category.general"><![CDATA[Główne]]></item>
+		<item name="wsif.acp.category.icon"><![CDATA[Specjalna ikona dla tej kategorii]]></item>
+		<item name="wsif.acp.category.language"><![CDATA[Język]]></item>
+		<item name="wsif.acp.category.language.description"><![CDATA[Wybierz język dla wpisów.]]></item>
+		<item name="wsif.acp.category.list"><![CDATA[Kategorie]]></item>
+		<item name="wsif.acp.category.moderators"><![CDATA[Moderacja]]></item>
+		<item name="wsif.acp.category.parentID"><![CDATA[Kategoria nadrzędna]]></item>
+		<item name="wsif.acp.category.parentID.description"><![CDATA[Tutaj możesz określić która kategoria ma być nadrzędna.]]></item>
+		<item name="wsif.acp.category.permissions"><![CDATA[Prawa dostępu dla użytkowników i grup]]></item>
+		<item name="wsif.acp.category.permissions.add"><![CDATA[Dodaj]]></item>
+		<item name="wsif.acp.category.permissions.allow"><![CDATA[Pozwól]]></item>
+		<item name="wsif.acp.category.permissions.canAddEntry"><![CDATA[Można dodawać wpisy]]></item>
+		<item name="wsif.acp.category.permissions.canAddEntryWithoutModeration"><![CDATA[Można dodawać wpisy bez moderacji]]></item>
+		<item name="wsif.acp.category.permissions.canCommentEntry"><![CDATA[Może komentować wpisy]]></item>
+		<item name="wsif.acp.category.permissions.canDeleteEntry"><![CDATA[Może usuwać wpisy]]></item>
+		<item name="wsif.acp.category.permissions.canDeleteEntryComment"><![CDATA[Może usuwać komentarze]]></item>
+		<item name="wsif.acp.category.permissions.canDeleteEntryCompletely"><![CDATA[Może trwale usuwać wpisy]]></item>
+		<item name="wsif.acp.category.permissions.canDeleteEntryFile"><![CDATA[Może usuwać pliki]]></item>
+		<item name="wsif.acp.category.permissions.canDeleteEntryImage"><![CDATA[Może usuwać zdjęcia]]></item>
+		<item name="wsif.acp.category.permissions.canDeleteOwnEntry"><![CDATA[Może usuwać własne wpisy]]></item>
+		<item name="wsif.acp.category.permissions.canDeleteOwnEntryComment"><![CDATA[Może usuwać własne komentarze]]></item>
+		<item name="wsif.acp.category.permissions.canDeleteOwnEntryFile"><![CDATA[Może usuwać własne pliki]]></item>
+		<item name="wsif.acp.category.permissions.canDeleteOwnEntryImage"><![CDATA[Może usuwać własne zdjęcia]]></item>
+		<item name="wsif.acp.category.permissions.canDownloadEntryCommentAttachment"><![CDATA[Może pobierać załączniki]]></item>
+		<item name="wsif.acp.category.permissions.canDownloadEntryFile"><![CDATA[Może pobierać pliki]]></item>
+		<item name="wsif.acp.category.permissions.canEditEntry"><![CDATA[Może edytować wpisy]]></item>
+		<item name="wsif.acp.category.permissions.canEditEntryComment"><![CDATA[Może edytować komentarze]]></item>
+		<item name="wsif.acp.category.permissions.canEditEntryFile"><![CDATA[Może edytować pliki]]></item>
+		<item name="wsif.acp.category.permissions.canEditEntryImage"><![CDATA[Może edytować zdjęcia]]></item>
+		<item name="wsif.acp.category.permissions.canEditOwnEntry"><![CDATA[Może edytować własne wpisy]]></item>
+		<item name="wsif.acp.category.permissions.canEditOwnEntryComment"><![CDATA[Może edytować własne komentarze]]></item>
+		<item name="wsif.acp.category.permissions.canEditOwnEntryFile"><![CDATA[Może edytować własne pliki]]></item>
+		<item name="wsif.acp.category.permissions.canEditOwnEntryImage"><![CDATA[Może edytować własne zdjęcia]]></item>
+		<item name="wsif.acp.category.permissions.canEnableEntry"><![CDATA[Może odblokowywać wpisy]]></item>
+		<item name="wsif.acp.category.permissions.canEnterCategory"><![CDATA[Może wchodzić do kategorii]]></item>
+		<item name="wsif.acp.category.permissions.canMoveEntry"><![CDATA[Może przenosić wpisy]]></item>
+		<item name="wsif.acp.category.permissions.canRateEntry"><![CDATA[Może oceniać wpisy]]></item>
+		<item name="wsif.acp.category.permissions.canSetEntryPrefix"><![CDATA[Może używać prefix'ów]]></item>
+		<item name="wsif.acp.category.permissions.canSetEntryTags"><![CDATA[Może dodawać tagi]]></item>
+		<item name="wsif.acp.category.permissions.canUploadEntryCommentAttachment"><![CDATA[Może dodawać załączniki]]></item>
+		<item name="wsif.acp.category.permissions.canViewCategory"><![CDATA[Widzi kategorie]]></item>
+		<item name="wsif.acp.category.permissions.canViewDeletedEntry"><![CDATA[Widzi usunięte wpisy]]></item>
+		<item name="wsif.acp.category.permissions.canViewEntry"><![CDATA[Widzi wpisy]]></item>
+		<item name="wsif.acp.category.permissions.canViewEntryCommentAttachmentPreview"><![CDATA[Może podglądać załączniki]]></item>
+		<item name="wsif.acp.category.permissions.canViewOwnEntry"><![CDATA[Widzi własne wpisy]]></item>
+		<item name="wsif.acp.category.permissions.deny"><![CDATA[Odmów]]></item>
+		<item name="wsif.acp.category.permissions.fullControl"><![CDATA[Pełny dostęp]]></item>
+		<item name="wsif.acp.category.permissions.permissionsFor"><![CDATA[Uprawnienia dla {$name}'a]]></item>
+		<item name="wsif.acp.category.permissions.title"><![CDATA[Nazwa grupy lub użytkownika]]></item>
+		<item name="wsif.acp.category.position"><![CDATA[Pozycja]]></item>
+		<item name="wsif.acp.category.position.description"><![CDATA[Wprowadź numer sortowania. Ta liczba wskazuje, jak kategoria będzie posortowana w stosunku do innych kategorii.]]></item>
+		<item name="wsif.acp.category.rating"><![CDATA[Ocena wpisu]]></item>
+		<item name="wsif.acp.category.rating.disable"><![CDATA[Dezaktywuj]]></item>
+		<item name="wsif.acp.category.rating.enable"><![CDATA[Aktywuj]]></item>
+		<item name="wsif.acp.category.settings"><![CDATA[Ustawienia]]></item>
+		<item name="wsif.acp.category.sort.success"><![CDATA[Kategorie zostały pomyślnie posortowane.]]></item>
+		<item name="wsif.acp.category.sortField"><![CDATA[Sortowanie]]></item>
+		<item name="wsif.acp.category.sortOrder"><![CDATA[Sortuj według]]></item>
+		<item name="wsif.acp.category.style"><![CDATA[Ustawienia stylu]]></item>
+		<item name="wsif.acp.category.styleID"><![CDATA[Style w użyciu]]></item>
+		<item name="wsif.acp.category.title"><![CDATA[Nazwa]]></item>
+	</category>
+	<category name="wsif.acp.entry.prefix">
+		<item name="wsif.acp.entry.prefix.add"><![CDATA[Dodaj prefix]]></item>
+		<item name="wsif.acp.entry.prefix.add.success"><![CDATA[Prefix został pomyślnie dodany.]]></item>
+		<item name="wsif.acp.entry.prefix.assignedCategories"><![CDATA[Wybrane kategorie]]></item>
+		<item name="wsif.acp.entry.prefix.assignedCategories.description"><![CDATA[Wybierz kategorie, dla których ten prefiks ma być dostępny.]]></item>
+		<item name="wsif.acp.entry.prefix.delete.success"><![CDATA[Prefiks został pomyślnie usunięty.]]></item>
+		<item name="wsif.acp.entry.prefix.delete.sure"><![CDATA[Czy na pewno chcesz usunąć ten prefiks?]]></item>
+		<item name="wsif.acp.entry.prefix.edit"><![CDATA[Edytuj prefix]]></item>
+		<item name="wsif.acp.entry.prefix.edit.success"><![CDATA[Wprowadzone zmiany zostały pomyślnie zapisane.]]></item>
+		<item name="wsif.acp.entry.prefix.general"><![CDATA[Główne]]></item>
+		<item name="wsif.acp.entry.prefix.language"><![CDATA[Język]]></item>
+		<item name="wsif.acp.entry.prefix.language.description"><![CDATA[Określ język dla prefixów.]]></item>
+		<item name="wsif.acp.entry.prefix.prefixMarking"><![CDATA[Oznacz]]></item>
+		<item name="wsif.acp.entry.prefix.prefixMarking.description"><![CDATA[Tutaj możesz zmienić formatowanie HTML dla prefixu np. &lt;strong&gt;%s&lt;/strong&gt; pogrubia prefix.]]></item>
+		<item name="wsif.acp.entry.prefix.prefixName"><![CDATA[Nazwa prefixu]]></item>
+		<item name="wsif.acp.entry.prefix.prefixName.description"><![CDATA[Wpisz tutaj nazwę dla prefixu.]]></item>
+		<item name="wsif.acp.entry.prefix.prefixType"><![CDATA[Typ prefixu]]></item>
+		<item name="wsif.acp.entry.prefix.prefixType.0"><![CDATA[Globalny prefix]]></item>
+		<item name="wsif.acp.entry.prefix.prefixType.1"><![CDATA[Prefix w konkretnej kategorii]]></item>
+		<item name="wsif.acp.entry.prefix.showOrder"><![CDATA[Kolejność]]></item>
+		<item name="wsif.acp.entry.prefix.showOrder.description"><![CDATA[Podaj kolejnośc wyświetlania prefix'ów.]]></item>
+		<item name="wsif.acp.entry.prefix.sort.success"><![CDATA[Prefixy zostały pomyślnie posortowane.]]></item>
+		<item name="wsif.acp.entry.prefix.view"><![CDATA[Prefixy]]></item>
+		<item name="wsif.acp.entry.prefix.view.count.noPrefixes"><![CDATA[Obecnie nie ma żadnych prefixów]]></item>
+	</category>
+	<category name="wsif.acp.index">
+		<item name="wsif.acp.index"><![CDATA[Panel administracyjny WCF Solutions Infinite Filebase]]></item>
+		<item name="wsif.acp.index.credits"><![CDATA[Informacje o WCF Solutions Infinite Filebase]]></item>
+		<item name="wsif.acp.index.credits.contributor"><![CDATA[Uczestnicy]]></item>
+		<item name="wsif.acp.index.credits.designer"><![CDATA[Design]]></item>
+		<item name="wsif.acp.index.credits.developedBy"><![CDATA[Oprogramowanie opracowane przez]]></item>
+		<item name="wsif.acp.index.credits.developer"><![CDATA[Programowanie]]></item>
+		<item name="wsif.acp.index.credits.productManager"><![CDATA[Zarządca projektu]]></item>
+		<item name="wsif.acp.index.credits.translators"><![CDATA[Tłumaczenie]]></item>
+		<item name="wsif.acp.index.news"><![CDATA[Aktualności]]></item>
+		<item name="wsif.acp.index.searchUsers"><![CDATA[Szybkie wyszukiwanie użytkowników]]></item>
+		<item name="wsif.acp.index.stat"><![CDATA[Statystyki]]></item>
+		<item name="wsif.acp.index.stat.attachments"><![CDATA[Załączniki]]></item>
+		<item name="wsif.acp.index.stat.database.entries"><![CDATA[Pozycji w bazie danych]]></item>
+		<item name="wsif.acp.index.stat.database.size"><![CDATA[Rozmiar bazy danych]]></item>
+		<item name="wsif.acp.index.stat.entries"><![CDATA[Wpisy]]></item>
+		<item name="wsif.acp.index.stat.entriesPerDay"><![CDATA[({#$entriesPerDay} dziennie)]]></item>
+		<item name="wsif.acp.index.stat.entryComments"><![CDATA[Komentarze]]></item>
+		<item name="wsif.acp.index.stat.entryCommentsPerDay"><![CDATA[({#$entryCommentsPerDay} dziennie)]]></item>
+		<item name="wsif.acp.index.stat.entryFiles"><![CDATA[Pliki]]></item>
+		<item name="wsif.acp.index.stat.entryFilesPerDay"><![CDATA[({#$entryFilesPerDay} dziennie)]]></item>
+		<item name="wsif.acp.index.stat.entryImages"><![CDATA[Zdjęcia]]></item>
+		<item name="wsif.acp.index.stat.entryImagesPerDay"><![CDATA[({#$entryImagesPerDay} dziennie)]]></item>
+		<item name="wsif.acp.index.stat.members"><![CDATA[Użytkownicy]]></item>
+		<item name="wsif.acp.index.stat.usersOnline"><![CDATA[Użytkownicy online]]></item>
+		<item name="wsif.acp.index.system"><![CDATA[System]]></item>
+		<item name="wsif.acp.index.system.cache"><![CDATA[Cache]]></item>
+		<item name="wsif.acp.index.system.exportInformation"><![CDATA[Pobierz informacje systemowe]]></item>
+		<item name="wsif.acp.index.system.installationDate"><![CDATA[Data instalacji]]></item>
+		<item name="wsif.acp.index.system.load"><![CDATA[Aktualny UNIX Load]]></item>
+		<item name="wsif.acp.index.system.os"><![CDATA[System operacyjny]]></item>
+		<item name="wsif.acp.index.system.php"><![CDATA[Wersja PHP]]></item>
+		<item name="wsif.acp.index.system.server"><![CDATA[Serwer]]></item>
+		<item name="wsif.acp.index.system.software"><![CDATA[Oprogramowanie]]></item>
+		<item name="wsif.acp.index.system.sql.type"><![CDATA[Baza danych]]></item>
+		<item name="wsif.acp.index.system.sql.version"><![CDATA[Wersja MySQL]]></item>
+		<item name="wsif.acp.index.system.wcf.version"><![CDATA[Wersja Community Framework&trade;]]></item>
+		<item name="wsif.acp.index.system.webserver"><![CDATA[Serwer]]></item>
+		<item name="wsif.acp.index.system.wsif.version"><![CDATA[Wersja Infinite Filebase]]></item>
+		<item name="wsif.acp.index.updates"><![CDATA[Aktualizacje]]></item>
+		<item name="wsif.acp.index.minorUpdates"><![CDATA[Ważne aktualizacje]]></item>
+		<item name="wsif.acp.index.minorUpdates.description"><![CDATA[Obecnie są następujące aktualizacje:]]></item>
+		<item name="wsif.acp.index.majorUpdates"><![CDATA[Opcjonalne aktualizacje]]></item>
+		<item name="wsif.acp.index.majorUpdates.description"><![CDATA[Brak dostępnych aktualizacji:]]></item>
+		<item name="wsif.acp.index.updates.startUpdate"><![CDATA[Aktualizuj teraz]]></item>
+		<item name="wsif.acp.index.updates.update"><![CDATA[{$update.packageName}{if $update.instanceNo > 1} (#{$update.instanceNo}){/if} Wersja {$update.version.packageVersion}]]></item>
+	</category>
+	<category name="wsif.acp.menu">
+		<item name="wsif.acp.menu.link.content.category"><![CDATA[Kategorie]]></item>
+		<item name="wsif.acp.menu.link.content.category.add"><![CDATA[Dodaj kategorię]]></item>
+		<item name="wsif.acp.menu.link.content.category.view"><![CDATA[Lista kategorii]]></item>
+		<item name="wsif.acp.menu.link.content.entry"><![CDATA[Prefixy]]></item>
+		<item name="wsif.acp.menu.link.content.entry.prefix.add"><![CDATA[Dodaj prefix]]></item>
+		<item name="wsif.acp.menu.link.content.entry.prefix.view"><![CDATA[Lista prefixów]]></item>
+	</category>
+	<category name="wsif.category">
+		<item name="wsif.category.allEntries"><![CDATA[Wszystkie wpisy]]></item>
+		<item name="wsif.category.entries"><![CDATA[Wpisy]]></item>
+		<item name="wsif.category.entries.delete.reason"><![CDATA[Czy chcesz usunąc ten wpis?]]></item>
+		<item name="wsif.category.entries.delete.sure"><![CDATA[Czy na pewno chcesz usunąć ten wpis?]]></item>
+		<item name="wsif.category.entries.deleteCompletely.sure"><![CDATA[Czy chcesz usunąć ten wpis na stałe?]]></item>
+		<item name="wsif.category.entries.deleteMarked.reason"><![CDATA[Czy chcesz usunąć wybrane wpisy?]]></item>
+		<item name="wsif.category.entries.deleteMarked.sure"><![CDATA[Czy na pewno chcesz usunąć wybrane wpisy?]]></item>
+		<item name="wsif.category.entries.disable"><![CDATA[Dezaktywuj]]></item>
+		<item name="wsif.category.entries.editPrefix"><![CDATA[Edytuj prefix]]></item>
+		<item name="wsif.category.entries.editTitle"><![CDATA[Edytuj tytuł]]></item>
+		<item name="wsif.category.entries.enable"><![CDATA[Aktywuj]]></item>
+		<item name="wsif.category.entries.entryBy"><![CDATA[Przez]]></item>
+		<item name="wsif.category.entries.filterByDate"><![CDATA[W okresie]]></item>
+		<item name="wsif.category.entries.filterByDate.1"><![CDATA[ostatnich 24 godzin]]></item>
+		<item name="wsif.category.entries.filterByDate.100"><![CDATA[ostatnich 100 dni]]></item>
+		<item name="wsif.category.entries.filterByDate.1000"><![CDATA[od początku]]></item>
+		<item name="wsif.category.entries.filterByDate.14"><![CDATA[ostatnich 14 dni]]></item>
+		<item name="wsif.category.entries.filterByDate.3"><![CDATA[ostatnich 3 dni]]></item>
+		<item name="wsif.category.entries.filterByDate.30"><![CDATA[ostatnich 30 dni]]></item>
+		<item name="wsif.category.entries.filterByDate.365"><![CDATA[ostatnich 365 dni]]></item>
+		<item name="wsif.category.entries.filterByDate.60"><![CDATA[ostatnich 60 dni]]></item>
+		<item name="wsif.category.entries.filterByDate.7"><![CDATA[ostatnich 7 dni]]></item>
+		<item name="wsif.category.entries.filterByPrefixID"><![CDATA[Prefix]]></item>
+		<item name="wsif.category.entries.filterByPrefixID.0"><![CDATA[Bez prefixu]]></item>
+		<item name="wsif.category.entries.markAll"><![CDATA[Zaznacz wszystkie]]></item>
+		<item name="wsif.category.entries.markedEntries"><![CDATA[this.count == 1 ? "Jeden wpis zaznaczony" : this.count+" zaznaczonych wpisów"]]></item>
+		<item name="wsif.category.entries.move"><![CDATA[Przenieś tutaj]]></item>
+		<item name="wsif.category.entries.recover"><![CDATA[Przywróć]]></item>
+		<item name="wsif.category.entries.showMarked"><![CDATA[Pokaż]]></item>
+		<item name="wsif.category.entries.tagged"><![CDATA[Wpisy w dniu &raquo;{$tag->getName()}&laquo;]]></item>
+		<item name="wsif.category.feed"><![CDATA[Subskrybuj wpisy w tej kategorii]]></item>
+		<item name="wsif.category.filterByLanguage"><![CDATA[Język]]></item>
+		<item name="wsif.category.noEntries"><![CDATA[Obecnie nie ma żadnych wpisów.]]></item>
+		<item name="wsif.category.quickJump"><![CDATA[Wybierz kategorię]]></item>
+		<item name="wsif.category.search.query"><![CDATA[Przeszukaj kategorię]]></item>
+		<item name="wsif.category.sortBy"><![CDATA[Sortuj wg.]]></item>
+		<item name="wsif.category.sorting"><![CDATA[Sortuj]]></item>
+		<item name="wsif.category.stats"><![CDATA[Statystyki]]></item>
+		<item name="wsif.category.stats.clicks"><![CDATA[Kliknię{if $categoryStats.$categoryID.clicks != 1}ć{/if}]]></item>
+		<item name="wsif.category.stats.detail"><![CDATA[{#$category->getEntries()} {if $category->getEntries() == 1}Wpis{else}Wpisów{/if}{if MODULE_COMMENT} - {#$category->getEntryComments()} Komentarz{if $category->getEntryComments() != 1}y{/if}{/if} - {#$category->getEntryImages()} Zdję{if $category->getEntryImages() != 1}ć{/if} - {#$category->getEntryFiles()} Plik{if $category->getEntryFiles() != 1}ów{/if} - {#$category->getEntryDownloads()} Pobra{if $category->getEntryDownloads() != 1}ń{/if} (średnio {#$category->getEntryDownloadsPerDay()} pobra{if $category->getEntryDownloadsPerDay() != 1}ń{/if}/dziennie)]]></item>
+		<item name="wsif.category.stats.entries"><![CDATA[{if $categoryStats.$categoryID.entries == 1}Wpis{else}Wpisów{/if}]]></item>
+		<item name="wsif.category.stats.entryComments"><![CDATA[Komentarz{if $categoryStats.$categoryID.entryComments != 1}y{/if}]]></item>
+		<item name="wsif.category.stats.entryDownloads"><![CDATA[Pobra{if $categoryStats.$categoryID.entryDownloads != 1}ń{/if}]]></item>
+		<item name="wsif.category.stats.entryFiles"><![CDATA[Plik{if $categoryStats.$categoryID.entryFiles != 1}ów{/if}]]></item>
+		<item name="wsif.category.stats.entryImages"><![CDATA[Zdję{if $categoryStats.$categoryID.entryImages != 1}ć{/if}]]></item>
+	</category>
+	<category name="wsif.entry">
+		<item name="wsif.entry.add"><![CDATA[Dodaj wpis]]></item>
+		<item name="wsif.entry.add.moderation.redirect"><![CDATA[Twój wpis został pomyślnie dodany. Zostanie on poddany weryfikacjii przez moderatora.]]></item>
+		<item name="wsif.entry.allComments"><![CDATA[Pokaż wszystkie komentarze]]></item>
+		<item name="wsif.entry.allFiles"><![CDATA[Pokaż wszystkie pliki]]></item>
+		<item name="wsif.entry.allImages"><![CDATA[Pokaż wszystkie zdjęcia]]></item>
+		<item name="wsif.entry.by"><![CDATA[Przez]]></item>
+		<item name="wsif.entry.comment.add"><![CDATA[Dodaj komentarz]]></item>
+		<item name="wsif.entry.comment.by"><![CDATA[Przez]]></item>
+		<item name="wsif.entry.comment.delete"><![CDATA[Usuń komentarz]]></item>
+		<item name="wsif.entry.comment.delete.sure"><![CDATA[Czy na pewno chcesz usunąć ten komentarz?]]></item>
+		<item name="wsif.entry.comment.edit"><![CDATA[Edytuj komentarz]]></item>
+		<item name="wsif.entry.comment.information"><![CDATA[Informacje o komentarzu]]></item>
+		<item name="wsif.entry.comment.message"><![CDATA[Komentarz]]></item>
+		<item name="wsif.entry.comment.newEntryComment"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} ma jeden nowy <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">komentarz</a> do "{$event->additionalData.entrySubject}" przeczytania.]]></item>
+		<item name="wsif.entry.comment.newEntryComment.accept"><![CDATA[Zaakceptuj]]></item>
+		<item name="wsif.entry.comment.newEntryComment.title"><![CDATA[Nowy komentarz w twoim wpisie]]></item>
+		<item name="wsif.entry.comment.newEntryComment.description"><![CDATA[Otrzymasz nowe zgłoszenie, gdy ktoś skomentował jeden z twoich wpisów.]]></item>
+		<item name="wsif.entry.comment.newEntryComment.short"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} ma jeden nowy <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">komentarz</a>.]]></item>
+		<item name="wsif.entry.comment.newEntryComment.medium"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} ma jeden nowy <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">komentarz</a>.]]></item>
+		<item name="wsif.entry.comment.newEntryComment.userMessages"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} ma jeden nowy <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">komentarz</a> do "{$event->additionalData.entrySubject}" przeczytania.]]></item>
+		<item name="wsif.entry.comment.newEntryComment.mail"><![CDATA[Witaj {$user->username},
+
+{$event->getObject()->username} ma jeden nowy komentarz w wpisie "{$event->additionalData.entrySubject}" na stronie: "{PAGE_TITLE}".
+
+Możesz przejść do tego komentarza za pośrednictwem poniższego linku:
+{@$pageURL}{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}
+
+{$event->getObject()->username} napisał następującą wiadomość:
+---------------------------------
+{$event->getObject()->getFormattedMessage('text/plain')}
+---------------------------------
+
+Pozdrawiamy,
+Team {PAGE_TITLE}]]></item>
+		<item name="wsif.entry.comment.newEntryComment.pm"><![CDATA[Witaj {$user->username},
+
+{$event->getObject()->username} ma jeden nowy komentarz w wpisie "{$event->additionalData.entrySubject}".
+
+Możesz przejść do tego komentarza za pośrednictwem poniższego linku:
+[url]{@$pageURL}{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}[/url]
+
+{$event->getObject()->username} napisał następującą wiadomość:
+---------------------------------
+{$event->getObject()->getFormattedMessage('text/plain')}
+---------------------------------]]></item>
+		<item name="wsif.entry.comment.noComments"><![CDATA[Obecnie nie ma żadnych komentarzy do tego wpisu.]]></item>
+		<item name="wsif.entry.comment.subject"><![CDATA[Tytuł]]></item>
+		<item name="wsif.entry.comments"><![CDATA[Komentarze]]></item>
+		<item name="wsif.entry.creator"><![CDATA[Autor]]></item>
+		<item name="wsif.entry.delete"><![CDATA[{if $entry->isDeleted}Usuń ten wpis{else}Wpis umieszczony w koszu{/if}]]></item>
+		<item name="wsif.entry.delete.error"><![CDATA[Usunięcie wpisu nie zostało potwierdzone.]]></item>
+		<item name="wsif.entry.delete.reason"><![CDATA[Powód (opcjonalnie)]]></item>
+		<item name="wsif.entry.deleteNote"><![CDATA[Usunięty {if $entry->userID == $entry->deletedByID}przez autora{else}przez &raquo;{$entry->deletedBy}&laquo;{/if} ({@$entry->deleteTime|time}){if $entry->deleteReason}: {$entry->deleteReason}{/if}
+{if ENTRY_EMPTY_RECYCLE_BIN_CYCLE > 0}<br />Czas do ostatecznego usunięcia: {@$entry->deleteTime+ENTRY_EMPTY_RECYCLE_BIN_CYCLE*86400|datediff}{/if}]]></item>
+		<item name="wsif.entry.disableEntry"><![CDATA[Dezaktywuj wpis]]></item>
+		<item name="wsif.entry.disableEntry.description"><![CDATA[Wpis zostanie dezaktywowany i będzie musiał zostać zatwierdzony przez moderatora.]]></item>
+		<item name="wsif.entry.downloads"><![CDATA[Pobrań]]></item>
+		<item name="wsif.entry.downloadsPerDay"><![CDATA[{#$entry->getDownloadsPerDay()} pobrań/dziennie]]></item>
+		<item name="wsif.entry.edit"><![CDATA[Edytuj wpis]]></item>
+		<item name="wsif.entry.enableComments"><![CDATA[Aktywuj komentarze]]></item>
+		<item name="wsif.entry.enableComments.description"><![CDATA[Wpis może być komentowany.]]></item>
+		<item name="wsif.entry.entrySubscription"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} ma jeden nowy <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">komentarz</a> "{$event->additionalData.entrySubject}".]]></item>
+		<item name="wsif.entry.entrySubscription.accept"><![CDATA[Zaakceptuj]]></item>
+		<item name="wsif.entry.entrySubscription.title"><![CDATA[Nowy komentarz]]></item>
+		<item name="wsif.entry.entrySubscription.description"><![CDATA[Otrzymasz nowe zgłoszenie, gdy ktoś skomentował jeden z twoich wpisów.]]></item>
+		<item name="wsif.entry.entrySubscription.short"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} ma jeden nowy <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">komentarz</a>.]]></item>
+		<item name="wsif.entry.entrySubscription.medium"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} ma jeden nowy <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">komentarz</a>.]]></item>
+		<item name="wsif.entry.entrySubscription.userMessages"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} ma jeden nowy <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">komentarz</a> "{$event->additionalData.entrySubject}".]]></item>
+		<item name="wsif.entry.entrySubscription.mail"><![CDATA[Witaj {$user->username},
+
+{$event->getObject()->username} ma jeden nowy komentarz w wpisie "{$event->additionalData.entrySubject}" na stronie: "{PAGE_TITLE}" .
+
+Możesz przejść do tego komentarza za pośrednictwem poniższego linku:
+{@$pageURL}{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}
+
+{$event->getObject()->username} napisał następującą wiadomość:
+---------------------------------
+{$event->getObject()->getFormattedMessage('text/plain')}
+---------------------------------
+
+Pozdrawiamy,
+Team {PAGE_TITLE}]]></item>
+		<item name="wsif.entry.entrySubscription.pm"><![CDATA[Witaj {$user->username},
+
+{$event->getObject()->username}ma jeden nowy komentarz w wpisie "{$event->additionalData.entrySubject}".
+
+Możesz przejść do tego komentarza za pośrednictwem poniższego linku:
+[url]{@$pageURL}{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}[/url]
+
+{$event->getObject()->username} napisał następującą wiadomość:
+---------------------------------
+{$event->getObject()->getFormattedMessage('text/plain')}
+---------------------------------]]></item>
+		<item name="wsif.entry.file"><![CDATA[Pliki]]></item>
+		<item name="wsif.entry.file.add"><![CDATA[Dodaj pliki]]></item>
+		<item name="wsif.entry.file.add.success"><![CDATA[{if $files|count != 1}{#$files|count} plików zostało pomyślnie dodanych{else}jeden plik został pomyślnie dodany{/if}.]]></item>
+		<item name="wsif.entry.file.add.upload.error.copyFailed"><![CDATA[Plik nie może zostać dodany.]]></item>
+		<item name="wsif.entry.file.add.upload.error.uploadFailed"><![CDATA[Przesyłanie plików nie powidło się.]]></item>
+		<item name="wsif.entry.file.by"><![CDATA[Przez]]></item>
+		<item name="wsif.entry.file.default"><![CDATA[Domyślny plik]]></item>
+		<item name="wsif.entry.file.default.add.description"><![CDATA[Wybierz ten plik jako główny.]]></item>
+		<item name="wsif.entry.file.default.add.success"><![CDATA[Główny plik &raquo;{$file->title}&laquo; został pomyślnie zapisany.{if $this->user->getPermission('user.filebase.maxImagesPerEntry') > 1} Możesz dodać więcej plików.{/if}]]></item>
+		<item name="wsif.entry.file.default.fileType"><![CDATA[Typ pliku]]></item>
+		<item name="wsif.entry.file.default.upload"><![CDATA[Wybierz plik]]></item>
+		<item name="wsif.entry.file.default.upload.description"><![CDATA[Maksymalny rozmiar: {@$maxFileSize|filesize}<br />
+Dopuszczalne rozszerzenia: {$allowedFileExtensions}]]></item>
+		<item name="wsif.entry.file.delete"><![CDATA[Usuń plik]]></item>
+		<item name="wsif.entry.file.delete.sure"><![CDATA[Czy na pewno chcesz usunąć ten plik?]]></item>
+		<item name="wsif.entry.file.description"><![CDATA[Opis]]></item>
+		<item name="wsif.entry.file.download"><![CDATA[Pobierz plik]]></item>
+		<item name="wsif.entry.file.downloaders"><![CDATA[Ostatnio pobrali]]></item>
+		<item name="wsif.entry.file.downloads"><![CDATA[Pobrań]]></item>
+		<item name="wsif.entry.file.downloadsPerDay"><![CDATA[{#$file->getDownloadsPerDay()} pobrań dziennie]]></item>
+		<item name="wsif.entry.file.edit"><![CDATA[Edytuj plik]]></item>
+		<item name="wsif.entry.file.error.tooManyFiles"><![CDATA[Nie możesz przesłać więcej plików ]]></item>
+		<item name="wsif.entry.file.externalURL"><![CDATA[Adres (URL) linku]]></item>
+		<item name="wsif.entry.file.externalURL.error.illegalURL"><![CDATA[Podany adres URL jest nieprawidłowy. ]]></item>
+		<item name="wsif.entry.file.externalURL.redirect"><![CDATA[Opuścisz stronę &raquo;{lang}{PAGE_TITLE}{/lang}&laquo; i zostaniesz przekierowany do zewnętrzengo serwera.]]></item>
+		<item name="wsif.entry.file.fileType"><![CDATA[Rodzaj plików]]></item>
+		<item name="wsif.entry.file.fileType.0"><![CDATA[Prześlij]]></item>
+		<item name="wsif.entry.file.fileType.1"><![CDATA[Link]]></item>
+		<item name="wsif.entry.file.filename"><![CDATA[Nazwa pliku]]></item>
+		<item name="wsif.entry.file.filesize"><![CDATA[Rozmiar pliku]]></item>
+		<item name="wsif.entry.file.general"><![CDATA[Główne informacje]]></item>
+		<item name="wsif.entry.file.information"><![CDATA[Informacje o pliku]]></item>
+		<item name="wsif.entry.file.information.description"><![CDATA[Informacje które tutaj będą zastosowane do wszystkich plików, które wybrałeśdo wysłania.]]></item>
+		<item name="wsif.entry.file.lastDownloadTime"><![CDATA[Ostatnio pobrano]]></item>
+		<item name="wsif.entry.file.link"><![CDATA[Link]]></item>
+		<item name="wsif.entry.file.noDownloadPermission"><![CDATA[Nie masz wystarczających uprawnień, aby pobrać ten plik. {if !$this->user->userID} Musisz się najpierw zarejestrować.{/if}]]></item>
+		<item name="wsif.entry.file.replace"><![CDATA[Zastąp plik]]></item>
+		<item name="wsif.entry.file.replace.description"><![CDATA[Maksymalny rozmiar pliku: {@$maxFileSize|filesize}<br />
+Dopuszczalne rozszerzenia: {$allowedFileExtensions}]]></item>
+		<item name="wsif.entry.file.setAsDefault"><![CDATA[Ustaw jako główny plik]]></item>
+		<item name="wsif.entry.file.share"><![CDATA[Podziel się]]></item>
+		<item name="wsif.entry.file.time"><![CDATA[Data przesłania]]></item>
+		<item name="wsif.entry.file.title"><![CDATA[Nazwa]]></item>
+		<item name="wsif.entry.file.title.description"><![CDATA[Jeśli zostawisz to pole puste, zostanie automatycznie nadana dotychczasowa nazwa pliku.]]></item>
+		<item name="wsif.entry.file.upload"><![CDATA[Wybierz plik(i)]]></item>
+		<item name="wsif.entry.file.upload.description"><![CDATA[Dostępna ilość plików: {#$freeFiles}<br />
+Maksymalna ilość plików: {#$maxFiles}<br />
+Maksymalny rozmiar pliku: {@$maxFileSize|filesize}<br />
+Dopuszczalne rozszerzenia: {$allowedFileExtensions}]]></item>
+		<item name="wsif.entry.file.upload.error.copyFailed"><![CDATA[Plik &raquo;{$filename}&laquo; nie może zostać skopiowany.]]></item>
+		<item name="wsif.entry.file.upload.error.illegalExtension"><![CDATA[Plik &raquo;{$filename}&laquo; ma nieprawidłowe rozszerzenie.]]></item>
+		<item name="wsif.entry.file.upload.error.tooLarge"><![CDATA[Plik &raquo;{$filename}&laquo; przekracza dopuszczalny rozmiar.]]></item>
+		<item name="wsif.entry.file.upload.error.tooManyFiles"><![CDATA[Nie można przesłać więcej plików.]]></item>
+		<item name="wsif.entry.file.upload.error.uploadFailed"><![CDATA[Wgrywanie pliku &raquo;{$filename}&laquo; nie powiodło się.]]></item>
+		<item name="wsif.entry.file.uploader"><![CDATA[Autor]]></item>
+		<item name="wsif.entry.file.views"><![CDATA[Wyświetleń]]></item>
+		<item name="wsif.entry.file.viewsPerDay"><![CDATA[{#$file->getViewsPerDay()} wyświetleń/dziennie]]></item>
+		<item name="wsif.entry.files"><![CDATA[Pliki]]></item>
+		<item name="wsif.entry.files.downloads"><![CDATA[Ostatni pobierający]]></item>
+		<item name="wsif.entry.files.title"><![CDATA[Nazwa]]></item>
+		<item name="wsif.entry.files.views"><![CDATA[Wyświetleń]]></item>
+		<item name="wsif.entry.general"><![CDATA[Główne informacje]]></item>
+		<item name="wsif.entry.image"><![CDATA[Zdjęcia]]></item>
+		<item name="wsif.entry.image.add"><![CDATA[Dodaj zdjęcie]]></item>
+		<item name="wsif.entry.image.add.success"><![CDATA[{if $images|count != 1}{#$images|count} Zdjęcia zostały{else}Jedno zdjęcie zostało{/if} pomyślnie dodane.]]></item>
+		<item name="wsif.entry.image.by"><![CDATA[Przez]]></item>
+		<item name="wsif.entry.image.default"><![CDATA[Miniatura]]></item>
+		<item name="wsif.entry.image.default.add.description"><![CDATA[Wybierz miniaturkę dla wpisu.]]></item>
+		<item name="wsif.entry.image.default.add.success"><![CDATA[Miniatura &raquo;{$image->title}&laquo; została pomyślnie przesłana na serwer.{if $this->user->getPermission('user.filebase.maxImagesPerEntry') > 1} Możesz dodać więcej zdjęć.{/if}]]></item>
+		<item name="wsif.entry.image.default.upload"><![CDATA[Wybierz zdjęcie]]></item>
+		<item name="wsif.entry.image.default.upload.description"><![CDATA[Maksymalny rozmiar pliku: {@$maxFileSize|filesize}<br />
+Dozwolone rozszerzenia: {$allowedFileExtensions}]]></item>
+		<item name="wsif.entry.image.delete"><![CDATA[Usuń zdjęcie]]></item>
+		<item name="wsif.entry.image.delete.sure"><![CDATA[Czy na pewno chcesz usunąć to zdjęcie?]]></item>
+		<item name="wsif.entry.image.description"><![CDATA[Opis]]></item>
+		<item name="wsif.entry.image.edit"><![CDATA[Edytuj zdjęcie]]></item>
+		<item name="wsif.entry.image.embed"><![CDATA[Osadź (wymagane wsparcie BBCode)]]></item>
+		<item name="wsif.entry.image.error.tooManyImages"><![CDATA[Nie możesz wysłać już więcej zdjęć. ]]></item>
+		<item name="wsif.entry.image.filename"><![CDATA[Nazwa pliku]]></item>
+		<item name="wsif.entry.image.filesize"><![CDATA[Rozmiar pliku]]></item>
+		<item name="wsif.entry.image.general"><![CDATA[Główne informacje]]></item>
+		<item name="wsif.entry.image.informatio"><![CDATA[Informacje o zdjęciu]]></item>
+		<item name="wsif.entry.image.information"><![CDATA[Informacje o zdjęciu]]></item>
+		<item name="wsif.entry.image.information.description"><![CDATA[Informacje które podałeś tutaj mogą zostać zastosowane do wszystkich zdjęć, które zostały wybrane do przesłania.]]></item>
+		<item name="wsif.entry.image.link"><![CDATA[Link]]></item>
+		<item name="wsif.entry.image.navigation"><![CDATA[Nawigacja]]></item>
+		<item name="wsif.entry.image.next"><![CDATA[Następne zdjęcie]]></item>
+		<item name="wsif.entry.image.noImages"><![CDATA[Nie ma już więcej zdjęć.]]></item>
+		<item name="wsif.entry.image.previous"><![CDATA[Poprzednie zdjęcie]]></item>
+		<item name="wsif.entry.image.replace"><![CDATA[Zastąp zdjęcie]]></item>
+		<item name="wsif.entry.image.replace.description"><![CDATA[Maksymalny rozmiar pliku: {@$maxImageSize|filesize}<br />
+Dopuszczalne rozszerzenia: {$allowedImageExtensions}]]></item>
+		<item name="wsif.entry.image.setAsDefault"><![CDATA[Ustaw jako domyślna miniatura wpisu]]></item>
+		<item name="wsif.entry.image.share"><![CDATA[Podziel się]]></item>
+		<item name="wsif.entry.image.time"><![CDATA[Data przesłania]]></item>
+		<item name="wsif.entry.image.title"><![CDATA[Nazwa]]></item>
+		<item name="wsif.entry.image.title.description"><![CDATA[Jeśli zostawisz to pole puste, zostanie użyta nazwa przesłanego pliku.]]></item>
+		<item name="wsif.entry.image.upload"><![CDATA[Dodaj zdjęcie(a)]]></item>
+		<item name="wsif.entry.image.upload.description"><![CDATA[Dostępna ilość zdjęć: {#$freeImages}<br />
+Maksymalna lcizba zdjęć: {#$maxImages}<br />
+Maksymalny rozmiar pliku: {@$maxImageSize|filesize}<br />
+Dopuszczalne rozszerzenia: {$allowedImageExtensions}]]></item>
+		<item name="wsif.entry.image.upload.error.badImage"><![CDATA[Plik &raquo;{$filename}&laquo; jest uszkodzony]]></item>
+		<item name="wsif.entry.image.upload.error.copyFailed"><![CDATA[Zdjęcie &raquo;{$filename}&laquo; nie może zostać skopiowane.]]></item>
+		<item name="wsif.entry.image.upload.error.illegalExtension"><![CDATA[Zdjęcie &raquo;{$filename}&laquo; ma nieprawidłowe rozszerzenie.]]></item>
+		<item name="wsif.entry.image.upload.error.tooLarge"><![CDATA[Zdjęcie &raquo;{$filename}&laquo; przekracza maksymalny rozmiar.]]></item>
+		<item name="wsif.entry.image.upload.error.tooManyImages"><![CDATA[Nie możesz dodać więcej zdjęć.]]></item>
+		<item name="wsif.entry.image.upload.error.uploadFailed"><![CDATA[Wysyłanie zdjęcia&raquo;{$filename}&laquo; nie powiodło się.]]></item>
+		<item name="wsif.entry.image.uploader"><![CDATA[Przesłane przez]]></item>
+		<item name="wsif.entry.image.views"><![CDATA[Wyświetleń]]></item>
+		<item name="wsif.entry.image.viewsPerDay"><![CDATA[{#$image->getViewsPerDay()} wyświetleń/dziennie]]></item>
+		<item name="wsif.entry.images"><![CDATA[Zdjęcia]]></item>
+		<item name="wsif.entry.information"><![CDATA[Informacje]]></item>
+		<item name="wsif.entry.language"><![CDATA[Język]]></item>
+		<item name="wsif.entry.link"><![CDATA[Link]]></item>
+		<item name="wsif.entry.noDownloadPermission"><![CDATA[Nie masz wystarczających uprawnień, aby pobierać pliki. {if !$this->user->userID} Musisz się najpierw zarejestrować.{/if}]]></item>
+		<item name="wsif.entry.overview"><![CDATA[Podgląd]]></item>
+		<item name="wsif.entry.permalink"><![CDATA[Link do {#$messageNumber}. wpisu]]></item>
+		<item name="wsif.entry.prefix"><![CDATA[Prefix]]></item>
+		<item name="wsif.entry.publishing"><![CDATA[Opublikowano]]></item>
+		<item name="wsif.entry.publishingTime"><![CDATA[Czas publikacji]]></item>
+		<item name="wsif.entry.publishingTime.description"><![CDATA[Wybierz czas, w którym ma zostać opublikowany wpis.]]></item>
+		<item name="wsif.entry.publishingTime.error.invalid"><![CDATA[Proszę podać poprawną datę.]]></item>
+		<item name="wsif.entry.rate"><![CDATA[Oceń wpis]]></item>
+		<item name="wsif.entry.rating"><![CDATA[Ocena]]></item>
+		<item name="wsif.entry.share"><![CDATA[Podziel się]]></item>
+		<item name="wsif.entry.subject"><![CDATA[Nazwa]]></item>
+		<item name="wsif.entry.subscribe"><![CDATA[Subskrybuj komentarze]]></item>
+		<item name="wsif.entry.tags"><![CDATA[Tagi]]></item>
+		<item name="wsif.entry.teaser"><![CDATA[Zapowiedź]]></item>
+		<item name="wsif.entry.teaser.error.tooLong"><![CDATA[Twoja zapowiedź jest zbyt długa. Możesz użyć maksymalnie 255 znaków]]></item>
+		<item name="wsif.entry.text"><![CDATA[Opis]]></item>
+		<item name="wsif.entry.time"><![CDATA[Czas utworzenia]]></item>
+		<item name="wsif.entry.unsubscribe"><![CDATA[Nie subskrybuj komentarzy]]></item>
+		<item name="wsif.entry.username"><![CDATA[Autor]]></item>
+		<item name="wsif.entry.views"><![CDATA[Wyświetleń]]></item>
+		<item name="wsif.entry.viewsPerDay"><![CDATA[{#$entry->getViewsPerDay()} wyświetleń/dziennie]]></item>
+		<item name="wsif.entry.visitors"><![CDATA[Odwiedzający]]></item>
+		<item name="wsif.entry.vote.description"><![CDATA[{#$votes} ocen(y) - średnio: {#$vote}]]></item>
+	</category>
+	<category name="wsif.feed">
+		<item name="wsif.feed.description"><![CDATA[Wpisy z filebase: {lang}{PAGE_TITLE}{/lang}]]></item>
+		<item name="wsif.feed.title"><![CDATA[{lang}{PAGE_TITLE}{/lang} RSS]]></item>
+	</category>
+	<category name="wsif.global">
+		<item name="wsif.global.changeStyle"><![CDATA[Wybierz styl]]></item>
+		<item name="wsif.global.copyright"><![CDATA[<a href="http://www.wcfsolutions.com">Oprogramowanie: <strong>Infinite Filebase{if SHOW_VERSION_NUMBER} {@PACKAGE_VERSION}{/if}</strong>, wytworzone przez <strong>WCF Solutions</strong></a>, <a href="wbb-site.pl">Spolszczenie: wbb-site.pl</a>]]></item>
+		<item name="wsif.global.offline"><![CDATA[Filebase jest obecnie wyłączone {if OFFLINE_MESSAGE != ''}z następującego powodu:{else}w trybie konserwacji.{/if}]]></item>
+	</category>
+	<category name="wsif.header">
+		<item name="wsif.header.login.useCookies"><![CDATA[Zapamiętaj mnie?]]></item>
+		<item name="wsif.header.menu.filebase"><![CDATA[Filebase]]></item>
+		<item name="wsif.header.search.extended"><![CDATA[Zaawansowane wyszukiwanie]]></item>
+		<item name="wsif.header.search.query"><![CDATA[Wprowadź wyszukiwane hasło]]></item>
+		<item name="wsif.header.userMenu.acp"><![CDATA[Panel administracyjny]]></item>
+		<item name="wsif.header.userMenu.changeLanguage"><![CDATA[Wybierz język]]></item>
+		<item name="wsif.header.userMenu.login"><![CDATA[Zaloguj się]]></item>
+		<item name="wsif.header.userMenu.logout"><![CDATA[Wyloguj]]></item>
+		<item name="wsif.header.userMenu.moderation"><![CDATA[Panel Moderatora]]></item>
+		<item name="wsif.header.userMenu.profile"><![CDATA[Edytuj profil]]></item>
+		<item name="wsif.header.userMenu.register"><![CDATA[Rejestracja]]></item>
+		<item name="wsif.header.userNote.guest"><![CDATA[Nie jesteś zalogowany.]]></item>
+		<item name="wsif.header.userNote.user"><![CDATA[Zalogowany jako <a href="index.php?page=User&amp;userID={@$this->user->userID}{@SID_ARG_2ND}">{$this->user->username}</a>.]]></item>
+		<item name="wsif.header.welcomeBack"><![CDATA[Witamy ponownie {$this->user->username}!]]></item>
+	</category>
+	<category name="wsif.index">
+		<item name="wsif.index.feed"><![CDATA[Subskrybuj wpisy]]></item>
+		<item name="wsif.index.goToEntry"><![CDATA[Skocz do ostatniego wpisu]]></item>
+		<item name="wsif.index.stats"><![CDATA[Statystyki]]></item>
+		<item name="wsif.index.stats.detail"><![CDATA[{#$stats.members} użytkownik{if $stats.members != 1}ów{/if} - {#$stats.entries} {if $stats.entries == 1}Wpis{else}Wpisów{/if}{if MODULE_COMMENT} - {#$stats.entryComments} Komenatrz{if $stats.entryComments != 1}y{/if}{/if} - {#$stats.entryImages} Zdję{if $stats.entryImages != 1}ć{/if} - {#$stats.entryFiles} Plik{if $stats.entryFiles != 1}ów{/if} - {#$stats.entryDownloads} Pobra{if $stats.entryDownloads != 1}ń{/if} (średnio {#$stats.entryDownloadsPerDay} pobra{if $stats.entryDownloadsPerDay != 1}ń{/if}/dziennie)<br />
+Najnowszy użytkownik: <a href="index.php?page=User&amp;userID={@$stats.newestMember->userID}{@SID_ARG_2ND}">{$stats.newestMember->username}</a>.]]></item>
+		<item name="wsif.index.title"><![CDATA[Strona główna]]></item>
+	</category>
+	<category name="wsif.moderation">
+		<item name="wsif.moderation.deletedEntries.noEntries"><![CDATA[Brak wpisów w koszu.]]></item>
+		<item name="wsif.moderation.entries.markAll"><![CDATA[Zaznacz wszystkie]]></item>
+		<item name="wsif.moderation.hiddenEntries.noEntries"><![CDATA[Nie ma żadnych wpisów.]]></item>
+		<item name="wsif.moderation.markedEntries.noEntries"><![CDATA[Nic nie zaznaczyłeś.]]></item>
+	</category>
+	<category name="wsif.search">
+		<item name="wsif.search.categories"><![CDATA[Przeszukaj następujące kategorie]]></item>
+		<item name="wsif.search.categories.all"><![CDATA[Przeszukaj wszystkie kategorie]]></item>
+	</category>
+	<category name="wsif.usersOnline">
+		<item name="wsif.usersOnline.location.category"><![CDATA[Kategorie: &raquo;{$category}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry"><![CDATA[Wpisy: &raquo;{$entry}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry.add"><![CDATA[Dodaje nowy wpis w kategori: &raquo;{$category}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry.comment"><![CDATA[Komentuje &raquo;{$comment}&laquo; wpis &raquo;{$entry}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry.comment.add"><![CDATA[Skomentował wpis &raquo;{$entry}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry.comment.edit"><![CDATA[Edytuje komentarz &raquo;{$comment}&laquo; w wpisie &raquo;{$entry}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry.comments"><![CDATA[Komentuje wpis &raquo;{$entry}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry.edit"><![CDATA[Edytuje wpis &raquo;{$entry}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry.file"><![CDATA[Plik &raquo;{$file}&laquo; w wpisie &raquo;{$entry}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry.file.add"><![CDATA[Dodaje plik w wpisie &raquo;{$entry}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry.file.download"><![CDATA[Pobiera plik &raquo;{$file}&laquo; w wpisie &raquo;{$entry}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry.file.edit"><![CDATA[Edytuje plik &raquo;{$file}&laquo; w wpisie &raquo;{$entry}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry.files"><![CDATA[Pobiera plik w wpisie &raquo;{$entry}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry.image"><![CDATA[Zdjęcie &raquo;{$image}&laquo; w wpisie &raquo;{$entry}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry.image.add"><![CDATA[Dodaje zdjęcie w wpisie &raquo;{$entry}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry.image.edit"><![CDATA[Edytuje zdjęcie &raquo;{$image}&laquo; w wpisie &raquo;{$entry}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.entry.images"><![CDATA[Zdjęcie z wpisu &raquo;{$entry}&laquo;]]></item>
+		<item name="wsif.usersOnline.location.index"><![CDATA[<a href="index.php{SID_ARG_1ST}">Strona główna</a>]]></item>
+	</category>
+</language>
