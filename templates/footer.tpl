@@ -49,7 +49,9 @@
 				</ul>
 			</div>
 		</div>
-		<p class="copyright">{@$this->copyrightHandler->getOutput()}</p>
+
+		{assign var=copyrightOutput value=$this->copyrightHandler->getOutput()}
+		{if !$copyrightOutput|empty}<p class="copyright">{@$copyrightOutput}</p>{/if}
 	</div>
 </div>
 {if !$this->user->userID && !LOGIN_USE_CAPTCHA}

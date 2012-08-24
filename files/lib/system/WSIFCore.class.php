@@ -1,11 +1,13 @@
 <?php
+// wsif imports
+require_once(WSIF_DIR.'lib/system/CopyrightHandler.class.php');
+
 // wcf imports
 require_once(WCF_DIR.'lib/page/util/menu/ModerationCPMenuContainer.class.php');
 require_once(WCF_DIR.'lib/page/util/menu/PageMenuContainer.class.php');
 require_once(WCF_DIR.'lib/page/util/menu/UserCPMenuContainer.class.php');
 require_once(WCF_DIR.'lib/page/util/menu/UserProfileMenuContainer.class.php');
 require_once(WCF_DIR.'lib/system/style/StyleManager.class.php');
-require_once(WCF_DIR.'lib/system/CopyrightHandler.class.php');
 
 /**
  * This class extends the main WCF class by filebase specific functions.
