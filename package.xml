@@ -6,7 +6,7 @@
 		<packagedescription language="de">Infinite Filebase ist eine moderne Download-Datenbank mit vielen Funktionen.</packagedescription>
 		<standalone>1</standalone>
 		<version>2.1.0 RC 1</version>
-		<date>2012-08-02</date>
+		<date>2012-08-27</date>
 	</packageinformation>
 
 	<authorinformation>
@@ -104,7 +104,13 @@
 
 	<instructions type="update" fromversion="2.1.0 Beta 1">
 		<!-- files -->
+		<files>files.tar</files>
+		<templates>templates.tar</templates>
+		<acptemplates>acptemplates.tar</acptemplates>
 		<sql>update.sql</sql>
+
+		<!-- config -->
+		<acpmenu>acpmenu.xml</acpmenu>
 	</instructions>
 
 	<instructions type="update" fromversion="2.0.5">
