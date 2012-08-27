@@ -99,6 +99,7 @@
 
 		<!-- languages -->
 		<languages languagecode="de">de.xml</languages>
+		<languages languagecode="pl">pl.xml</languages>
 		<languages languagecode="de-informal">de-informal.xml</languages>
 	</instructions>
 
@@ -129,6 +130,7 @@
 
 		<!-- languages -->
 		<languages languagecode="de">de.xml</languages>
+		<languages languagecode="pl">pl.xml</languages>
 		<languages languagecode="de-informal">de-informal.xml</languages>
 	</instructions>
 </package>
