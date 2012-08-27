@@ -257,11 +257,11 @@
 						<input type="text" class="inputText" name="showOrder" id="showOrder" value="{$showOrder}" />
 					</div>
 					<div class="formFieldDesc hidden" id="showOrderHelpMessage">
-					{lang}wsif.acp.category.showOrder.description{/lang}
+						{lang}wsif.acp.category.showOrder.description{/lang}
 					</div>
 				</div>
 				<script type="text/javascript">//<![CDATA[
-				inlineHelp.register('showOrder');
+					inlineHelp.register('showOrder');
 				//]]></script>
 
 				{if $additionalClassificationFields|isset}{@$additionalClassificationFields}{/if}
