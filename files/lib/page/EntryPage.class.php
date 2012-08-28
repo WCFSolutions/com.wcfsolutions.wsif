@@ -148,6 +148,12 @@ class EntryPage extends AbstractPage {
 	public function assignVariables() {
 		parent::assignVariables();
 
+		$socialBookmarks = '';
+		if (MODULE_SOCIAL_BOOKMARK) {
+			$pageURL = PAGE_URL.'/index.php?page=Entry&entryID='.$this->frame->getEntryID();
+			SocialBookmarks::getInstance()->getSocialBookmarks($pageURL, $this->frame->getEntry()->subject);
+		}
+
 		$this->frame->assignVariables();
 		WCF::getTPL()->assign(array(
 			'entryComments' => $this->entryComments,
@@ -155,7 +161,7 @@ class EntryPage extends AbstractPage {
 			'entryFiles' => $this->entryFiles,
 			'tags' => $this->tags,
 			'entryVisitors' => $this->entryVisitors,
-			'socialBookmarks' => SocialBookmarks::getInstance()->getSocialBookmarks(PAGE_URL.'/index.php?page=Entry&entryID='.$this->frame->getEntryID(), $this->frame->getEntry()->subject),
+			'socialBookmarks' => $socialBookmarks,
 			'allowSpidersToIndexThisPage' => true
 		));
 	}
