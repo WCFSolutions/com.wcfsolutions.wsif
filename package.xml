@@ -75,7 +75,6 @@
 		<acptemplates>acptemplates.tar</acptemplates>
 		<sql>install.sql</sql>
 		<script>acp/install.php</script>
-		<style default="true">wcfsolutions-silver-sunrise-style.tar</style>
 
 		<!-- config -->
 		<pagemenu>pagemenu.xml</pagemenu>
@@ -113,7 +112,7 @@
 		<acpmenu>acpmenu.xml</acpmenu>
 	</instructions>
 
-	<instructions type="update" fromversion="2.0.5">
+	<instructions type="update" fromversion="2.0.5*">
 		<!-- files -->
 		<files>files.tar</files>
 		<templates>templates.tar</templates>
