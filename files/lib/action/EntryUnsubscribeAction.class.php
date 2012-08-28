@@ -37,7 +37,7 @@ class EntryUnsubscribeAction extends AbstractEntryAction {
 		$this->executed();
 
 		// forward
-		HeaderUtil::redirect('index.php?page=Entry&entryID='.$this->entryID.SID_ARG_2ND_NOT_ENCODED);
+		HeaderUtil::redirect('index.php?page=EntryComments&entryID='.$this->entryID.SID_ARG_2ND_NOT_ENCODED);
 		exit;
 	}
 }

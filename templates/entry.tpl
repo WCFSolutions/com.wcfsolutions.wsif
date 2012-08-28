@@ -36,13 +36,6 @@
 									<ul>
 										<li class="extraButton"><a href="#top" title="{lang}wcf.global.scrollUp{/lang}"><img src="{icon}upS.png{/icon}" alt="{lang}wcf.global.scrollUp{/lang}" /> <span class="hidden">{lang}wcf.global.scrollUp{/lang}</span></a></li>
 										{if $entry->isEditable($category)}<li><a href="index.php?form=EntryEdit&amp;entryID={@$entry->entryID}{@SID_ARG_2ND}" title="{lang}wsif.entry.edit{/lang}"><img src="{icon}editS.png{/icon}" alt="" /> <span>{lang}wsif.entry.edit{/lang}</span></a></li>{/if}
-										{if $this->user->userID}
-											{if !$entry->subscribed}
-												<li><a href="index.php?action=EntrySubscribe&amp;entryID={@$entry->entryID}&amp;t={@SECURITY_TOKEN}{@SID_ARG_2ND}" title="{lang}wsif.entry.subscribe{/lang}"><img src="{icon}entrySubscribeS.png{/icon}" alt="" /> <span>{lang}wsif.entry.subscribe{/lang}</span></a></li>
-												{else}
-												<li><a href="index.php?action=EntryUnsubscribe&amp;entryID={@$entry->entryID}&amp;t={@SECURITY_TOKEN}{@SID_ARG_2ND}" title="{lang}wsif.entry.unsubscribe{/lang}"><img src="{icon}entryUnsubscribeS.png{/icon}" alt="" /> <span>{lang}wsif.entry.unsubscribe{/lang}</span></a></li>
-											{/if}
-										{/if}
 										{if $category->getPermission('canDownloadEntryFile')}<li><a href="index.php?page=EntryFileDownload&amp;fileID={@$entry->defaultFileID}{@SID_ARG_2ND}" title="{lang}wsif.entry.file.download{/lang}"><img src="{icon}entryFileDownloadS.png{/icon}" alt="" /> <span>{lang}wsif.entry.file.download{/lang}</span></a></li>{/if}
 										{if $additionalSmallButtons|isset}{@$additionalSmallButtons}{/if}
 									</ul>
