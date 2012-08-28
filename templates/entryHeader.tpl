@@ -47,7 +47,7 @@
 		{if MODULE_COMMENT && $entry->enableComments}<li{if $activeTabMenuItem == 'entryComments'} class="activeTabMenu"{/if}><a href="index.php?page=EntryComments&amp;entryID={@$entry->entryID}{@SID_ARG_2ND}"><img src="{icon}entryCommentM.png{/icon}" alt="" /> <span>{lang}wsif.entry.comments{/lang}{if $entry->comments} ({#$entry->comments}){/if}</span></a></li>{/if}
 		{if $entry->images || ($this->user->userID && $this->user->userID == $entry->userID) || $entry->isEditable($category)}<li{if $activeTabMenuItem == 'entryImages'} class="activeTabMenu"{/if}><a href="index.php?page=EntryImages&amp;entryID={@$entry->entryID}{@SID_ARG_2ND}"><img src="{icon}entryImageM.png{/icon}" alt="" /> <span>{lang}wsif.entry.images{/lang}{if $entry->images} ({#$entry->images}){/if}</span></a></li>{/if}
 		<li{if $activeTabMenuItem == 'entryFiles'} class="activeTabMenu"{/if}><a href="index.php?page=EntryFiles&amp;entryID={@$entry->entryID}{@SID_ARG_2ND}"><img src="{icon}entryFileM.png{/icon}" alt="" /> <span>{lang}wsif.entry.files{/lang}{if $entry->files} ({#$entry->files}){/if}</span></a></li>
-		{if $additionalTabs|isset}{@$additionalTabs}{/if}
+		{if $additionalMenuTabs|isset}{@$additionalMenuTabs}{/if}
 	</ul>
 </div>
 
