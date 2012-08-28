@@ -151,7 +151,7 @@ class EntryPage extends AbstractPage {
 		$socialBookmarks = '';
 		if (MODULE_SOCIAL_BOOKMARK) {
 			$pageURL = PAGE_URL.'/index.php?page=Entry&entryID='.$this->frame->getEntryID();
-			SocialBookmarks::getInstance()->getSocialBookmarks($pageURL, $this->frame->getEntry()->subject);
+			$socialBookmarks = SocialBookmarks::getInstance()->getSocialBookmarks($pageURL, $this->frame->getEntry()->subject);
 		}
 
 		$this->frame->assignVariables();
