@@ -446,7 +446,7 @@ class EntryAddForm extends MessageForm {
 		parent::save();
 
 		// save entry
-		$this->entry = EntryEditor::create($this->category->categoryID, $this->languageID, $this->prefixID, $this->subject, $this->text, $this->teaser, WCF::getUser()->userID, $this->username, $this->publishingTime, $this->enableComments, $this->getOptions(), null, intval(($this->disableEntry || !$this->category->getPermission('canAddNewsEntryWithoutModeration'))));
+		$this->entry = EntryEditor::create($this->category->categoryID, $this->languageID, $this->prefixID, $this->subject, $this->text, $this->teaser, WCF::getUser()->userID, $this->username, $this->publishingTime, $this->enableComments, $this->getOptions(), null, intval(($this->disableEntry || !$this->category->getPermission('canAddEntryWithoutModeration'))));
 
 		// save tags
 		if (MODULE_TAGGING && ENTRY_ENABLE_TAGS && $this->category->getPermission('canSetEntryTags')) {
