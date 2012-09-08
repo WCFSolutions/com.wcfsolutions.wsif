@@ -72,7 +72,7 @@
 								</div>
 							{/if}
 
-							{if $additionalContent2|isset}{@$additionalContent2}{/if}
+							{if $additionalContent3|isset}{@$additionalContent3}{/if}
 
 							{if $entryImages|count > 0}
 								<div class="contentBox">
@@ -102,7 +102,7 @@
 								</div>
 							{/if}
 
-							{if $additionalContent3|isset}{@$additionalContent3}{/if}
+							{if $additionalContent4|isset}{@$additionalContent4}{/if}
 
 							{if $entryFiles|count > 0}
 								<div class="contentBox">
@@ -132,7 +132,7 @@
 								</div>
 							{/if}
 
-							{if $additionalContent4|isset}{@$additionalContent4}{/if}
+							{if $additionalContent5|isset}{@$additionalContent5}{/if}
 						</div>
 					</div>
 				</div>
