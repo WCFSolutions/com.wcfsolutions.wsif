@@ -87,7 +87,7 @@
 													</span>
 													<span class="avatarCaption{if $image->isDefault} default{/if}">{$image->title}</span>
 												</a>
-												<p class="light smallFont">{@$entry->time|time}</p>
+												<p class="light smallFont">{@$image->uploadTime|time}</p>
 											</li>
 										{/foreach}
 									</ul>
@@ -116,7 +116,7 @@
 												</div>
 												<div class="containerContent">
 													<h4{if $file->isDefault} class="default"{/if}><a href="index.php?page=EntryFile&amp;fileID={@$file->fileID}{@SID_ARG_2ND}">{@$file->title}</a></h4>
-													<p class="firstPost smallFont light">{lang}wsif.entry.file.by{/lang} {if $file->userID}<a href="index.php?page=User&amp;userID={@$file->userID}{@SID_ARG_2ND}">{$file->username}</a>{else}{$file->username}{/if} ({@$file->time|time})</p>
+													<p class="firstPost smallFont light">{lang}wsif.entry.file.by{/lang} {if $file->userID}<a href="index.php?page=User&amp;userID={@$file->userID}{@SID_ARG_2ND}">{$file->username}</a>{else}{$file->username}{/if} ({@$file->uploadTime|time})</p>
 												</div>
 											</li>
 										{/foreach}
