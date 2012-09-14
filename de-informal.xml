@@ -294,7 +294,7 @@
 		<item name="wsif.acp.category.list"><![CDATA[Kategorien]]></item>
 		<item name="wsif.acp.category.moderators"><![CDATA[Moderatoren]]></item>
 		<item name="wsif.acp.category.parentID"><![CDATA[Übergeordnete Kategorie]]></item>
-		<item name="wsif.acp.category.parentID.description"><![CDATA[Bestimme hier, welcher Kategorie die aktuelle Kategorie untergeordnet werden soll. ]]></item>
+		<item name="wsif.acp.category.parentID.description"><![CDATA[Bestimme hier, welcher Kategorie die aktuelle Kategorie untergeordnet werden soll.]]></item>
 		<item name="wsif.acp.category.permissions"><![CDATA[Zugriffsrechte für Benutzer und Gruppen]]></item>
 		<item name="wsif.acp.category.permissions.add"><![CDATA[Hinzufügen]]></item>
 		<item name="wsif.acp.category.permissions.allow"><![CDATA[Zulassen]]></item>
@@ -591,9 +591,9 @@ Erlaubte Dateiendungen: {$allowedFileExtensions}]]></item>
 		<item name="wsif.entry.file.downloads"><![CDATA[Downloads]]></item>
 		<item name="wsif.entry.file.downloadsPerDay"><![CDATA[{#$file->getDownloadsPerDay()} Downloads pro Tag]]></item>
 		<item name="wsif.entry.file.edit"><![CDATA[Datei bearbeiten]]></item>
-		<item name="wsif.entry.file.error.tooManyFiles"><![CDATA[Du kannst keine weiteren Dateien mehr hochladen, da du die maximale Anzahl erreicht haben. ]]></item>
+		<item name="wsif.entry.file.error.tooManyFiles"><![CDATA[Du kannst keine weiteren Dateien mehr hochladen, da du die maximale Anzahl erreicht haben.]]></item>
 		<item name="wsif.entry.file.externalURL"><![CDATA[Adresse (URL) des Links]]></item>
-		<item name="wsif.entry.file.externalURL.error.illegalURL"><![CDATA[Die angegebene Adresse (URL) ist nicht korrekt. ]]></item>
+		<item name="wsif.entry.file.externalURL.error.illegalURL"><![CDATA[Die angegebene Adresse (URL) ist nicht korrekt.]]></item>
 		<item name="wsif.entry.file.externalURL.redirect"><![CDATA[Du verlässt nun &raquo;{lang}{PAGE_TITLE}{/lang}&laquo; und wirst zu der gewünschten externen Datei weitergeleitet.]]></item>
 		<item name="wsif.entry.file.fileType"><![CDATA[Typ der Dateien]]></item>
 		<item name="wsif.entry.file.fileType.0"><![CDATA[Hochladen]]></item>
@@ -647,11 +647,10 @@ Erlaubte Dateiendungen: {$allowedFileExtensions}]]></item>
 		<item name="wsif.entry.image.description"><![CDATA[Beschreibung]]></item>
 		<item name="wsif.entry.image.edit"><![CDATA[Bild bearbeiten]]></item>
 		<item name="wsif.entry.image.embed"><![CDATA[Einbetten (benötigt BBCode-Unterstützung)]]></item>
-		<item name="wsif.entry.image.error.tooManyImages"><![CDATA[Du kannst keine weiteren Bilder mehr hochladen, da du die maximale Anzahl erreicht haben. ]]></item>
+		<item name="wsif.entry.image.error.tooManyImages"><![CDATA[Du kannst keine weiteren Bilder mehr hochladen, da du die maximale Anzahl erreicht haben.]]></item>
 		<item name="wsif.entry.image.filename"><![CDATA[Dateiname]]></item>
 		<item name="wsif.entry.image.filesize"><![CDATA[Dateigröße]]></item>
 		<item name="wsif.entry.image.general"><![CDATA[Allgemeine Informationen]]></item>
-		<item name="wsif.entry.image.informatio"><![CDATA[Bildinformationen]]></item>
 		<item name="wsif.entry.image.information"><![CDATA[Bildinformationen]]></item>
 		<item name="wsif.entry.image.information.description"><![CDATA[Die Informationen, die du hier angeben kannst, gelten für alle Bilder, die du zum Hochladen ausgewählt hast.]]></item>
 		<item name="wsif.entry.image.link"><![CDATA[Verlinken]]></item>
