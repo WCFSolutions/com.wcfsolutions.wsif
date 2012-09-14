@@ -19,6 +19,7 @@ require_once(WCF_DIR.'lib/page/MultipleLinkPage.class.php');
 class EntryImagesPage extends MultipleLinkPage {
 	// system
 	public $templateName = 'entryImages';
+	public $itemsPerPage = ENTRY_IMAGES_PER_PAGE;
 
 	/**
 	 * list of entry images
