@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/group-options.xsd">
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/group-options.xsd">
 	<import>
 		<categories>
 			<category name="user.filebase">
@@ -45,7 +45,7 @@
 				<showorder>1</showorder>
 			</category>
 		</categories>
-		
+
 		<options>
 			<!-- user.filebase.read -->
 			<option name="user.filebase.canViewFilebaseOffline">
@@ -54,7 +54,7 @@
 				<defaultvalue>0</defaultvalue>
 			</option>
 			<!-- /user.filebase.read -->
-			
+
 			<!-- user.filebase.category -->
 			<option name="user.filebase.canViewCategory">
 				<categoryname>user.filebase.category</categoryname>
@@ -67,7 +67,7 @@
 				<defaultvalue>1</defaultvalue>
 			</option>
 			<!-- /user.filebase.category -->
-			
+
 			<!-- user.filebase.entry -->
 			<option name="user.filebase.canViewEntry">
 				<categoryname>user.filebase.entry</categoryname>
@@ -116,7 +116,7 @@
 				<options>module_tagging</options>
 			</option>
 			<!-- /user.filebase.entry -->
-			
+
 			<!-- user.filebase.entryComment -->
 			<option name="user.filebase.canCommentEntry">
 				<categoryname>user.filebase.entryComment</categoryname>
@@ -172,7 +172,7 @@ pdf]]></defaultvalue>
 				<defaultvalue>5</defaultvalue>
 			</option>
 			<!-- /user.filebase.entryComment -->
-			
+
 			<!-- user.filebase.entryImage -->
 			<option name="user.filebase.allowedEntryImageExtensions">
 				<categoryname>user.filebase.entryImage</categoryname>
@@ -214,7 +214,7 @@ bmp]]></defaultvalue>
 				<defaultvalue>1</defaultvalue>
 			</option>
 			<!-- /user.filebase.entryImage -->
-			
+
 			<!-- user.filebase.entryFile -->
 			<option name="user.filebase.canDownloadEntryFile">
 				<categoryname>user.filebase.entryFile</categoryname>
@@ -253,7 +253,7 @@ pdf]]></defaultvalue>
 				<optiontype>boolean</optiontype>
 				<defaultvalue>1</defaultvalue>
 			</option>
-			
+
 			<!-- mod.filebase.entry -->
 			<option name="mod.filebase.canEditEntry">
 				<categoryname>mod.filebase.entry</categoryname>
@@ -286,7 +286,7 @@ pdf]]></defaultvalue>
 				<defaultvalue>0</defaultvalue>
 			</option>
 			<!-- /mod.filebase.entry -->
-			
+
 			<!-- mod.filebase.entryComment -->
 			<option name="mod.filebase.canEditEntryComment">
 				<categoryname>mod.filebase.entryComment</categoryname>
@@ -299,7 +299,7 @@ pdf]]></defaultvalue>
 				<defaultvalue>0</defaultvalue>
 			</option>
 			<!-- /mod.filebase.entryComment -->
-			
+
 			<!-- mod.filebase.entryImage -->
 			<option name="mod.filebase.canEditEntryImage">
 				<categoryname>mod.filebase.entryImage</categoryname>
@@ -312,7 +312,7 @@ pdf]]></defaultvalue>
 				<defaultvalue>0</defaultvalue>
 			</option>
 			<!-- /mod.filebase.entryImage -->
-			
+
 			<!-- mod.filebase.entryFile -->
 			<option name="mod.filebase.canEditEntryFile">
 				<categoryname>mod.filebase.entryFile</categoryname>
@@ -325,7 +325,7 @@ pdf]]></defaultvalue>
 				<defaultvalue>0</defaultvalue>
 			</option>
 			<!-- /mod.filebase.entryFile -->
-			
+
 			<!-- admin.filebase -->
 			<option name="admin.filebase.canAddCategory">
 				<categoryname>admin.filebase</categoryname>

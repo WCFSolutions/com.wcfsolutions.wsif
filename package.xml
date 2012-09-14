@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package name="com.wcfsolutions.wsif" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/package.xsd">
+<package name="com.wcfsolutions.wsif" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/package.xsd">
 	<packageinformation>
 		<packagename>WCF Solutions Infinite Filebase</packagename>
 		<packagedescription>Infinite Filebase is a modern download database with many features.</packagedescription>
@@ -101,15 +101,11 @@
 		<languages languagecode="de-informal">de-informal.xml</languages>
 	</instructions>
 
-	<instructions type="update" fromversion="2.1.0 Beta 1">
+	<instructions type="update" fromversion="2.1.0 RC 1">
 		<!-- files -->
 		<files>files.tar</files>
 		<templates>templates.tar</templates>
 		<acptemplates>acptemplates.tar</acptemplates>
-		<sql>update.sql</sql>
-
-		<!-- config -->
-		<acpmenu>acpmenu.xml</acpmenu>
 	</instructions>
 
 	<instructions type="update" fromversion="2.0.5*">
