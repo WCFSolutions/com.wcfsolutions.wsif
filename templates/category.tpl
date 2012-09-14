@@ -1,5 +1,5 @@
 {include file="documentHeader"}
-<head xmlns="http://www.w3.org/1999/html">
+<head>
 	<title>{@$category->getTitle()} {if $pageNo > 1}- {lang}wcf.page.pageNo{/lang} {/if}- {lang}{PAGE_TITLE}{/lang}</title>
 	{include file='headInclude' sandbox=false}
 
