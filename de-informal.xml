@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/language.xsd" languagecode="de-informal">
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/language.xsd" languagecode="de-informal">
 	<category name="wcf.acp.counterUpdate">
 		<item name="wcf.acp.counterUpdate.type.category"><![CDATA[Kategorien aktualisieren]]></item>
 		<item name="wcf.acp.counterUpdate.type.entry"><![CDATA[Einträge aktualisieren]]></item>
@@ -336,12 +336,12 @@
 		<item name="wsif.acp.category.permissions.fullControl"><![CDATA[Vollzugriff]]></item>
 		<item name="wsif.acp.category.permissions.permissionsFor"><![CDATA[Berechtigungen für {$name}]]></item>
 		<item name="wsif.acp.category.permissions.title"><![CDATA[Gruppen- oder Benutzernamen]]></item>
-		<item name="wsif.acp.category.showOrder"><![CDATA[Position]]></item>
-		<item name="wsif.acp.category.showOrder.description"><![CDATA[Gib hier eine Ordnungsnummer an. Diese Nummer gibt an, wie die Kategorie in Bezug auf andere Kategorien sortiert werden soll.]]></item>
 		<item name="wsif.acp.category.rating"><![CDATA[Eintragsbewertung]]></item>
 		<item name="wsif.acp.category.rating.disable"><![CDATA[Deaktivieren]]></item>
 		<item name="wsif.acp.category.rating.enable"><![CDATA[Aktivieren]]></item>
 		<item name="wsif.acp.category.settings"><![CDATA[Einstellungen]]></item>
+		<item name="wsif.acp.category.showOrder"><![CDATA[Position]]></item>
+		<item name="wsif.acp.category.showOrder.description"><![CDATA[Gib hier eine Ordnungsnummer an. Diese Nummer gibt an, wie die Kategorie in Bezug auf andere Kategorien sortiert werden soll.]]></item>
 		<item name="wsif.acp.category.sort.success"><![CDATA[Die Kategorien wurden erfolgreich sortiert.]]></item>
 		<item name="wsif.acp.category.sortField"><![CDATA[Sortierung]]></item>
 		<item name="wsif.acp.category.sortOrder"><![CDATA[Sortierungsreihenfolge]]></item>
@@ -383,6 +383,10 @@
 		<item name="wsif.acp.index.credits.developer"><![CDATA[Programmierung]]></item>
 		<item name="wsif.acp.index.credits.productManager"><![CDATA[Projektleitung]]></item>
 		<item name="wsif.acp.index.credits.translators"><![CDATA[Übersetzung]]></item>
+		<item name="wsif.acp.index.majorUpdates"><![CDATA[Optionale Updates]]></item>
+		<item name="wsif.acp.index.majorUpdates.description"><![CDATA[Es stehen derzeit folgende optionale Updates zur Verfügung:]]></item>
+		<item name="wsif.acp.index.minorUpdates"><![CDATA[Wichtige Updates]]></item>
+		<item name="wsif.acp.index.minorUpdates.description"><![CDATA[Es stehen derzeit folgende wichtige Updates zur Verfügung:]]></item>
 		<item name="wsif.acp.index.news"><![CDATA[Nachrichten]]></item>
 		<item name="wsif.acp.index.searchUsers"><![CDATA[Schnellsuche nach Benutzern]]></item>
 		<item name="wsif.acp.index.stat"><![CDATA[Statistik]]></item>
@@ -414,10 +418,6 @@
 		<item name="wsif.acp.index.system.webserver"><![CDATA[Webserver]]></item>
 		<item name="wsif.acp.index.system.wsif.version"><![CDATA[Infinite Filebase Version]]></item>
 		<item name="wsif.acp.index.updates"><![CDATA[Updates]]></item>
-		<item name="wsif.acp.index.minorUpdates"><![CDATA[Wichtige Updates]]></item>
-		<item name="wsif.acp.index.minorUpdates.description"><![CDATA[Es stehen derzeit folgende wichtige Updates zur Verfügung:]]></item>
-		<item name="wsif.acp.index.majorUpdates"><![CDATA[Optionale Updates]]></item>
-		<item name="wsif.acp.index.majorUpdates.description"><![CDATA[Es stehen derzeit folgende optionale Updates zur Verfügung:]]></item>
 		<item name="wsif.acp.index.updates.startUpdate"><![CDATA[Update jetzt durchführen]]></item>
 		<item name="wsif.acp.index.updates.update"><![CDATA[{$update.packageName}{if $update.instanceNo > 1} (#{$update.instanceNo}){/if} Version {$update.version.packageVersion}]]></item>
 	</category>
@@ -492,11 +492,7 @@
 		<item name="wsif.entry.comment.message"><![CDATA[Kommentar]]></item>
 		<item name="wsif.entry.comment.newEntryComment"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> zu "{$event->additionalData.entrySubject}" erstellt.]]></item>
 		<item name="wsif.entry.comment.newEntryComment.accept"><![CDATA[Bestätigen]]></item>
-		<item name="wsif.entry.comment.newEntryComment.title"><![CDATA[Neuer Kommentar bei eigenen Einträgen]]></item>
 		<item name="wsif.entry.comment.newEntryComment.description"><![CDATA[Du erhältst eine neue Benachrichtigung, wenn jemand einen Ihrer Einträge kommentiert.]]></item>
-		<item name="wsif.entry.comment.newEntryComment.short"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> erstellt.]]></item>
-		<item name="wsif.entry.comment.newEntryComment.medium"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> erstellt.]]></item>
-		<item name="wsif.entry.comment.newEntryComment.userMessages"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> zu "{$event->additionalData.entrySubject}" erstellt.]]></item>
 		<item name="wsif.entry.comment.newEntryComment.mail"><![CDATA[Hallo {$user->username},
 
 {$event->getObject()->username} hat einen neuen Kommentar zu "{$event->additionalData.entrySubject}" auf der Website: "{PAGE_TITLE}" erstellt.
@@ -511,6 +507,7 @@ Den neuen Kommentar erreichst du über den folgenden Link:
 
 Vielen Dank,
 Ihr {PAGE_TITLE} Team]]></item>
+		<item name="wsif.entry.comment.newEntryComment.medium"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> erstellt.]]></item>
 		<item name="wsif.entry.comment.newEntryComment.pm"><![CDATA[Hallo {$user->username},
 
 {$event->getObject()->username} hat einen neuen Kommentar zu "{$event->additionalData.entrySubject}" erstellt.
@@ -522,6 +519,9 @@ Den neuen Kommentar erreichst du über den folgenden Link:
 ---------------------------------
 {$event->getObject()->getFormattedMessage('text/plain')}
 ---------------------------------]]></item>
+		<item name="wsif.entry.comment.newEntryComment.short"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> erstellt.]]></item>
+		<item name="wsif.entry.comment.newEntryComment.title"><![CDATA[Neuer Kommentar bei eigenen Einträgen]]></item>
+		<item name="wsif.entry.comment.newEntryComment.userMessages"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> zu "{$event->additionalData.entrySubject}" erstellt.]]></item>
 		<item name="wsif.entry.comment.noComments"><![CDATA[Es ist kein Kommentar zu diesem Eintrag vorhanden.]]></item>
 		<item name="wsif.entry.comment.subject"><![CDATA[Überschrift]]></item>
 		<item name="wsif.entry.comments"><![CDATA[Kommentare]]></item>
@@ -540,11 +540,7 @@ Den neuen Kommentar erreichst du über den folgenden Link:
 		<item name="wsif.entry.enableComments.description"><![CDATA[Der Eintrag kann kommentiert werden.]]></item>
 		<item name="wsif.entry.entrySubscription"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> zu "{$event->additionalData.entrySubject}" erstellt.]]></item>
 		<item name="wsif.entry.entrySubscription.accept"><![CDATA[Bestätigen]]></item>
-		<item name="wsif.entry.entrySubscription.title"><![CDATA[Neuer Kommentar bei Abonnements]]></item>
 		<item name="wsif.entry.entrySubscription.description"><![CDATA[Du erhältst eine neue Benachrichtigung, wenn jemand einen Ihrer abonnierten Einträge kommentiert.]]></item>
-		<item name="wsif.entry.entrySubscription.short"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> erstellt.]]></item>
-		<item name="wsif.entry.entrySubscription.medium"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> erstellt.]]></item>
-		<item name="wsif.entry.entrySubscription.userMessages"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> zu "{$event->additionalData.entrySubject}" erstellt.]]></item>
 		<item name="wsif.entry.entrySubscription.mail"><![CDATA[Hallo {$user->username},
 
 {$event->getObject()->username} hat einen neuen Kommentar zu "{$event->additionalData.entrySubject}" auf der Website: "{PAGE_TITLE}" erstellt.
@@ -559,6 +555,7 @@ Den neuen Kommentar erreichst du über den folgenden Link:
 
 Vielen Dank,
 Ihr {PAGE_TITLE} Team]]></item>
+		<item name="wsif.entry.entrySubscription.medium"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> erstellt.]]></item>
 		<item name="wsif.entry.entrySubscription.pm"><![CDATA[Hallo {$user->username},
 
 {$event->getObject()->username} hat einen neuen Kommentar zu "{$event->additionalData.entrySubject}" erstellt.
@@ -570,6 +567,9 @@ Den neuen Kommentar erreichst du über den folgenden Link:
 ---------------------------------
 {$event->getObject()->getFormattedMessage('text/plain')}
 ---------------------------------]]></item>
+		<item name="wsif.entry.entrySubscription.short"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> erstellt.]]></item>
+		<item name="wsif.entry.entrySubscription.title"><![CDATA[Neuer Kommentar bei Abonnements]]></item>
+		<item name="wsif.entry.entrySubscription.userMessages"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> zu "{$event->additionalData.entrySubject}" erstellt.]]></item>
 		<item name="wsif.entry.file"><![CDATA[Datei]]></item>
 		<item name="wsif.entry.file.add"><![CDATA[Dateien hinzufügen]]></item>
 		<item name="wsif.entry.file.add.success"><![CDATA[{if $files|count != 1}{#$files|count} Dateien wurden{else}Eine Datei wurde{/if} erfolgreich hinzugefügt.]]></item>
