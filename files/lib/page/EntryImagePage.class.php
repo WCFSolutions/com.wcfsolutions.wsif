@@ -72,11 +72,6 @@ class EntryImagePage extends AbstractPage {
 
 		// get entry frame
 		$this->frame = new EntryFrame($this, $this->image->entryID);
-
-		// update views
-		if (!WCF::getSession()->spiderID) {
-			$this->updateViews();
-		}
 	}
 
 	/**
@@ -114,6 +109,11 @@ class EntryImagePage extends AbstractPage {
 			ORDER BY	uploadTime DESC, imageID ASC";
 		$this->nextImage = new EntryImage(null, WCF::getDB()->getFirstRow($sql));
 		if (!$this->nextImage->imageID) $this->nextImage = null;
+
+		// update views
+		if (!WCF::getSession()->spiderID) {
+			$this->updateViews();
+		}
 	}
 
 	/**

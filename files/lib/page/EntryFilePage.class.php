@@ -64,11 +64,6 @@ class EntryFilePage extends AbstractPage {
 
 		// get entry frame
 		$this->frame = new EntryFrame($this, $this->file->entryID);
-
-		// update views
-		if (!WCF::getSession()->spiderID) {
-			$this->updateViews();
-		}
 	}
 
 	/**
@@ -89,6 +84,11 @@ class EntryFilePage extends AbstractPage {
 		$result = WCF::getDB()->sendQuery($sql, 5);
 		while ($row = WCF::getDB()->fetchArray($result)) {
 			$this->fileDownloaders[] = new WSIFUser(null, $row);
+		}
+
+		// update views
+		if (!WCF::getSession()->spiderID) {
+			$this->updateViews();
 		}
 	}
 
