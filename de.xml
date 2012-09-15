@@ -378,7 +378,6 @@
 		<item name="wsif.acp.index"><![CDATA[WCF Solutions Infinite Filebase Administrationsoberfläche]]></item>
 		<item name="wsif.acp.index.credits"><![CDATA[Über WCF Solutions Infinite Filebase]]></item>
 		<item name="wsif.acp.index.credits.contributor"><![CDATA[Mitwirkende]]></item>
-		<item name="wsif.acp.index.credits.designer"><![CDATA[Design]]></item>
 		<item name="wsif.acp.index.credits.developedBy"><![CDATA[Software entwickelt von]]></item>
 		<item name="wsif.acp.index.credits.developer"><![CDATA[Programmierung]]></item>
 		<item name="wsif.acp.index.credits.productManager"><![CDATA[Projektleitung]]></item>

@@ -261,11 +261,6 @@
 		</div>
 
 		<div class="formElement">
-			<p class="formFieldLabel">{lang}wsif.acp.index.credits.designer{/lang}</p>
-			<p class="formField"><a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.wbb-volcano.de"|rawurlencode}" class="externalURL">Christoph Summerer</a></p>
-		</div>
-
-		<div class="formElement">
 			<p class="formFieldLabel">{lang}wsif.acp.index.credits.icons{/lang}</p>
 			<p class="formField"><a href="{@RELATIVE_WCF_DIR}acp/dereferrer.php?url={"http://www.everaldo.com"|rawurlencode}" class="externalURL">Everaldo Coelho</a></p>
 		</div>
