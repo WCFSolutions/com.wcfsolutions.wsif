@@ -147,6 +147,7 @@ class CategoryList {
 			if ($parentID != 0 && CATEGORY_LIST_ENABLE_STATS) {
 				if (isset($this->categoryStats[$parentID]) && isset($this->categoryStats[$categoryID])) {
 					$this->categoryStats[$parentID]['entries'] += $this->categoryStats[$categoryID]['entries'];
+					$this->categoryStats[$parentID]['entryComments'] += $this->categoryStats[$categoryID]['entryComments'];
 					$this->categoryStats[$parentID]['entryImages'] += $this->categoryStats[$categoryID]['entryImages'];
 					$this->categoryStats[$parentID]['entryFiles'] += $this->categoryStats[$categoryID]['entryFiles'];
 					$this->categoryStats[$parentID]['entryDownloads'] += $this->categoryStats[$categoryID]['entryDownloads'];
@@ -155,6 +156,11 @@ class CategoryList {
 		}
 	}
 
+	/**
+	 * Returns the category list.
+	 *
+	 * @return array
+	 */
 	public function getCategoryList() {
 		return $this->categoryList;
 	}
