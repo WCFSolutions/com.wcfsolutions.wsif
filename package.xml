@@ -106,6 +106,9 @@
 		<files>files.tar</files>
 		<templates>templates.tar</templates>
 		<acptemplates>acptemplates.tar</acptemplates>
+
+		<!-- config -->
+		<useroptions>useroptions.xml</useroptions>
 	</instructions>
 
 	<instructions type="update" fromversion="2.0.5*">
@@ -116,6 +119,7 @@
 		<sql>update_205.sql</sql>
 
 		<!-- config -->
+		<useroptions>useroptions.xml</useroptions>
 		<options>options.xml</options>
 		<cronjobs>cronjobs.xml</cronjobs>
 		<rateableobject>rateableobject.xml</rateableobject>
