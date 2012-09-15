@@ -22,8 +22,6 @@
 
 	{if $userMessages|isset}{@$userMessages}{/if}
 
-	{*{include file='newestEntries'}*}
-
 	{if $additionalTopContents|isset}{@$additionalTopContents}{/if}
 
 	{include file='categoryList'}
