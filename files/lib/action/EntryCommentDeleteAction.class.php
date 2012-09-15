@@ -1,7 +1,7 @@
 <?php
 // wsif imports
-require_once(WSIF_DIR.'lib/data/category/Category.class.php');
-require_once(WSIF_DIR.'lib/data/entry/ViewableEntry.class.php');
+require_once(WSIF_DIR.'lib/data/category/CategoryEditor.class.php');
+require_once(WSIF_DIR.'lib/data/entry/EntryEditor.class.php');
 require_once(WSIF_DIR.'lib/data/entry/comment/EntryCommentEditor.class.php');
 
 // wcf imports
@@ -65,10 +65,10 @@ class EntryCommentDeleteAction extends AbstractSecureAction {
 		}
 
 		// get entry
-		$this->entry = new ViewableEntry($this->comment->entryID);
+		$this->entry = new EntryEditor($this->comment->entryID);
 
 		// get category
-		$this->category = Category::getCategory($this->entry->categoryID);
+		$this->category = new CategoryEditor($this->entry->categoryID);
 		$this->entry->enter($this->category);
 
 		// check comment availability
@@ -94,6 +94,10 @@ class EntryCommentDeleteAction extends AbstractSecureAction {
 		// update comment count
 		$this->entry->updateComments(-1);
 		$this->category->updateEntryComments(-1);
+
+		// reset cache
+		WCF::getCache()->clearResource('categoryData');
+		WCF::getCache()->clearResource('stat');
 		$this->executed();
 
 		// forward

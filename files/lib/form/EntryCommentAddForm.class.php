@@ -178,6 +178,10 @@ class EntryCommentAddForm extends MessageForm {
 
 		// send noticications
 		$this->comment->sendNotifications($this->frame->getEntry());
+
+		// reset cache
+		WCF::getCache()->clearResource('categoryData');
+		WCF::getCache()->clearResource('stat');
 		$this->saved();
 
 		// forward to comment
