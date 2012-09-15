@@ -13,12 +13,11 @@ require_once(WCF_DIR.'lib/data/user/UserProfile.class.php');
  * @category	Infinite Filebase
  */
 class WSIFUser extends UserProfile {
-	protected $avatar = null;
-
 	/**
 	 * @see UserProfile::__construct()
 	 */
 	public function __construct($userID = null, $row = null, $username = null, $email = null) {
+		$this->sqlSelects .= 'wsif_user.*,';
 		$this->sqlJoins .= ' LEFT JOIN wsif'.WSIF_N.'_user wsif_user ON (wsif_user.userID = user.userID) ';
 		parent::__construct($userID, $row, $username, $email);
 	}
