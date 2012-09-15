@@ -98,7 +98,7 @@
 		<item name="wcf.acp.group.option.user.filebase.canEditOwnEntryComment.description"><![CDATA[Mitglieder dieser Benutzergruppe können eigene Kommentare bearbeiten.]]></item>
 		<item name="wcf.acp.group.option.user.filebase.canEditOwnEntryFile"><![CDATA[Kann eigene Dateien bearbeiten]]></item>
 		<item name="wcf.acp.group.option.user.filebase.canEditOwnEntryFile.description"><![CDATA[Mitglieder dieser Benutzergruppe können eigene Dateien bearbeiten.]]></item>
-		<item name="wcf.acp.group.option.user.filebase.canEditOwnEntryImage"><![CDATA[Kann eigene Bilder bearbeiten.]]></item>
+		<item name="wcf.acp.group.option.user.filebase.canEditOwnEntryImage"><![CDATA[Kann eigene Bilder bearbeiten]]></item>
 		<item name="wcf.acp.group.option.user.filebase.canEditOwnEntryImage.description"><![CDATA[Mitglieder dieser Benutzergruppe können eigene Bilder bearbeiten.]]></item>
 		<item name="wcf.acp.group.option.user.filebase.canEnterCategory"><![CDATA[Kann Kategorien betreten]]></item>
 		<item name="wcf.acp.group.option.user.filebase.canEnterCategory.description"><![CDATA[Mitglieder dieser Benutzergruppe können Kategorien betreten.]]></item>
@@ -120,17 +120,17 @@
 		<item name="wcf.acp.group.option.user.filebase.canViewFilebaseOffline.description"><![CDATA[Mitglieder dieser Benutzergruppe können die Filebase im Offline-Modus sehen.]]></item>
 		<item name="wcf.acp.group.option.user.filebase.canViewOwnEntry"><![CDATA[Kann eigene Einträge sehen]]></item>
 		<item name="wcf.acp.group.option.user.filebase.canViewOwnEntry.description"><![CDATA[Mitglieder dieser Benutzergruppe können eigene Einträge sehen.]]></item>
-		<item name="wcf.acp.group.option.user.filebase.maxEntryCommentAttachmentCount"><![CDATA[ Maximale Dateianhänge pro Eintrag]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryCommentAttachmentCount"><![CDATA[Maximale Dateianhänge pro Eintrag]]></item>
 		<item name="wcf.acp.group.option.user.filebase.maxEntryCommentAttachmentCount.description"><![CDATA[Wieviele Dateianhänge sollen Mitglieder dieser Benutzergruppe pro Eintrag hochladen können?]]></item>
-		<item name="wcf.acp.group.option.user.filebase.maxEntryCommentAttachmentSize"><![CDATA[ Maximale Dateianhangsgröße]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryCommentAttachmentSize"><![CDATA[Maximale Dateianhangsgröße]]></item>
 		<item name="wcf.acp.group.option.user.filebase.maxEntryCommentAttachmentSize.description"><![CDATA[Maximale Größe pro Dateianhang in Byte.]]></item>
-		<item name="wcf.acp.group.option.user.filebase.maxEntryFileSize"><![CDATA[ Maximale Dateigröße einer Datei]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryFileSize"><![CDATA[Maximale Dateigröße einer Datei]]></item>
 		<item name="wcf.acp.group.option.user.filebase.maxEntryFileSize.description"><![CDATA[Maximale Dateigröße von hochgeladenen Dateien [Byte].]]></item>
-		<item name="wcf.acp.group.option.user.filebase.maxEntryImageHeight"><![CDATA[ Maximale Höhe eines Bildes]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryImageHeight"><![CDATA[Maximale Höhe eines Bildes]]></item>
 		<item name="wcf.acp.group.option.user.filebase.maxEntryImageHeight.description"><![CDATA[Maximal Höhe von hochgeladenen Bildern [Pixel].]]></item>
 		<item name="wcf.acp.group.option.user.filebase.maxEntryImageSize"><![CDATA[Maximale Dateigröße eines Bildes]]></item>
 		<item name="wcf.acp.group.option.user.filebase.maxEntryImageSize.description"><![CDATA[Maximale Dateigröße von hochgeladenen Bildern [Byte].]]></item>
-		<item name="wcf.acp.group.option.user.filebase.maxEntryImageWidth"><![CDATA[ Maximale Breite eines Bildes]]></item>
+		<item name="wcf.acp.group.option.user.filebase.maxEntryImageWidth"><![CDATA[Maximale Breite eines Bildes]]></item>
 		<item name="wcf.acp.group.option.user.filebase.maxEntryImageWidth.description"><![CDATA[Maximal Breite von hochgeladenen Bildern [Pixel].]]></item>
 		<item name="wcf.acp.group.option.user.filebase.maxFilesPerEntry"><![CDATA[Maximale Dateien pro Eintrag]]></item>
 		<item name="wcf.acp.group.option.user.filebase.maxFilesPerEntry.description"><![CDATA[Wieviele Dateien sollen Mitglieder dieser Benutzergruppe pro Eintrag hochladen können?]]></item>
@@ -263,7 +263,6 @@
 		<item name="wcf.user.profile.search"><![CDATA[Einträge von &raquo;{$username}&laquo; suchen]]></item>
 	</category>
 	<category name="wsif.acp">
-		<item name="wsif.acp.index.credits.icons"><![CDATA[Icons]]></item>
 		<item name="wsif.acp.jumpToFilebase"><![CDATA[Zur Filebase]]></item>
 	</category>
 	<category name="wsif.acp.category">
@@ -285,7 +284,7 @@
 		<item name="wsif.acp.category.edit.success"><![CDATA[Die Kategorie wurde erfolgreich bearbeitet.]]></item>
 		<item name="wsif.acp.category.enforceStyle"><![CDATA[Ausgewählter Stil überschreibt individuelle Einstellung der Benutzer]]></item>
 		<item name="wsif.acp.category.entriesPerPage"><![CDATA[Einträge pro Seite]]></item>
-		<item name="wsif.acp.category.externalURL"><![CDATA[ Adresse (URL) des Links]]></item>
+		<item name="wsif.acp.category.externalURL"><![CDATA[Adresse (URL) des Links]]></item>
 		<item name="wsif.acp.category.filter"><![CDATA[Filter- und Sortierungseinstellungen der Einträge]]></item>
 		<item name="wsif.acp.category.general"><![CDATA[Allgemeine Daten]]></item>
 		<item name="wsif.acp.category.icon"><![CDATA[Spezielles Icon für diese Kategorie]]></item>
@@ -380,8 +379,8 @@
 		<item name="wsif.acp.index.credits.contributor"><![CDATA[Mitwirkende]]></item>
 		<item name="wsif.acp.index.credits.developedBy"><![CDATA[Software entwickelt von]]></item>
 		<item name="wsif.acp.index.credits.developer"><![CDATA[Programmierung]]></item>
+		<item name="wsif.acp.index.credits.icons"><![CDATA[Icons]]></item>
 		<item name="wsif.acp.index.credits.productManager"><![CDATA[Projektleitung]]></item>
-		<item name="wsif.acp.index.credits.translators"><![CDATA[Übersetzung]]></item>
 		<item name="wsif.acp.index.majorUpdates"><![CDATA[Optionale Updates]]></item>
 		<item name="wsif.acp.index.majorUpdates.description"><![CDATA[Es stehen derzeit folgende optionale Updates zur Verfügung:]]></item>
 		<item name="wsif.acp.index.minorUpdates"><![CDATA[Wichtige Updates]]></item>
@@ -389,22 +388,20 @@
 		<item name="wsif.acp.index.news"><![CDATA[Nachrichten]]></item>
 		<item name="wsif.acp.index.searchUsers"><![CDATA[Schnellsuche nach Benutzern]]></item>
 		<item name="wsif.acp.index.stat"><![CDATA[Statistik]]></item>
-		<item name="wsif.acp.index.stat.attachments"><![CDATA[Dateianhänge]]></item>
 		<item name="wsif.acp.index.stat.database.entries"><![CDATA[Datenbankeinträge]]></item>
 		<item name="wsif.acp.index.stat.database.size"><![CDATA[Datenbankgröße]]></item>
 		<item name="wsif.acp.index.stat.entries"><![CDATA[Einträge]]></item>
-		<item name="wsif.acp.index.stat.entriesPerDay"><![CDATA[({#$entriesPerDay} pro Tag)]]></item>
+		<item name="wsif.acp.index.stat.entriesPerDay"><![CDATA[({#$entriesPerDay} Einträge pro Tag)]]></item>
 		<item name="wsif.acp.index.stat.entryComments"><![CDATA[Kommentare]]></item>
-		<item name="wsif.acp.index.stat.entryCommentsPerDay"><![CDATA[({#$entryCommentsPerDay} pro Tag)]]></item>
+		<item name="wsif.acp.index.stat.entryCommentsPerDay"><![CDATA[({#$entryCommentsPerDay} Kommentare pro Tag)]]></item>
 		<item name="wsif.acp.index.stat.entryFiles"><![CDATA[Dateien]]></item>
-		<item name="wsif.acp.index.stat.entryFilesPerDay"><![CDATA[({#$entryFilesPerDay} pro Tag)]]></item>
+		<item name="wsif.acp.index.stat.entryFilesPerDay"><![CDATA[({#$entryFilesPerDay} Dateien pro Tag)]]></item>
 		<item name="wsif.acp.index.stat.entryImages"><![CDATA[Bilder]]></item>
-		<item name="wsif.acp.index.stat.entryImagesPerDay"><![CDATA[({#$entryImagesPerDay} pro Tag)]]></item>
+		<item name="wsif.acp.index.stat.entryImagesPerDay"><![CDATA[({#$entryImagesPerDay} Bilder pro Tag)]]></item>
 		<item name="wsif.acp.index.stat.members"><![CDATA[Mitglieder]]></item>
 		<item name="wsif.acp.index.stat.usersOnline"><![CDATA[Benutzer online]]></item>
 		<item name="wsif.acp.index.system"><![CDATA[System]]></item>
 		<item name="wsif.acp.index.system.cache"><![CDATA[Cache]]></item>
-		<item name="wsif.acp.index.system.exportInformation"><![CDATA[System-Informationen herunterladen]]></item>
 		<item name="wsif.acp.index.system.installationDate"><![CDATA[Installationsdatum]]></item>
 		<item name="wsif.acp.index.system.load"><![CDATA[Aktueller UNIX Load]]></item>
 		<item name="wsif.acp.index.system.os"><![CDATA[Betriebssystem]]></item>
