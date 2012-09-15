@@ -13,8 +13,8 @@ require_once(WSIF_DIR.'lib/page/ModerationEntriesPage.class.php');
  * @category	Infinite Filebase
  */
 class ModerationDeletedEntriesPage extends ModerationEntriesPage {
-	public $action = 'deletedEntries';
 	public $neededPermissions = 'mod.filebase.canViewDeletedEntry';
+	public $action = 'deletedEntries';
 
 	/**
 	 * @see Page::readParameters()

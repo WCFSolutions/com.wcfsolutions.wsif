@@ -24,6 +24,13 @@ abstract class ModerationEntriesPage extends MultipleLinkPage {
 	public $itemsPerPage = CATEGORY_ENTRIES_PER_PAGE;
 
 	/**
+	 * moderation action
+	 *
+	 * @var string
+	 */
+	public $action = '';
+
+	/**
 	 * list of entries
 	 *
 	 * @var	EntryList

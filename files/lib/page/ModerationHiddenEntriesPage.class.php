@@ -13,8 +13,8 @@ require_once(WSIF_DIR.'lib/page/ModerationEntriesPage.class.php');
  * @category	Infinite Filebase
  */
 class ModerationHiddenEntriesPage extends ModerationEntriesPage {
-	public $action = 'hiddenEntries';
 	public $neededPermissions = 'mod.filebase.canEnableEntry';
+	public $action = 'hiddenEntries';
 
 	/**
 	 * @see Page::readParameters()
