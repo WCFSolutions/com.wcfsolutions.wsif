@@ -3,7 +3,7 @@
 require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
 
 /**
- * Represents a category in the filebase.
+ * Represents a category.
  *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>

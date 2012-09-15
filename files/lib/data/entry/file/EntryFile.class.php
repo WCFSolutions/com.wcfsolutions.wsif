@@ -3,7 +3,7 @@
 require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
 
 /**
- * Represents an entry file in the filebase.
+ * Represents an entry file.
  *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
@@ -25,9 +25,6 @@ class EntryFile extends DatabaseObject {
 
 	/**
 	 * Creates a new EntryFile object.
-	 *
-	 * If id is set, the function reads the entry file data from database.
-	 * Otherwise it uses the given resultset.
 	 *
 	 * @param	integer		$fileID
 	 * @param 	array<mixed>	$row

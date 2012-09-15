@@ -3,7 +3,7 @@
 require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
 
 /**
- * Represents an entry comment in the filebase.
+ * Represents an entry comment.
  *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
@@ -17,9 +17,6 @@ class EntryComment extends DatabaseObject {
 
 	/**
 	 * Creates a new EntryComment object.
-	 *
-	 * If id is set, the function reads the entry comment data from database.
-	 * Otherwise it uses the given resultset.
 	 *
 	 * @param	integer		$commentID
 	 * @param 	array<mixed>	$row

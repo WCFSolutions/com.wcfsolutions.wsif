@@ -3,7 +3,7 @@
 require_once(WCF_DIR.'lib/data/DatabaseObject.class.php');
 
 /**
- * Represents an entry image in the filebase.
+ * Represents an entry image.
  *
  * @author	Sebastian Oettl
  * @copyright	2009-2012 WCF Solutions <http://www.wcfsolutions.com/>
