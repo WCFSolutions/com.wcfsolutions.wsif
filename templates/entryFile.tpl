@@ -167,7 +167,7 @@
 											<img src="{icon}wysiwyg/insertImageM.png{/icon}" alt="" onclick="document.getElementById('entryFileEmbed').select()" />
 										</div>
 										<div class="containerContent">
-											<h4 class="smallFont" onclick="document.getElementById('entryFileEmbed').select()">{lang}wsif.entry.image.embed{/lang}</h4>
+											<h4 class="smallFont" onclick="document.getElementById('entryFileEmbed').select()">{lang}wsif.entry.file.embed{/lang}</h4>
 											<p><input type="text" class="inputText" id="entryFileEmbed" readonly="readonly" onclick="this.select()" value="[url={PAGE_URL}/index.php?page=EntryFile&amp;fileID={@$fileID}]{$file->title}[/url]" /></p>
 										</div>
 									</li>

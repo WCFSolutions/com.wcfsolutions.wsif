@@ -286,7 +286,7 @@
 											<img src="{icon}wysiwyg/insertImageM.png{/icon}" alt="" onclick="document.getElementById('entryEmbed').select()" />
 										</div>
 										<div class="containerContent">
-											<h4 class="smallFont" onclick="document.getElementById('entryEmbed').select()">{lang}wsif.entry.image.embed{/lang}</h4>
+											<h4 class="smallFont" onclick="document.getElementById('entryEmbed').select()">{lang}wsif.entry.embed{/lang}</h4>
 											<p><input type="text" class="inputText" id="entryEmbed" readonly="readonly" onclick="this.select()" value="[url={PAGE_URL}/index.php?page=Entry&amp;entryID={@$entryID}]{$entry->subject}[/url]" /></p>
 										</div>
 									</li>

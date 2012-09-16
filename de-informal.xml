@@ -532,6 +532,7 @@ Den neuen Kommentar erreichst du über den folgenden Link:
 		<item name="wsif.entry.downloads"><![CDATA[Downloads]]></item>
 		<item name="wsif.entry.downloadsPerDay"><![CDATA[{#$entry->getDownloadsPerDay()} Downloads pro Tag]]></item>
 		<item name="wsif.entry.edit"><![CDATA[Eintrag bearbeiten]]></item>
+		<item name="wsif.entry.embed"><![CDATA[Einbetten (benötigt BBCode-Unterstützung)]]></item>
 		<item name="wsif.entry.enableComments"><![CDATA[Kommentare aktivieren]]></item>
 		<item name="wsif.entry.enableComments.description"><![CDATA[Der Eintrag kann kommentiert werden.]]></item>
 		<item name="wsif.entry.entrySubscription"><![CDATA[{if $event->getObject()->userID}<a href="index.php?page=User&amp;userID={@$event->getObject()->userID}{@SID_ARG_2ND}">{$event->getObject()->username}</a>{else}{$event->getObject()->username}{/if} hat einen neuen <a href="{@$event->getObject()->getURL()}{@SID_ARG_2ND}#comment{@$event->getObject()->commentID}">Kommentar</a> zu "{$event->additionalData.entrySubject}" erstellt.]]></item>
@@ -569,12 +570,10 @@ Den neuen Kommentar erreichst du über den folgenden Link:
 		<item name="wsif.entry.file"><![CDATA[Datei]]></item>
 		<item name="wsif.entry.file.add"><![CDATA[Dateien hinzufügen]]></item>
 		<item name="wsif.entry.file.add.success"><![CDATA[{if $files|count != 1}{#$files|count} Dateien wurden{else}Eine Datei wurde{/if} erfolgreich hinzugefügt.]]></item>
-		<item name="wsif.entry.file.add.upload.error.copyFailed"><![CDATA[Die Datei konnte nicht erfolgreich kopiert werden.]]></item>
-		<item name="wsif.entry.file.add.upload.error.uploadFailed"><![CDATA[Das Hochladen der Datei ist fehlgeschlagen.]]></item>
 		<item name="wsif.entry.file.by"><![CDATA[Von]]></item>
 		<item name="wsif.entry.file.default"><![CDATA[Hauptdatei]]></item>
 		<item name="wsif.entry.file.default.add.description"><![CDATA[Wähle eine Hauptdatei für den Eintrag aus.]]></item>
-		<item name="wsif.entry.file.default.add.success"><![CDATA[Die Hauptdatei &raquo;{$file->title}&laquo; wurde erfolgreich gespeichert.{if $this->user->getPermission('user.filebase.maxImagesPerEntry') > 1} Im Anschluss kannst du weitere Dateien hinzufügen.{/if}]]></item>
+		<item name="wsif.entry.file.default.add.success"><![CDATA[Die Hauptdatei &raquo;{$file->title}&laquo; wurde erfolgreich gespeichert.{if $this->user->getPermission('user.filebase.maxFilesPerEntry') > 1} Im Anschluss kannst du weitere Dateien hinzufügen.{/if}]]></item>
 		<item name="wsif.entry.file.default.fileType"><![CDATA[Typ der Datei]]></item>
 		<item name="wsif.entry.file.default.upload"><![CDATA[Datei auswählen]]></item>
 		<item name="wsif.entry.file.default.upload.description"><![CDATA[Maximale Dateigröße: {@$maxFileSize|filesize}<br />
@@ -587,6 +586,7 @@ Erlaubte Dateiendungen: {$allowedFileExtensions}]]></item>
 		<item name="wsif.entry.file.downloads"><![CDATA[Downloads]]></item>
 		<item name="wsif.entry.file.downloadsPerDay"><![CDATA[{#$file->getDownloadsPerDay()} Downloads pro Tag]]></item>
 		<item name="wsif.entry.file.edit"><![CDATA[Datei bearbeiten]]></item>
+		<item name="wsif.entry.file.embed"><![CDATA[Einbetten (benötigt BBCode-Unterstützung)]]></item>
 		<item name="wsif.entry.file.error.tooManyFiles"><![CDATA[Du kannst keine weiteren Dateien mehr hochladen, da du die maximale Anzahl erreicht haben.]]></item>
 		<item name="wsif.entry.file.externalURL"><![CDATA[Adresse (URL) des Links]]></item>
 		<item name="wsif.entry.file.externalURL.error.illegalURL"><![CDATA[Die angegebene Adresse (URL) ist nicht korrekt.]]></item>
