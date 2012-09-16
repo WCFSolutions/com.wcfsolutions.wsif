@@ -5,8 +5,8 @@
 		<packagedescription>Infinite Filebase is a modern download database with many features.</packagedescription>
 		<packagedescription language="de">Infinite Filebase ist eine moderne Download-Datenbank mit vielen Funktionen.</packagedescription>
 		<standalone>1</standalone>
-		<version>2.1.0 RC 1</version>
-		<date>2012-08-27</date>
+		<version>2.1.0</version>
+		<date>2012-09-16</date>
 	</packageinformation>
 
 	<authorinformation>
@@ -99,6 +99,7 @@
 		<!-- languages -->
 		<languages languagecode="de">de.xml</languages>
 		<languages languagecode="de-informal">de-informal.xml</languages>
+		<languages languagecode="en">en.xml</languages>
 	</instructions>
 
 	<instructions type="update" fromversion="2.1.0 RC 1">
@@ -109,6 +110,13 @@
 
 		<!-- config -->
 		<useroptions>useroptions.xml</useroptions>
+		<groupoptions>groupoptions.xml</groupoptions>
+		<acpmenu>acpmenu.xml</acpmenu>
+
+		<!-- languages -->
+		<languages languagecode="de">de.xml</languages>
+		<languages languagecode="de-informal">de-informal.xml</languages>
+		<languages languagecode="en">en.xml</languages>
 	</instructions>
 
 	<instructions type="update" fromversion="2.0.5*">
@@ -120,8 +128,10 @@
 
 		<!-- config -->
 		<useroptions>useroptions.xml</useroptions>
+		<groupoptions>groupoptions.xml</groupoptions>
 		<options>options.xml</options>
 		<cronjobs>cronjobs.xml</cronjobs>
+		<acpmenu>acpmenu.xml</acpmenu>
 		<rateableobject>rateableobject.xml</rateableobject>
 		<notificationobjecttype>notificationobjecttype.xml</notificationobjecttype>
 		<notificationevent>notificationevent.xml</notificationevent>
@@ -129,5 +139,6 @@
 		<!-- languages -->
 		<languages languagecode="de">de.xml</languages>
 		<languages languagecode="de-informal">de-informal.xml</languages>
+		<languages languagecode="en">en.xml</languages>
 	</instructions>
 </package>
