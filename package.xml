@@ -51,7 +51,7 @@
 		<requiredpackage minversion="1.0.1">com.woltlab.wcf.socialBookmarks</requiredpackage>
 
 		<!-- 3rd party packages -->
-		<requiredpackage minversion="1.0.12" file="requirements/com.woltlab.community.wcf.user.notification.tar">com.woltlab.community.wcf.user.notification</requiredpackage>
+		<requiredpackage minversion="1.0.14" file="requirements/com.woltlab.community.wcf.user.notification.tar">com.woltlab.community.wcf.user.notification</requiredpackage>
 
 		<!-- wcfsolutions packages -->
 		<requiredpackage minversion="2.0.2" file="requirements/com.wcfsolutions.wsif.core.tar">com.wcfsolutions.wsif.core</requiredpackage>
