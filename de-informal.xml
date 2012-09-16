@@ -160,7 +160,6 @@
 		<item name="wcf.acp.option.category.filebase.entry.images.description"><![CDATA[]]></item>
 		<item name="wcf.acp.option.category.filebase.index"><![CDATA[Startseite]]></item>
 		<item name="wcf.acp.option.category.filebase.index.categories"><![CDATA[Kategorieauflistung]]></item>
-		<item name="wcf.acp.option.category.filebase.index.categories. description"><![CDATA[]]></item>
 		<item name="wcf.acp.option.category.filebase.index.categories.description"><![CDATA[]]></item>
 		<item name="wcf.acp.option.category.filebase.index.description"><![CDATA[]]></item>
 		<item name="wcf.acp.option.category.filebase.index.general"><![CDATA[Allgemein]]></item>
