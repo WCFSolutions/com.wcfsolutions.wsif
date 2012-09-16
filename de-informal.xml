@@ -636,8 +636,8 @@ Erlaubte Dateiendungen: {$allowedFileExtensions}]]></item>
 		<item name="wsif.entry.image.default.add.description"><![CDATA[Wähle ein Vorschaubild für den Eintrag aus.]]></item>
 		<item name="wsif.entry.image.default.add.success"><![CDATA[Das Bild &raquo;{$image->title}&laquo; wurde erfolgreich hochgeladen.{if $this->user->getPermission('user.filebase.maxImagesPerEntry') > 1} Im Anschluss kannst du weitere Bilder hinzufügen.{/if}]]></item>
 		<item name="wsif.entry.image.default.upload"><![CDATA[Bild auswählen]]></item>
-		<item name="wsif.entry.image.default.upload.description"><![CDATA[Maximale Dateigröße: {@$maxFileSize|filesize}<br />
-Erlaubte Dateiendungen: {$allowedFileExtensions}]]></item>
+		<item name="wsif.entry.image.default.upload.description"><![CDATA[Maximale Dateigröße: {@$maxImageSize|filesize}<br />
+Erlaubte Dateiendungen: {$allowedImageExtensions}]]></item>
 		<item name="wsif.entry.image.delete"><![CDATA[Bild löschen]]></item>
 		<item name="wsif.entry.image.delete.sure"><![CDATA[Willst du dieses Bild wirklich löschen?]]></item>
 		<item name="wsif.entry.image.description"><![CDATA[Beschreibung]]></item>
